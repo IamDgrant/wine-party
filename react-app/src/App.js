@@ -9,9 +9,6 @@ import NavBar from "./components/NavBar";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
 import { restoreUser } from "./store/session";
-import LoginModal from "./components/modals/LogInModal";
-import SignUpModal from "./components/modals/SignUpModal";
-import SignUpButton from "./components/auth/SignUpButton"
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,10 +29,10 @@ const App = () => {
       <Switch>
         <Route>
           <SplashPage path="/" exact={true}></SplashPage>
-          <NavBar></NavBar>
+          {/* <NavBar></NavBar> */}
         </Route>
         {/* <Route path="/login" exact={true}>
-          <SignUpButton />
+    
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />

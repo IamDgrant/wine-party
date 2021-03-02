@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser, login } from "../../store/session";
+import "../styling/formStyle.css"
 // import { signUp } from "./SignUpForm";
 
 const SignUpForm = () => {
@@ -76,7 +77,7 @@ const SignUpForm = () => {
         <h1 className="form_title">Sign Up</h1>
         <hr className="break"></hr>
         <p className="form_text">
-          Have an event? Sign up to find the perfect hose! <br></br>
+          Have an event? Sign up to find the perfect host! <br></br>
           Already have an account?
           <a href="/login" className="form_link">
             Log in
