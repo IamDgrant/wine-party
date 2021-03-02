@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createUser, login } from "../../store/session";
+import { createUser } from "../../store/session";
 import "../styling/formStyle.css"
 // import { signUp } from "./SignUpForm";
 
