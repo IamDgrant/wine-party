@@ -3,8 +3,6 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser, login } from "../../store/session";
 // import { signUp } from "./SignUpForm";
-// import "./authStyling/form.css";
-// import { faAmericanSignLanguageInterpreting } from "@fortawesome/free-solid-svg-icons";
 
 const SignUpForm = () => {
   const [firstName, setFirstName] = useState("");
