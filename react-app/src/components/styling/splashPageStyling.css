@@ -1,0 +1,11 @@
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0px auto 0px auto;
+  font-family: "Ballet", cursive;
+  font-size: 8vh;
+  font-weight: 800;
+}
+

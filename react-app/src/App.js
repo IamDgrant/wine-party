@@ -7,9 +7,10 @@ import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
+import SplashPage from "./components/SplashPage";
 import { restoreUser } from "./store/session";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
@@ -27,6 +28,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route>
+          <SplashPage path="/" exact={true}/>
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
