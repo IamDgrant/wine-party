@@ -20,4 +20,3 @@ def to_dict(self):
             "rating": self.rating,
             "comment": self.comment,
             "createdAt": self.createdAt
-
