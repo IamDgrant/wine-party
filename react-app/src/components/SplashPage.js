@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../components/styling/splashPageStyle.css";
+import "../components/styling/splashPageStyling.css";
 import SignUpButtonModal from "./auth/modals/SignUpButtonModal";
 import LogInButtonModal from "./auth/modals/LoginButtonModal";
 

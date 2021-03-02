@@ -11,7 +11,7 @@ def hosts():
     return {"hosts": [host.to_dict() for host in hosts]}
 
 
-@user_routes.route('/<int:id>')
+@host_routes.route('/<int:id>')
 @login_required
 def host(id):
     host = Host.query.get(id)

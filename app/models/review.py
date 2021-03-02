@@ -9,14 +9,15 @@ class Review(db.Model):
     eventId = db.Column(db.Integer, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String(300))
-    createdAt = db.Column(db.timestamp, nullable=False)
+    createdAt = db.Column(db.Date, nullable=False)
 
 
 def to_dict(self):
-        return {
-            "id": self.id,
-            "userId": self.userId,
-            "eventId": self.eventId,
-            "rating": self.rating,
-            "comment": self.comment,
-            "createdAt": self.createdAt
+    return {
+        "id": self.id,
+        "userId": self.userId,
+        "eventId": self.eventId,
+        "rating": self.rating,
+        "comment": self.comment,
+        "createdAt": self.createdAt
+    }

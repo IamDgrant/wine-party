@@ -13,23 +13,24 @@ class Host(db.Model):
     description = db.Column(db.String(300))
     profile_image = db.Column(db.String)
     sommelier = db.Column(db.Boolean, nullable=False)
-    mixologist = db.Column(db.Boolean, nullnullable=False)
+    mixologist = db.Column(db.Boolean, nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     phone_number = db.Column(db.Integer, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    createdAt = db.Column(db.timestamp, nullable=False)
+    createdAt = db.Column(db.Date, nullable=False)
 
 
 def to_dict(self):
-        return {
-            "id": self.id,
-            "firstName": self.firstName,
-            "lastName": self.lastName,
-            "state": self.state,
-            "description": self.description,
-            "profile_image": self.profile_image,
-            "sommelier": self.sommelier,
-            "mixologist": self.mixologist,
-            "email": self.email,
-            "phone_number": self.phone_number,
-            "createdAt": self.createdAt
+    return {
+        "id": self.id,
+        "firstName": self.firstName,
+        "lastName": self.lastName,
+        "state": self.state,
+        "description": self.description,
+        "profile_image": self.profile_image,
+        "sommelier": self.sommelier,
+        "mixologist": self.mixologist,
+        "email": self.email,
+        "phone_number": self.phone_number,
+        "createdAt": self.createdAt
+    }

@@ -13,18 +13,19 @@ class Event(db.Model):
     state = db.Column(db.String(50), nullable=False)
     fee = db.Column(db.Integer)
     total = db.Column(db.Integer)
-    createdAt = db.Column(db.timestamp, nullable=False)
+    createdAt = db.Column(db.Date, nullable=False)
 
 
 def to_dict(self):
-        return {
-            "id": self.id,
-            "userId": self.userId,
-            "hostId": self.hoistId,
-            "eventName": self.eventName,
-            "eventDate": self.eventDate,
-            "city": self.city,
-            "state": self.state,
-            "fee": self.fee,
-            "total": self.total,
-            "createdAt": self.createdAt
+    return {
+        "id": self.id,
+        "userId": self.userId,
+        "hostId": self.hoistId,
+        "eventName": self.eventName,
+        "eventDate": self.eventDate,
+        "city": self.city,
+        "state": self.state,
+        "fee": self.fee,
+        "total": self.total,
+        "createdAt": self.createdAt
+    }
