@@ -7,8 +7,8 @@ const SignUpButton = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const onSignUp = async (e) => {
-    e.preventDefault();
-    setModalOpen(!modalOpen);
+    // e.preventDefault();
+    setModalOpen((prev) => !prev);
   };
 
   return (
@@ -16,9 +16,16 @@ const SignUpButton = () => {
       <button onClick={onSignUp} className="btn">
         Sign up
       </button>
-      <Modal isOpen={modalOpen}>
-        <SignUpForm />
-      </Modal>
+      <div className="modal">
+        <Modal
+          isOpen={modalOpen}
+          onHide={false}
+          ariaHideApp={false}
+          onRequestClose={setModalOpen}
+        >
+          <SignUpForm />
+        </Modal>
+      </div>
     </>
   );
 };

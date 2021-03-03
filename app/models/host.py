@@ -10,13 +10,13 @@ class Host(db.Model):
     firstName = db.Column(db.String(50), nullable=False)
     lastName = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(300))
-    profile_image = db.Column(db.String)
+    about = db.Column(db.String(300))
+    profileImage = db.Column(db.String)
     sommelier = db.Column(db.Boolean, nullable=False)
     mixologist = db.Column(db.Boolean, nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    phone_number = db.Column(db.Integer, unique=True)
-    hashed_password = db.Column(db.String(255), nullable=False)
+    phoneNumber = db.Column(db.Integer, unique=True)
+    hashedPassword = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.Date, nullable=False)
 
 
@@ -26,11 +26,11 @@ def to_dict(self):
         "firstName": self.firstName,
         "lastName": self.lastName,
         "state": self.state,
-        "description": self.description,
-        "profile_image": self.profile_image,
+        "about": self.about,
+        "profileImage": self.profile_image,
         "sommelier": self.sommelier,
         "mixologist": self.mixologist,
         "email": self.email,
-        "phone_number": self.phone_number,
+        "phoneNumber": self.phone_number,
         "createdAt": self.createdAt
     }

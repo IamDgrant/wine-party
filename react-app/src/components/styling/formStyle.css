@@ -1,6 +1,6 @@
-input[type="text"],
+input[type="text"], input[type="password"],
 select {
-  width: 100%;
+  width: 25%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -10,8 +10,7 @@ select {
 }
 
 input[type="submit"] {
-  width: 100%;
-  background-color: #4caf50;
+  width: 25%;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -20,20 +19,29 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
+::placeholder {
+  color:rgb(226, 160, 102, 0.5)
 }
-
-/* div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  } */
 
 .form_text {
   font-family: "Montserrat", sans-serif;
+  color: rgb(226, 160, 102);
 }
 
 .form_title {
   font-family: "Bebas Neue", cursive;
+  color: rgba(248, 209, 174);
+}
+
+.form_link {
+  text-decoration: none;
+  border: 1px solid rgb(226, 160, 102)
+}
+
+.form_link:visited {
+  color: rgb(226, 160, 102);
+}
+
+.form_link:hover {
+  border-bottom: 1px solid rgb(226, 160, 102);
 }

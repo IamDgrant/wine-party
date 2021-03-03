@@ -16,9 +16,16 @@ const LogInButton = () => {
       <button onClick={onLogIn} className="btn">
         Log in
       </button>
-      <Modal isOpen={modalOpen}>
-        <LoginForm />
-      </Modal>
+      <div>
+        <Modal
+          isOpen={modalOpen}
+          onHide={false}
+          ariaHideApp={false}
+          onRequestClose={setModalOpen}
+        >
+          <LoginForm />
+        </Modal>
+      </div>
     </>
   );
 };
