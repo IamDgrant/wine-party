@@ -30,7 +30,6 @@ def authenticate():
 
 @auth_routes.route('/login', methods=['POST'])
 def login():
-    # print('THIS WORKS!!!!!!!!!!!!!!!!!!!')
     """
     Logs a user in
     """
@@ -40,10 +39,10 @@ def login():
     # form manually to validate_on_submit can be used
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('THIS IS IT!!!!!!!!!!!!!!!!!!!')
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
+        print('THIS IS IT!!!!!!!!!!!!!!!!!!!', user.to_dict())
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -62,7 +61,6 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("YES!!!!!!!!!!!!!!!!!!!!!!!")
 
         user = User(
             firstName=form.data['firstName'],

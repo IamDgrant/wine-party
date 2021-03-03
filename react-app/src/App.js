@@ -18,7 +18,7 @@ const App = () => {
     dispatch(restoreUser()).then(() => {
       setLoaded(true);
     });
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;

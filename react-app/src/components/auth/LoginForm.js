@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import login from "../../store/session"
+import { login } from "../../store/session";
 
 const LoginForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -30,14 +30,14 @@ const LoginForm = () => {
 
   return (
     <div className="center_box">
-      <form action="/login" onSubmit={onLogin} className="form">
+      <form onSubmit={onLogin} className="form">
         <h1 className="form_title">Log In</h1>
         <p className="form_text">
           Welcome back! Log In! <br></br>
           <br></br>
           First time?
           <br></br>
-          <a href="/sign-up" className="login-form-btn">
+          <a href="/signup" className="login-form-btn">
             {" "}
             Make an account
           </a>
@@ -52,8 +52,8 @@ const LoginForm = () => {
             name="email"
             type="text"
             placeholder="Email"
-            value={email}
             onChange={updateEmail}
+            value={email}
           />
         </div>
         <div>
@@ -61,8 +61,8 @@ const LoginForm = () => {
             name="password"
             type="password"
             placeholder="Password"
-            value={password}
             onChange={updatePassword}
+            value={password}
           />
           <div>
             <button type="submit" className="signUp-form-btn">

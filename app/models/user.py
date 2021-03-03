@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     about = db.Column(db.String(300))
     profileImage = db.Column(db.String)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    phoneNumber = db.Column(db.Integer, unique=True)
+    phoneNumber = db.Column(db.String, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.now, nullable=False)
 

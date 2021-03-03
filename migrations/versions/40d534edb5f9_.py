@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5ff477b06fae
+Revision ID: 40d534edb5f9
 Revises: 
-Create Date: 2021-03-02 23:29:53.187545
+Create Date: 2021-03-03 08:55:34.898050
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5ff477b06fae'
+revision = '40d534edb5f9'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,15 +35,15 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('firstName', sa.String(length=50), nullable=False),
     sa.Column('lastName', sa.String(length=50), nullable=False),
+    sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('state', sa.String(length=50), nullable=False),
     sa.Column('about', sa.String(length=300), nullable=True),
     sa.Column('profileImage', sa.String(), nullable=True),
     sa.Column('sommelier', sa.Boolean(), nullable=False),
     sa.Column('mixologist', sa.Boolean(), nullable=False),
     sa.Column('email', sa.String(length=100), nullable=False),
-    sa.Column('phoneNumber', sa.Integer(), nullable=True),
-    sa.Column('hashedPassword', sa.String(length=255), nullable=False),
-    sa.Column('createdAt', sa.Date(), nullable=False),
+    sa.Column('phoneNumber', sa.String(), nullable=True),
+    sa.Column('createdAt', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('phoneNumber')
@@ -66,9 +66,9 @@ def upgrade():
     sa.Column('about', sa.String(length=300), nullable=True),
     sa.Column('profileImage', sa.String(), nullable=True),
     sa.Column('email', sa.String(length=100), nullable=False),
-    sa.Column('phoneNumber', sa.Integer(), nullable=True),
-    sa.Column('hashedPassword', sa.String(length=255), nullable=False),
-    sa.Column('createdAt', sa.Date(), nullable=False),
+    sa.Column('phoneNumber', sa.String(), nullable=True),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('phoneNumber')
