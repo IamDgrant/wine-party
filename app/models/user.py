@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import DateTime
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
@@ -15,8 +17,8 @@ class User(db.Model, UserMixin):
     profileImage = db.Column(db.String)
     email = db.Column(db.String(100), nullable=False, unique=True)
     phoneNumber = db.Column(db.Integer, unique=True)
-    hashedPassword = db.Column(db.String(255), nullable=False)
-    createdAt = db.Column(db.Date, nullable=False)
+    hashed_password = db.Column(db.String(255), nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.now, nullable=False)
 
     @property
     def password(self):
