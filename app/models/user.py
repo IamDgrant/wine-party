@@ -1,6 +1,8 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import DateTime
+from datetime import datetime
 
 
 class User(db.Model, UserMixin):
@@ -9,12 +11,14 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(50), nullable=False)
     lastName = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), nullable=False, unique=True)
-    phone_number = db.Column(db.Integer, unique=True)
-    zipcode = db.Column(db.Integer, nullable=False)
+    city = db.Column(db.String(50), nullable=False)
+    state = db.Column(db.String(50), nullable=False)
     about = db.Column(db.String(300))
-    profile_image = db.Column(db.String)
+    profileImage = db.Column(db.String)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    phoneNumber = db.Column(db.Integer, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.now, nullable=False)
 
     @property
     def password(self):
@@ -32,9 +36,11 @@ class User(db.Model, UserMixin):
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
-            "email": self.email,
-            "phone_number": self.phone_number,
-            "zipcode": self.zipcode,
+            "city": self.city,
+            "state": self.state,
             "about": self.about,
-            "profile_image": self.profile_image,
+            "profileImage": self.profileImage,
+            "email": self.email,
+            "phoneNumber": self.phoneNumber,
+            "createdAt": self.createdAt
         }

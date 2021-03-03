@@ -1,46 +1,36 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createUser } from "../../store/session";
+import { createEvent } from "../../store/session";
 import "../styling/formStyle.css";
 // import { signUp } from "./SignUpForm";
 
-const SignUpForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+const EventForm = () => {
+  const [eventName, setEventName] = useState("");
+  const [eventDate, setEventDate] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  // const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
-  const onSignUp = async (e) => {
+  const onSubmission = async (e) => {
     e.preventDefault();
     let newErrors = [];
-    if (password === repeatPassword) {
-      dispatch(
-        createUser({ firstName, lastName, city, state, email, password })
-      )
-        .then(() => {
-          setFirstName("");
-          setLastName("");
-          setCity("");
-          setState("");
-          setEmail("");
-          setPassword("");
-        })
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) {
-            newErrors = data.errors;
-            // setErrors(newErrors);
-          }
-        });
-    }
+    dispatch(createEvent({ eventName, eventDate, city, state }))
+      .then(() => {
+        setEventName("");
+        setEventDate("");
+        setCity("");
+        setState("");
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          newErrors = data.errors;
+          // setErrors(newErrors);
+        }
+      });
   };
 
   // const demoLogin = async (e) => {
@@ -48,11 +38,11 @@ const SignUpForm = () => {
   //   return dispatch(login({email: "demo@asauna.com", password: "password"}));
   // };
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
+  const updateEventName = (e) => {
+    setEventName(e.target.value);
   };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
+  const updateEventDate = (e) => {
+    setEventDate(e.target.value);
   };
 
   const updateCity = (e) => {
@@ -63,54 +53,34 @@ const SignUpForm = () => {
     setState(e.target.value);
   };
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
-
   if (sessionUser) {
     return <Redirect to="/" />;
   }
 
   return (
     <div className="center_box">
-      <form action="/signup" onSubmit={onSignUp} className="form">
-        <h1 className="form_title">Sign Up</h1>
-        {/* <hr className="break"></hr> */}
-        <p className="form_text">
-          Have an event? Sign up to find the perfect host! <br></br>
-          <br></br>
-          Already have an account?
-          <br></br>
-          <a href="/login" className="login-form-btn">
-            Log in
-          </a>
-        </p>
+      <form onSubmit={onSubmission} className="form">
+        <h1 className="form_title">Create Event</h1>
+        <hr className="break"></hr>
+        <p className="form_text">Then find your host!</p>
         <div>
           <input
             className="form_input"
             type="text"
-            name="firstName"
-            placeholder="First Name"
-            onChange={updateFirstName}
-            value={firstName}
+            name="eventName"
+            placeholder="Event Name"
+            onChange={updateEventName}
+            value={eventName}
           ></input>
         </div>
         <div>
           <input
             className="form_input"
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            onChange={updateLastName}
-            value={lastName}
+            type="date"
+            name="eventDate"
+            placeholder="Event Date"
+            onChange={updateEventDate}
+            value={eventDate}
           ></input>
         </div>
         <div>
@@ -127,6 +97,7 @@ const SignUpForm = () => {
           <select
             className="form_input"
             name="state"
+            form="stateForm"
             placeholder="State"
             onChange={updateState}
           >
@@ -183,38 +154,7 @@ const SignUpForm = () => {
             <option value="WY">Wyoming</option>
           </select>
         </div>
-        <div>
-          <input
-            className="form_input"
-            type="text"
-            name="email"
-            placeholder="Email"
-            onChange={updateEmail}
-            value={email}
-          ></input>
-        </div>
-        <div>
-          <input
-            className="form_input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={updatePassword}
-            value={password}
-          ></input>
-        </div>
-        <div>
-          <input
-            className="form_input"
-            type="password"
-            name="repeat_password"
-            placeholder="Confirm Password"
-            onChange={updateRepeatPassword}
-            value={repeatPassword}
-            required={true}
-          ></input>
-        </div>
-        <button type="submit" className="signUp-form-btn">
+        <button type="submit" className="btn">
           Sign Up
         </button>
         {/* <button className="submit_button"
@@ -224,4 +164,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default EventForm;
