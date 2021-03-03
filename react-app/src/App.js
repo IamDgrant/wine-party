@@ -29,14 +29,18 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route>
-          <SplashPage path="/splash" exact={true}></SplashPage>
+        <Route path="/splash" exact={true}>
+          <SplashPage></SplashPage>
+          {/* <UserHome></UserHome> */}
         </Route>
-        {/* <Route path="/login" exact={true}>
-    
+        <Route path="/login" exact={true}>
+          <LoginForm />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm />
+        </Route>
+        {/* <Route path="/" exact={true}>
+        <UserHome></UserHome>
         </Route> */}
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -44,9 +48,9 @@ const App = () => {
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute> */}
-        // <ProtectedRoute path="/" exact={true}>
+        {/* // <ProtectedRoute path="/" exact={true}>
         //   <UserHome></UserHome>
-        // </ProtectedRoute>
+        // </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

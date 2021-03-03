@@ -19,6 +19,10 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+select {
+  color:rgb(226, 160, 102)
+}
+
 ::placeholder {
   color:rgb(226, 160, 102, 0.5)
 }
