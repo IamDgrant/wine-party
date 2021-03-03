@@ -4,24 +4,32 @@ import SignUpForm from "../SignUpForm";
 import "..//../styling/buttonStyle.css";
 
 const SignUpButton = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const onSignUp = async (e) => {
     // e.preventDefault();
-    setModalOpen((prev) => !prev);
+    setModalVisible((prev) => !prev);
   };
+
+  // const handleOk = () => {
+  //   setModalVisible(false);
+  // };
+
+  // const handleCancel = () => {
+  //   setModalVisible(false);
+  // };
 
   return (
     <>
       <button onClick={onSignUp} className="btn">
         Sign up
       </button>
-      <div className="modal">
+      <div className="modal" >
         <Modal
-          isOpen={modalOpen}
+          isOpen={modalVisible}
           onHide={false}
           ariaHideApp={false}
-          onRequestClose={setModalOpen}
+          onRequestClose={setModalVisible}
         >
           <SignUpForm />
         </Modal>

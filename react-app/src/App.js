@@ -3,11 +3,13 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import NavBar from "./components/NavBar";
 // import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
+import UserHome from "./components/UserHome"
 import { restoreUser } from "./store/session";
 
 const App = () => {
@@ -28,8 +30,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route>
-          <SplashPage path="/" exact={true}></SplashPage>
-          {/* <NavBar></NavBar> */}
+          <SplashPage path="/splash" exact={true}></SplashPage>
         </Route>
         {/* <Route path="/login" exact={true}>
     
@@ -42,10 +43,10 @@ const App = () => {
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>Wine Party</h1>
         </ProtectedRoute> */}
+        // <ProtectedRoute path="/" exact={true}>
+        //   <UserHome></UserHome>
+        // </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
