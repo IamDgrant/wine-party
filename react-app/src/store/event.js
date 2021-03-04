@@ -51,6 +51,14 @@ export const seeEvent = () => async (dispatch) => {
   dispatch(getEvent(data.events));
 };
 
+export const seeEventId = (id) => async (dispatch) => {
+  const res = await fetch(`/api/events/${id}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  dispatch(getEvent(data));
+};
+
 export const seeHostEvent = (id) => async (dispatch) => {
   const res = await fetch(`/api/events/host/${id}`);
   const data = await res.json();

@@ -7,11 +7,13 @@ import SignUpForm from "./components/auth/SignUpForm";
 import EventForm from "./components/auth/EventForm";
 import ReviewForm from "./components/auth/ReviewForm";
 import NavBar from "./components/NavBar";
+import Search from "./components/Search"
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import Event from "./components/Event";
+import ModalSample from "./components/auth/modals/ModalSample";
 
 import { restoreUser } from "./store/session";
 
@@ -33,6 +35,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/splash" exact={true}>
+          <ModalSample />
           <SplashPage></SplashPage>
         </Route>
         <Route path="/login" exact={true}>
@@ -54,6 +57,9 @@ const App = () => {
           <NavBar />
           <UserHome></UserHome>
         </ProtectedRoute>
+        <Route path="/hosts" exact={true}>
+          <Search />
+        </Route>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>

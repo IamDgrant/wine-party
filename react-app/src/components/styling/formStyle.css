@@ -1,6 +1,6 @@
 input[type="text"], input[type="password"], input[type="date"]
 select {
-  width: 25%;
+  width: 15%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -49,3 +49,11 @@ select {
 .form_link:hover {
   border-bottom: 1px solid rgb(226, 160, 102);
 }
+
+.p-text {
+  font-size: 1.25vh; 
+  font-family: "Montserrat", sans-serif;
+  color: red
+}
+
+

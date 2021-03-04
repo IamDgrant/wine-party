@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Row, Col } from "antd";
 import EventForm from "../components/auth/EventForm";
+import Search from "../components/Search"
 import Event from "./Event";
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
       <div className="main_content">
         <Row gutter={16}>
           <Col className="navBar">
-            
+          
           </Col>
           <Col span={6}>
             <EventForm />
