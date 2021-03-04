@@ -3,7 +3,7 @@ const REMOVE_USER = "session/removeUser";
 
 const setUser = (user) => ({
   type: SET_USER,
-  user,
+  payload: user,
 });
 
 const removeUser = () => ({
@@ -33,7 +33,6 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const login = ({ email, password }) => async (dispatch) => {
-  console.log(email, password);
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
@@ -42,7 +41,6 @@ export const login = ({ email, password }) => async (dispatch) => {
     body: JSON.stringify({ email, password }),
   });
   const data = await res.json();
-  console.log(data.id);
   dispatch(setUser(data));
 };
 

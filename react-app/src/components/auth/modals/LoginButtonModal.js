@@ -6,22 +6,30 @@ import "..//../styling/buttonStyle.css";
 const LogInButton = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const onLogIn = async (e) => {
+  const handleModal = async (e) => {
     e.preventDefault();
-    setModalOpen(!modalOpen);
+    setModalOpen((prev) => !prev);
   };
+
+  // const handleModal = () => {
+  //   if (setModalOpen === true) {
+  //     setModalOpen(false);
+  //   } else if (setModalOpen === false) {
+  //     setModalOpen(true);
+  //   }
+  // };
 
   return (
     <>
-      <button onClick={onLogIn} className="btn">
+      <button onClick={handleModal} className="btn">
         Log in
       </button>
       <div>
         <Modal
           isOpen={modalOpen}
-          onHide={false}
+          // onHide={false}
           ariaHideApp={false}
-          onRequestClose={setModalOpen}
+          // onRequestClose={setModalOpen}
         >
           <LoginForm />
         </Modal>

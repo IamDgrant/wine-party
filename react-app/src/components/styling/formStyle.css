@@ -1,4 +1,4 @@
-input[type="text"], input[type="password"],
+input[type="text"], input[type="password"], input[type="date"]
 select {
   width: 25%;
   padding: 12px 20px;
@@ -17,6 +17,10 @@ input[type="submit"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+select {
+  color:rgb(226, 160, 102)
 }
 
 ::placeholder {

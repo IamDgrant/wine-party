@@ -80,7 +80,7 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="center_box">
+    <div className="center_box" >
       <form action="/signup" onSubmit={onSignUp} className="form">
         <h1 className="form_title">Sign Up</h1>
         {/* <hr className="break"></hr> */}

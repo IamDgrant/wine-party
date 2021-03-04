@@ -3,11 +3,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import NavBar from "./components/NavBar";
 // import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
+import UserHome from "./components/UserHome"
+import NavBar from "./components/NavBar"
 import { restoreUser } from "./store/session";
 
 const App = () => {
@@ -18,7 +21,7 @@ const App = () => {
     dispatch(restoreUser()).then(() => {
       setLoaded(true);
     });
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -27,25 +30,29 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route>
-          <SplashPage path="/" exact={true}></SplashPage>
-          {/* <NavBar></NavBar> */}
+        <Route path="/splash" exact={true}>
+          <SplashPage></SplashPage>
+          {/* <UserHome></UserHome> */}
         </Route>
-        {/* <Route path="/login" exact={true}>
-    
+        <Route path="/login" exact={true}>
+          <LoginForm />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm />
-        </Route> */}
+        </Route>
+        <ProtectedRoute path="/" exact={true}>
+          <NavBar />
+        <UserHome></UserHome>
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <h1>Wine Party</h1>
         </ProtectedRoute> */}
+        {/* // <ProtectedRoute path="/" exact={true}>
+        //   <UserHome></UserHome>
+        // </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

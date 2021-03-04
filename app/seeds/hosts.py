@@ -1,13 +1,13 @@
 from werkzeug.security import generate_password_hash
-from app.models import db, User
+from app.models import db, Host
 
-# Adds a demo user, you can add other users here if you want
+# Adds a demo host, you can add other hosts here if you want
 
 
-def seed_users():
+def seed_hosts():
 
-    demo = User(firstName='Demo', lastName='User', city='Miami', state='FL', about='I am an avid wine and spirits enthusiast', email='demo@user.com', phoneNumber='4075552222',
-                password='password')
+    demo = Host(firstName='Demo', lastName='Host', city='Miami', state='FL', about='I am a certified sommelier and mixologist', sommelier=True, mixologist=True, email='demo@host.com', phoneNumber='4075551212',
+                )
 
     db.session.add(demo)
 
@@ -19,6 +19,6 @@ def seed_users():
 # the auto incrementing primary key
 
 
-def undo_users():
+def undo_hosts():
     db.session.execute('TRUNCATE users CASCADE;')
     db.session.commit()
