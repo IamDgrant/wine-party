@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, message } from "antd";
+import { message } from "antd";
 import { createEvent } from "../../store/event";
 import "../styling/formStyle.css";
-// import { signUp } from "./SignUpForm";
 
 const EventForm = ({ userId }) => {
   const dispatch = useDispatch();
@@ -92,6 +91,7 @@ const EventForm = ({ userId }) => {
               placeholder="State"
               onChange={updateState}
             >
+              <option value=""></option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
               <option value="AZ">Arizona</option>
@@ -148,8 +148,6 @@ const EventForm = ({ userId }) => {
           <button type="submit" className="btn">
             Sign Up
           </button>
-          {/* <button className="submit_button"
-        onClick={demoLogin}>Demo User</button> */}
         </form>
       </div>
     )

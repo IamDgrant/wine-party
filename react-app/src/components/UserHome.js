@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Row, Col, Gutter, Divider } from "antd";
+import { Row, Col } from "antd";
 import EventForm from "../components/auth/EventForm"
 
 const Home = () => {
-  const style = { background: "#0092ff", padding: "8px 0" };
+  // const style = { background: "#0092ff", padding: "8px 0" };
   return (
     <>
       <Row gutter={16}>

@@ -11,6 +11,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome"
 import NavBar from "./components/NavBar"
+import SplashPageFloater from "./components/SplashPageFloater"
 import { restoreUser } from "./store/session";
 
 const App = () => {
@@ -31,7 +32,8 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/splash" exact={true}>
-          <SplashPage></SplashPage>
+          <SplashPage>
+          </SplashPage>
           {/* <UserHome></UserHome> */}
         </Route>
         <Route path="/login" exact={true}>
