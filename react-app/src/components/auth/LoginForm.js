@@ -33,7 +33,7 @@ const LoginForm = () => {
       <form onSubmit={onLogin} className="form">
         <h1 className="form_title">Log In</h1>
         <p className="form_text">
-          Welcome back! Log In! <br></br>
+          Welcome back! <br></br>
           <br></br>
           First time?
           <br></br>

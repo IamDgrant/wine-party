@@ -9,6 +9,7 @@ class Host(db.Model):
     __tablename__ = 'hosts'
 
     id = db.Column(db.Integer, primary_key=True)
+    # eventId = db.Column(db.Integer, db.ForeignKey("events.id"))
     firstName = db.Column(db.String(50), nullable=False)
     lastName = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(50), nullable=False)
@@ -21,19 +22,20 @@ class Host(db.Model):
     phoneNumber = db.Column(db.String, unique=True)
     # hashedPassword = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    # event = db.relationship("Event", back_populates="hosts")
+    # user = db.relationship("User", back_populates="hosts")
 
-
-def to_dict(self):
-    return {
-        "id": self.id,
-        "firstName": self.firstName,
-        "lastName": self.lastName,
-        "state": self.state,
-        "about": self.about,
-        "profileImage": self.profile_image,
-        "sommelier": self.sommelier,
-        "mixologist": self.mixologist,
-        "email": self.email,
-        "phoneNumber": self.phone_number,
-        "createdAt": self.createdAt
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "firstName": self.firstName,
+            "lastName": self.lastName,
+            "state": self.state,
+            "about": self.about,
+            "profileImage": self.profile_image,
+            "sommelier": self.sommelier,
+            "mixologist": self.mixologist,
+            "email": self.email,
+            "phoneNumber": self.phone_number,
+            "createdAt": self.createdAt
+        }

@@ -1,4 +1,4 @@
-input[type="text"], input[type="password"],
+input[type="text"], input[type="password"], input[type="date"]
 select {
   width: 25%;
   padding: 12px 20px;

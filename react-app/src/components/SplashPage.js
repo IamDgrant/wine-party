@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Row, Col } from "antd";
 import SignUpButtonModal from "./auth/modals/SignUpButtonModal";
 import LogInButtonModal from "./auth/modals/LoginButtonModal";
-import "../components/styling/splashPageStyling.css";
+import "../components/styling/splashPageStyle.css";
 import background from "../images/pexels-cottonbro-3171815.jpg";
 
 const SplashPage = () => {

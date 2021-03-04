@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome"
+import NavBar from "./components/NavBar"
 import { restoreUser } from "./store/session";
 
 const App = () => {
@@ -39,9 +40,10 @@ const App = () => {
         <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        {/* <Route path="/" exact={true}>
+        <ProtectedRoute path="/" exact={true}>
+          <NavBar />
         <UserHome></UserHome>
-        </Route> */}
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>

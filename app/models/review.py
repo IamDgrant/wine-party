@@ -1,4 +1,6 @@
 from .db import db
+from sqlalchemy import DateTime
+from datetime import datetime
 
 
 class Review(db.Model):
@@ -9,15 +11,14 @@ class Review(db.Model):
     eventId = db.Column(db.Integer, nullable=False)
     rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String(300))
-    createdAt = db.Column(db.Date, nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.now, nullable=False)
 
-
-def to_dict(self):
-    return {
-        "id": self.id,
-        "userId": self.userId,
-        "eventId": self.eventId,
-        "rating": self.rating,
-        "comment": self.comment,
-        "createdAt": self.createdAt
-    }
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.userId,
+            "eventId": self.eventId,
+            "rating": self.rating,
+            "comment": self.comment,
+            "createdAt": self.createdAt
+        }
