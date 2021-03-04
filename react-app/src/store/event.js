@@ -12,7 +12,7 @@ const getEvent = (event) => ({
   payload: event,
 });
 
-const removeEvnet = (eventId) => ({
+const removeEvent = (eventId) => ({
   type: REMOVE_EVENT,
   payload: eventId,
 });
@@ -58,20 +58,20 @@ export const seeHostEvent = (id) => async (dispatch) => {
   return data;
 };
 
-const initialState = { task: null };
+const initialState = { event: null };
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_EVENT: {
-      if (state.task) {
-        const newtask = [...state.task, action.payload];
-        return { ...state, task: newtask };
+      if (state.event) {
+        const newevent = [...state.event, action.payload];
+        return { ...state, event: newevent };
       }
-      return { ...state, task: action.payload };
+      return { ...state, event: action.payload };
     }
     case GET_EVENT:
-      return { ...state, task: action.payload };
+      return { ...state, event: action.payload };
     default:
       return state;
   }

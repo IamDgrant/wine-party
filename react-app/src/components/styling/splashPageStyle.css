@@ -1,8 +1,8 @@
-html {
+/* body {
   background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
     center fixed;
   background-size: cover;
-}
+} */
 
 .splash-flex-container {
   display: flex;

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
-import ProtectedRoute from "./components/auth/ProtectedRoute";
-// import NavBar from "./components/NavBar";
-// import ProtectedRoute from "./components/auth/ProtectedRoute";
+import EventForm from "./components/auth/EventForm";
+import ReviewForm from "./components/auth/ReviewForm";
+import NavBar from "./components/NavBar";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
-import UserHome from "./components/UserHome"
-import NavBar from "./components/NavBar"
-import SplashPageFloater from "./components/SplashPageFloater"
+import UserHome from "./components/UserHome";
+import Event from "./components/Event";
+
 import { restoreUser } from "./store/session";
 
 const App = () => {
@@ -32,9 +33,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/splash" exact={true}>
-          <SplashPage>
-          </SplashPage>
-          {/* <UserHome></UserHome> */}
+          <SplashPage></SplashPage>
         </Route>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -44,7 +43,16 @@ const App = () => {
         </Route>
         <ProtectedRoute path="/" exact={true}>
           <NavBar />
-        <UserHome></UserHome>
+          <UserHome></UserHome>
+        </ProtectedRoute>
+        <ProtectedRoute path="/events" exact={true}>
+          <NavBar />
+          <EventForm />
+          <Event></Event>
+        </ProtectedRoute>
+        <ProtectedRoute path="/" exact={true}>
+          <NavBar />
+          <UserHome></UserHome>
         </ProtectedRoute>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
@@ -58,6 +66,6 @@ const App = () => {
       </Switch>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
