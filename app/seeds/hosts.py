@@ -41,7 +41,7 @@ def seed_hosts():
              firstName=first_name,
              lastName=last_name,
              city=fake.city(),
-             state=fake.state(),
+             state='NV',
              about=fake.text(),
              sommelier=fake.pybool(),
              mixologist=fake.pybool(),
