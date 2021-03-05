@@ -1,0 +1,7 @@
+FLASK_APP=app
+FLASK_ENV=development
+SECRET_KEY=28adc387-c346-47a5-bac1-8ec34ae848ff
+DATABASE_URL=postgresql://wine_party_app@localhost/wine_party_app_db
+S3_BUCKET_NAME=wine-party-user-images
+S3_KEY=AKIAITPEL6YTRMBL3DBQ
+S3_SECRET_KEY=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

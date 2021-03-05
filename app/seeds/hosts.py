@@ -31,6 +31,11 @@ def seed_hosts():
     first_name = name_list[0]
     last_name = name_list[1]
     
+    phone_list = fake.phone_number().replace("(", "").replace(")", "").replace("-", "").replace(".", "").replace("+", "")
+    
+    p = phone_list[0:10]
+        
+    
     for a in range(10):
          h = Host(
              firstName=first_name,
@@ -41,7 +46,7 @@ def seed_hosts():
              sommelier=fake.pybool(),
              mixologist=fake.pybool(),
              email=fake.email(),
-             phoneNumber=fake.phone_number(),
+             phoneNumber=p,
             # password=generate_password_hash('password'),
          )
 
