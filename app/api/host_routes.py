@@ -24,11 +24,10 @@ def hosts_search():
         search = form.data['search']
         sommelier = form.data['sommelier']
         mixologist = form.data['mixologist']
-        # print("YES!!!!!!!!!!", search.to_dict(),
-        #       sommelier.to_dict(), mixologist.to_dict())
+        print("YES!!!", sommelier, mixologist)
         # data = Host.query.filter(Host.firstName == search).all()
         data = Host.query.filter(or_(Host.firstName == search, Host.lastName ==
-                                    search, Host.state == search, (Host.city == search))).all()
+                                    search, Host.state == search, (Host.city == search), ((Host.sommelier == sommelier) & (Host.mixologist == mixologist)))).all()
 
         #  | (
         #     Host.city == search)) & (Host.sommelier == sommelier) & (Host.mixologist == mixologist))

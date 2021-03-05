@@ -6,7 +6,7 @@ from app.models import db, Host
 
 def seed_hosts():
 
-    demo = Host(firstName='Jane', lastName='Doe', city='New York', state='NY', about='I have been a Sommelier for 10 years and I love wine', sommelier=True, mixologist=False, email='Jane@doe.com', phoneNumber='2125551212',
+    demo = Host(firstName='Sarah', lastName='Smith', city='Atlanta', state='GA', about='I have been a Mixologist for 17 years and I love Bourbon', sommelier=False, mixologist=True, email='Sarah@smith.com', phoneNumber='4045551212',
                 )
 
     db.session.add(demo)

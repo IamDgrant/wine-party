@@ -2,18 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { seeHost } from "../store/host";
 import { Button, Input, message } from "antd";
-// import "./styling/Search.css";
+import "./styling/checkboxStyle.css";
 
 const Search = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
+  const [sommelier, setSommelier] = useState(false);
+  const [mixologist, setMixologist] = useState(false);
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
   );
+  const updateSommelier = () => setSommelier(!sommelier);
+  const updateMixologist = () => setMixologist(!mixologist);
 
   const onSearch = async (e) => {
     e.preventDefault();
-    dispatch(seeHost(search, sessionHostId)).then((res) => {
+    dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then((res) => {
       if (res.Host === "Not found") {
         message.error(`User ${search} not found`);
       } else {
@@ -30,12 +34,44 @@ const Search = () => {
           type="text"
           onChange={(e) => setSearch(e.target.value)}
         ></input>
+        <label class="container">
+        Sommelier
+        <input
+          type="checkbox"
+          name="a"
+          checked={sommelier}
+          onChange={updateSommelier}
+        />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container">
+        Mixologist
+        <input
+          type="checkbox"
+          name="b"
+          checked={mixologist}
+          onChange={updateMixologist}
+          //   disabled={true}
+        />
+        <span class="checkmark"></span>
+      </label>
+        {/* <Checkbox /> */}
       </form>
+      {/* <label class="container">
+        Sommelier
+        <input type="checkbox" />
+        <span class="checkmark"></span>
+      </label>
+      <label class="container">
+        Mixologist
+        <input type="checkbox" />
+        <span class="checkmark"></span>
+      </label> */}
       <button
         className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
         onClick={onSearch}
       >
-        Add Host
+        Find Host
       </button>
     </div>
   );

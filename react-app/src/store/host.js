@@ -45,12 +45,26 @@ export const deleteHost = (hostId) => async (dispatch) => {
   console.log(deleted);
 };
 
-export const seeHost = () => async (dispatch) => {
-  const res = await fetch("/api/hosts/");
+export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => {
+  console.log(search);
+  const res = await fetch("/api/hosts/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ search, sommelier, mixologist }),
+  });
   const data = await res.json();
   dispatch(getHost(data.hosts));
   return data
 };
+
+// export const seeHost = () => async (dispatch) => {
+//   const res = await fetch("/api/hosts/search",);
+//   const data = await res.json();
+//   dispatch(getHost(data.hosts));
+//   return data
+// };
 
 // export const seeHostEvent = (id) => async (dispatch) => {
 //   const res = await fetch(`/api/events/host/${id}`);
