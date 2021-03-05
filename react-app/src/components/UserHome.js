@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Row, Col } from "antd";
-import EventForm from "../components/auth/EventForm";
-import Search from "../components/Search"
-import Event from "./Event";
+import NavBar from "../components/NavBar"
+import "./styling/userHome.css"
+
 
 const Home = () => {
-  // const style = { background: "#0092ff", padding: "8px 0" };
   return (
     <>
       <div className="main_content">
-        <Row gutter={16}>
+        <NavBar />
+        {/* <Row gutter={16}>
           <Col className="navBar">
           
           </Col>
@@ -22,7 +21,7 @@ const Home = () => {
               <Event />
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </>
   );

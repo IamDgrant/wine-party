@@ -1,14 +1,15 @@
-/* body {
-  background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
-    center fixed;
-  background-size: cover;
-} */
-
-.splash-flex-container {
+.logo-container {
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-  margin: 25vh 13vh 0vh 0vh;
+  align-items: center;
+  padding: 25vh 15vh 0vh 0vh
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
 }
 
 .text-link {
@@ -18,6 +19,14 @@
   font-weight: 800;
   text-decoration: inherit;
   text-decoration: none;
+}
+
+.background-container {
+  height: 100VH;
+  width: 100%;
+  background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
 }
 
 

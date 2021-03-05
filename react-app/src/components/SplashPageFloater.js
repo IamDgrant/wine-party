@@ -1,16 +1,16 @@
-import React from "react";
-import SignUpButtonModal from "./auth/modals/SignUpButtonModal";
-import LogInButtonModal from "./auth/modals/LoginButtonModal";
+// import React from "react";
+// import SignUpButtonModal from "./auth/modals/SignUpButtonModal";
+// import LogInButtonModal from "./auth/modals/LoginButtonModal";
 
-const Floater = () => {
-  return (
-    <>
-      <div className="floater">
-        <SignUpButtonModal />
-        <LogInButtonModal />
-      </div>
-    </>
-  );
-};
+// const Floater = () => {
+//   return (
+//     <>
+//       <div className="floater">
+//         <SignUpButtonModal />
+//         <LogInButtonModal />
+//       </div>
+//     </>
+//   );
+// };
 
-export default Floater;
+// export default Floater;

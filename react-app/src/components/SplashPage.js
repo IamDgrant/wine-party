@@ -8,15 +8,19 @@ import "../components/styling/splashPageStyle.css";
 const SplashPage = () => {
   return (
     <>
-      <div className="splash-flex-container">
+      <div className="background-container">
         <div className="logo-container">
-          <h1 className="text-link">Wine Party</h1>
-        </div>
-        <div className="splash-sign-btn">
-          <SignUpButtonModal />
-        </div>
-        <div className="splash-log-btn">
-          <LogInButtonModal />
+          <div className="logo-text">
+            <h1 className="text-link">Wine Party</h1>
+          </div>
+          <div className="button-container">
+            <div className="px-1 splash-sign-btn ">
+              <SignUpButtonModal />
+            </div>
+            <div className="splash-log-btn">
+              <LogInButtonModal />
+            </div>
+          </div>
         </div>
       </div>
     </>

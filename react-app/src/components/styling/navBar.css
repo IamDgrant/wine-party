@@ -1,21 +1,6 @@
-body {
-  margin: 0px 0px 0px 0px;
-}
-
-.navBar-bg {
-  background-color: rgba(248, 209, 174)
-}
-
-.wp-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin: 0px 0px 0px 0px; */
-  /* width: 100%; */
-  color: white;
-  height: 100%;
-  background-color: rgba(248, 209, 174);
-  font-family: "Bebas Neue", cursive;
-  font-size: 9vh;
+.logo-text {
+  font-size: 4.5vh;
   font-weight: 800;
+  font-family: 'Bebas Neue', cursive;
+  color: #fff;
 }

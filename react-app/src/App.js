@@ -7,7 +7,7 @@ import SignUpForm from "./components/auth/SignUpForm";
 import EventForm from "./components/auth/EventForm";
 import ReviewForm from "./components/auth/ReviewForm";
 import NavBar from "./components/NavBar";
-import Search from "./components/Search"
+import Search from "./components/Search";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
@@ -34,39 +34,26 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/splash" exact={true}>
-          <SplashPage></SplashPage>
+          <SplashPage />
         </Route>
-        <Route path="/login" exact={true}>
+        <Route path="/" exact={true}>
+          <UserHome />
+        </Route>
+        {/* <Route path="/login" exact={true}>
           <LoginForm />
-        </Route>
-        <Route path="/signup" exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path="/" exact={true}>
+        </Route> */}
+        {/* <ProtectedRoute path="/" exact={true}>
           <NavBar />
-          <UserHome></UserHome>
-        </ProtectedRoute>
+          
+        </ProtectedRoute> */}
         <ProtectedRoute path="/events" exact={true}>
-          <NavBar />
+          {/* <NavBar /> */}
           <EventForm />
           <Event></Event>
-        </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true}>
-          <NavBar />
-          <UserHome></UserHome>
         </ProtectedRoute>
         <Route path="/hosts" exact={true}>
           <Search />
         </Route>
-        {/* <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute> */}
-        {/* // <ProtectedRoute path="/" exact={true}>
-        //   <UserHome></UserHome>
-        // </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

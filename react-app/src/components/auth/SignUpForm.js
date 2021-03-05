@@ -1,38 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { createUser } from "../../store/session";
-import "../styling/formStyle.css";
-// import { signUp } from "./SignUpForm";
 
-const SignUpForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  // const [errors, setErrors] = useState([]);
-
+const SignUpForm = ({
+  firstName,
+  setFirstName,
+  lastName,
+  setLastName,
+  city,
+  setCity,
+  setState,
+  state,
+  setEmail,
+  email,
+  setPassword,
+  password,
+  repeatPassword,
+  setRepeatPassword,
+}) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  // const [errors, setErrors] = useState([]);
 
   const onSignUp = async (e) => {
     e.preventDefault();
     let newErrors = [];
     if (password === repeatPassword) {
-      dispatch(
-        createUser({ firstName, lastName, city, state, email, password })
+      return dispatch(
+        createUser({ firstName, lastName, city, state, email, password, repeatPassword })
       )
-        .then(() => {
-          setFirstName("");
-          setLastName("");
-          setCity("");
-          setState("");
-          setEmail("");
-          setPassword("");
-        })
+        // .then(() => {
+        //   setFirstName("");
+        //   setLastName("");
+        //   setCity("");
+        //   setState("");
+        //   setEmail("");
+        //   setPassword("");
+        // })
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -47,6 +52,10 @@ const SignUpForm = () => {
   //   e.preventDefault();
   //   return dispatch(login({email: "demo@asauna.com", password: "password"}));
   // };
+
+  if (sessionUser) {
+    return <Redirect to="/" />;
+  }
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);
@@ -75,24 +84,14 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
-  if (sessionUser) {
-    return <Redirect to="/" />;
-  }
-
   return (
-    <div className="center_box" >
-      <form action="/signup" onSubmit={onSignUp} className="form">
-        {/* <h1 className="form_title">Sign Up</h1> */}
-        {/* <hr className="break"></hr> */}
-        <p className="form_text">
-          {/* Have an event? Sign up to find the perfect host! <br></br> */}
-          <br></br>
-          Already have an account?
-          <br></br>
-          <a href="/login" className="bg-transparent hover:bg-yellow-100 hover:text-white py-0 px-4 border border-white hover:border-transparent rounded form_title">
-            Log in
-          </a>
-        </p>
+    <div className="center_box">
+      <form onSubmit={onSignUp} className="form">
+        {/* <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div> */}
         <div>
           <input
             className="form_input"
