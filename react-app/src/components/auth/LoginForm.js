@@ -65,9 +65,9 @@ const LoginForm = () => {
             value={password}
           />
           <div>
-            <button type="submit" className="signUp-form-btn">
+            {/* <button type="submit" className="signUp-form-btn">
               Login
-            </button>
+            </button> */}
           </div>
         </div>
       </form>

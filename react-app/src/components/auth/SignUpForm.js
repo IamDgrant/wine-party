@@ -82,14 +82,14 @@ const SignUpForm = () => {
   return (
     <div className="center_box" >
       <form action="/signup" onSubmit={onSignUp} className="form">
-        <h1 className="form_title">Sign Up</h1>
+        {/* <h1 className="form_title">Sign Up</h1> */}
         {/* <hr className="break"></hr> */}
         <p className="form_text">
-          Have an event? Sign up to find the perfect host! <br></br>
+          {/* Have an event? Sign up to find the perfect host! <br></br> */}
           <br></br>
           Already have an account?
           <br></br>
-          <a href="/login" className="login-form-btn">
+          <a href="/login" className="bg-transparent hover:bg-yellow-100 hover:text-white py-0 px-4 border border-white hover:border-transparent rounded form_title">
             Log in
           </a>
         </p>
@@ -214,9 +214,6 @@ const SignUpForm = () => {
             required={true}
           ></input>
         </div>
-        <button type="submit" className="signUp-form-btn">
-          Sign Up
-        </button>
         {/* <button className="submit_button"
         onClick={demoLogin}>Demo User</button> */}
       </form>

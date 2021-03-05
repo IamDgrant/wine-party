@@ -13,7 +13,6 @@ import Search from "./components/Search"
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import Event from "./components/Event";
-import ModalSample from "./components/auth/modals/ModalSample";
 
 import { restoreUser } from "./store/session";
 
@@ -35,7 +34,6 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/splash" exact={true}>
-          <ModalSample />
           <SplashPage></SplashPage>
         </Route>
         <Route path="/login" exact={true}>

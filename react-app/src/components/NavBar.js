@@ -28,6 +28,9 @@ const NavBar = () => {
               Wines & Spirits
             </NavLink>
           </div>
+          <div>
+            <LogoutButton />
+          </div>
           <h1 className="wp-logo">Wine Party</h1>
           <div><Search /></div>
 
