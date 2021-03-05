@@ -27,8 +27,11 @@ def hosts_search():
         # print("YES!!!!!!!!!!", search.to_dict(),
         #       sommelier.to_dict(), mixologist.to_dict())
         # data = Host.query.filter(Host.firstName == search).all()
-        data = Host.query.filter(or_(
-            Host.firstName == search, Host.lastName == search, Host.state == search)).all()
+        data = Host.query.filter(or_(Host.firstName == search, Host.lastName ==
+                                    search, Host.state == search, (Host.city == search))).all()
+
+        #  | (
+        #     Host.city == search)) & (Host.sommelier == sommelier) & (Host.mixologist == mixologist))
     return {"hosts": [host.to_dict() for host in data]}
 
 
