@@ -29,17 +29,18 @@ const NavBar = () => {
   return (
     // sessionUser && (
     <>
-    <div className="topnav">
-        <a className="active" href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    <div className="search-container">
-      {/* <form>
+      <div className="topnav">
+        <a className="active" href="#home">
+          Events
+        </a>
+        <a href="#about">Hosts</a>
+        <div className="search-container">
+          {/* <form>
           <input type="text" placeholder="Search..." name="search" />
           <button type="submit"><i className="fa fa-search"></i></button>
       </form> */}
-     </div>
-    </div>
+        </div>
+      </div>
       {/* <div>
         <ul>
           <li>

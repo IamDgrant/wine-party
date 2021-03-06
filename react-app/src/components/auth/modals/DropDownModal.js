@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useEffect } from "react-redux";
 import Popper from "popper.js";
 import DropDownModal from "../../styling/DropDownModal.css";
 
 const Dropdown = ({ color }) => {
+  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
   const btnDropdownRef = React.createRef();
@@ -22,6 +23,15 @@ const Dropdown = ({ color }) => {
   color === "white"
     ? (bgColor = "bg-transparent")
     : (bgColor = "bg-" + color + "-500");
+
+
+    // useEffect(() => {
+    //   // else {
+    //   //   dispatch();
+    //   //   setData(id);
+    //   // }
+    // }, [dispatch]);
+
   return (
     <>
       <div className="flex flex-wrap">
