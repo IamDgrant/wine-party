@@ -47,13 +47,12 @@ const App = () => {
           
         </ProtectedRoute> */}
         <ProtectedRoute path="/events" exact={true}>
-          {/* <NavBar /> */}
           <EventForm />
-          <Event></Event>
+          {/* <Event></Event> */}
         </ProtectedRoute>
-        <Route path="/hosts" exact={true}>
+        {/* <Route path="/hosts" exact={true}>
           <Search />
-        </Route>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );

@@ -1,0 +1,21 @@
+.btn {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 900;
+  color: #ffff;
+  font-size: 2vh;
+  font-style: italic;
+  /* margin-top: 2vh; */
+}
+
+.name-btn {
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 900;
+  color: #ffff;
+  font-size: 2vh;
+  font-style: italic;
+  /* padding-right: 2vh; */
+}
+
+.dropMenu {
+  font-family: "Nanum Gothic", sans-serif;
+}

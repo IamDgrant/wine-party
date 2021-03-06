@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col } from "antd";
-import { seeEvent } from "../store/event";
+import { seeHost } from "../store/host";
 
-const Event = ({ id }) => {
+const Host = ({ id }) => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
   //   const sessionHost = useSelector((state) => state.host.host);
-  const sessionEvent = useSelector((state) => state.event.event);
+  const sessionHost = useSelector((state) => state.host.host);
   const [data, setData] = useState();
 
   //   console.log(sessionEvent);
 
   useEffect(() => {
-    if (!id) dispatch(seeEvent());
+    if (!id) dispatch(seeHost());
     // else {
     //   dispatch();
     //   setData(id);
@@ -23,14 +23,16 @@ const Event = ({ id }) => {
   return (
     <>
       <div className="event_size">
-        {sessionEvent &&
-          sessionEvent.map((event) => (
-            <Row key={event.id}>
+        {sessionHost &&
+          sessionHost.map((host) => (
+            <Row key={host.id}>
               <Col span={7} className="column_border">
-                <p className="event_title">{event.eventName}</p>
+                <p className="event_title">
+                  {host.firstName} {host.lastName}
+                </p>
               </Col>
               <Col span={5} className="column_border">
-                <p className="event_date">{event.eventDate.slice(0, 16)}</p>
+                <p className="event_date">{host.state}</p>
               </Col>
               <Col span={3} className="column_border"></Col>
               <Col span={3} className="column_border">
@@ -43,4 +45,4 @@ const Event = ({ id }) => {
   );
 };
 
-export default Event;
+export default Host;

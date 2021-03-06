@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import { createEvent } from "../../store/event";
 import Search from "../../components/Search";
-import "../styling/formStyle.css";
+import "../styling/eventFormStyle.css";
 
 const EventForm = ({ userId }) => {
   const dispatch = useDispatch();
@@ -36,9 +36,7 @@ const EventForm = ({ userId }) => {
     );
   };
 
-  const UpdateSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
+ 
 
   const updateEventName = (e) => {
     setEventName(e.target.value);
@@ -80,19 +78,19 @@ const EventForm = ({ userId }) => {
               value={eventName}
             ></input>
           </div>
-          <div>
+          {/* <div>
             <h3 className="form_text">Ready to add your host?</h3>
             <p className="p-text">If not continue and reserve.</p>
-            {/* <Search /> */}
-            {/* <input
+            <Search />
+            <input
               className="form_input"
               type="text"
               name="search"
               placeholder="Find a host..."
               onChange={UpdateSearch}
               value={searchTerm}
-            ></input> */}
-          </div>
+            ></input>
+          </div> */}
           <div>
             <input
               className="form_input"
@@ -166,7 +164,7 @@ const EventForm = ({ userId }) => {
               <option value="WY">Wyoming</option>
             </select>
           </div>
-          <button type="submit" className="btn">
+          <button type="submit" className="reserve-btn">
             Reserve
           </button>
         </form>
