@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { seeHost } from "../store/host";
 import { Button, Input, message } from "antd";
 import "./styling/checkboxStyle.css";
+import "./styling/searchBar.css"
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -89,7 +90,7 @@ const Search = () => {
         <span class="checkmark"></span>
       </label> */}
       <button
-        className="reserve-btn bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        className="reserve-btn"
         onClick={onSearch}
       >
         Find Host
