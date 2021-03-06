@@ -2,6 +2,18 @@ body {
     background-color: rgb(248, 209, 174)
 }
 
-.main_content {
-    /* background-color: rgb(226, 160, 102) */
+.main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.homeCard {
+    height: 85vh;
+    width: 135vh;
+    background-color: white;
+    border: transparent;
+    border-radius: .5%;
+    box-shadow: 1px 1px 50px 3px rgb(126, 110, 97);
 }
