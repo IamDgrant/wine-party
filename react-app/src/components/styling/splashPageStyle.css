@@ -1,15 +1,18 @@
+body {
+  background-color: white;
+}
+
 .logo-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 25vh 15vh 0vh 0vh
+  padding: 25vh 15vh 0vh 0vh;
 }
 
 .button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
 }
 
 .text-link {
@@ -22,12 +25,9 @@
 }
 
 .background-container {
-  height: 100VH;
+  height: 100vh;
   width: 100%;
   background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
     center fixed;
   background-size: cover;
 }
-
-
-

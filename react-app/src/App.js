@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
-import EventForm from "./components/auth/EventForm";
-import ReviewForm from "./components/auth/ReviewForm";
-import NavBar from "./components/NavBar";
-import Search from "./components/Search";
+// import LoginForm from "./components/auth/LoginForm";
+// import SignUpLoginForm from "./components/auth/SignUpLoginForm";
+// import EventForm from "./components/auth/EventForm";
+// import ReviewForm from "./components/auth/ReviewForm";
+// import NavBar from "./components/NavBar";
+// import Search from "./components/Search";
 // import UsersList from "./components/UsersList";
 // import User from "./components/User";
 import SplashPage from "./components/SplashPage";
@@ -47,7 +47,7 @@ const App = () => {
           
         </ProtectedRoute> */}
         <ProtectedRoute path="/events" exact={true}>
-          <EventForm />
+          {/* <EventForm /> */}
           {/* <Event></Event> */}
         </ProtectedRoute>
         {/* <Route path="/hosts" exact={true}>

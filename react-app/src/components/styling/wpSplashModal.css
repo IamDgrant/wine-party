@@ -6,8 +6,6 @@
     align-items: center;
   }
   .logo-button-wrapper {
-    color: white;
-    cursor: pointer;
     display: inline-block;
     font-family: 'Bebas Neue', cursive;
     text-decoration: none;
@@ -28,4 +26,6 @@
       text-shadow: 0 0 3px white;
     }
   }
+
+
   
