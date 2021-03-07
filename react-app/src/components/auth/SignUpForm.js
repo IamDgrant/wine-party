@@ -100,7 +100,7 @@ const SignUpForm = ({
             placeholder="First Name"
             onChange={updateFirstName}
             value={firstName}
-          ></input>
+           />
         </div>
         <div>
           <input
