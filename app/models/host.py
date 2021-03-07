@@ -27,6 +27,7 @@ class Host(db.Model):
             "id": self.id,
             "firstName": self.firstName,
             "lastName": self.lastName,
+            "city": self.city,
             "state": self.state,
             "about": self.about,
             "profileImage": self.profileImage,

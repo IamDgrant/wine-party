@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import DateTime from "../components/Date";
-import DropdownRender from "../components/auth/modals/DropDownModal";
+// import DropdownRender from "../components/auth/modals/DropDownModal";
 import EventForm from "../components/auth/EventForm";
 import Search from "../components/Search"
 import Host from "../components/Host"
@@ -18,7 +18,7 @@ const HomeCard = () => {
             <DateTime />
           </div>
           <div className="userName">
-            <DropdownRender />
+            {/* <DropdownRender /> */}
           </div>
         </div>
         <div className="middle-bar">
