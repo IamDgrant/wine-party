@@ -9,6 +9,7 @@ const Host = ({ id }) => {
   //   const sessionHost = useSelector((state) => state.host.host);
   const sessionHost = useSelector((state) => state.host.host);
   const [data, setData] = useState();
+  console.log(sessionHost);
 
   //   console.log(sessionEvent);
 
@@ -22,23 +23,19 @@ const Host = ({ id }) => {
 
   return (
     <>
-      <div className="event_size">
+      <div className="main-profile">
         {sessionHost &&
           sessionHost.map((host) => (
-            <Row key={host.id}>
-              <Col span={7} className="column_border">
-                <p className="event_title">
-                  {host.firstName} {host.lastName}
-                </p>
-              </Col>
-              <Col span={5} className="column_border">
-                <p className="event_date">{host.state}</p>
-              </Col>
-              <Col span={3} className="column_border"></Col>
-              <Col span={3} className="column_border">
-                {/* <Info event={event}></Info> */}
-              </Col>
-            </Row>
+            <div key={host.id} className="profile-card">
+              <div className="profile-name">
+                {host.firstName} {host.lastName}
+                <div className="profile-city-state">
+                  <p className="host-city">
+                    {host.city}, {host.state}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
       </div>
     </>
