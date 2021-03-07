@@ -3,7 +3,8 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import { createEvent } from "../../store/event";
-import "../styling/formStyle.css";
+import Search from "../../components/Search";
+import "../styling/eventFormStyle.css";
 
 const EventForm = ({ userId }) => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const EventForm = ({ userId }) => {
   const [eventDate, setEventDate] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const error = () => {
     message.error("Please enter a event name!");
@@ -24,13 +26,17 @@ const EventForm = ({ userId }) => {
       error();
       return;
     }
-    dispatch(createEvent({ userId, eventName, eventDate, city, state })).then(() => {
-      setEventName("");
-      setEventDate("");
-      setCity("");
-      setState("");
-    });
+    dispatch(createEvent({ userId, eventName, eventDate, city, state })).then(
+      () => {
+        setEventName("");
+        setEventDate("");
+        setCity("");
+        setState("");
+      }
+    );
   };
+
+ 
 
   const updateEventName = (e) => {
     setEventName(e.target.value);
@@ -52,17 +58,6 @@ const EventForm = ({ userId }) => {
       <div className="center_box">
         <form onSubmit={onSubmission} className="form">
           <h1 className="form_title">Create Event</h1>
-          <p className="form_text">Then find your host!</p>
-          <div>
-            <input
-              className="form_input"
-              type="text"
-              name="eventName"
-              placeholder="Event Name"
-              onChange={updateEventName}
-              value={eventName}
-            ></input>
-          </div>
           <div>
             <input
               className="form_input"
@@ -73,6 +68,29 @@ const EventForm = ({ userId }) => {
               value={eventDate}
             ></input>
           </div>
+          <div>
+            <input
+              className="form_input"
+              type="text"
+              name="eventName"
+              placeholder="Event Name"
+              onChange={updateEventName}
+              value={eventName}
+            ></input>
+          </div>
+          {/* <div>
+            <h3 className="form_text">Ready to add your host?</h3>
+            <p className="p-text">If not continue and reserve.</p>
+            <Search />
+            <input
+              className="form_input"
+              type="text"
+              name="search"
+              placeholder="Find a host..."
+              onChange={UpdateSearch}
+              value={searchTerm}
+            ></input>
+          </div> */}
           <div>
             <input
               className="form_input"
@@ -90,6 +108,7 @@ const EventForm = ({ userId }) => {
               form="stateForm"
               placeholder="State"
               onChange={updateState}
+              value={state}
             >
               <option value=""></option>
               <option value="AL">Alabama</option>
@@ -145,8 +164,8 @@ const EventForm = ({ userId }) => {
               <option value="WY">Wyoming</option>
             </select>
           </div>
-          <button type="submit" className="btn">
-            Sign Up
+          <button type="submit" className="reserve-btn">
+            Reserve
           </button>
         </form>
       </div>

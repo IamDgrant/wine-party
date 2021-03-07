@@ -2,11 +2,17 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session"
 import users from "./users"
+import event from "./event"
+import search from "./search"
+import host from "./host"
 
 
 const rootReducer = combineReducers({
   session,
   users,
+  event,
+  search,
+  host
 });
 
 let enhancer;

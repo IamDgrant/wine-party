@@ -1,38 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Menu } from "antd";
+import Search from "../components/Search";
 import LogoutButton from "../components/auth/LogoutButton";
+import { profileImage } from "../store/session";
 import "./styling/navBar.css";
 
 const NavBar = () => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  // const [photoFile, setPhotoFile] = useState();
+  // const [photoUrl, setPhotoUrl] = useState(
+  //   sessionUser ? sessionUser.photoUrl : ""
+  // );
+
+  // function handleUpload(e) {
+  //   setPhotoFile(e.target.files[0]);
+  // }
+
+  // function submit(e) {
+  //   e.preventDefault();
+  //   dispatch(profileImage(photoFile)).then((res) => {
+  //     setPhotoUrl(res.url);
+  //   });
+  // }
 
   return (
-    sessionUser && (
-      <>
-        <div className="navBar-bg">
-          <div>
-            <NavLink to="/" exact={true} activeClassName="active">
-              Home
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/aboutus" exact={true} activeClassName="active">
-              About Us
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/winespirits" exact={true} activeClassName="active">
-              Wines & Spirits
-            </NavLink>
-          </div>
-          <h1 className="wp-logo">Wine Party</h1>
-
-          <LogoutButton />
+    // sessionUser && (
+    <>
+      <div className="topnav">
+        <a className="active" href="#home">
+          Events
+        </a>
+        <a href="#about">Hosts</a>
+        <div className="search-container">
+          {/* <form>
+          <input type="text" placeholder="Search..." name="search" />
+          <button type="submit"><i className="fa fa-search"></i></button>
+      </form> */}
         </div>
-      </>
-    )
+      </div>
+      {/* <div>
+        <ul>
+          <li>
+            <a className="/" href="#home">
+              Events
+            </a>
+          </li>
+          <li>
+            <a href="/">Contact</a>
+          </li>
+          <li>
+            <a href="/">About</a>
+          </li>
+          <li>
+            <a href="/">About</a>
+          </li>
+        </ul>
+      </div> */}
+    </>
+    // )
   );
 };
 

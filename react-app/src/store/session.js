@@ -18,10 +18,10 @@ export const createUser = (user) => async (dispatch) => {
     },
     body: JSON.stringify(user),
   });
-
   const data = await res.json();
-
   dispatch(setUser(data));
+  debugger
+  return res;
 };
 
 export const restoreUser = () => async (dispatch) => {
@@ -32,7 +32,7 @@ export const restoreUser = () => async (dispatch) => {
   }
 };
 
-export const login = ({ email, password }) => async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
@@ -42,6 +42,7 @@ export const login = ({ email, password }) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(setUser(data));
+  return res;
 };
 
 export const logout = () => async (dispatch) => {

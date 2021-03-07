@@ -1,8 +1,7 @@
-input[type="text"], input[type="password"], input[type="date"]
-select {
-  width: 25%;
-  padding: 12px 20px;
-  margin: 8px 0;
+input[type="text"], input[type="password"], input[type="date"], select {
+  width: 100%;
+  padding: 0vh 1vh;
+  margin: 4px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -20,7 +19,8 @@ input[type="submit"] {
 }
 
 select {
-  color:rgb(226, 160, 102)
+  color:rgb(157, 163, 174);
+  height: 27px
 }
 
 ::placeholder {
@@ -34,7 +34,7 @@ select {
 
 .form_title {
   font-family: "Bebas Neue", cursive;
-  color: rgba(248, 209, 174);
+  color: white;
 }
 
 .form_link {
@@ -46,6 +46,14 @@ select {
   color: rgb(226, 160, 102);
 }
 
-.form_link:hover {
+/* .form_link:hover {
   border-bottom: 1px solid rgb(226, 160, 102);
+} */
+
+.p-text {
+  font-size: 1.25vh; 
+  font-family: "Montserrat", sans-serif;
+  color: red
 }
+
+

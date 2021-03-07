@@ -12,7 +12,7 @@ const getEvent = (event) => ({
   payload: event,
 });
 
-const removeEvnet = (eventId) => ({
+const removeEvent = (eventId) => ({
   type: REMOVE_EVENT,
   payload: eventId,
 });
@@ -51,6 +51,14 @@ export const seeEvent = () => async (dispatch) => {
   dispatch(getEvent(data.events));
 };
 
+export const seeEventId = (id) => async (dispatch) => {
+  const res = await fetch(`/api/events/${id}`, {
+    method: "GET",
+  });
+  const data = await res.json();
+  dispatch(getEvent(data));
+};
+
 export const seeHostEvent = (id) => async (dispatch) => {
   const res = await fetch(`/api/events/host/${id}`);
   const data = await res.json();
@@ -58,20 +66,20 @@ export const seeHostEvent = (id) => async (dispatch) => {
   return data;
 };
 
-const initialState = { task: null };
+const initialState = { event: null };
 
 function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case SET_EVENT: {
-      if (state.task) {
-        const newtask = [...state.task, action.payload];
-        return { ...state, task: newtask };
+      if (state.event) {
+        const newevent = [...state.event, action.payload];
+        return { ...state, event: newevent };
       }
-      return { ...state, task: action.payload };
+      return { ...state, event: action.payload };
     }
     case GET_EVENT:
-      return { ...state, task: action.payload };
+      return { ...state, event: action.payload };
     default:
       return state;
   }

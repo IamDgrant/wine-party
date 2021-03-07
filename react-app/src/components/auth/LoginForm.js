@@ -3,13 +3,11 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/session";
 
-const LoginForm = () => {
+const LoginForm = ({ email, setEmail, password, setPassword }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -31,24 +29,14 @@ const LoginForm = () => {
   return (
     <div className="center_box">
       <form onSubmit={onLogin} className="form">
-        <h1 className="form_title">Log In</h1>
-        <p className="form_text">
-          Welcome back! <br></br>
-          <br></br>
-          First time?
-          <br></br>
-          <a href="/signup" className="login-form-btn">
-            {" "}
-            Make an account
-          </a>
-        </p>
+      
         <div>
           {errors.map((error) => (
             <div>{error}</div>
           ))}
         </div>
         <div>
-          <input
+          <input 
             name="email"
             type="text"
             placeholder="Email"
@@ -65,9 +53,9 @@ const LoginForm = () => {
             value={password}
           />
           <div>
-            <button type="submit" className="signUp-form-btn">
+            {/* <button type="submit" className="signUp-form-btn">
               Login
-            </button>
+            </button> */}
           </div>
         </div>
       </form>
