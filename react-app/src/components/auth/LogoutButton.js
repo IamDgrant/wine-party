@@ -8,14 +8,10 @@ const LogoutButton = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const onLogout = async (e) => {
-  //   return dispatch(logout());
-  //   if (!user.ok) history.push("/splash");
-  // };
+  const onLogout = async (e) => {
+    const user = await dispatch(logout());
+    if (!user.ok) history.push("/splash");
 
-  const onLogout = async () => {
-    await dispatch(logout());
-    history.push("/splash");
   };
 
   return (

@@ -11,6 +11,7 @@ const removeUser = () => ({
 });
 
 export const createUser = (user) => async (dispatch) => {
+  console.log("TESTING!!!!!!!!!!!!!!!!!!");
   const res = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
@@ -20,7 +21,6 @@ export const createUser = (user) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(setUser(data));
-  debugger
   return res;
 };
 
@@ -40,8 +40,10 @@ export const login = (email, password) => async (dispatch) => {
     },
     body: JSON.stringify({ email, password }),
   });
-  const data = await res.json();
-  dispatch(setUser(data));
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setUser(data));
+  }
   return res;
 };
 
@@ -54,6 +56,7 @@ export const logout = () => async (dispatch) => {
   if (data.message === "User logged out") {
     dispatch(removeUser());
   }
+  return res;
 };
 
 export const profileImage = (file) => async (dispatch) => {

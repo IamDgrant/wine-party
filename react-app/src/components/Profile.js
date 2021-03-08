@@ -42,7 +42,7 @@ export default function Profile() {
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
             style={{ height: "70px", transform: "translateZ(0)" }}
           >
-            <svg
+            {/* <svg
               className="absolute bottom-0 overflow-hidden"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
@@ -55,7 +55,7 @@ export default function Profile() {
                 className="text-gray-300 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
-            </svg>
+            </svg> */}
           </div>
         </section>
         <section className="relative py-16 bg-gray-300">
@@ -109,21 +109,21 @@ export default function Profile() {
                           Previous Events
                         </span>
                       </div>
-                      <div className="event-card">
+                    </div>
+                  </div>
+                </div>
+                <div className="event-card">
                         <div>
                           <EventCard />
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
                     {sessionUser.firstName} {sessionUser.lastName}
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                    {sessionUser.cty}, {sessionUser.state}
+                    {sessionUser.city}, {sessionUser.state}
                   </div>
                 </div>
                 <div className="mt-10 py-10 border-t border-gray-300 text-center">

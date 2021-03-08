@@ -52,9 +52,6 @@ const LoginModal = () => {
                 {/*body*/}
                 <div className="form-container sign-up-container">
                   <form onSubmit={onLogin}>
-
-
-                  </form>
                   <div className="relative p-3 flex-auto">
                     <LoginForm
                       email={email}
@@ -63,6 +60,9 @@ const LoginModal = () => {
                       setPassword={setPassword}
                     />
                   </div>
+
+
+                  </form>
                   {/*footer*/}
                   <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
                     <div className="px-1">

@@ -18,10 +18,11 @@ const SignupModal = () => {
   const dispatch = useDispatch();
 
   const onSignup = async (e) => {
+    console.log("TESTING!!!!!!!!!!!!!!!!!!");
     e.preventDefault();
     let newErrors = [];
     if (password === repeatPassword) {
-      return dispatch(
+      dispatch(
         createUser({
           firstName,
           lastName,
@@ -31,14 +32,15 @@ const SignupModal = () => {
           password,
           repeatPassword,
         })
-      ).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-          // setErrors(newErrors);
-        }
-      });
-    }
+        ).catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) {
+            newErrors = data.errors;
+            // setErrors(newErrors);
+          }
+        });
+      }
+      setShowModal(false);
   };
 
   if (sessionUser) {
@@ -102,7 +104,6 @@ const SignupModal = () => {
 
                 <div className="form-container sign-up-container">
                   <form onSubmit={onSignup}>
-                    {/* <h1>Create Account</h1> */}
                     <input
                       className="form_input"
                       type="text"
@@ -210,35 +211,35 @@ const SignupModal = () => {
                       value={repeatPassword}
                       required={true}
                     />
+                    <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
+                      <div className="px-1">
+                        <button
+                          className="bg-transparent hover:bg-grey-200 hover:text-grey px-4 border border-white hover:border-white rounded form_title"
+                          type="button"
+                          style={{ transition: "all .15s ease" }}
+                          onClick={() => setShowModal(false)}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          className="bg-transparent hover:bg-yellow-100 hover:text-white px-4 border border-white hover:border-transparent rounded form_title"
+                          type="submit"
+                          style={{ transition: "all .15s ease" }}
+                          // onClick={() => {
+                            
+                          // }}
+                        >
+                          Sign up
+                        </button>
+                      </div>
+                    </div>
                   </form>
-                </div>
-                <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
-                    <div className="px-1">
-                      <button
-                        className="bg-transparent hover:bg-grey-200 hover:text-grey px-4 border border-white hover:border-white rounded form_title"
-                        type="button"
-                        style={{ transition: "all .15s ease" }}
-                        onClick={() => setShowModal(false)}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                    <div>
-                      <button
-                        className="bg-transparent hover:bg-yellow-100 hover:text-white px-4 border border-white hover:border-transparent rounded form_title"
-                        type="submit"
-                        style={{ transition: "all .15s ease" }}
-                        onClick={() => {
-                          setShowModal(false);
-                        }}
-                      >
-                        Sign up
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
+          </div>
         </>
       ) : null}
     </>

@@ -27,9 +27,9 @@ const App = () => {
         <Route path="/splash" exact={true}>
           <SplashPage />
         </Route>
-        <Route path="/" exact={true}>
+        <ProtectedRoute path="/" exact={true}>
           <UserHome />
-        </Route>
+        </ProtectedRoute>
         {/* <Route path="/login" exact={true}>
           <LoginForm />
         </Route> */}

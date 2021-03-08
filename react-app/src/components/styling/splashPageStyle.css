@@ -1,35 +1,4 @@
-/* body {
-  background-color: white;
-} */
-
-/* .background-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  /* padding: 25vh 15vh 0vh 0vh; */
-/* } */
-
-/* .button-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-} */
-
-/* .text-link {
-  font-family: "Bebas Neue", cursive;
-  color: white;
-  font-size: 9vh;
-  font-weight: 800;
-  text-decoration: inherit;
-  text-decoration: none;
-} */
-
-.logo-top-container {
+.top-logo-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -39,18 +8,11 @@
   background-size: cover;
 }
 
-.logo {
+.logo-container {
   width: 100%;
-  padding: 27vh 0vw 0vh 70vw;
-  /* display: flex; */
-  /* width: auto;
-  flex-direction: column; */
-  /* justify-content:center; */
-  /* align-items:flex-end;
-  padding-right: 25vh; */
   font-family: "Bebas Neue", cursive;
-  /* font-size: 50vw; */
-  /* text-decoration: none; */
+  padding: 27vh 0vw 0vh 70vw;
+  font-size: 7.5vh;
   animation: glowing 1750ms infinite;
 }
 
@@ -72,7 +34,8 @@
 .buttons-container {
   display: flex;
   width: 100%;
-  padding: 0vh 0vw 0vh 71.1vw;
+  padding: 0vh 0vw 0vh 75.1vw;
+  margin-top: 0px;
 }
 
 .login {

@@ -1,7 +1,7 @@
 .logo-container {
   display: flex;
   /* height: 20vh; */
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: center;
   align-items: center;
   font-family: "Bebas Neue", cursive;

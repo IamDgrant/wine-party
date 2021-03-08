@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { Row, Col } from "antd";
 import { seeEvent } from "../store/event";
-import "./styling/eventStyle.com"
+import "./styling/eventStyle.css"
 
 const Event = ({ id }) => {
   const dispatch = useDispatch();

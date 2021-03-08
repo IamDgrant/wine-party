@@ -6,8 +6,10 @@ import "../components/styling/splashPageStyle.css";
 const SplashPage = () => {
   return (
     <>
-      <div className="logo-top-container">
-        <div className="logo">Wine Party➤</div>
+      <div className="top-logo-container">
+        <div className="logo-container">
+          <div className="logo-inner">Wine Party➤</div>
+        </div>
         <div className="buttons-container">
           <div className="signup">
             <SignupButtonModal />
