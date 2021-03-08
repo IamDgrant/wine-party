@@ -9,8 +9,12 @@ const SplashPage = () => {
       <div className="logo-top-container">
         <div className="logo">Wine Party➤</div>
         <div className="buttons-container">
-          <SignupButtonModal />
-          <LoginButtonModal />
+          <div className="signup">
+            <SignupButtonModal />
+          </div>
+          <div className="login">
+            <LoginButtonModal />
+          </div>
         </div>
       </div>
     </>

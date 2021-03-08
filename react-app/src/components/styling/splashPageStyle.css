@@ -70,6 +70,11 @@
 }
 
 .buttons-container {
+  display: flex;
   width: 100%;
   padding: 0vh 0vw 0vh 71.1vw;
+}
+
+.login {
+  padding-left: .5vh;
 }
