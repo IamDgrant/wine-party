@@ -1,33 +1,75 @@
-body {
+/* body {
   background-color: white;
+} */
+
+/* .background-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .logo-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 25vh 15vh 0vh 0vh;
-}
+  /* padding: 25vh 15vh 0vh 0vh; */
+/* } */
 
-.button-container {
+/* .button-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
+} */
 
-.text-link {
+/* .text-link {
   font-family: "Bebas Neue", cursive;
   color: white;
   font-size: 9vh;
   font-weight: 800;
   text-decoration: inherit;
   text-decoration: none;
-}
+} */
 
-.background-container {
+.logo-top-container {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
   background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
     center fixed;
   background-size: cover;
+}
+
+.logo {
+  width: 100%;
+  padding: 27vh 0vw 0vh 70vw;
+  /* display: flex; */
+  /* width: auto;
+  flex-direction: column; */
+  /* justify-content:center; */
+  /* align-items:flex-end;
+  padding-right: 25vh; */
+  font-family: "Bebas Neue", cursive;
+  /* font-size: 50vw; */
+  /* text-decoration: none; */
+  animation: glowing 1750ms infinite;
+}
+
+@keyframes glowing {
+  0% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+  50% {
+    color: #eaebe4;
+    text-shadow: 0 0 15px #eaebe4;
+  }
+  100% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+}
+
+.buttons-container {
+  width: 100%;
+  padding: 0vh 0vw 0vh 71.1vw;
 }

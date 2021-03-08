@@ -9,8 +9,6 @@ const Checkbox = () => {
 
   const dispatch = useDispatch();
 
-  console.log(checkedOne, checkedTwo);
-
   return (
     <>
       <label class="container">

@@ -1,7 +1,7 @@
 import React from "react";
 import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
-import "../styling/logoutButton.css";
+import "../styling/logoutButtonStyle.css";
 
 const LogoutButton = () => {
   const dispatch = useDispatch();
