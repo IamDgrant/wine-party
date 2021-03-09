@@ -4,17 +4,22 @@ import EventCard from "../components/EventCard";
 import Search from "../components/Search";
 import ProfileModal from "../components/auth/modals/ProfileModal";
 import SearchResultsCard from "../components/SearchResultsCard";
-// import { eventCount } from "../components/Event"
+import { photoUpload} from "../store/session"
 import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg";
-// import { profileImage } from "../store/session";
 
 // import ProfileNavbar from "../components/ProfileNavbar";
 // import ProfileFooter from "../components/ProfileFooter";
 
 export default function Profile() {
+  const dispatch = useDispatch()
   const todaysDate = new Date();
   const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
+
+  const [photoFile, setPhotoFile] = useState();
+  const [photoUrl, setPhotoUrl] = useState(
+    sessionUser ? sessionUser.photoUrl : ""
+  );
 
   const futureEvents = sessionEvent.filter((events) => {
     return new Date(events.eventDate) > todaysDate;
@@ -24,35 +29,16 @@ export default function Profile() {
     return new Date(events.eventDate) < todaysDate;
   });
 
-  console.log(futureEvents);
+  const handleUpload = (e) => {
+    setPhotoFile(e.target.files[0]);
+  }
 
-  // const UpcomingEvents = () => {
-  //   if (sessionEvent.eventDate <= todaysDate) {
-
-  //   }
-
-  // }
-
-  // console.log(todaysDate);
-  // const [photoFile, setPhotoFile] = useState();
-  // const [photoUrl, setPhotoUrl] = useState(
-  //   sessionUser ? sessionUser.photoUrl : ""
-  // );
-
-  // function submit(e) {
-  //   e.preventDefault();
-  //   dispatch(photoUpload(photoFile)).then((res) => {
-  //     setPhotoUrl(res.url);
-  //   });
-  // }
-
-  // const eventCount = () => {
-  //   sessionEvent.map((event) => {
-  //     return event.length()
-  //   })
-  // }
-
-  // const [numEvents, setNumEvents] = useState(eventCount() ? eventCount() : "")
+  const submit = (e) => {
+    e.preventDefault();
+    dispatch(photoUpload(photoFile)).then((res) => {
+      setPhotoUrl(res.url);
+    });
+  }
 
   return (
     <>

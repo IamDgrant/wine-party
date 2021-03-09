@@ -59,7 +59,7 @@ const Search = () => {
           type="text"
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-        <label class="container">
+        <label className="container">
           Sommelier
           <input
             className="checkbox"
@@ -68,9 +68,9 @@ const Search = () => {
             checked={sommelier}
             onChange={updateSommelier}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container">
+        <label className="container">
           Mixologist
           <input
             className="checkbox"
@@ -80,22 +80,22 @@ const Search = () => {
             onChange={updateMixologist}
             //   disabled={true}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
         {/* <Checkbox /> */}
         <button className="reserve-btn" onClick={onSearch}>
           Find Host
         </button>
       </form>
-      {/* <label class="container">
+      {/* <label className="container">
         Sommelier
         <input type="checkbox" />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
-      <label class="container">
+      <label className="container">
         Mixologist
         <input type="checkbox" />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label> */}
     </div>
   );

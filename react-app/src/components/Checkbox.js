@@ -11,7 +11,7 @@ const Checkbox = () => {
 
   return (
     <>
-      <label class="container">
+      <label className="container">
         Sommelier
         <input
           type="checkbox"
@@ -19,9 +19,9 @@ const Checkbox = () => {
           checked={checkedOne}
           onChange={updateOne}
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
-      <label class="container">
+      <label className="container">
         Mixologist
         <input
           type="checkbox"
@@ -30,7 +30,7 @@ const Checkbox = () => {
           onChange={updateTwo}
           //   disabled={true}
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
     </>
   );

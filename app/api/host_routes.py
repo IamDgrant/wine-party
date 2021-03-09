@@ -21,7 +21,9 @@ def hosts_search():
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        search = form.data['search'].lower()
+        search = form.data['search']
+        if search:
+            search = search.lower()
         sommelier = form.data['sommelier']
         mixologist = form.data['mixologist']
 

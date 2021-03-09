@@ -16,6 +16,7 @@ const LoginModal = () => {
   const onLogin = async () => {
     const user = await dispatch(login(email, password));
     if (user.ok) history.push("/");
+    setShowModal(false);
   };
 
   return (
@@ -51,7 +52,7 @@ const LoginModal = () => {
                 </div>
                 {/*body*/}
                 <div className="form-container sign-up-container">
-                  <form onSubmit={onLogin}>
+                  {/* <form onSubmit={onLogin}> */}
                   <div className="relative p-3 flex-auto">
                     <LoginForm
                       email={email}
@@ -61,8 +62,7 @@ const LoginModal = () => {
                     />
                   </div>
 
-
-                  </form>
+                  {/* </form> */}
                   {/*footer*/}
                   <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
                     <div className="px-1">
@@ -81,7 +81,6 @@ const LoginModal = () => {
                         type="submit"
                         style={{ transition: "all .15s ease" }}
                         onClick={() => {
-                          setShowModal(false);
                           onLogin();
                         }}
                       >
@@ -101,45 +100,3 @@ const LoginModal = () => {
 };
 
 export default LoginModal;
-
-// import React, { useState } from "react";
-// import Modal from "react-modal";
-// import SignUpForm from "../SignUpForm";
-// import "..//../styling/buttonStyle.css";
-
-// const SignUpButton = () => {
-//   const [modalVisible, setModalVisible] = useState(false);
-
-//   const onSignUp = async (e) => {
-//     // e.preventDefault();
-//     setModalVisible((prev) => !prev);
-//   };
-
-//   // const handleOk = () => {
-//   //   setModalVisible(false);
-//   // };
-
-//   // const handleCancel = () => {
-//   //   setModalVisible(false);
-//   // };
-
-//   return (
-//     <>
-//       <button onClick={onSignUp} className="btn">
-//         Sign up
-//       </button>
-//       <div className="modal" >
-//         <Modal
-//           isOpen={modalVisible}
-//           onHide={false}
-//           ariaHideApp={false}
-//           onRequestClose={setModalVisible}
-//         >
-//           <SignUpForm />
-//         </Modal>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default SignUpButton;

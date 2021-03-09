@@ -8,7 +8,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return {"users": [user.to_dict() for user in users]}
@@ -29,7 +29,7 @@ def allowed_file(filename):
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@user_routes.route('/update/account', methods=['POST'])
+@user_routes.route('/update/profile', methods=['POST'])
 @login_required
 def update_profile():
 
@@ -45,7 +45,8 @@ def update_profile():
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file)
-        current_user.photoUrl = str(output)
+        print("HERE!!!!!!!!!!!!", current_user.to_dict())
+        current_user.profileImage = str(output)
         db.session.add(current_user)
         db.session.commit()
         return {"url": str(output)}

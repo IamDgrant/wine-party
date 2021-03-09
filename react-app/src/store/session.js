@@ -58,31 +58,22 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-export const uploadFile = (fileForm) => async (dispatch) => {
-  const {
-    user_id,
-    firstName,
-    lastName,
-    city,
-    state,
-    email,
-    file, // this is the file for uploading
-  } = fileForm;
+export const photoUpload = (file) => async (dispatch) => {
+  let photoUrl;
+  const formData = new FormData();
+  formData.append("user_file", file);
+  const res = await fetch("/api/users/update/profile", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    // console.log('ITS HITTING!!!!!', res);
+    // console.log(res);
+    photoUrl = await res.json();
+    console.log(photoUrl);
+    return photoUrl;
+  }
 };
-
-// export const profileImage = (file) => async (dispatch) => {
-//   let imageUrl;
-//   const formData = new FormData();
-//   formData.append("user_file", file);
-//   const res = await fetch("/api/users/update/profile", {
-//     method: "POST",
-//     body: formData,
-//   });
-//   if (res.ok) {
-//     imageUrl = await res.json();
-//     return imageUrl;
-//   }
-// };
 
 const initialState = { user: null };
 
