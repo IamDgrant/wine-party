@@ -42,11 +42,9 @@ const ProfileModal = () => {
     setPhotoFile(e.target.files[0]);
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    dispatch(photoUpload(photoFile)).then((res) => {
-      setPhotoUrl(res.url);
-    });
+    await dispatch(photoUpload(photoFile))
     setShowModal(false);
   };
 

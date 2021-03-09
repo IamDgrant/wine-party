@@ -1,5 +1,6 @@
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const SET_PHOTO = "session/setPhoto";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +10,12 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 });
+
+const setPhoto = (photoUrl) => ({
+  type: SET_PHOTO,
+  payload: photoUrl,
+})
+
 
 export const createUser = (user) => async (dispatch) => {
   const res = await fetch(`/api/auth/signup`, {
@@ -71,7 +78,7 @@ export const photoUpload = (file) => async (dispatch) => {
     // console.log(res);
     photoUrl = await res.json();
     console.log(photoUrl);
-    return photoUrl;
+    dispatch(setPhoto(photoUrl));
   }
 };
 
@@ -85,6 +92,8 @@ const reducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;
+    case SET_PHOTO:
+      return { ...state, user: {...state.user, profileImage: action.payload.url}}
     default:
       return state;
   }

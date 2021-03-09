@@ -39,7 +39,7 @@ const TimeUntilEvent = () => {
     }
 
     timerComponents.push(
-      <span>
+      <span key={interval}>
         {timeLeft[interval]} {interval}{" "}
       </span>
     );
