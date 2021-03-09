@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import Profile from "../components/Profile";
 import LogoutButton from "./auth/LogoutButton";
 import DateBar from "../components/DateBar";
-
 import "./styling/userHome.css";
 
 const Home = () => {
@@ -11,7 +10,6 @@ const Home = () => {
     <>
       <div className="main-container">
         <div className="logo">Wine Party</div>
-        {/* <div className="main"> */}
         <div className="center-main">
           <div className="date-bar">
             <DateBar />
@@ -22,11 +20,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* </div> */}
         <div className="logout">
-          <div>
+        <div>
             <LogoutButton />
-          </div>
+        </div>
         </div>
       </div>
     </>

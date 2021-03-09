@@ -8,9 +8,9 @@ event_routes = Blueprint('events', __name__)
 
 
 @event_routes.route('/')
-# @login_required
+@login_required
 def events():
-    events = Event.query.filter_by(userId=current_user.id)
+    events = Event.query.filter_by(userId=current_user.id).order_by(Event.eventDate)
     return {"events": [event.to_dict() for event in events]}
 
 
@@ -28,7 +28,7 @@ def events():
 
 
 @event_routes.route('/', methods=['POST'])
-# @login_required
+@login_required
 def create_event():
     form = EventForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -56,22 +56,22 @@ def delete_event(id):
     return event.to_dict()
 
 
-@event_routes.route('/update/<id>', methods=['POST'])
-@login_required
-def update_event(id):
-    event = Event.query.filter_by(id=id).first()
-    update = request.data.decode("utf-8")
-    updated = ast.literal_eval(update)
-    if "status" in updated.keys():
-        status = updated["status"]
-        event.status = status
-    if "priority" in updated.keys():
-        priority = updated["priority"]
-        event.priority = priority
-    if "desc" in updated.keys():
-        desc = updated["desc"]
-        event.description = desc
+# @event_routes.route('/update/<id>', methods=['POST'])
+# @login_required
+# def update_event(id):
+#     event = Event.query.filter_by(id=id).first()
+#     update = request.data.decode("utf-8")
+#     updated = ast.literal_eval(update)
+#     if "status" in updated.keys():
+#         status = updated["status"]
+#         event.status = status
+#     if "priority" in updated.keys():
+#         priority = updated["priority"]
+#         event.priority = priority
+#     if "desc" in updated.keys():
+#         desc = updated["desc"]
+#         event.description = desc
 
-    db.session.commit()
+#     db.session.commit()
 
-    return event.to_dict()
+#     return event.to_dict()

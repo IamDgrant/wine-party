@@ -36,8 +36,6 @@ const EventForm = ({ userId }) => {
     );
   };
 
- 
-
   const updateEventName = (e) => {
     setEventName(e.target.value);
   };
@@ -54,7 +52,8 @@ const EventForm = ({ userId }) => {
   };
 
   return (
-    sessionUser && (
+    <>
+      sessionUser && (
       <div className="center_box">
         <form onSubmit={onSubmission} className="form">
           <h1 className="form_title">Create Event</h1>
@@ -169,7 +168,8 @@ const EventForm = ({ userId }) => {
           </button>
         </form>
       </div>
-    )
+      )
+    </>
   );
 };
 

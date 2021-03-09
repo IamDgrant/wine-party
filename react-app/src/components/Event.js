@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { Row, Col } from "antd";
 import { seeEvent } from "../store/event";
-import "./styling/eventStyle.css"
+import "./styling/eventStyle.css";
 
 const Event = ({ id }) => {
   const dispatch = useDispatch();
@@ -26,12 +26,15 @@ const Event = ({ id }) => {
       <div className="event_size">
         {sessionEvent &&
           sessionEvent.map((event) => (
+            console.log(event.eventDate),
             <div key={event.id} className="events">
-              <div>
+              <div className="event-name">
                 <p className="event_title">{event.eventName}</p>
               </div>
-              <div>
-                <p className="event_date">{event.eventDate.slice(0, 16)}</p>
+              <div className="main-event-date">
+                <div className="event-list">
+                  <div className="event_date">{event.eventDate.slice(0, 16)}</div>
+                </div>
               </div>
               {/* <Info event={event}></Info> */}
             </div>

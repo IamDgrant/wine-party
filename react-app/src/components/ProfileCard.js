@@ -5,6 +5,7 @@ import DateTime from "../components/Date";
 import EventForm from "../components/auth/EventForm";
 import Search from "../components/Search"
 import Host from "../components/Host"
+
 import "./styling/homeCard.css";
 
 const HomeCard = () => {

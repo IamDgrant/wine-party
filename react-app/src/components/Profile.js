@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EventCard from "../components/EventCard";
+import Search from "../components/Search";
+import SearchResultsCard from "../components/SearchResultsCard";
+import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg"
 // import { profileImage } from "../store/session";
 
 import ProfileNavbar from "../components/ProfileNavbar";
@@ -30,19 +33,19 @@ export default function Profile() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('/react-app/src/images/pexels-cottonbro-4877860.jpg')",
+                `url(${party})`,
             }}
           >
             <span
               id="blackOverlay"
-              className="w-full h-full absolute opacity-50 bg-black"
+              className="w-full h-full absolute"
             ></span>
           </div>
           <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
             style={{ height: "70px", transform: "translateZ(0)" }}
           >
-            {/* <svg
+            <svg
               className="absolute bottom-0 overflow-hidden"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
@@ -55,7 +58,7 @@ export default function Profile() {
                 className="text-gray-300 fill-current"
                 points="2560 0 2560 100 0 100"
               ></polygon>
-            </svg> */}
+            </svg>
           </div>
         </section>
         <section className="relative py-16 bg-gray-300">
@@ -81,14 +84,8 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-                    <div className="py-6 px-3 mt-32 sm:mt-0">
-                      <button
-                        className="login-btn bg-transparent hover:bg-gray-100 hover:bg-opacity-50 text-gray-500 font-semibold px-2 border-double border-4  border-white rounded shadow"
-                        type="button"
-                        style={{ transition: "all .15s ease" }}
-                      >
-                        Find a host
-                      </button>
+                    <div className="py-8 px-3 mt-32 sm:mt-0">
+                      <Search />
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
@@ -112,11 +109,18 @@ export default function Profile() {
                     </div>
                   </div>
                 </div>
-                <div className="event-card">
-                        <div>
-                          <EventCard />
-                        </div>
-                      </div>
+                <div className="main-results flex justify-between">
+                  <div className="event-card">
+                    <div>
+                      <EventCard />
+                    </div>
+                  </div>
+                  <div className="search-results">
+                    <div>
+                      <SearchResultsCard />
+                    </div>
+                  </div>
+                </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
                     {sessionUser.firstName} {sessionUser.lastName}

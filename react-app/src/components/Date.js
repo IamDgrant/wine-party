@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import TimeUntilEvent from "../components/TimeLeft";
 
 const DateTime = () => {
   const [date, setDate] = useState(new Date());
+  const sessionEvent = useSelector((state) => state.event.event.length > 0) 
 
   useEffect(() => {
     setDate(new Date());
@@ -21,8 +24,15 @@ const DateTime = () => {
 
   return (
     <>
-      <div>
-        <p>{dayDate[0] + "," + dayDate[1]}</p>
+      <div className="main-date-container flex">
+        {/* <div className="date-countdown-container"> */}
+          <div className="today-date">
+            {dayDate[0]}, {dayDate[1]}
+          </div>
+          <div className="event-date text-base">
+           {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null}
+          </div>
+        {/* </div> */}
       </div>
     </>
   );

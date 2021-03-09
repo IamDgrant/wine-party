@@ -1,4 +1,13 @@
 .events {
     display: flex;
-    
+
+}
+
+.main-event-date {
+    margin-left: 1vh;
+}
+
+.event-list {
+    display: flex;
+    justify-content: flex-start;
 }
