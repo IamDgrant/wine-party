@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EventCard from "../components/EventCard";
 import Search from "../components/Search";
+import ProfileModal from "../components/auth/modals/ProfileModal"
 import SearchResultsCard from "../components/SearchResultsCard";
-import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg"
+import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg";
 // import { profileImage } from "../store/session";
 
 import ProfileNavbar from "../components/ProfileNavbar";
@@ -32,14 +33,10 @@ export default function Profile() {
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
-              backgroundImage:
-                `url(${party})`,
+              backgroundImage: `url(${party})`,
             }}
           >
-            <span
-              id="blackOverlay"
-              className="w-full h-full absolute"
-            ></span>
+            <span id="blackOverlay" className="w-full h-full absolute"></span>
           </div>
           <div
             className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
@@ -68,19 +65,22 @@ export default function Profile() {
                 <div className="flex flex-wrap justify-center">
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
-                      {/* {sessionUser.profileImage != null ? (
-                        <img
-                          src={sessionUser.profileImage}
-                          alt="UserPhoto"
-                          className="profile_pic"
-                        ></img>
-                      ) : (
-                        <img
-                          src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                          alt="Avatar"
-                          className="profile_pic"
-                        ></img>
-                      )} */}
+                      <ProfileModal />
+                      {/* <button className="profile-update-btn">
+                        {sessionUser.profileImage != null ? (
+                          <img
+                            src={sessionUser.profileImage}
+                            alt="UserPhoto"
+                            className="profile_pic"
+                          ></img>
+                        ) : (
+                          <img
+                            src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                            alt="Avatar"
+                            className="profile_pic"
+                          ></img>
+                        )}
+                      </button> */}
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">

@@ -1,4 +1,4 @@
-import boto3    
+import boto3
 import botocore
 from .config import S3_KEY, S3_SECRET, S3_BUCKET, S3_LOCATION
 
@@ -10,9 +10,10 @@ s3 = boto3.client(
 )
 
 
-def upload_file_to_s3(file, bucket_name=S3_BUCKET, acl="public-read"):
-    print(bucket_name, S3_KEY, S3_SECRET)
+def upload_file_to_s3(file, bucket_name, acl="public-read"):
+
     try:
+
         s3.upload_fileobj(
             file,
             bucket_name,
@@ -28,4 +29,4 @@ def upload_file_to_s3(file, bucket_name=S3_BUCKET, acl="public-read"):
         print("Something Happened: ", e)
         return e
 
-    return "{}{}".format(S3_LOCATION, file.filename)
+    return f"{Config.S3_LOCATION}{file.filename}"

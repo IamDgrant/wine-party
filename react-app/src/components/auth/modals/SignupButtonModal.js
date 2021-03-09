@@ -18,7 +18,6 @@ const SignupModal = () => {
   const dispatch = useDispatch();
 
   const onSignup = async (e) => {
-    console.log("TESTING!!!!!!!!!!!!!!!!!!");
     e.preventDefault();
     let newErrors = [];
     if (password === repeatPassword) {
@@ -111,7 +110,7 @@ const SignupModal = () => {
                       placeholder="First Name"
                       onChange={updateFirstName}
                       value={firstName}
-                    />
+                      ></input>
                     <input
                       className="form_input"
                       type="text"
@@ -119,7 +118,7 @@ const SignupModal = () => {
                       placeholder="Last Name"
                       onChange={updateLastName}
                       value={lastName}
-                    />
+                      ></input>
                     <input
                       className="form_input"
                       type="text"
@@ -127,7 +126,7 @@ const SignupModal = () => {
                       placeholder="City"
                       onChange={updateCity}
                       value={city}
-                    />
+                      ></input>
                     <select
                       className="form_input"
                       name="state"
@@ -193,7 +192,7 @@ const SignupModal = () => {
                       placeholder="Email"
                       onChange={updateEmail}
                       value={email}
-                    />
+                      ></input>
                     <input
                       className="form_input"
                       type="password"
@@ -201,7 +200,7 @@ const SignupModal = () => {
                       placeholder="Password"
                       onChange={updatePassword}
                       value={password}
-                    />
+                      ></input>
                     <input
                       className="form_input"
                       type="password"
@@ -210,7 +209,7 @@ const SignupModal = () => {
                       onChange={updateRepeatPassword}
                       value={repeatPassword}
                       required={true}
-                    />
+                      ></input>
                     <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
                       <div className="px-1">
                         <button

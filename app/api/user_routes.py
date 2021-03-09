@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, Flask, render_template, request, redirect
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
-from ..helpers import *
+from ..aws_s3 import *
 from app.models import User, db
 
 user_routes = Blueprint('users', __name__)

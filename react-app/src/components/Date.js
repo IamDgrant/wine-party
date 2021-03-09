@@ -24,9 +24,9 @@ const DateTime = () => {
 
   return (
     <>
-      <div className="main-date-container flex">
+      <div className="main-date-container flex items-center">
         {/* <div className="date-countdown-container"> */}
-          <div className="today-date">
+          <div className="today-date text-2xl">
             {dayDate[0]}, {dayDate[1]}
           </div>
           <div className="event-date text-base">

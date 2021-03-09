@@ -11,7 +11,6 @@ const removeUser = () => ({
 });
 
 export const createUser = (user) => async (dispatch) => {
-  console.log("TESTING!!!!!!!!!!!!!!!!!!");
   const res = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
@@ -59,19 +58,31 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
-export const profileImage = (file) => async (dispatch) => {
-  let imageUrl;
-  const formData = new FormData();
-  formData.append("user_file", file);
-  const res = await fetch("/api/users/update/profile", {
-    method: "POST",
-    body: formData,
-  });
-  if (res.ok) {
-    imageUrl = await res.json();
-    return imageUrl;
-  }
+export const uploadFile = (fileForm) => async (dispatch) => {
+  const {
+    user_id,
+    firstName,
+    lastName,
+    city,
+    state,
+    email,
+    file, // this is the file for uploading
+  } = fileForm;
 };
+
+// export const profileImage = (file) => async (dispatch) => {
+//   let imageUrl;
+//   const formData = new FormData();
+//   formData.append("user_file", file);
+//   const res = await fetch("/api/users/update/profile", {
+//     method: "POST",
+//     body: formData,
+//   });
+//   if (res.ok) {
+//     imageUrl = await res.json();
+//     return imageUrl;
+//   }
+// };
 
 const initialState = { user: null };
 
