@@ -216,7 +216,7 @@ const ProfileModal = () => {
                     </div>
                     <div>
                       <button
-                        className="bg-transparent hover:bg-grey-100 hover:text-green-200 px-4 border border-white hover:border-transparent rounded"
+                        className="bg-transparent hover:text-green-200 px-4 border border-white hover:border-transparent rounded"
                         type="submit"
                         style={{ transition: "all .15s ease" }}
                         onClick={() => {

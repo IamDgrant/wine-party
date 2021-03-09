@@ -11,7 +11,7 @@
   user-select: none;
 }
 
-.container input {
+.checkbox {
   position: absolute;
   opacity: 0;
   cursor: pointer;

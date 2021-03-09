@@ -12,18 +12,17 @@ import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg";
 // import ProfileFooter from "../components/ProfileFooter";
 
 export default function Profile() {
+  const todaysDate = new Date();
   const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
 
-  const todaysDate = new Date();
-  const futureEvents = sessionEvent.map((event) => {
-    // console.log(event.eventDate);
-    // console.log("NEW DATE", new Date(event.eventDate))
-    return new Date(event.eventDate) > todaysDate ? event : null;
+  const difference = +new Date(sessionEvent) - +new Date();
+
+  const futureEvents = sessionEvent.filter((events) => {
+    return new Date(events.eventDate) > todaysDate;
   });
 
-  
-  console.log(futureEvents.length);
+  console.log(futureEvents);
 
   // const UpcomingEvents = () => {
   //   if (sessionEvent.eventDate <= todaysDate) {

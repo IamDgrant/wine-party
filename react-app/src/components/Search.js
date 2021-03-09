@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { seeHost } from "../store/host";
 import { Button, Input, message } from "antd";
 import "./styling/checkboxStyle.css";
-import "./styling/searchBar.css"
+import "./styling/searchBar.css";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Search = () => {
       (res) => {
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
-        } 
+        }
         // else {
         //   message.success(`User ${search} added to Event!`);
         // }
@@ -52,6 +52,9 @@ const Search = () => {
           ></input>
         </div> */}
         <input
+
+          className="searchInput w-full border-2"
+          placeholder="Search here..."
           value={search}
           type="text"
           onChange={(e) => setSearch(e.target.value)}
@@ -59,6 +62,7 @@ const Search = () => {
         <label class="container">
           Sommelier
           <input
+            className="checkbox"
             type="checkbox"
             name="a"
             checked={sommelier}
@@ -69,6 +73,7 @@ const Search = () => {
         <label class="container">
           Mixologist
           <input
+            className="checkbox"
             type="checkbox"
             name="b"
             checked={mixologist}
@@ -78,6 +83,9 @@ const Search = () => {
           <span class="checkmark"></span>
         </label>
         {/* <Checkbox /> */}
+        <button className="reserve-btn" onClick={onSearch}>
+          Find Host
+        </button>
       </form>
       {/* <label class="container">
         Sommelier
@@ -89,12 +97,6 @@ const Search = () => {
         <input type="checkbox" />
         <span class="checkmark"></span>
       </label> */}
-      <button
-        className="reserve-btn"
-        onClick={onSearch}
-      >
-        Find Host
-      </button>
     </div>
   );
 };

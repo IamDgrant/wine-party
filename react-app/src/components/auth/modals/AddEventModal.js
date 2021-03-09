@@ -55,7 +55,7 @@ const EventFormModal = ({ userId }) => {
     <>
       {/* <div></div> */}
       <button
-        className="signup-btn bg-transparent hover:bg-gray-100 hover:bg-opacity-50 text-gray-400 font-semibold px-2 border-double border-4  border-gray-400 rounded shadow flex flex-end"
+        className="bg-transparent hover:text-green-200 px-4 border-double border-4 border-gray-400 rounded"
         type="button"
         style={{ transition: "all .15s ease" }}
         onClick={() => setShowModal(true)}
