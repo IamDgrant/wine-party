@@ -11,7 +11,6 @@ const Event = ({ id }) => {
   const sessionEvent = useSelector((state) => state.event.event);
   const [data, setData] = useState();
 
-  //   console.log(sessionEvent);
 
   useEffect(() => {
     if (!id) dispatch(seeEvent());
@@ -21,12 +20,13 @@ const Event = ({ id }) => {
     // }
   }, [id]);
 
+
+
   return (
     <>
       <div className="event_size">
         {sessionEvent &&
           sessionEvent.map((event) => (
-            console.log(event.eventDate),
             <div key={event.id} className="events">
               <div className="event-name">
                 <p className="event_title">{event.eventName}</p>

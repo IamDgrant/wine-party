@@ -2,17 +2,37 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EventCard from "../components/EventCard";
 import Search from "../components/Search";
-import ProfileModal from "../components/auth/modals/ProfileModal"
+import ProfileModal from "../components/auth/modals/ProfileModal";
 import SearchResultsCard from "../components/SearchResultsCard";
+// import { eventCount } from "../components/Event"
 import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg";
 // import { profileImage } from "../store/session";
 
-import ProfileNavbar from "../components/ProfileNavbar";
-import ProfileFooter from "../components/ProfileFooter";
+// import ProfileNavbar from "../components/ProfileNavbar";
+// import ProfileFooter from "../components/ProfileFooter";
 
 export default function Profile() {
   const sessionUser = useSelector((state) => state.session.user);
+  const sessionEvent = useSelector((state) => state.event.event);
 
+  const todaysDate = new Date();
+  const futureEvents = sessionEvent.map((event) => {
+    // console.log(event.eventDate);
+    // console.log("NEW DATE", new Date(event.eventDate))
+    return new Date(event.eventDate) > todaysDate ? event : null;
+  });
+
+  
+  console.log(futureEvents.length);
+
+  // const UpcomingEvents = () => {
+  //   if (sessionEvent.eventDate <= todaysDate) {
+
+  //   }
+
+  // }
+
+  // console.log(todaysDate);
   // const [photoFile, setPhotoFile] = useState();
   // const [photoUrl, setPhotoUrl] = useState(
   //   sessionUser ? sessionUser.photoUrl : ""
@@ -24,6 +44,14 @@ export default function Profile() {
   //     setPhotoUrl(res.url);
   //   });
   // }
+
+  // const eventCount = () => {
+  //   sessionEvent.map((event) => {
+  //     return event.length()
+  //   })
+  // }
+
+  // const [numEvents, setNumEvents] = useState(eventCount() ? eventCount() : "")
 
   return (
     <>
@@ -58,8 +86,8 @@ export default function Profile() {
             </svg>
           </div>
         </section>
-        <section className="relative py-16 bg-gray-300">
-          <div className="container mx-auto px-4">
+        <section className="relative py-16 bg-black">
+          <div className="container mx-auto px-4 bg-black">
             <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
               <div className="px-6">
                 <div className="flex flex-wrap justify-center">
@@ -92,7 +120,7 @@ export default function Profile() {
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
                       <div className="mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          2
+                          {futureEvents.length}
                         </span>
                         <span className="text-sm text-gray-500">
                           Upcoming Events

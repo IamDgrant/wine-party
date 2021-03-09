@@ -41,6 +41,7 @@ const EventForm = ({ userId }) => {
   };
   const updateEventDate = (e) => {
     setEventDate(e.target.value);
+    // new Date(setEventDate(e.target.value));
   };
 
   const updateCity = (e) => {

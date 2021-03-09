@@ -15,7 +15,7 @@ const SearchResultCard = () => {
           <div class="font-bold text-xl mb-2">Host Results</div>
           <Host />
         </div>
-        <div></div>
+        {/* <div></div> */}
       </div>
     </>
   );

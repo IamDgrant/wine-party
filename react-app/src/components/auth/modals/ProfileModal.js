@@ -7,7 +7,7 @@ import placeholderPic from "../../../images/empty-profile-picture-png.png";
 import { uploadFile } from "../../../store/session";
 
 const ProfileModal = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user ? state.session.user : null);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -88,7 +88,7 @@ const ProfileModal = () => {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none max-w-full"
             // onClick={() => setShowModal(false)}
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -206,7 +206,7 @@ const ProfileModal = () => {
                   <div className="flex items-center justify-end p-4 border-t border-solid border-white rounded-b">
                     <div className="px-1">
                       <button
-                        className="bg-transparent hover:bg-grey-200 hover:text-grey px-4 border border-white hover:border-white rounded form_title"
+                        className="bg-transparent hover:text-red-200 px-4 border border-white hover:border-white rounded form_title"
                         type="button"
                         style={{ transition: "all .15s ease" }}
                         onClick={() => setShowModal(false)}
@@ -216,7 +216,7 @@ const ProfileModal = () => {
                     </div>
                     <div>
                       <button
-                        className="bg-transparent hover:bg-yellow-100 hover:text-white px-4 border border-white hover:border-transparent rounded form_title"
+                        className="bg-transparent hover:bg-grey-100 hover:text-green-200 px-4 border border-white hover:border-transparent rounded"
                         type="submit"
                         style={{ transition: "all .15s ease" }}
                         onClick={() => {
