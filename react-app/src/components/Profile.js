@@ -16,10 +16,12 @@ export default function Profile() {
   const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
 
-  const difference = +new Date(sessionEvent) - +new Date();
-
   const futureEvents = sessionEvent.filter((events) => {
     return new Date(events.eventDate) > todaysDate;
+  });
+
+  const pastEvents = sessionEvent.filter((events) => {
+    return new Date(events.eventDate) < todaysDate;
   });
 
   console.log(futureEvents);
@@ -127,7 +129,7 @@ export default function Profile() {
                       </div>
                       <div className="mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                          5
+                          {pastEvents.length}
                         </span>
                         <span className="text-sm text-gray-500">
                           Previous Events
