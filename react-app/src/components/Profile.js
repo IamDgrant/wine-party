@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import EventCard from "../components/EventCard";
-import Search from "../components/Search";
+import SearchHost from "./SearchHost";
 import ProfileModal from "../components/auth/modals/ProfileModal";
 import SearchResultsCard from "../components/SearchResultsCard";
 import { photoUpload} from "../store/session"
@@ -43,7 +43,7 @@ export default function Profile() {
   return (
     <>
       {/* <ProfileNavbar transparent /> */}
-      <main className="profile-page">
+      <main className="profile-page ">
         <section className="relative block" style={{ height: "500px" }}>
           <div
             className="absolute top-0 w-full h-full bg-center bg-cover"
@@ -81,26 +81,11 @@ export default function Profile() {
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
                       <ProfileModal />
-                      {/* <button className="profile-update-btn">
-                        {sessionUser.profileImage != null ? (
-                          <img
-                            src={sessionUser.profileImage}
-                            alt="UserPhoto"
-                            className="profile_pic"
-                          ></img>
-                        ) : (
-                          <img
-                            src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                            alt="Avatar"
-                            className="profile_pic"
-                          ></img>
-                        )}
-                      </button> */}
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
                     <div className="py-8 px-3 mt-32 sm:mt-0">
-                      <Search />
+                      <SearchHost />
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">

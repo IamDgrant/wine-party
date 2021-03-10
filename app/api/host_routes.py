@@ -29,7 +29,7 @@ def hosts_search():
 
         if search == "":
             if sommelier == True and mixologist == True:
-                data = Host.query.filter((Host.sommelier == True) & (Host.mixologist == True)).order_by(Host.state).order_by(Host.lastName).all()
+                data = Host.query.filter((Host.sommelier == True) & (Host.mixologist == True)).order_by(Host.state).order_by(Host.last_name).all()
             elif sommelier == True and mixologist == False:
                 data = Host.query.filter((Host.sommelier == True)).all()
             elif mixologist == True and sommelier == False:
@@ -38,13 +38,13 @@ def hosts_search():
                 data = Host.query.all()
         else: 
             if sommelier == True and mixologist == True:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True) & (Host.mixologist == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True) & (Host.mixologist == True)).all()
             elif sommelier == True and mixologist == False:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True)).all()
             elif mixologist == True and sommelier == False:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
             else:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
         
         return {"hosts": [host.to_dict() for host in data]}
 

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import DateTime from "../components/Date";
 // import DropdownRender from "../components/auth/modals/DropDownModal";
 import EventForm from "../components/auth/EventForm";
-import Search from "../components/Search"
+import SearchHost from "./SearchHost"
 import Host from "../components/Host"
 
 import "./styling/homeCard.css";
@@ -27,7 +27,7 @@ const HomeCard = () => {
             <EventForm />
           </div>
           <div>
-            <Search />
+            <SearchHost />
           </div>
           <div>
             <Host />

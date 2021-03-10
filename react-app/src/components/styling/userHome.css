@@ -31,12 +31,12 @@ body {
 
 .date-bar {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   font-family: 'Bebas Neue', cursive;
-  font-size: 5vh;
+  /* font-size: 5vh; */
   font-style: italic;
   color: white;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 

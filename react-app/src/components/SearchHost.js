@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Host from "../components/Host"
 import { seeHost } from "../store/host";
 import { Button, Input, message } from "antd";
 import "./styling/checkboxStyle.css";
@@ -52,7 +53,6 @@ const Search = () => {
           ></input>
         </div> */}
         <input
-
           className="searchInput w-full border-2"
           placeholder="Search here..."
           value={search}
@@ -84,7 +84,7 @@ const Search = () => {
         </label>
         {/* <Checkbox /> */}
         <button className="reserve-btn" onClick={onSearch}>
-          Find Host
+          <Host />
         </button>
       </form>
       {/* <label className="container">

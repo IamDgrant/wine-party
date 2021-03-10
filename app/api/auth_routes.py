@@ -42,14 +42,12 @@ def login():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
-        # print('IN!!!!!!!!!!!!!!!!!!!', user.to_dict())
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/logout', methods=['DELETE'])
 def logout():
-    # print("LOGGED OUT!!!!!")
     """
     Logs a user out
     """
@@ -62,10 +60,9 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("IS IT WORKING!!!!?????")
         user = User(
-            firstName=form.data['firstName'],
-            lastName=form.data['lastName'],
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
             city=form.data['city'],
             state=form.data['state'],
             email=form.data['email'],

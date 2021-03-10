@@ -8,47 +8,50 @@ fake = Faker()
 
 
 def seed_hosts():
-    
 
     demoHost = Host(
-        firstName='demo',
-        lastName='user',
+        first_name='demo',
+        last_name='user',
+        # address='address',
         city="city",
         state="state",
+        postal_code='postal_code',
         about="about me",
         sommelier=False,
         mixologist=False,
         email='demo@gmail.com',
-        phoneNumber="1234567890",
+        phone_number="1234567890",
         # hashed_password=generate_password_hash('password'),
     )
 
-
-    # demo = Host(firstName='Sarah', lastName='Smith', city='Atlanta', state='GA', about='I have been a Mixologist for 17 years and I love Bourbon', sommelier=False, mixologist=True, email='Sarah@smith.com', phoneNumber='2125551212',
+    # demo = Host(first_name='Sarah', last_name='Smith', city='Atlanta', state='GA', about='I have been a Mixologist for 17 years and I love Bourbon', sommelier=False, mixologist=True, email='Sarah@smith.com', phoneNumber='2125551212',
     #             )
-    
+
     name_list = fake.name().split()
     first_name = name_list[0]
     last_name = name_list[1]
-    
-    phone_list = fake.phone_number().replace("(", "").replace(")", "").replace("-", "").replace(".", "").replace("+", "")
-    
+
+    phone_list = fake.phone_number().replace("(", "").replace(
+        ")", "").replace("-", "").replace(".", "").replace("+", "")
+
     p = phone_list[0:10]
-        
-    
-    for a in range(10):
-         h = Host(
-             firstName=first_name,
-             lastName=last_name,
-             city=fake.city(),
-             state='NV',
-             about=fake.text(),
-             sommelier=fake.pybool(),
-             mixologist=fake.pybool(),
-             email=fake.email(),
-             phoneNumber=p,
+
+    for _ in range(50):
+        h = Host(
+            first_name=first_name,
+            last_name=last_name,
+            #  address=fake.street_address(),
+            city=fake.city(),
+            state=fake.state(),
+            postal_code=fake.postcode(),
+            about=fake.text(),
+            rating=fake.random_digit_not_null(),
+            sommelier=fake.pybool(),
+            mixologist=fake.pybool(),
+            email=fake.email(),
+            phone_number=p,
             # password=generate_password_hash('password'),
-         )
+        )
 
     db.session.add(h)
     db.session.commit()
