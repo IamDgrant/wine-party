@@ -22,7 +22,7 @@ const Event = ({ id }) => {
   
   const todaysDate = new Date();
   const futureEvents = sessionEvent.filter((events) => {
-    return new Date(events.eventDate) > todaysDate;
+    return new Date(events.event_date) > todaysDate;
   });
 
 
@@ -34,11 +34,11 @@ const Event = ({ id }) => {
           futureEvents.map((futureEvent) => (
             <div key={futureEvent.id} className="events">
               <div className="event-name">
-                <p className="event_title">{futureEvent.eventName}</p>
+                <p className="event_title">{futureEvent.event_name}</p>
               </div>
               <div className="main-event-date">
                 <div className="event-list">
-                  <div className="event_date">{futureEvent.eventDate.slice(0, 16)}</div>
+                  <div className="event_date">{futureEvent.event_date.slice(0, 16)}</div>
                 </div>
               </div>
               {/* <Info event={event}></Info> */}

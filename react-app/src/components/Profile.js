@@ -22,11 +22,11 @@ export default function Profile() {
   );
 
   const futureEvents = sessionEvent.filter((events) => {
-    return new Date(events.eventDate) > todaysDate;
+    return new Date(events.event_date) > todaysDate;
   });
 
   const pastEvents = sessionEvent.filter((events) => {
-    return new Date(events.eventDate) < todaysDate;
+    return new Date(events.event_date) < todaysDate;
   });
 
   const handleUpload = (e) => {
@@ -123,7 +123,7 @@ export default function Profile() {
                 </div>
                 <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-                    {sessionUser.firstName} {sessionUser.lastName}
+                    {sessionUser.first_name} {sessionUser.last_name}
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}

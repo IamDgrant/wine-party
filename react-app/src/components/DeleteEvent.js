@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteEvent, seeEvent } from "../store/event";
+import { useDispatch, useSelector } from "react-redux";
 
 const eventUpdate = ({ event }) => {
-    import { useDispatch, useSelector } from "react-redux";
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   const eventId = event.id;
-  const userId = event.userId;
+  const user_id = event.user_id;
 
   const deleteOneTask = async () => {
     await dispatch(deleteEvent(eventId));

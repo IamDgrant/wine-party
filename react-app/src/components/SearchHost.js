@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Host from "../components/Host"
+import ShowHostModal from "../components/auth/modals/ShowHostModal"
 import { seeHost } from "../store/host";
-import { Button, Input, message } from "antd";
+import { message } from "antd";
 import "./styling/checkboxStyle.css";
 import "./styling/searchBar.css";
 
-const Search = () => {
+const Search = () => {  
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   // const [searchTerm, setSearchTerm] = useState("");
@@ -39,19 +39,6 @@ const Search = () => {
   return (
     <div className="search_bar">
       <form>
-        {/* <div>
-          <h3 className="form_text">Ready to add your host?</h3>
-          <p className="p-text">If not continue and reserve.</p>
-          <Search />
-          <input
-            className="form_input"
-            type="text"
-            name="search"
-            placeholder="Find a host..."
-            onChange={UpdateSearch}
-            value={searchTerm}
-          ></input>
-        </div> */}
         <input
           className="searchInput w-full border-2"
           placeholder="Search here..."
@@ -83,9 +70,9 @@ const Search = () => {
           <span className="checkmark"></span>
         </label>
         {/* <Checkbox /> */}
-        <button className="reserve-btn" onClick={onSearch}>
-          <Host />
-        </button>
+        {/* <button className="reserve-btn" onClick={onSearch}> */}
+          <ShowHostModal />
+        {/* </button> */}
       </form>
       {/* <label className="container">
         Sommelier

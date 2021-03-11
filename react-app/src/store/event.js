@@ -17,7 +17,7 @@ const removeEvent = (eventId) => ({
   payload: eventId,
 });
 
-export const createEvent = ({ eventName, eventDate, city, state }) => async (
+export const createEvent = ({ event_name, event_date, city, state }) => async (
   dispatch
 ) => {
   const res = await fetch("/api/events", {
@@ -26,8 +26,8 @@ export const createEvent = ({ eventName, eventDate, city, state }) => async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      eventName,
-      eventDate,
+      event_name,
+      event_date,
       city,
       state,
     }),

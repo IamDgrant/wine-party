@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const TimeUntilEvent = () => {
   
   const sessionEventDate = useSelector((state) => (
-  (state.event.event.length > 0) ? state.event.event[0].eventDate : null
+  (state.event.event.length > 0) ? state.event.event[0].event_date : null
   ));
 
   const calculateTimeLeft = () => {

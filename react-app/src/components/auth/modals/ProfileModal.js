@@ -48,21 +48,21 @@ const ProfileModal = () => {
     setShowModal(false);
   };
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
-  const updateCity = (e) => {
-    setCity(e.target.value);
-  };
-  const updateState = (e) => {
-    setState(e.target.value);
-  };
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+  // const updateFirstName = (e) => {
+  //   setFirstName(e.target.value);
+  // };
+  // const updateLastName = (e) => {
+  //   setLastName(e.target.value);
+  // };
+  // const updateCity = (e) => {
+  //   setCity(e.target.value);
+  // };
+  // const updateState = (e) => {
+  //   setState(e.target.value);
+  // };
+  // const updateEmail = (e) => {
+  //   setEmail(e.target.value);
+  // };
 
   return (
     <>
@@ -74,9 +74,9 @@ const ProfileModal = () => {
             style={{ transition: "all .15s ease" }}
             onClick={() => setShowModal(true)}
           >
-            {sessionUser.profileImage != null ? (
+            {sessionUser.profile_image != null ? (
               <img
-                src={sessionUser.profileImage}
+                src={sessionUser.profile_image}
                 alt="UserPhoto"
                 className="profile_pic shadow rounded-full max-w-full h-auto align-middle border-none"
               ></img>
@@ -89,7 +89,7 @@ const ProfileModal = () => {
             )}
           </button>
 
-          {/* <img src={sessionUser.profileImage} alt="UserPhoto" className="profile_pic shadow rounded-full max-w-full h-auto align-middle border-none" /> */}
+          {/* <img src={sessionUser.profile_image} alt="UserPhoto" className="profile_pic shadow rounded-full max-w-full h-auto align-middle border-none" /> */}
         </div>
       </div>
       {showModal ? (
@@ -121,7 +121,7 @@ const ProfileModal = () => {
                       name="user_file"
                       onChange={handleUpload}
                     ></input>
-                    <label>Upload Photo</label>
+                    {/* <label>Upload Photo</label> */}
                     {/* <button type="submit"></button> */}
                   </form>
                   {/*footer*/}

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: da286a42d229
+Revision ID: 1f34c08e1e24
 Revises: 
-Create Date: 2021-03-09 23:01:13.644027
+Create Date: 2021-03-10 11:35:00.191133
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'da286a42d229'
+revision = '1f34c08e1e24'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,18 +33,18 @@ def upgrade():
     sa.Column('cert_image', sa.String(), nullable=True),
     sa.Column('email', sa.String(length=100), nullable=False),
     sa.Column('phone_number', sa.String(), nullable=True),
-    sa.Column('createdAt', sa.DateTime(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('phone_number')
     )
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('userId', sa.Integer(), nullable=False),
-    sa.Column('eventId', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('event_id', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Integer(), nullable=False),
     sa.Column('comment', sa.String(length=300), nullable=True),
-    sa.Column('createdAt', sa.DateTime(), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',

@@ -6,8 +6,8 @@ import { createUser } from "../../../store/session";
 
 const SignupModal = () => {
   const [showModal, setShowModal] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [email, setEmail] = useState("");
@@ -23,8 +23,8 @@ const SignupModal = () => {
     if (password === repeatPassword) {
       dispatch(
         createUser({
-          firstName,
-          lastName,
+          first_name,
+          last_name,
           city,
           state,
           email,
@@ -109,7 +109,7 @@ const SignupModal = () => {
                       name="firstName"
                       placeholder="First Name"
                       onChange={updateFirstName}
-                      value={firstName}
+                      value={first_name}
                     ></input>
                     <input
                       className="form_input"
@@ -117,7 +117,7 @@ const SignupModal = () => {
                       name="lastName"
                       placeholder="Last Name"
                       onChange={updateLastName}
-                      value={lastName}
+                      value={last_name}
                     ></input>
                     <input
                       className="form_input"
@@ -229,9 +229,6 @@ const SignupModal = () => {
                           className="bg-transparent hover:bg-yellow-100 hover:text-white px-4 border border-white hover:border-transparent rounded form_title"
                           type="submit"
                           style={{ transition: "all .15s ease" }}
-                          // onClick={() => {
-
-                          // }}
                         >
                           Sign up
                         </button>

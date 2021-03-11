@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeHost } from "../store/host";
-import ShowHostCard from "./auth/modals/ShowHostCardModal";
+import ShowHostCard from "./auth/modals/HostCardModal";
 
 const Host = ({ id }) => {
   const dispatch = useDispatch();

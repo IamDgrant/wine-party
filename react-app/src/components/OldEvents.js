@@ -14,7 +14,7 @@ const prevEvents = ({ id }) => {
 
   const todaysDate = new Date();
   const pastEvents = sessionEvent.filter((events) => {
-    return new Date(events.eventDate) < todaysDate;
+    return new Date(events.event_date) < todaysDate;
   });
 
   return (
@@ -24,12 +24,12 @@ const prevEvents = ({ id }) => {
           pastEvents.map((pastEvent) => (
             <div key={pastEvent.id} className="events">
               <div className="event-name">
-                <p className="event_title">{pastEvent.eventName}</p>
+                <p className="event_title">{pastEvent.event_name}</p>
               </div>
               <div className="main-event-date">
                 <div className="event-list">
                   <div className="event_date">
-                    {pastEvent.eventDate.slice(0, 16)}
+                    {pastEvent.event_date.slice(0, 16)}
                   </div>
                 </div>
               </div>

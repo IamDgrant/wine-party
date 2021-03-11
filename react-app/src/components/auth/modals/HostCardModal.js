@@ -1,7 +1,7 @@
 import React from "react";
 
 const ShowHostCard = ({ activeHostIndex, sessionHost, setActiveHostIndex }) => {
-  let activeHost = sessionHost[activeHostIndex];
+  // const activeHost = sessionHost[activeHostIndex];
 
   const nextHostHandler = () => {
     if (activeHostIndex < sessionHost.length - 1) {
@@ -19,9 +19,9 @@ const ShowHostCard = ({ activeHostIndex, sessionHost, setActiveHostIndex }) => {
 
   return (
     <div className="main-host-profile-container flex">
-      <div className="profile-image">{activeHostIndex.profileImage}</div>
+      <div className="profile-image">{activeHostIndex.profile_image}</div>
       <div className="host-name-container">
-        {activeHostIndex.firstName} {activeHostIndex.lastName}
+        {activeHostIndex.first_name} {activeHostIndex.last_name}
       </div>
       <div className="certs-container"></div>
       <div className="rating-container"></div>
@@ -32,7 +32,7 @@ const ShowHostCard = ({ activeHostIndex, sessionHost, setActiveHostIndex }) => {
         onClick={previousHostHandler}
       ></div>
       <div className="left-btn">
-        <button type="button" onClick={previousHostHandler}></button>
+        <button type="button" onClick={nextHostHandler}></button>
       </div>
     </div>
   );

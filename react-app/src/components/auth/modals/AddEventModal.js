@@ -5,13 +5,13 @@ import { message } from "antd";
 import { createEvent } from "../../../store/event";
 // import Search from "../../components/Search";
 
-const EventFormModal = ({ userId }) => {
+const EventFormModal = ({ user_id }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   const [showModal, setShowModal] = useState(false);
-  const [eventName, setEventName] = useState("");
-  const [eventDate, setEventDate] = useState("");
+  const [event_name, setEventName] = useState("");
+  const [event_date, setEventDate] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
 
@@ -21,11 +21,11 @@ const EventFormModal = ({ userId }) => {
 
   const onSubmission = async (e) => {
     e.preventDefault();
-    if (!eventName) {
+    if (!event_name) {
       error();
       return;
     }
-    dispatch(createEvent({ userId, eventName, eventDate, city, state })).then(
+    dispatch(createEvent({ user_id, event_name, event_date, city, state })).then(
       () => {
         setEventName("");
         setEventDate("");
@@ -71,20 +71,20 @@ const EventFormModal = ({ userId }) => {
                   <input
                     className="form_input"
                     type="date"
-                    name="eventDate"
+                    name="event_date"
                     placeholder="Event Date"
                     onChange={updateEventDate}
-                    value={eventDate}
+                    value={event_date}
                   ></input>
                 </div>
                 <div>
                   <input
                     className="form_input"
                     type="text"
-                    name="eventName"
+                    name="event_name"
                     placeholder="Event Name"
                     onChange={updateEventName}
-                    value={eventName}
+                    value={event_name}
                   ></input>
                 </div>
                 <div>

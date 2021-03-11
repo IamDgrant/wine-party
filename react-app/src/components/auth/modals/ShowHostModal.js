@@ -1,14 +1,13 @@
 import React, { useState } from "react";
+import HostCardModal from "../modals/HostCardModal";
 
 const ShowHost = () => {
   const [showModal, setShowModal] = useState(false);
 
-  
-
   return (
     <>
       <button
-        className="login-btn bg-transparent hover:bg-gray-100 hover:bg-opacity-50 text-white font-semibold px-2 border-double border-4  border-white rounded shadow"
+        className="bg-transparent hover:text-green-200 px-4 border-double border-4 border-gray-400 rounded"
         type="button"
         style={{ transition: "all .15s ease" }}
         onClick={() => setShowModal(true)}
@@ -17,7 +16,9 @@ const ShowHost = () => {
       </button>
       {showModal ? (
         <>
-       
+          <div className="host-card-modal">
+            <HostCardModal />
+          </div>
         </>
       ) : null}
     </>

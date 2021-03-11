@@ -93,7 +93,7 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { user: null });
       return newState;
     case SET_PHOTO:
-      return { ...state, user: {...state.user, profileImage: action.payload.url}}
+      return { ...state, user: {...state.user, profile_image: action.payload.url}}
     default:
       return state;
   }

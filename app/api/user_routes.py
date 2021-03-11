@@ -46,7 +46,7 @@ def update_profile():
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file)
         print("HERE!!!!!!!!!!!!", current_user.to_dict())
-        current_user.profileImage = str(output)
+        current_user.profile_image = str(output)
         db.session.add(current_user)
         db.session.commit()
         return {"url": str(output)}

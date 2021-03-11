@@ -10,7 +10,7 @@ event_routes = Blueprint('events', __name__)
 @event_routes.route('/')
 @login_required
 def events():
-    events = Event.query.filter_by(userId=current_user.id).order_by(Event.eventDate)
+    events = Event.query.filter_by(user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
 
 
@@ -35,9 +35,9 @@ def create_event():
     print("HERE I AM", current_user.to_dict())
     if form.validate_on_submit():
         event = Event(
-            userId=current_user.id,
-            eventName=form.data['eventName'],
-            eventDate=form.data['eventDate'],
+            user_id=current_user.id,
+            event_name=form.data['event_name'],
+            event_date=form.data['event_date'],
             city=form.data['city'],
             state=form.data['state'],
         )
