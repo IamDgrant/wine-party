@@ -8,7 +8,7 @@ host_routes = Blueprint('hosts', __name__)
 
 
 @host_routes.route('/')
-@login_required
+# @login_required
 def hosts():
     hosts = Host.query.all()
     return {"hosts": [host.to_dict() for host in hosts]}
@@ -50,9 +50,10 @@ def hosts_search():
 
 
 @ host_routes.route('/<id>')
-@ login_required
+# @ login_required
 def host(id):
     host = Host.query.get(id)
+    print(host)
     return host.to_dict()
 
 

@@ -9,21 +9,21 @@ fake = Faker()
 
 
 def seed_hosts():
-    print("SEEDING HOST!!!!!!!!!!")
-    demoHost = Host(
-        first_name='demo',
-        last_name='user',
-        # address='address',
-        city="city",
-        state="state",
-        postal_code='postal_code',
-        about="about me",
-        sommelier=False,
-        mixologist=False,
-        email='demo@gmail.com',
-        phone_number="1234567890",
-        # hashed_password=generate_password_hash('password'),
-    )
+    # print("SEEDING HOST!!!!!!!!!!")
+    # demoHost = Host(
+    #     first_name='demo',
+    #     last_name='user',
+    #     # address='address',
+    #     city="city",
+    #     state="state",
+    #     postal_code='postal_code',
+    #     about="about me",
+    #     sommelier=False,
+    #     mixologist=False,
+    #     email='demo@gmail.com',
+    #     phone_number="1234567890",
+    #     # hashed_password=generate_password_hash('password'),
+    # )
 
     # demo = Host(first_name='Sarah', last_name='Smith', city='Atlanta', state='GA', about='I have been a Mixologist for 17 years and I love Bourbon', sommelier=False, mixologist=True, email='Sarah@smith.com', phoneNumber='2125551212',
     #             )
@@ -56,7 +56,6 @@ def seed_hosts():
 
         db.session.add(h)
         db.session.commit()
-    print("AFTER FOR LOOP!!!!!!")
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and resets

@@ -22,6 +22,9 @@ def seed_events():
     )
     
     e = Event(
-        user_id=random.randomint(1, 6),
-        host_id=random.randomint(1, 6)
+        user_id=random.randint(1, 6),
+        host_id=random.randint(1, 6)
     )
+
+    db.session.add(demoEvent)
+    db.session.commit()

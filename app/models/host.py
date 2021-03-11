@@ -27,8 +27,9 @@ class Host(db.Model):
 
     def ratings(self):  
             reviews = [event.review for event in self.events]
-            
-            ratings = map(lambda r: r.rating, reviews)
+            print("REVIEWS!!!!!!!!!!!!!!!!", reviews, self.events)
+            ratings = list(map(lambda r: r.rating, reviews))
+            print("RATINGS!!!!!!!!!!!!!!!!", ratings)
             avgRating = sum(ratings) / \
                             len(ratings) if len(ratings) > 0 else "n/a"
             return avgRating
