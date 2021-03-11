@@ -9,18 +9,26 @@ fake = Faker()
 
 def seed_reviews():
 
-    demoReview = Review(
-        user_id=1,
-        event_id=1,
-        rating=random.randint(1, 5),
-        comment=fake.text(),
-    )
-    
-    
-    r = Review(
-        user_id=random.randint(1, 5),
-        host_id=random.randint(1, 102)
-    )
+    # demoReview = Review(
+    #     user_id=1,
+    #     event_id=1,
+    #     rating=random.randint(1, 5),
+    #     comment=fake.text(),
+    # )
 
-    db.session.add(demoReview)
-    db.session.commit()
+    for _ in range(10):
+        my_word_list = [
+            'whiskey', 'bourbon', 'scotch',
+            'wine', 'Sommelier', 'Mixologist',
+            'Rum', 'Vodka', 'spirits',
+            'the', 'absolute', 'best', 'host', 'event', 'party', 'very', 'fun', 'knowledgable', 'knows their stuff', 'will book again', 'not great', 'did not seem to know much', 'will not book again', 'find someone else']
+
+        r = Review(
+            user_id=random.randint(1, 10),
+            event_id=random.randint(1, 10),
+            rating=random.randint(2, 5),
+            comment=fake.sentence(ext_word_list=my_word_list),
+        )
+
+        db.session.add(r)
+        db.session.commit()

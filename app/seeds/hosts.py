@@ -33,7 +33,7 @@ def seed_hosts():
     # phone_list = fake.phone_number().replace("(", "").replace(
     #     ")", "").replace("-", "").replace(".", "").replace("+", "")
     # p = phone_list[0:10]
-    for _ in range(100):
+    for _ in range(10):
         s=fake.pybool()
         # to make sure at least one of the is true
         m=fake.pybool() if s else True
