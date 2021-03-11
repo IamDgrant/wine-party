@@ -1,6 +1,7 @@
 from .db import db
 from sqlalchemy import DateTime
 from datetime import datetime
+from .event import Event
 
 
 class Host(db.Model):
@@ -21,12 +22,13 @@ class Host(db.Model):
     phone_number = db.Column(db.String, unique=True)
     # hashedPassword = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
-    event = db.relationship("Host", foreign_keys="hosts.id", back_populates="hosts")
-    reviews = db.relationship("Review", secondary="events", back_populates="host")
+    events = db.relationship("Event", foreign_keys=Event.host_id, back_populates="host")
+    # reviews = db.relationship("Review", secondary="events", back_populates="host")
 
     def ratings(self):  
-            self.reviews
-            ratings = map(lambda r: r.rating, self.reviews)
+            reviews = [event.review for event in self.events]
+            
+            ratings = map(lambda r: r.rating, reviews)
             avgRating = sum(ratings) / \
                             len(ratings) if len(ratings) > 0 else "n/a"
             return avgRating
