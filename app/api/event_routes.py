@@ -8,7 +8,7 @@ event_routes = Blueprint('events', __name__)
 
 
 @event_routes.route('/')
-# @login_required
+@login_required
 def events():
     events = Event.query.filter_by(user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
