@@ -7,6 +7,8 @@ const TimeUntilEvent = () => {
   (state.event.event.length > 0) ? state.event.event[0].event_date : null
   ));
 
+  console.log((sessionEventDate));
+
   const calculateTimeLeft = () => {
     const difference = +new Date(sessionEventDate) - +new Date();
     let timeLeft = {};

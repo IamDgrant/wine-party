@@ -12,8 +12,8 @@ const EventFormModal = ({ user_id }) => {
   const [showModal, setShowModal] = useState(false);
   const [event_name, setEventName] = useState("");
   const [event_date, setEventDate] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [event_city, setEventCity] = useState("");
+  const [event_state, setEventState] = useState("");
 
   const error = () => {
     message.error("Please enter a event name!");
@@ -25,12 +25,12 @@ const EventFormModal = ({ user_id }) => {
       error();
       return;
     }
-    dispatch(createEvent({ user_id, event_name, event_date, city, state })).then(
+    dispatch(createEvent({ user_id, event_name, event_date, event_city, event_state })).then(
       () => {
         setEventName("");
         setEventDate("");
-        setCity("");
-        setState("");
+        setEventCity("");
+        setEventState("");
       }
     );
     setShowModal(false);
@@ -44,11 +44,11 @@ const EventFormModal = ({ user_id }) => {
   };
 
   const updateCity = (e) => {
-    setCity(e.target.value);
+    setEventCity(e.target.value);
   };
 
   const updateState = (e) => {
-    setState(e.target.value);
+    setEventState(e.target.value);
   };
 
   return (
@@ -91,20 +91,20 @@ const EventFormModal = ({ user_id }) => {
                   <input
                     className="form_input"
                     type="text"
-                    name="city"
+                    name="event_city"
                     placeholder="City"
                     onChange={updateCity}
-                    value={city}
+                    value={event_city}
                   ></input>
                 </div>
                 <div>
                   <select
                     className="form_input"
-                    name="state"
+                    name="event_state"
                     form="stateForm"
                     placeholder="State"
                     onChange={updateState}
-                    value={state}
+                    value={event_state}
                   >
                     <option value=""></option>
                     <option value="Alabama">Alabama</option>
