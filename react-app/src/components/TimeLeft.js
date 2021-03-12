@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
+import Countdown from "react-countdown";
 import { useSelector } from "react-redux";
 
 const TimeUntilEvent = () => {
-  
+  const sessionEvent = useSelector((state) => state.event.event)
   const sessionEventDate = useSelector((state) => (
-  (state.event.event.length > 0) ? state.event.event[0].event_date : null
+  (sessionEvent.length > 0) ? sessionEvent[0].event_date : null
   ));
 
-  console.log((sessionEventDate));
+  // console.log(sessionEvent);
 
   const calculateTimeLeft = () => {
     const difference = +new Date(sessionEventDate) - +new Date();
@@ -21,9 +22,9 @@ const TimeUntilEvent = () => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
     return timeLeft;
   };
+
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -34,6 +35,7 @@ const TimeUntilEvent = () => {
   });
 
   const timerComponents = [];
+  
 
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval]) {
@@ -46,9 +48,16 @@ const TimeUntilEvent = () => {
       </span>
     );
   });
+
+  // console.log((timeLeft));
+// console.log(new Date());
+// console.log(sessionEventDate);
+
+
   return (
     <div>
-      {sessionEventDate ? (timerComponents.length ? timerComponents : <span>Time's up!</span>) : ""}
+      {/* {sessionEventDate ? (timerComponents.length ? timerComponents : <span>Time's up!</span>) : ""} */}
+      {/* <Countdown date={new Date() - sessionEventDate} /> */}
     </div>
   );
 };

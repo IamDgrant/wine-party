@@ -15,6 +15,7 @@
     "http-proxy-middleware": "^1.0.5",
     "popper.js": "1.15.0",
     "react": "^17.0.0",
+    "react-countdown": "^2.3.1",
     "react-dom": "^17.0.0",
     "react-grid-layout": "^1.2.2",
     "react-modal": "^3.12.1",
