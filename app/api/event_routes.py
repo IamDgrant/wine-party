@@ -45,10 +45,9 @@ def create_event():
             user_id=current_user.id,
             event_name=form.data['event_name'],
             event_date=form.data['event_date'],
-            event_city=form.data['event_city'],
-            event_state=form.data['event_state'],
+            city=form.data['city'],
+            state=form.data['state'],
         )
-        print(event)
         db.session.add(event)
         db.session.commit()
         return event.to_dict()
