@@ -8,7 +8,7 @@ event_routes = Blueprint('events', __name__)
 
 
 @event_routes.route('/')
-@login_required
+# @login_required
 def events():
     events = Event.query.filter_by(user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
@@ -45,9 +45,10 @@ def create_event():
             user_id=current_user.id,
             event_name=form.data['event_name'],
             event_date=form.data['event_date'],
-            city=form.data['city'],
-            state=form.data['state'],
+            event_city=form.data['event_city'],
+            event_state=form.data['event_state'],
         )
+        print(event)
         db.session.add(event)
         db.session.commit()
         return event.to_dict()
