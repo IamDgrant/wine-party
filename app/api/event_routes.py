@@ -13,6 +13,13 @@ def events():
     events = Event.query.filter_by(user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
 
+# @event_routes.route('/')
+# @login_required
+# def host_events():
+#     events = Event.query.filter_by(user_id=current_user.id)
+#     [{**event.to_dict(), {'host_id':event.host.to_dict()}} for event in events]
+#     return {"events": [event.to_dict() for event in events]}
+
 
 # @event_routes.route('/project/<id>')
 # @login_required

@@ -4,6 +4,7 @@ import EventCard from "../components/EventCard";
 import SearchHost from "./SearchHost";
 import ProfileModal from "../components/auth/modals/ProfileModal";
 import SearchResultsCard from "../components/SearchResultsCard";
+import ShowPreviousEvent from "../components/auth/modals/PreviousEventModal"
 import { photoUpload} from "../store/session"
 import party from "../images/helena-yankovska-w0KnLkqCkr4-unsplash.jpg";
 
@@ -99,12 +100,13 @@ export default function Profile() {
                         </span>
                       </div>
                       <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
+                        <ShowPreviousEvent />
+                        {/* <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
                           {pastEvents.length}
                         </span>
                         <span className="text-sm text-gray-500">
                           Previous Events
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>
