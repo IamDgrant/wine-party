@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ShowHostModal from "../components/auth/modals/ShowHostModal"
 import { seeHost } from "../store/host";
-import { Button, Input, message } from "antd";
+import { message } from "antd";
 import "./styling/checkboxStyle.css";
-import "./styling/searchBar.css"
+import "./styling/searchBar.css";
 
-const Search = () => {
+const Search = () => {  
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   // const [searchTerm, setSearchTerm] = useState("");
@@ -23,7 +24,7 @@ const Search = () => {
       (res) => {
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
-        } 
+        }
         // else {
         //   message.success(`User ${search} added to Event!`);
         // }
@@ -38,63 +39,51 @@ const Search = () => {
   return (
     <div className="search_bar">
       <form>
-        {/* <div>
-          <h3 className="form_text">Ready to add your host?</h3>
-          <p className="p-text">If not continue and reserve.</p>
-          <Search />
-          <input
-            className="form_input"
-            type="text"
-            name="search"
-            placeholder="Find a host..."
-            onChange={UpdateSearch}
-            value={searchTerm}
-          ></input>
-        </div> */}
         <input
+          className="searchInput w-full border-2"
+          placeholder="Search here..."
           value={search}
           type="text"
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-        <label class="container">
+        <label className="container">
           Sommelier
           <input
+            className="checkbox"
             type="checkbox"
             name="a"
             checked={sommelier}
             onChange={updateSommelier}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
-        <label class="container">
+        <label className="container">
           Mixologist
           <input
+            className="checkbox"
             type="checkbox"
             name="b"
             checked={mixologist}
             onChange={updateMixologist}
             //   disabled={true}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
         {/* <Checkbox /> */}
+        {/* <button className="reserve-btn" onClick={onSearch}> */}
+          <ShowHostModal />
+        {/* </button> */}
       </form>
-      {/* <label class="container">
+      {/* <label className="container">
         Sommelier
         <input type="checkbox" />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
-      <label class="container">
+      <label className="container">
         Mixologist
         <input type="checkbox" />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label> */}
-      <button
-        className="reserve-btn"
-        onClick={onSearch}
-      >
-        Find Host
-      </button>
     </div>
   );
 };

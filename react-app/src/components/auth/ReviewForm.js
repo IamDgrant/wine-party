@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { createReview } from "../../store/review";
 
-const Review = ({ userId, eventId }) => {
+const Review = ({ user_id, event_id }) => {
   const [rating, setRating] = useState("");
   const [comment, setComment] = useState("");
 
@@ -12,7 +12,7 @@ const Review = ({ userId, eventId }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    return dispatch({ userId, eventId, rating, comment }).then(() => {
+    return dispatch({ user_id, event_id, rating, comment }).then(() => {
       setRating("");
       setComment("");
     });

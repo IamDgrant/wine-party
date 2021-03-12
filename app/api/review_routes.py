@@ -9,7 +9,7 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 @login_required
 def reviews():
-    reviews = Review.query.filter_by(userId=current_user.id)
+    reviews = Review.query.filter_by(user_id=current_user.id)
     return {"reviews": [review.to_dict() for review in reviews]}
 
 

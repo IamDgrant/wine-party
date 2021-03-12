@@ -46,7 +46,7 @@ export const deleteHost = (hostId) => async (dispatch) => {
 };
 
 export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => {
-  console.log(search);
+  // console.log(search);
   const res = await fetch("/api/hosts/search", {
     method: "POST",
     headers: {

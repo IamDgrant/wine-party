@@ -13,15 +13,15 @@ with app.app_context():
     db.create_all()
 
     demoHost = Host(
-        firstName='demo',
-        lastName='user',
+        first_name='demo',
+        last_name='user',
         city="city",
         state="state",
         about="about me",
         sommelier=False,
         mixologist=False,
         email='demo@gmail.com',
-        phoneNumber="1234567890",
+        phone_number="1234567890",
         # hashed_password=generate_password_hash('password'),
     )
 
@@ -30,8 +30,8 @@ with app.app_context():
 
     for a in range(100):
         h = Host(
-            firstName=fake.name(),
-            lastName=fake.name(),
+            first_name=fake.name(),
+            last_name=fake.name(),
             city=fake.city(),
             state=fake.state(),
             about=fake.text(),

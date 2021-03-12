@@ -8,7 +8,7 @@ host_routes = Blueprint('hosts', __name__)
 
 
 @host_routes.route('/')
-@login_required
+# @login_required
 def hosts():
     hosts = Host.query.all()
     return {"hosts": [host.to_dict() for host in hosts]}
@@ -21,13 +21,15 @@ def hosts_search():
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        search = form.data['search'].lower()
+        search = form.data['search']
+        if search:
+            search = search.lower()
         sommelier = form.data['sommelier']
         mixologist = form.data['mixologist']
 
         if search == "":
             if sommelier == True and mixologist == True:
-                data = Host.query.filter((Host.sommelier == True) & (Host.mixologist == True)).order_by(Host.state).order_by(Host.lastName).all()
+                data = Host.query.filter((Host.sommelier == True) & (Host.mixologist == True)).order_by(Host.state).order_by(Host.last_name).all()
             elif sommelier == True and mixologist == False:
                 data = Host.query.filter((Host.sommelier == True)).all()
             elif mixologist == True and sommelier == False:
@@ -36,21 +38,22 @@ def hosts_search():
                 data = Host.query.all()
         else: 
             if sommelier == True and mixologist == True:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True) & (Host.mixologist == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True) & (Host.mixologist == True)).all()
             elif sommelier == True and mixologist == False:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.sommelier == True)).all()
             elif mixologist == True and sommelier == False:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
             else:
-                data = Host.query.filter(or_(func.lower(Host.firstName).like(f"{search}%"), func.lower(Host.lastName).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
+                data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
         
         return {"hosts": [host.to_dict() for host in data]}
 
 
 @ host_routes.route('/<id>')
-@ login_required
+# @ login_required
 def host(id):
     host = Host.query.get(id)
+    print(host)
     return host.to_dict()
 
 

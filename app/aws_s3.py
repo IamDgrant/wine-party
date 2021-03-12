@@ -1,4 +1,4 @@
-import boto3    
+import boto3
 import botocore
 from .config import S3_KEY, S3_SECRET, S3_BUCKET, S3_LOCATION
 

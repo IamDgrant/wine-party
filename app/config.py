@@ -7,7 +7,7 @@ class Config:
   SQLALCHEMY_ECHO=True
   
   
-S3_BUCKET = os.environ.get("S3_BUCKET_NAME")
+S3_BUCKET = os.environ.get("S3_BUCKET")
 S3_KEY= os.environ.get("S3_KEY")
 S3_SECRET= os.environ.get("S3_SECRET")
-S3_LOCATION="https://wine-party-user-images.s3-us-east-1.amazonaws.com/"
+S3_LOCATION=f"https://wine-party-user-images.s3.amazonaws.com/"

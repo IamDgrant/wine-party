@@ -53,7 +53,7 @@ const Dropdown = ({ color }) => {
               }}
             >{" "}
               {color === "white"
-                ? `${sessionUser.firstName}` 
+                ? `${sessionUser.first_name}` 
                 : color + " Dropdown"}
             </button>
             <div

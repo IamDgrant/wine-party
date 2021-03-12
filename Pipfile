@@ -23,6 +23,8 @@ email-validator = "*"
 Flask-Migrate = "*"
 Flask-Login = "*"
 psycopg2-binary = "*"
+boto3 = "*"
+faker = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
@@ -30,4 +32,4 @@ autopep8 = "*"
 pylint = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"

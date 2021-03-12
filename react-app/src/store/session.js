@@ -1,5 +1,6 @@
 const SET_USER = "session/setUser";
 const REMOVE_USER = "session/removeUser";
+const SET_PHOTO = "session/setPhoto";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +10,12 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 });
+
+const setPhoto = (photoUrl) => ({
+  type: SET_PHOTO,
+  payload: photoUrl,
+})
+
 
 export const createUser = (user) => async (dispatch) => {
   const res = await fetch(`/api/auth/signup`, {
@@ -20,7 +27,6 @@ export const createUser = (user) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(setUser(data));
-  debugger
   return res;
 };
 
@@ -40,8 +46,10 @@ export const login = (email, password) => async (dispatch) => {
     },
     body: JSON.stringify({ email, password }),
   });
-  const data = await res.json();
-  dispatch(setUser(data));
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setUser(data));
+  }
   return res;
 };
 
@@ -54,10 +62,11 @@ export const logout = () => async (dispatch) => {
   if (data.message === "User logged out") {
     dispatch(removeUser());
   }
+  return res;
 };
 
-export const profileImage = (file) => async (dispatch) => {
-  let imageUrl;
+export const photoUpload = (file) => async (dispatch) => {
+  let photoUrl;
   const formData = new FormData();
   formData.append("user_file", file);
   const res = await fetch("/api/users/update/profile", {
@@ -65,8 +74,11 @@ export const profileImage = (file) => async (dispatch) => {
     body: formData,
   });
   if (res.ok) {
-    imageUrl = await res.json();
-    return imageUrl;
+    // console.log('ITS HITTING!!!!!', res);
+    // console.log(res);
+    photoUrl = await res.json();
+    console.log(photoUrl);
+    dispatch(setPhoto(photoUrl));
   }
 };
 
@@ -80,6 +92,8 @@ const reducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state, { user: null });
       return newState;
+    case SET_PHOTO:
+      return { ...state, user: {...state.user, profile_image: action.payload.url}}
     default:
       return state;
   }

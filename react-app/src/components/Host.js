@@ -1,45 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Row, Col } from "antd";
 import { seeHost } from "../store/host";
+import ShowHostCard from "./auth/modals/HostCardModal";
 
 const Host = ({ id }) => {
   const dispatch = useDispatch();
-  // const sessionUser = useSelector((state) => state.session.user);
-  //   const sessionHost = useSelector((state) => state.host.host);
   const sessionHost = useSelector((state) => state.host.host);
-  const [data, setData] = useState();
-  console.log(sessionHost);
 
-  //   console.log(sessionEvent);
+  const [activeHostIndex, setActiveHostIndex] = useState(0);
 
   useEffect(() => {
     if (!id) dispatch(seeHost());
-    // else {
-    //   dispatch();
-    //   setData(id);
-    // }
-  }, [id]);
+  }, [id, activeHostIndex]);
 
-  return (
-    <>
-      <div className="main-profile">
-        {sessionHost &&
-          sessionHost.map((host) => (
-            <div key={host.id} className="profile-card">
-              <div className="profile-name">
-                {host.firstName} {host.lastName}
-                <div className="profile-city-state">
-                  <p className="host-city">
-                    {host.city}, {host.state}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
-    </>
-  );
+  if (sessionHost) {
+    return (
+      <ShowHostCard
+        activeHostIndex={activeHostIndex}
+        setActiveHostIndex={setActiveHostIndex}
+        sessionHost={sessionHost}
+      />
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Host;

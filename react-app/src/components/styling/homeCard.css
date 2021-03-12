@@ -1,13 +1,13 @@
 .entire-card {
-  background-color: rgb(255, 246, 238);
+  background-color: rgb(255, 250, 246);
 }
 
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #7b7263;
-  height: 6vh
+  background-color: black;
+  height: 6.5vh
 }
 
 .middle-bar {

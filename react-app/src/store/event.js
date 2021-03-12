@@ -17,7 +17,7 @@ const removeEvent = (eventId) => ({
   payload: eventId,
 });
 
-export const createEvent = ({ eventName, eventDate, city, state }) => async (
+export const createEvent = ({ event_name, event_date, event_city, event_state }) => async (
   dispatch
 ) => {
   const res = await fetch("/api/events", {
@@ -26,13 +26,14 @@ export const createEvent = ({ eventName, eventDate, city, state }) => async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      eventName,
-      eventDate,
-      city,
-      state,
+      event_name,
+      event_date,
+      event_city,
+      event_state,
     }),
   });
   const data = await res.json();
+  console.log("IS IT WORKING!!!!!!!!!!!", data);
   dispatch(setEvent(data));
 };
 
@@ -66,7 +67,7 @@ export const seeHostEvent = (id) => async (dispatch) => {
   return data;
 };
 
-const initialState = { event: null };
+const initialState = { event: [] };
 
 function reducer(state = initialState, action) {
   let newState;

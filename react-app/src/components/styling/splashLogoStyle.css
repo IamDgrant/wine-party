@@ -1,0 +1,28 @@
+.logo-container {
+  display: flex;
+  /* height: 20vh; */
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  font-family: "Bebas Neue", cursive;
+  text-decoration: none;
+  animation: glowing 1750ms infinite;
+}
+/* .logo-wrapper {
+  display: inline-block;
+} */
+
+@keyframes glowing {
+  0% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+  50% {
+    color: #eaebe4;
+    text-shadow: 0 0 15px #eaebe4;
+  }
+  100% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+}

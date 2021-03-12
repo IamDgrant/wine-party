@@ -1,33 +1,43 @@
-.logo-container {
+.top-logo-container {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 25vh 15vh 0vh 0vh
-}
-
-.button-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-}
-
-.text-link {
-  font-family: "Bebas Neue", cursive;
-  color: white;
-  font-size: 9vh;
-  font-weight: 800;
-  text-decoration: inherit;
-  text-decoration: none;
-}
-
-.background-container {
-  height: 100VH;
+  flex-direction: column;
+  height: 100vh;
   width: 100%;
   background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
     center fixed;
   background-size: cover;
 }
 
+.logo-container {
+  width: 100%;
+  font-family: "Bebas Neue", cursive;
+  padding: 27vh 0vw 0vh 70vw;
+  font-size: 7.5vh;
+  animation: glowing 1750ms infinite;
+}
 
+@keyframes glowing {
+  0% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+  50% {
+    color: #eaebe4;
+    text-shadow: 0 0 15px #eaebe4;
+  }
+  100% {
+    color: white;
+    text-shadow: 0 0 3px white;
+  }
+}
 
+.buttons-container {
+  display: flex;
+  width: 100%;
+  padding: 0vh 0vw 0vh 75.1vw;
+  margin-top: 0px;
+}
+
+.login {
+  padding-left: .5vh;
+}

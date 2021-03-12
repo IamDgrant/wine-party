@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Row, Col } from "antd";
+// import { Row, Col } from "antd";
 import { seeEvent } from "../store/event";
+import "./styling/eventStyle.css";
 
 const Event = ({ id }) => {
   const dispatch = useDispatch();
@@ -10,7 +11,6 @@ const Event = ({ id }) => {
   const sessionEvent = useSelector((state) => state.event.event);
   const [data, setData] = useState();
 
-  //   console.log(sessionEvent);
 
   useEffect(() => {
     if (!id) dispatch(seeEvent());
@@ -19,24 +19,30 @@ const Event = ({ id }) => {
     //   setData(id);
     // }
   }, [id]);
+  
+  const todaysDate = new Date();
+  const futureEvents = sessionEvent.filter((events) => {
+    return new Date(events.event_date) > todaysDate;
+  });
+
+
 
   return (
     <>
       <div className="event_size">
         {sessionEvent &&
-          sessionEvent.map((event) => (
-            <Row key={event.id}>
-              <Col span={7} className="column_border">
-                <p className="event_title">{event.eventName}</p>
-              </Col>
-              <Col span={5} className="column_border">
-                <p className="event_date">{event.eventDate.slice(0, 16)}</p>
-              </Col>
-              <Col span={3} className="column_border"></Col>
-              <Col span={3} className="column_border">
-                {/* <Info event={event}></Info> */}
-              </Col>
-            </Row>
+          futureEvents.map((futureEvent) => (
+            <div key={futureEvent.id} className="events">
+              <div className="event-name">
+                <p className="event_title">{futureEvent.event_name}</p>
+              </div>
+              <div className="main-event-date">
+                <div className="event-list">
+                  <div className="event_date">{futureEvent.event_date.slice(0, 16)}</div>
+                </div>
+              </div>
+              {/* <Info event={event}></Info> */}
+            </div>
           ))}
       </div>
     </>
