@@ -30,7 +30,7 @@ const DateTime = () => {
             {dayDate[0]}, {dayDate[1]}
           </div>
           <div className="event-date text-base">
-           {/* {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null} */}
+           {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null}
           </div>
         {/* </div> */}
       </div>
