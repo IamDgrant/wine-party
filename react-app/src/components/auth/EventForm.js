@@ -12,8 +12,8 @@ const EventForm = ({ user_id }) => {
 
   const [event_name, setEventName] = useState("");
   const [event_date, setEventDate] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [event_city, setEventCity] = useState("");
+  const [event_state, setEventState] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const error = () => {
@@ -26,12 +26,12 @@ const EventForm = ({ user_id }) => {
       error();
       return;
     }
-    dispatch(createEvent({ user_id, event_name, event_date, city, state })).then(
+    dispatch(createEvent({ user_id, event_name, event_date, event_city, event_state })).then(
       () => {
         setEventName("");
         setEventDate("");
-        setCity("");
-        setState("");
+        setEventCity("");
+        setEventState("");
       }
     );
   };
@@ -39,17 +39,18 @@ const EventForm = ({ user_id }) => {
   const updateEventName = (e) => {
     setEventName(e.target.value);
   };
+
   const updateEventDate = (e) => {
     setEventDate(e.target.value);
     // new Date(setEventDate(e.target.value));
   };
 
-  const updateCity = (e) => {
-    setCity(e.target.value);
+  const updateEventCity = (e) => {
+    setEventCity(e.target.value);
   };
 
-  const updateState = (e) => {
-    setState(e.target.value);
+  const updateEventState = (e) => {
+    setEventState(e.target.value);
   };
 
   return (
@@ -95,20 +96,20 @@ const EventForm = ({ user_id }) => {
             <input
               className="form_input"
               type="text"
-              name="city"
+              name="event_city"
               placeholder="City"
-              onChange={updateCity}
-              value={city}
+              onChange={updateEventCity}
+              value={event_city}
             ></input>
           </div>
           <div>
             <select
               className="form_input"
-              name="state"
+              name="event_state"
               form="stateForm"
               placeholder="State"
-              onChange={updateState}
-              value={state}
+              onChange={updateEventState}
+              value={event_state}
             >
               <option value=""></option>
               <option value="Alabama">Alabama</option>
