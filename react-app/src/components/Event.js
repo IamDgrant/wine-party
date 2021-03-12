@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Row, Col } from "antd";
-import { seeEvent } from "../store/event";
+import { seeEvent, deleteEvent } from "../store/event";
 import "./styling/eventStyle.css";
 
 const Event = ({ id }) => {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  //   const sessionHost = useSelector((state) => state.host.host);
+  // const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
-  const [data, setData] = useState();
-
+  // const [data, setData] = useState();
 
   useEffect(() => {
     if (!id) dispatch(seeEvent());
@@ -19,13 +16,18 @@ const Event = ({ id }) => {
     //   setData(id);
     // }
   }, [id]);
-  
+
+  console.log(sessionEvent);
+
+  const EventDelete = async () => {
+    await dispatch(deleteEvent());
+    dispatch(seeEvent());
+  };
+
   const todaysDate = new Date();
   const futureEvents = sessionEvent.filter((events) => {
     return new Date(events.event_date) > todaysDate;
   });
-
-
 
   return (
     <>
@@ -38,10 +40,16 @@ const Event = ({ id }) => {
               </div>
               <div className="main-event-date">
                 <div className="event-list">
-                  <div className="event_date">{futureEvent.event_date.slice(0, 16)}</div>
+                  <div className="event_date">
+                    {futureEvent.event_date.slice(0, 16)}
+                  </div>
                 </div>
               </div>
-              {/* <Info event={event}></Info> */}
+              <div className="delete-event">
+                <button className="delete-button" onClick={EventDelete}>
+                  ❌
+                </button>
+              </div>
             </div>
           ))}
       </div>

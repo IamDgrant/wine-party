@@ -11,3 +11,9 @@
     display: flex;
     justify-content: flex-start;
 }
+
+.delete-button {
+    
+    border: 1px solid red;
+    font-size: .75vh;
+}

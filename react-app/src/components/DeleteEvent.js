@@ -1,39 +1,29 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteEvent, seeEvent } from "../store/event";
-import { useDispatch, useSelector } from "react-redux";
+// import React, { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux"
+// import { deleteEvent, seeEvent } from "../store/event";
 
-const eventUpdate = ({ event }) => {
-  const [showModal, setShowModal] = useState(false);
+// const DeleteOneEvent = ({ event }) => {
 
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
+//   const dispatch = useDispatch();
+//   // const sessionUser = useSelector((state) => state.session.user);
+//   const sessionEvent = useSelector((state) => state.event.event);
 
-  const eventId = event.id;
-  const user_id = event.user_id;
 
-  const deleteOneTask = async () => {
-    await dispatch(deleteEvent(eventId));
-    // if (projectID) {
-    //   dispatch(seeProjectTask(projectID));
-    // } else {
-    dispatch(seeEvent());
-    // }
-    setShowModal(false);
-  };
+//   // const eventId = sessionEvent.id;
+//   // const user_id = event.user_id;
 
-  return (
-    <>
-      <button
-        className="bg-transparent hover:text-green-200 px-4 border-double border-4 border-gray-400 rounded"
-        type="button"
-        style={{ transition: "all .15s ease" }}
-        onClick={() => setShowModal(true)}
-      >
-        Delete Event
-      </button>
-    </>
-  );
-};
+//   const EventDelete = async () => {
+//     await dispatch(deleteEvent(eventId));
+//     dispatch(seeEvent());
+//   };
 
-export default eventUpdate;
+//   return (
+//     <>
+//       <button className="delete-button" onClick={EventDelete}>
+//         ❌
+//       </button>
+//     </>
+//   );
+// };
+
+// export default DeleteOneEvent;

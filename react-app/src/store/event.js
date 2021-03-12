@@ -38,7 +38,6 @@ export const createEvent = ({ event_name, event_date, event_city, event_state })
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-  console.log("hit");
   const res = await fetch(`/api/events/${eventId}`, {
     method: "DELETE",
   });
