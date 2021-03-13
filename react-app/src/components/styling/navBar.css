@@ -21,6 +21,23 @@
   margin: auto;
 }
 
-.profile {
-  margin-right: 1vh;
+/* .profile {
+  margin-right: .5vh;
+} */
+
+.create-event-button {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.5vw;
+}
+
+.create-event-button:hover {
+  background-color: #ffbea05d;
+}
+
+.create-text {
+  color: #303c6c;
+  font-size: 1.5vh;
 }

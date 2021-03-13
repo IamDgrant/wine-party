@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import NavBar from "../components/NavBar";
+import Profile from "../components/Profile"
 
 import "./styling/userHome.css";
 
@@ -12,7 +13,7 @@ const Home = () => {
           <NavBar />
         </Row>
         <Row className="main-content-container">
-          <h1>Hello World</h1>
+          <Profile />
         </Row>
         <Row className="footer-container">
           <div>About Wine Party</div>
