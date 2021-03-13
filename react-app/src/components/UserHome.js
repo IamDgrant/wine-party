@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import Profile from "../components/Profile";
-import LogoutButton from "./auth/LogoutButton";
-import DateTime from "../components/Date";
+import React from "react";
+import { Row, Col } from "antd";
+import NavBar from "../components/NavBar";
+
 import "./styling/userHome.css";
 
 const Home = () => {
   return (
     <>
-      <div className="main-container">
-        <div className="logo">Wine Party</div>
-        <div className="center-main">
-          <div className="date-bar flex">
-            <DateTime />
-          </div>
-          <div className="homeCard">
-            <div>
-              <Profile />
-            </div>
-          </div>
-        </div>
-        <div className="logout">
-        <div>
-            <LogoutButton />
-        </div>
-        </div>
-      </div>
+      <Col>
+        <Row className="navBar-container">
+          <NavBar />
+        </Row>
+        <Row className="main-content-container">
+          <h1>Hello World</h1>
+        </Row>
+        <Row className="footer-container">
+          <div>About Wine Party</div>
+          <div>Plan Your Event</div>
+          <div>Connect</div>
+        </Row>
+      </Col>
+      {/* <div className="main-container">
+        <div className="navBar-container"></div>
+        <div className="main-content-container"></div>
+        <div className="footer-container"></div>
+      </div> */}
     </>
   );
 };

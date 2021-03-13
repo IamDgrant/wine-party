@@ -56,6 +56,7 @@ def create_event():
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def delete_event(id):
+    print('IT HITTING')
     event = Event.query.filter_by(id=id).first()
     # return {"events": [event.to_dict() for event in events]}
     db.session.delete(event)

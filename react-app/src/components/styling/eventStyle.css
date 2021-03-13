@@ -1,19 +1,18 @@
 .events {
-    display: flex;
-
+  display: flex;
 }
 
 .main-event-date {
-    margin-left: 1vh;
+  margin-left: 1vh;
 }
 
 .event-list {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .delete-button {
-    
-    border: 1px solid red;
-    font-size: .75vh;
+  margin: 0px 0px 0px 0px;
+  border: 1px solid red;
+  font-size: 1vh;
 }

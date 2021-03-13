@@ -26,10 +26,10 @@ const DateTime = () => {
     <>
       <div className="main-date-container flex items-center">
         {/* <div className="date-countdown-container"> */}
-          <div className="today-date text-2xl">
+          <div className="text-1xl">
             {dayDate[0]}, {dayDate[1]}
           </div>
-          <div className="event-date text-base">
+          <div className="text-base">
            {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null}
           </div>
         {/* </div> */}
