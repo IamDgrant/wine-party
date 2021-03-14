@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DateTime from "../components/Date";
 import { PlusCircleOutlined, UserOutlined, DownOutlined, SmileOutlined } from "@ant-design/icons";
@@ -13,22 +13,23 @@ import "./styling/navBar.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const [date, setDate] = useState(new Date());
 
-  const { Search } = Input;
-  const onSearch = value => console.log(value);
+  useEffect(() => {
+    setDate(new Date());
+  }, []);
 
-  const menu = (
-    <Menu>
-      <Menu.Item key="0">
-        <a href="https://www.antgroup.com">1st menu item</a>
-      </Menu.Item>
-      <Menu.Item key="1">
-        <a href="https://www.aliyun.com">2nd menu item</a>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="3">3rd menu item</Menu.Item>
-    </Menu>
-  );
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+  const dayDate = new Date().toLocaleTimeString("en-us", options).split(",");
 
 
   return (
@@ -37,7 +38,7 @@ const NavBar = () => {
         <div className="logo">Wine Party</div>
         {/* <div className="search"> <Search placeholder="Search..." onSearch={onSearch} style={{ width: 200 }} /></div> */}
         <div className="todays-date">
-          <DateTime />
+        {dayDate[0]}, {dayDate[1]}
         </div>
         <div className="create-event-button">
 

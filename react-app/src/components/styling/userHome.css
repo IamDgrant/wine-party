@@ -11,6 +11,7 @@ body {
 }
 
 .main-content-container {
+  display: flex;
   /* background-image: url("../../images/shutterstock_1486697366.eps");
   background-size: contain;
   background-repeat: no-repeat; */
@@ -42,4 +43,9 @@ body {
   margin-top: -6vh;
   margin-left: -3.25vh;
   /* margin-right: auto; */
+}
+
+.welcome {
+  /* margin: 10vh 0vh 0vh 0vh; */
+  padding: 31.5vh 0vh 0vh 32.5vh;
 }

@@ -7,6 +7,7 @@ const Event = ({ id }) => {
   const dispatch = useDispatch();
 
   const sessionEvent = useSelector((state) => state.event.event);
+  // console.log(sessionEvent);
 
   // const eventId = event.id;
 
@@ -18,7 +19,7 @@ const Event = ({ id }) => {
     // }
   }, [id]);
 
-  console.log(id);
+  // console.log(id);
 
   // const onEventUpdate = async (e) => {
   //   e.preventDefault();
