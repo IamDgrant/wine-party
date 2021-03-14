@@ -40,6 +40,11 @@ const NavBar = () => {
           <DateTime />
         </div>
         <div className="create-event-button">
+
+
+
+
+          
           <button className="create-button">
             <div
               className="circle-plus"
@@ -47,7 +52,7 @@ const NavBar = () => {
             >
               <PlusCircleOutlined />
             </div>
-            <div className="create-text">Add Party</div>
+            <div className="create-text">Add Your Party</div>
           </button>
         </div>
         <div className="profile">

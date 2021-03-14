@@ -53,14 +53,13 @@ const EventFormModal = ({ user_id }) => {
 
   return (
     <>
-      {/* <div></div> */}
       <button
         className="bg-transparent hover:text-green-200 px-4 border-double border-4 border-gray-400 rounded"
         type="button"
         style={{ transition: "all .15s ease" }}
         onClick={() => setShowModal(true)}
       >
-        Add Event
+        Add New Party
       </button>
       {showModal
         ? sessionUser && (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+// import Event from "../components/Event"
 import EventCard from "../components/EventCard";
 import SearchHost from "./SearchHost";
 import ProfileModal from "../components/auth/modals/ProfileModal";
@@ -50,7 +51,7 @@ const Profile = () => {
   {sessionUser.first_name} {sessionUser.last_name}
 </div>
 <div>
-  {sessionEvent.event_name} {sessionEvent.event_date}
+  <EventCard />
 </div>
     </>
   );
