@@ -8,35 +8,6 @@
   background-size: 100% 100vh;
 }
 
-.signup-btn {
-  font-family: 'Bebas Neue', cursive;
-  justify-content: center;
-  align-items: center;
-  padding: 0vh 1vh 90vh 0vh
-}
-
-.signin-btn {
-  font-family: 'Bebas Neue', cursive;
-  justify-content: center;
-  align-items: center;
-  padding: 0vh 19vh 90vh 0vh
-}
-
-.logo-container {
-  justify-content: center;
-  align-items: center;
-  font-family: "Bebas Neue", cursive;
-  color: #a9294f;
-  padding: 0vh 0vw 0vh 50vh;
-  font-size: 3.5vh
-}
-
-.logo-inner {
-  /* width: 100%; */
-  /* border: 2px dotted #c7753d; */
-  /* animation: float 6s ease-in-out infinite; */
-}
-
 /* @keyframes float {
 	0% {
 		text-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);

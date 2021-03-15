@@ -1,0 +1,65 @@
+.navBarLanding-navBar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.left-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  height: 100vh;
+}
+
+.right-container {
+  width: 50%;
+  height: 100vh;
+}
+
+.logo {
+  height: 10vh;
+  font-family: "Bebas Neue", cursive;
+  color: #ec5858;
+  padding: 0vh 0vh 0vh 5vh;
+  font-size: 8vh;
+  font-weight: bold;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 10vh;
+  width: 65%;
+}
+
+.home {
+  font-family: "Bebas Neue", cursive;
+  margin: auto;
+}
+
+.host {
+  font-family: "Bebas Neue", cursive;
+  margin: auto;
+}
+
+.faq {
+  font-family: "Bebas Neue", cursive;
+  margin: auto;
+}
+
+.signup-btn {
+  font-family: "Bebas Neue", cursive;
+  justify-content: center;
+  align-self: flex-end;
+  height: auto;
+  padding: 0vh 19vh 90vh 0.5vh;
+}
+
+.signin-btn {
+  font-family: "Bebas Neue", cursive;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 0vh 0vh 90vh 0vh;
+}
