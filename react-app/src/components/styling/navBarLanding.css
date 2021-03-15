@@ -12,6 +12,7 @@
 }
 
 .right-container {
+  display: flex;
   width: 50%;
   height: 100vh;
 }
@@ -23,6 +24,7 @@
   padding: 0vh 0vh 0vh 5vh;
   font-size: 8vh;
   font-weight: bold;
+  width: 65%;
 }
 
 .btn-container {
@@ -30,7 +32,7 @@
   justify-content: flex-end;
   align-items: center;
   height: 10vh;
-  width: 65%;
+  width: 35%;
 }
 
 .home {
@@ -48,18 +50,15 @@
   margin: auto;
 }
 
-.signup-btn {
-  font-family: "Bebas Neue", cursive;
-  justify-content: center;
-  align-self: flex-end;
-  height: auto;
-  padding: 0vh 19vh 90vh 0.5vh;
-}
-
 .signin-btn {
   font-family: "Bebas Neue", cursive;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  padding: 0vh 0vh 90vh 0vh;
+
+  margin: 2.5vh 0vh 0vh 60vh;
+  padding: 0vh .5vh 0vh 0vh;
+}
+
+.signup-btn {
+  font-family: "Bebas Neue", cursive;
+  margin: 2.5vh 0vh 0vh 0vh;
+  padding: 0vh 0vh 0vh 0vh;
 }

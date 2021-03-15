@@ -34,7 +34,7 @@ const NavBarLanding = () => {
             </div>
             <div className="host">
               <Button type="text" size="large" style={{ color: "#ec5858" }}>
-                Find a Host
+                Meet our Hosts
               </Button>
             </div>
             <div className="faq">
@@ -63,6 +63,10 @@ const NavBarLanding = () => {
               visible={isModalVisible}
               onOk={handleOk}
               onCancel={handleCancel}
+              style={{
+                backgroundColor: "#ec5858",
+                color: "#ffe7a3",
+              }}
             >
               <p>Some contents...</p>
               <p>Some contents...</p>
