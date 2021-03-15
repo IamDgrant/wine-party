@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DateTime from "../components/Date";
-import { PlusCircleOutlined, UserOutlined, DownOutlined, SmileOutlined } from "@ant-design/icons";
+import {
+  PlusCircleOutlined,
+  UserOutlined,
+  DownOutlined,
+  SmileOutlined,
+} from "@ant-design/icons";
 import { Avatar, Input, Menu, Dropdown } from "antd";
+import LogoutButton from "../components/auth/LogoutButton";
 // import { Menu, Dropdown, Modal, Button } from "antd";
 // import { NavLink } from "react-router-dom";
 // import Search from "../components/Search";
@@ -31,21 +37,16 @@ const NavBar = () => {
   };
   const dayDate = new Date().toLocaleTimeString("en-us", options).split(",");
 
-
   return (
     <>
       <div className="navBar">
         <div className="logo">Wine Party</div>
         {/* <div className="search"> <Search placeholder="Search..." onSearch={onSearch} style={{ width: 200 }} /></div> */}
         <div className="todays-date">
-        {dayDate[0]}, {dayDate[1]}
+          {dayDate[0]}, {dayDate[1]}
         </div>
+        <div><LogoutButton /></div>
         <div className="create-event-button">
-
-
-
-
-          
           <button className="create-button">
             <div
               className="circle-plus"
@@ -57,9 +58,11 @@ const NavBar = () => {
           </button>
         </div>
         <div className="profile">
-        <Avatar size="large" style={{ fontSize: "5vh",
-              backgroundColor: "#303c6c",
-            }}icon={<UserOutlined />} />
+          <Avatar
+            size="large"
+            style={{ fontSize: "5vh", backgroundColor: "#303c6c" }}
+            icon={<UserOutlined />}
+          />
         </div>
         {/* <Dropdown overlay={menu} trigger={['click']}>
     <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>

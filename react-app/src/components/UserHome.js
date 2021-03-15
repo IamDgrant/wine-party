@@ -19,9 +19,6 @@ const Home = () => {
   return (
     <>
       <div>
-        <div className="navBar-container">
-          <NavBar />
-        </div>
         <div className="main-content-container">
           <div
             className="background-image"
@@ -29,8 +26,11 @@ const Home = () => {
               backgroundImage: `url(${wine1})`,
               backgroundRepeat: "no-repeat",
             }}
-          ><div className="welcome">Welcome, {sessionUser.first_name}!</div></div>
+          ><div className="welcome">Welcome, {sessionUser.first_name}</div></div>
           
+        </div>
+        <div className="navBar-container">
+          <NavBar />
         </div>
         <div className="footer-container">
           <div>About Wine Party</div>

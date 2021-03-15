@@ -1,37 +1,58 @@
-.top-logo-container {
+.main-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
-    center fixed;
-  background-size: cover;
+  height: 100vh;
+  background-image: url("../../images/New-Splash.png");
+  background-size: 100% 100vh;
+}
+
+.signup-btn {
+  font-family: 'Bebas Neue', cursive;
+  justify-content: center;
+  align-items: center;
+  padding: 0vh 1vh 90vh 0vh
+}
+
+.signin-btn {
+  font-family: 'Bebas Neue', cursive;
+  justify-content: center;
+  align-items: center;
+  padding: 0vh 19vh 90vh 0vh
 }
 
 .logo-container {
-  width: 100%;
+  justify-content: center;
+  align-items: center;
   font-family: "Bebas Neue", cursive;
-  padding: 27vh 0vw 0vh 70vw;
-  font-size: 7.5vh;
-  animation: glowing 1750ms infinite;
+  color: #a9294f;
+  padding: 0vh 0vw 0vh 50vh;
+  font-size: 3.5vh
 }
 
-@keyframes glowing {
-  0% {
-    color: white;
-    text-shadow: 0 0 3px white;
-  }
-  50% {
-    color: #eaebe4;
-    text-shadow: 0 0 15px #eaebe4;
-  }
-  100% {
-    color: white;
-    text-shadow: 0 0 3px white;
-  }
+.logo-inner {
+  /* width: 100%; */
+  /* border: 2px dotted #c7753d; */
+  /* animation: float 6s ease-in-out infinite; */
 }
 
-.buttons-container {
+/* @keyframes float {
+	0% {
+		text-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		text-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		text-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+} */
+
+/* .buttons-container {
   display: flex;
   width: 100%;
   padding: 0vh 0vw 0vh 75.1vw;
@@ -40,4 +61,4 @@
 
 .login {
   padding-left: .5vh;
-}
+} */

@@ -2,7 +2,7 @@ import React from "react";
 import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "../styling/logoutButtonStyle.com";
+// import "../styling/logoutButtonStyle.com";
 
 const LogoutButton = () => {
   const dispatch = useDispatch();

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LoginForm from "../LoginForm";
-import "../../styling/loginButtonStyle.css";
+// import "../../styling/loginButtonStyle.css";
 import { login } from "../../../store/session";
+import { Button } from 'antd';
 
 const LoginModal = () => {
   const [showModal, setShowModal] = useState(false);
@@ -22,7 +23,7 @@ const LoginModal = () => {
   return (
     <>
       <button
-        className="login-btn bg-transparent hover:bg-gray-100 hover:bg-opacity-50 text-white font-semibold px-2 border-double border-4  border-white rounded shadow"
+        className="login-btn"
         type="button"
         style={{ transition: "all .15s ease" }}
         onClick={() => setShowModal(true)}
@@ -41,14 +42,14 @@ const LoginModal = () => {
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-3xl font-semibold">Log in</h3>
-                  <button
+                  <Button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
-                  </button>
+                  </Button>
                 </div>
                 {/*body*/}
                 <div className="form-container sign-up-container">
