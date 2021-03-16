@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
-import EventForm from "./components/auth/EventForm"
-import Event from "./components/Event"
-import EventCard from "./components/EventCard"
+import LoginForm from "./components/auth/LoginForm";
+import EventForm from "./components/auth/EventForm";
+import Event from "./components/Event";
+import EventCard from "./components/EventCard";
 
 import { restoreUser } from "./store/session";
 
@@ -30,13 +31,13 @@ const App = () => {
         <Route path="/splash" exact={true}>
           <SplashPage />
         </Route>
+        {/* <Route path="/login" exact={true}>
+          <LoginForm />
+        </Route> */}
         <ProtectedRoute path="/" exact={true}>
           <UserHome />
           {/* <EventCard /> */}
         </ProtectedRoute>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route> */}
         {/* <ProtectedRoute path="/" exact={true}>
           <NavBar />
         </ProtectedRoute> */}

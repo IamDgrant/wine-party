@@ -1,3 +1,6 @@
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Poiret One', cursive; */
+
 .navBarLanding-navBar {
   display: flex;
   justify-content: space-evenly;
@@ -20,7 +23,7 @@
 .logo {
   height: 10vh;
   font-family: "Bebas Neue", cursive;
-  color: #ec5858;
+  color: #ececec;
   padding: 0vh 0vh 0vh 5vh;
   font-size: 8vh;
   font-weight: bold;

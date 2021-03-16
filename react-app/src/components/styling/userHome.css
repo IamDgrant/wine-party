@@ -1,13 +1,19 @@
 /* font-family: 'Bebas Neue', cursive; */
+/* COLOR PALETTE
+#F78888
+#F3D250
+#ECECEC
+#90CCF4
+#5DA2D5 */
 
 body {
-  background-color: #ffe7a3;
+  background-color: #f78888;
 }
 
 .navBar-container {
   height: 6vh;
   font-family: "Bebas Neue", cursive;
-  color: #fbe8a6;
+  color: #78244c;
 }
 
 .main-content-container {

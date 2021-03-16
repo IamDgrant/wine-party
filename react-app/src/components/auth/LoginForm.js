@@ -29,14 +29,13 @@ const LoginForm = ({ email, setEmail, password, setPassword }) => {
   return (
     <div className="center_box">
       <form onSubmit={onLogin} className="form">
-      
         <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
         </div>
         <div>
-          <input 
+          <input
             name="email"
             type="text"
             placeholder="Email"
@@ -52,11 +51,6 @@ const LoginForm = ({ email, setEmail, password, setPassword }) => {
             onChange={updatePassword}
             value={password}
           />
-          <div>
-            {/* <button type="submit" className="signUp-form-btn">
-              Login
-            </button> */}
-          </div>
         </div>
       </form>
     </div>
