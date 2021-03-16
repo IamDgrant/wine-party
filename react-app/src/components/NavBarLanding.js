@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { login, createUser } from "../store/session";
-
+import SignUpForm from "../components/auth/SignUpForm";
 import LoginForm from "../components/auth/LoginForm";
 import { Modal, Button } from "antd";
 import "../components/styling/navBarLanding.css";
@@ -15,6 +15,7 @@ const NavBarLanding = () => {
   const [last_name, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [postal_code, setPostalCode] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -25,7 +26,7 @@ const NavBarLanding = () => {
   const history = useHistory();
 
   const onSignUp = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let newErrors = [];
     if (password === repeatPassword) {
       dispatch(
@@ -46,32 +47,6 @@ const NavBarLanding = () => {
         }
       });
     }
-  };
-
-  if (sessionUser) {
-    return <Redirect to="/" />;
-  }
-
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
-  const updateCity = (e) => {
-    setCity(e.target.value);
-  };
-  const updateState = (e) => {
-    setState(e.target.value);
-  };
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   const onSignIn = async () => {
@@ -169,8 +144,6 @@ const NavBarLanding = () => {
               htmlType="submit"
               type="primary"
               size="large"
-              // shape="round"
-              // ghost="true"
               style={{
                 color: "#f78888",
                 backgroundColor: "#ececec",
@@ -186,7 +159,24 @@ const NavBarLanding = () => {
               onOk={signUpHandleOk}
               onCancel={signUpHandleCancel}
             >
-              
+              <SignUpForm
+                first_name={first_name}
+                setFirstName={setFirstName}
+                last_name={last_name}
+                setLastName={setLastName}
+                city={city}
+                setCity={setCity}
+                state={state}
+                setState={setState}
+                postal_code={postal_code}
+                setPostalCode={setPostalCode}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                repeatPassword={repeatPassword}
+                setRepeatPassword={setRepeatPassword}
+              />
             </Modal>
           </div>
         </div>
