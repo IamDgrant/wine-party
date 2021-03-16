@@ -20,7 +20,7 @@ const NavBarLanding = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -35,6 +35,7 @@ const NavBarLanding = () => {
           last_name,
           city,
           state,
+          postal_code,
           email,
           password,
           repeatPassword,

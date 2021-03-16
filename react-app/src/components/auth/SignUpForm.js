@@ -8,15 +8,15 @@ const SignUpForm = () => {
   const [last_name, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [email, setEmail] = useState("");
   const [postal_code, setPostalCode] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
-  const onSignup = async (e) => {
+  const onSignUp = async (e) => {
     e.preventDefault();
     let newErrors = [];
     if (password === repeatPassword) {
@@ -26,6 +26,7 @@ const SignUpForm = () => {
           last_name,
           city,
           state,
+          postal_code,
           email,
           password,
           repeatPassword,
@@ -71,7 +72,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <form onSubmit={onSignup}>
+      <form onSubmit={onSignUp}>
         <input
           className="form_input"
           type="text"
