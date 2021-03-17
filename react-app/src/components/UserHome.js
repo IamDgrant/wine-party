@@ -1,17 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux"
+import { useSelector } from "react-redux";
 import { Row, Col } from "antd";
 import NavBar from "../components/NavBar";
 import Profile from "../components/Profile";
 import Date from "../components/Date";
 // import TimeLeft from "../components/TimeLeft";
 
-
 import "./styling/userHome.css";
 import wine1 from "../images/shutterstock_1486697366.png";
 
 const Home = () => {
-  const sessionUser = useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
 
   // console.log(sessionEvent);
@@ -20,18 +19,19 @@ const Home = () => {
     <>
       <div>
         <div className="main-content-container">
-          <div
+          <div className="navBar-container">
+            <NavBar />
+          </div>
+          <div className="welcome">Welcome, {sessionUser.first_name}</div>
+          {/* <div
             className="background-image"
-            style={{
-              backgroundImage: `url(${wine1})`,
-              backgroundRepeat: "no-repeat",
-            }}
-          ><div className="welcome">Welcome, {sessionUser.first_name}</div></div>
-          
+            // style={{
+            //   backgroundImage: `url(${wine1})`,
+            //   backgroundRepeat: "no-repeat",
+            // }}
+          > */}
         </div>
-        <div className="navBar-container">
-          <NavBar />
-        </div>
+
         <div className="footer-container">
           <div>About Wine Party</div>
           <div>

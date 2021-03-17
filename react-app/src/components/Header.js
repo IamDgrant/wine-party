@@ -5,10 +5,13 @@ import { login, createUser } from "../store/session";
 import SignUpForm from "../components/auth/SignUpForm";
 import LoginForm from "../components/auth/LoginForm";
 import { Modal, Button } from "antd";
-import "../components/styling/navBarLanding.css";
-import "antd/dist/antd.css";
+import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
+import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
+// import { ReactComponent as Logo } from "../assets/logo.svg";
+import "../components/styling/header.css";
 
-const NavBarLanding = () => {
+const Header = () => {
+  const [click, setClick] = useState(false);
   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
   const [isSignUpModalVisible, setIsisSignUpModalVisible] = useState(false);
   const [first_name, setFirstName] = useState("");
@@ -20,10 +23,11 @@ const NavBarLanding = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  // const sessionUser = useSelector((state) => state.session.user);
-
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
   const onSignUp = async (e) => {
     // e.preventDefault();
@@ -83,38 +87,29 @@ const NavBarLanding = () => {
   };
 
   return (
-    <>
-      <div className="navBarLanding-navBar">
-        <div className="left-container">
-          <div className="logo">Wine Party</div>
-          <div className="btn-container">
-            <div className="home">
-              <Button type="text" size="large" style={{ color: "#1a1a1d" }}>
-                Home
-              </Button>
-            </div>
-            <div className="host">
-              <Button type="text" size="large" style={{ color: "#1a1a1d" }}>
-                Meet our Hosts
-              </Button>
-            </div>
-            <div className="faq">
-              <Button type="text" size="large" style={{ color: "#1a1a1d" }}>
-                FAQ
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="right-container">
-          <div className="signin-btn">
+    <div className="header">
+      <div className="logo-nav">
+        <div className="logo-container">Wine Party</div>
+        <ul className={click ? "nav-options active" : "nav-options"}>
+          <li className="options" onClick={closeMobileMenu}>
+            <a href="#">About</a>
+          </li>
+          <li className="options" onClick={closeMobileMenu}>
+            <a href="#">Find a Host</a>
+          </li>
+          <li className="options" onClick={closeMobileMenu}>
+            <a href="#">FAQ</a>
+          </li>
+          <li className="options mobile-option" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="dashed"
               size="large"
               ghost="true"
               style={{
-                color: "#1a1a1d",
-                borderColor: "#1a1a1d",
+                color: "#afcbff",
+                borderColor: "#afcbff",
+                fontFamily: "Bebas Neue",
               }}
               onClick={showSignInModal}
             >
@@ -137,16 +132,17 @@ const NavBarLanding = () => {
                 setPassword={setPassword}
               />
             </Modal>
-          </div>
-          <div className="signup-btn">
+          </li>
+          <li className=" option mobile-option" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="primary"
               size="large"
               style={{
-                color: "#d8e1ff",
-                backgroundColor: "#1a1a1d",
-                borderColor: "#1a1a1d",
+                color: "#0e1c36",
+                backgroundColor: "#afcbff",
+                borderColor: "#afcbff",
+                fontFamily: "Bebas Neue",
               }}
               onClick={showSignUpModal}
             >
@@ -177,11 +173,95 @@ const NavBarLanding = () => {
                 setRepeatPassword={setRepeatPassword}
               />
             </Modal>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-    </>
+      <ul className="signin-up">
+        <li className="sign-in" onClick={closeMobileMenu}>
+          <Button
+            htmlType="submit"
+            type="dashed"
+            size="large"
+            ghost="true"
+            style={{
+              color: "#1a1a1d",
+              borderColor: "#1a1a1d",
+              fontFamily: "Bebas Neue",
+            }}
+            onClick={showSignInModal}
+          >
+            Sign in
+          </Button>
+          <Modal
+            title="Sign in"
+            visible={isSignInModalVisible}
+            onOk={signInHandleOk}
+            onCancel={signInHandleCancel}
+            style={{
+              backgroundColor: "#c3073f",
+              color: "#1a1a1d",
+              fontFamily: "Bebas Neue",
+            }}
+          >
+            <LoginForm
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+            />
+          </Modal>
+        </li>
+        <li onClick={closeMobileMenu}>
+          <Button
+            htmlType="submit"
+            type="primary"
+            size="large"
+            style={{
+              color: "#d8e1ff",
+              backgroundColor: "#1a1a1d",
+              borderColor: "#1a1a1d",
+              fontFamily: "Bebas Neue",
+            }}
+            onClick={showSignUpModal}
+          >
+            Sign Up
+          </Button>
+          <Modal
+            title="Sign up"
+            visible={isSignUpModalVisible}
+            onOk={signUpHandleOk}
+            onCancel={signUpHandleCancel}
+          >
+            <SignUpForm
+              first_name={first_name}
+              setFirstName={setFirstName}
+              last_name={last_name}
+              setLastName={setLastName}
+              city={city}
+              setCity={setCity}
+              state={state}
+              setState={setState}
+              postal_code={postal_code}
+              setPostalCode={setPostalCode}
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              repeatPassword={repeatPassword}
+              setRepeatPassword={setRepeatPassword}
+            />
+          </Modal>
+        </li>
+      </ul>
+      <div className="mobile-menu" onClick={handleClick}>
+        {click ? (
+          <CloseMenu className="menu-icon" />
+        ) : (
+          <MenuIcon className="menu-icon" />
+        )}
+      </div>
+    </div>
   );
 };
 
-export default NavBarLanding;
+export default Header;

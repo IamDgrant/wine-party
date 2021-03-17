@@ -4,7 +4,7 @@
   align-items: center;
   width: 100vw;
   height: 6vh;
-  background-color: #f4976c
+  /* background-color: #f4976c */
 }
 
 /* .logo {
@@ -16,7 +16,7 @@
 
 .todays-date {
   font-family: "Bebas Neue", cursive;
-  color: #fbe8a6;
+  color: #1a1a1d;
   font-size: 2.5vh;
   margin: auto;
 }
@@ -38,6 +38,6 @@
 }
 
 .create-text {
-  color: #303c6c;
+  color: #1a1a1d;
   font-size: 1.5vh;
 }

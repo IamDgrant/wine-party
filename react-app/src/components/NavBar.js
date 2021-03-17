@@ -50,17 +50,17 @@ const NavBar = () => {
           <button className="create-button">
             <div
               className="circle-plus"
-              style={{ fontSize: "3vh", color: "#303c6c" }}
+              style={{ fontSize: "3vh", color: "#1a1a1d" }}
             >
               <PlusCircleOutlined />
             </div>
-            <div className="create-text">Add Your Party</div>
+            <div className="create-text">Add a Party</div>
           </button>
         </div>
         <div className="profile">
           <Avatar
             size="large"
-            style={{ fontSize: "5vh", backgroundColor: "#303c6c" }}
+            style={{ fontSize: "5vh", backgroundColor: "#6f2232" }}
             icon={<UserOutlined />}
           />
         </div>

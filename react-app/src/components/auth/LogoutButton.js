@@ -2,6 +2,7 @@ import React from "react";
 import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Button } from "antd";
 // import "../styling/logoutButtonStyle.com";
 
 const LogoutButton = () => {
@@ -11,17 +12,23 @@ const LogoutButton = () => {
   const onLogout = async (e) => {
     const user = await dispatch(logout());
     if (!user.ok) history.push("/splash");
-
   };
 
   return (
     <>
-      <button
+      <Button
+        htmlType="submit"
+        type="dashed"
+        size="medium"
+        ghost="true"
+        style={{
+          color: "#1a1a1d",
+          borderColor: "#1a1a1d",
+        }}
         onClick={onLogout}
-        className="logout-btn bg-transparent hover:bg-gray-100 hover:bg-opacity-50 text-white font-semibold px-2 border-double border-4  border-white rounded shadow"
       >
         Log out
-      </button>
+      </Button>
     </>
   );
 };
