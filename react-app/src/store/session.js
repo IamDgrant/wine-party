@@ -18,7 +18,7 @@ const setPhoto = (photoUrl) => ({
 
 
 export const createUser = (user) => async (dispatch) => {
-  console.log("YES!!!!!!!");
+  // console.log("YES!!!!!!!");
   const res = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
@@ -27,6 +27,7 @@ export const createUser = (user) => async (dispatch) => {
     body: JSON.stringify(user),
   });
   const data = await res.json();
+  console.log(data);
   dispatch(setUser(data));
   return res;
 };
