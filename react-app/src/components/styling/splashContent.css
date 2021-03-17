@@ -1,0 +1,15 @@
+.splash-main-content {
+width: 100%;
+height:55vh
+}
+
+.image-content-container {
+    display: flex;
+    /* justify-content: flex-end; */
+    /* align-items: center; */
+    width: 100%;
+    height: 100vh;
+    /* background-image: url("../../assets/images/pexels-fauxels-3184183.jpg"); */
+    background-size: 100% 75vh;
+    background-repeat:no-repeat;
+  }

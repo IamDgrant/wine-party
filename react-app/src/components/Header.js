@@ -90,26 +90,26 @@ const Header = () => {
     <div className="header">
       <div className="logo-nav">
         <div className="logo-container">Wine Party</div>
+
         <ul className={click ? "nav-options active" : "nav-options"}>
-          <li className="options" onClick={closeMobileMenu}>
-            <a href="#">About</a>
+          <li className="option menu" onClick={closeMobileMenu}>
+            <a href="#">ABOUT</a>
           </li>
-          <li className="options" onClick={closeMobileMenu}>
-            <a href="#">Find a Host</a>
+          <li className="option menu" onClick={closeMobileMenu}>
+            <a href="#">FIND A HOST</a>
           </li>
-          <li className="options" onClick={closeMobileMenu}>
+          <li className="option menu" onClick={closeMobileMenu}>
             <a href="#">FAQ</a>
           </li>
-          <li className="options mobile-option" onClick={closeMobileMenu}>
+          <li className="option mobile-option" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="dashed"
-              size="large"
+              size="medium"
               ghost="true"
               style={{
-                color: "#afcbff",
-                borderColor: "#afcbff",
-                fontFamily: "Bebas Neue",
+                color: "#f9fbf2",
+                borderColor: "#f9fbf2",
               }}
               onClick={showSignInModal}
             >
@@ -121,8 +121,8 @@ const Header = () => {
               onOk={signInHandleOk}
               onCancel={signInHandleCancel}
               style={{
-                backgroundColor: "#c3073f",
-                color: "#1a1a1d",
+                backgroundColor: "#f9fbf2",
+                color: "#0e1c36",
               }}
             >
               <LoginForm
@@ -133,20 +133,19 @@ const Header = () => {
               />
             </Modal>
           </li>
-          <li className=" option mobile-option" onClick={closeMobileMenu}>
+          <li className="option mobile-option" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="primary"
-              size="large"
+              size="medium"
               style={{
                 color: "#0e1c36",
-                backgroundColor: "#afcbff",
-                borderColor: "#afcbff",
-                fontFamily: "Bebas Neue",
+                backgroundColor: "#f9fbf2",
+                borderColor: "#f9fbf2",
               }}
               onClick={showSignUpModal}
             >
-              Sign Up
+              Sign up
             </Button>
             <Modal
               title="Sign up"
@@ -181,13 +180,12 @@ const Header = () => {
           <Button
             htmlType="submit"
             type="dashed"
-            size="large"
+            size="medium"
             ghost="true"
             style={{
-              color: "#1a1a1d",
-              borderColor: "#1a1a1d",
-              fontFamily: "Bebas Neue",
-            }}
+                color: "#f9fbf2",
+                borderColor: "#f9fbf2",
+              }}
             onClick={showSignInModal}
           >
             Sign in
@@ -200,7 +198,6 @@ const Header = () => {
             style={{
               backgroundColor: "#c3073f",
               color: "#1a1a1d",
-              fontFamily: "Bebas Neue",
             }}
           >
             <LoginForm
@@ -215,12 +212,11 @@ const Header = () => {
           <Button
             htmlType="submit"
             type="primary"
-            size="large"
+            size="medium"
             style={{
-              color: "#d8e1ff",
-              backgroundColor: "#1a1a1d",
-              borderColor: "#1a1a1d",
-              fontFamily: "Bebas Neue",
+              color: "#0e1c36",
+              backgroundColor: "#f9fbf2",
+              borderColor: "#f9fbf2",
             }}
             onClick={showSignUpModal}
           >

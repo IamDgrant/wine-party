@@ -1,11 +1,15 @@
 /*Desktop View*/
 .header {
     display: flex;
-    background-color: #0e1c36;
+    background-image: url("../../assets/images/pexels-fauxels-3184183.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
     justify-content: space-between;
-    align-items: center;
+    align-items:flex-start;
     padding: 0px 40px;
-    height: 80px;
+    height: 50vh;
+    width: 100%;
   }
   .logo-nav {
     display: flex;
@@ -17,13 +21,20 @@
     align-items: center;
     justify-content: center;
     font-family: "Bebas Neue", cursive;
-    color: #afcbff;
-    font-size: 5vh;
+    color: #f9fbf2;
+    font-size: 6vh;
   }
   .logo {
     width: 45px;
     height: 45px;
   }
+
+.menu {
+    align-items: ;
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2; 
+}
+
   .nav-options {
     padding-left: 25px;
     display: grid;
@@ -34,39 +45,41 @@
   .mobile-option {
     display: none;
   }
-
-  .options {
-    font-family: "Bebas Neue", cursive;
-    color: #afcbff;
-  }
   
-  .options :hover {
-    color: #d7f9ff;
+  .option :hover {
+    color: #ffede1;
   }
+
+  .mobile-hover {
+      color: #ffede1;
+  }
+
   .signin-up {
     display: flex;
     padding: 0px 5px;
     list-style-type: none;
   }
+
   .sign-in {
-    padding-right: 50px;
+    padding-right: 10px;
     align-self: center;
   }
   .sign-in :hover {
-    color: white;
+    color: #ffede1;
   }
   .signup-btn {
     padding: 10px 10px;
     height: 2.4rem;
     border-radius: 3px;
     /* background: rgb(222, 9, 241); */
-    /* color: white; */
+    color: white;
     cursor: pointer;
     align-items: center;
   }
   .mobile-menu {
     display: none;
   }
+  
   @media (max-width: 648px) {
     /*Mobile View */
     .header {
@@ -90,7 +103,7 @@
       grid-gap: 0px;
     }
     .nav-options.active {
-      background: #9899d1;
+      background: #0e1c36;
       left: 0;
       opacity: 1;
       transition: all 0.5s ease;
@@ -111,9 +124,9 @@
       padding: 30px 0px;
     }
     .sign-up {
-      background: rgb(222, 9, 241);
+      background-color: #afcbff;
       border-radius: 3px;
-      color: white;
+      color: #0e1c36;
       padding: 20px 0px;
       width: 80%;
       align-self: center;
@@ -127,4 +140,3 @@
   .mobile-menu {
     display: block;
   }
-  
