@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DateTime from "./Date";
+import AddEventModal from "../components/auth/modals/AddEventModal"
 // import SearchForm from "../components/SearchHost";
 import { seeHost } from "../store/host";
 import { message } from "antd";
-import {
-  PlusCircleOutlined,
-  UserOutlined,
-  DownOutlined,
-  SmileOutlined,
-} from "@ant-design/icons";
-import { Avatar, Modal, Menu, Dropdown, Button } from "antd";
+// import {
+//   PlusCircleOutlined,
+//   UserOutlined,
+//   DownOutlined,
+//   SmileOutlined,
+// } from "@ant-design/icons";
+import { Avatar, Modal, Button } from "antd";
 import LogoutButton from "./auth/LogoutButton";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
@@ -144,6 +145,10 @@ const UserHeader = () => {
                     </label>
                   </form>
                 </Modal>
+              </li>
+              <li>
+
+                <AddEventModal />
               </li>
               <li className="welcome">
                 <div className="welcome">Welcome, {sessionUser.first_name}</div>

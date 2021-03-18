@@ -7,7 +7,7 @@ import UserHome from "./components/UserHome";
 import LoginForm from "./components/auth/LoginForm";
 import EventForm from "./components/auth/EventForm";
 import Event from "./components/Event";
-import EventCard from "./components/EventCard";
+// import EventCard from "./components/EventCard";
 
 import { restoreUser } from "./store/session";
 
