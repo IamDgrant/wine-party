@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../../store/session";
 import csc from "country-state-city";
+import { Pagination } from 'antd';
 
 const SignUpForm = ({
   first_name,
@@ -23,6 +24,14 @@ const SignUpForm = ({
   setRepeatPassword,
 }) => {
   const [errors, setErrors] = useState([]);
+  // const [offset, setOffset] = useState(0);
+  // const [currentCardPage, setCurrentCardPage] = useState([]);
+  // const [cardsPerPage, setCardsPerPage] = useState(1);
+  // const [pagesCount, setPagesCount] = useState(1);
+  // const [allCards, setAllCards] = useState([]);
+  // const [totalCardCount, setTotalCardCount] = useState(0);
+
+
   //   const [first_name, setFirstName] = useState("");
   //   const [last_name, setLastName] = useState("");
   //   const [city, setCity] = useState("");
@@ -59,6 +68,8 @@ const SignUpForm = ({
       });
     }
   };
+
+  // <Pagination simple defaultCurrent={2} total={50} />
 
   if (sessionUser) {
     return <Redirect to="/" />;
@@ -228,6 +239,7 @@ const SignUpForm = ({
             value={repeatPassword}
             required={true}
           ></input>
+
         </div>
       </form>
     </>

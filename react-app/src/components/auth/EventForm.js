@@ -6,34 +6,54 @@ import { createEvent } from "../../store/event";
 import SearchHost from "../SearchHost";
 import "../styling/eventFormStyle.css";
 
-const EventForm = ({ user_id }) => {
+const EventForm = ({
+  user_id,
+  event_name,
+  setEventName,
+  event_date,
+  setEventDate,
+  event_city,
+  setEventCity,
+  event_state,
+  setEventState,
+  event_postal_code,
+  setEventPostalCode,
+}) => {
+  // const [event_name, setEventName] = useState("");
+  // const [event_date, setEventDate] = useState("");
+  // const [event_city, setEventCity] = useState("");
+  // const [event_state, setEventState] = useState("");
+  // const [event_postal_code, setEventPostalCode] = useState("");
+
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-
-  const [event_name, setEventName] = useState("");
-  const [event_date, setEventDate] = useState("");
-  const [event_city, setEventCity] = useState("");
-  const [event_state, setEventState] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
 
   const error = () => {
     message.error("Please enter a event name!");
   };
 
   const onSubmission = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (!event_name) {
       error();
       return;
     }
-    dispatch(createEvent({ user_id, event_name, event_date, event_city, event_state })).then(
-      () => {
-        setEventName("");
-        setEventDate("");
-        setEventCity("");
-        setEventState("");
-      }
-    );
+    dispatch(
+      createEvent({
+        user_id,
+        event_name,
+        event_date,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).then(() => {
+      setEventName("");
+      setEventDate("");
+      setEventCity("");
+      setEventState("");
+      setEventPostalCode("");
+    });
   };
 
   const updateEventName = (e) => {
@@ -53,12 +73,15 @@ const EventForm = ({ user_id }) => {
     setEventState(e.target.value);
   };
 
+  const updatePostalCode = (e) => {
+    setEventPostalCode(e.target.value);
+  };
+
   return (
-    <>
-      sessionUser && (
+    sessionUser && (
       <div className="center_box">
         <form onSubmit={onSubmission} className="form">
-          <h1 className="form_title">Create Event</h1>
+          {/* <h1 className="form_title">Create Event</h1> */}
           <div>
             <input
               className="form_input"
@@ -165,13 +188,22 @@ const EventForm = ({ user_id }) => {
               <option value="Wyoming">Wyoming</option>
             </select>
           </div>
-          <button type="submit" className="reserve-btn">
+          <div>
+            <input
+              className="form_input"
+              type="text"
+              name="event_postal_code"
+              placeholder="Postal Code"
+              onChange={updatePostalCode}
+              value={event_postal_code}
+            ></input>
+          </div>
+          {/* <button type="submit" className="reserve-btn">
             Reserve
-          </button>
+          </button> */}
         </form>
       </div>
-      )
-    </>
+    )
   );
 };
 
