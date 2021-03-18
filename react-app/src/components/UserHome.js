@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import UserHeader from "../components/UserHeader";
 // import Profile from "../components/Profile";
 import Date from "../components/Date";
+import Event from "../components/Event"
 // import TimeLeft from "../components/TimeLeft";
 
 // import "./styling/userHome.css";
@@ -32,11 +33,10 @@ const Home = () => {
           > */}
         </div>
 
-        <div className="footer-container">
-          <div>About Wine Party</div>
+        <div className="content-container">
+          {/* <div>About Wine Party</div> */}
           <div>
-            <Date />
-            {/* <Event/> */}
+            <Event/>
           </div>
           <div>Connect</div>
         </div>

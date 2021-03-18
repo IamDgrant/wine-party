@@ -29,6 +29,12 @@
     height: 45px;
   }
 
+  .welcome {
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2; 
+    font-size: 2.5vh;
+  }
+
 .user-menu {
     /* align-items: ; */
     font-family: "Bebas Neue", cursive;

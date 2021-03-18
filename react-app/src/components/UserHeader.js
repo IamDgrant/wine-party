@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import DateTime from "./Date";
+// import DateTime from "./Date";
+// import Date from "../components/Date";
 import AddEventModal from "../components/auth/modals/AddEventModal"
 // import SearchForm from "../components/SearchHost";
 import { seeHost } from "../store/host";
@@ -77,7 +78,6 @@ const UserHeader = () => {
   };
 
   const findHostHandleOk = () => {
-    // onSignIn();
     setIsFindHostModalVisible(false);
   };
 
@@ -151,7 +151,7 @@ const UserHeader = () => {
                 <AddEventModal />
               </li>
               <li className="welcome">
-                <div className="welcome">Welcome, {sessionUser.first_name}</div>
+                <div className="welcome">Welcome, {sessionUser.first_name}! Today is {dayDate[0]}, {dayDate[1]}.</div>
               </li>
               <li className="option menu date" onClick={closeMobileMenu}>
                 {dayDate[0]}, {dayDate[1]}

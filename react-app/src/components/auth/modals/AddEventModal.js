@@ -3,21 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import { message } from "antd";
 import { createEvent } from "../../../store/event";
-// import Event from "../../Event";
 import EventForm from "../EventForm";
-// import AddEventModal from "../components/auth/modals/AddEventModal"
-// import party1 from "../images/pexels-fauxels-3184183.jpg";
 
 const AddEvent = ({ user_id }) => {
-  // const [event_name, setEventName] = useState("");
-  // const [event_date, setEventDate] = useState("");
-  // const [event_city, setEventCity] = useState("");
-  // const [event_state, setEventState] = useState("");
-  // const [event_postal_code, setEventPostalCode] = useState("");
 
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [click, setClick] = useState(false);
+  // const sessionUser = useSelector((state) => state.session.user);
   const [isAddEventModalVisible, setAddEventModalVisible] = useState(false);
   const [event_name, setEventName] = useState("");
   const [event_date, setEventDate] = useState("");
@@ -53,25 +44,6 @@ const AddEvent = ({ user_id }) => {
     });
   };
 
-  // const updateEventName = (e) => {
-  //   setEventName(e.target.value);
-  // };
-  // const updateEventDate = (e) => {
-  //   setEventDate(e.target.value);
-  // };
-
-  // const updateCity = (e) => {
-  //   setEventCity(e.target.value);
-  // };
-
-  // const updateState = (e) => {
-  //   setEventState(e.target.value);
-  // };
-
-  // const updatePostalCode = (e) => {
-  //   setEventPostalCode(e.target.value);
-  // };
-
   const showAddEventModal = () => {
     setAddEventModalVisible(true);
   };
@@ -100,6 +72,7 @@ const AddEvent = ({ user_id }) => {
             color: "#0e1c36",
             backgroundColor: "#f9fbf2",
             borderColor: "#f9fbf2",
+            fontFamily: "Bebas Neue",
           }}
           onClick={showAddEventModal}
         >

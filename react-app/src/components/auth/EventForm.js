@@ -19,12 +19,6 @@ const EventForm = ({
   event_postal_code,
   setEventPostalCode,
 }) => {
-  // const [event_name, setEventName] = useState("");
-  // const [event_date, setEventDate] = useState("");
-  // const [event_city, setEventCity] = useState("");
-  // const [event_state, setEventState] = useState("");
-  // const [event_postal_code, setEventPostalCode] = useState("");
-
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -62,7 +56,6 @@ const EventForm = ({
 
   const updateEventDate = (e) => {
     setEventDate(e.target.value);
-    // new Date(setEventDate(e.target.value));
   };
 
   const updateEventCity = (e) => {
@@ -81,7 +74,6 @@ const EventForm = ({
     sessionUser && (
       <div className="center_box">
         <form onSubmit={onSubmission} className="form">
-          {/* <h1 className="form_title">Create Event</h1> */}
           <div>
             <input
               className="form_input"
