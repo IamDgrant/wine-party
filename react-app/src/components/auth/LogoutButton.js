@@ -22,8 +22,8 @@ const LogoutButton = () => {
         size="medium"
         ghost="true"
         style={{
-          color: "#1a1a1d",
-          borderColor: "#1a1a1d",
+          color: "#f9fbf2",
+          borderColor: "#f9fbf2",
         }}
         onClick={onLogout}
       >

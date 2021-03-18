@@ -6,7 +6,7 @@ import { message } from "antd";
 import "./styling/checkboxStyle.css";
 import "./styling/searchBar.css";
 
-const Search = () => {  
+const SearchForm = () => {  
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   // const [searchTerm, setSearchTerm] = useState("");
@@ -88,4 +88,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchForm;

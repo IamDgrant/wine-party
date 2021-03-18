@@ -20,9 +20,9 @@ const Home = () => {
       <div>
         <div className="main-content-container">
           <div className="navBar-container">
-            <UserHeader />{" "}
+            <UserHeader />
           </div>
-          <div className="welcome">Welcome, {sessionUser.first_name}</div>
+          
           {/* <div
             className="background-image"
             // style={{
