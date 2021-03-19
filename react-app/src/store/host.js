@@ -37,7 +37,6 @@ const removeHost = (hostId) => ({
 // };
 
 export const deleteHost = (hostId) => async (dispatch) => {
-  console.log("hit");
   const res = await fetch(`/api/hosts/${hostId}`, {
     method: "DELETE",
   });
@@ -46,7 +45,7 @@ export const deleteHost = (hostId) => async (dispatch) => {
 };
 
 export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => {
-  // console.log(search);
+  
   const res = await fetch("/api/hosts/search", {
     method: "POST",
     headers: {

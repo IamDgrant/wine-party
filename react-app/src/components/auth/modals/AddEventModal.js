@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import { message } from "antd";
 import { createEvent } from "../../../store/event";
-import EventForm from "../EventForm";
+import EventForm from "../../forms/CreateEventForm";
 
 const AddEvent = ({ user_id }) => {
 

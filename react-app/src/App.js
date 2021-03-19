@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
-import LoginForm from "./components/auth/LoginForm";
-import EventForm from "./components/auth/EventForm";
+import LoginForm from "./components/forms/LoginForm";
+import EventForm from "./components/forms/CreateEventForm";
 import Event from "./components/Event";
 // import EventCard from "./components/EventCard";
 

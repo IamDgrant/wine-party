@@ -1,19 +1,31 @@
-font-family: 'Bebas Neue', cursive;
-/* COLOR PALETTE
+.navBar-container {
+  margin-top: 13.5vh;
+  
+}
+
+.content-container {
+  height: 40vh;
+}
+
+/* font-family: 'Bebas Neue', cursive;
+COLOR PALETTE
 #F78888
 #F3D250
 #ECECEC
 #90CCF4
-#5DA2D5 */
+#5DA2D5
 
-/* body {
+
+
+
+body {
   background-color: #c3073f;
-} */
+}
 
 .main-content-container {
   display: flex;
-  /* justify-content: flex-end; */
-  /* align-items: center; */
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
   height: 100vh;
   background-image: url("../../images/shutterstock_1486697366.png");
@@ -32,7 +44,7 @@ font-family: 'Bebas Neue', cursive;
   display:flex;
   justify-content: space-around;
   height: 6vh;
-  /* background-color: #f4976c; */
+  background-color: #f4976c;
   font-family: "Bebas Neue", cursive;
   color: #1a1a1d;
   font-size: 1.5vh;
@@ -42,15 +54,15 @@ font-family: 'Bebas Neue', cursive;
 .background-image {
   height: 100vh;
   width: 100%;
-  /* object-fit: contain; */
+  object-fit: contain;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: -6vh;
   margin-left: -3.25vh;
-  /* margin-right: auto; */
+  margin-right: auto;
 }
 
 .welcome {
   margin: 0vh 0vh 0vh 0vh;
   padding: 31.5vh 0vh 0vh 32.5vh;
-}
+} */

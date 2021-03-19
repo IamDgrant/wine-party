@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import { createEvent } from "../../store/event";
-import SearchHost from "../SearchHost";
+import SearchHost from "./SearchHostForm";
 import "../styling/eventFormStyle.css";
 
 const EventForm = ({

@@ -7,7 +7,7 @@ import Date from "../components/Date";
 import Event from "../components/Event"
 // import TimeLeft from "../components/TimeLeft";
 
-// import "./styling/userHome.css";
+import "./styling/userHome.css";
 // import wine1 from "../images/shutterstock_1486697366.png";
 
 const Home = () => {

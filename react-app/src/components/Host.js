@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeHost } from "../store/host";
-import ShowHostCard from "./auth/modals/HostCardModal";
+// import ShowHostCard from "./auth/modals/HostCardModal";
 
 const Host = ({ id }) => {
   const dispatch = useDispatch();
   const sessionHost = useSelector((state) => state.host.host);
 
-  const [activeHostIndex, setActiveHostIndex] = useState(0);
+  const random = () => {}
+
+  const [randomHost, setRandomHost] = useState()
 
   useEffect(() => {
     if (!id) dispatch(seeHost());
@@ -15,11 +17,11 @@ const Host = ({ id }) => {
 
   if (sessionHost) {
     return (
-      <ShowHostCard
-        activeHostIndex={activeHostIndex}
-        setActiveHostIndex={setActiveHostIndex}
-        sessionHost={sessionHost}
-      />
+      // <ShowHostCard
+      //   activeHostIndex={activeHostIndex}
+      //   setActiveHostIndex={setActiveHostIndex}
+      //   sessionHost={sessionHost}
+      // />
     );
   } else {
     return null;

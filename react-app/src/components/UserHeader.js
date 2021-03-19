@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import DateTime from "./Date";
 // import Date from "../components/Date";
-import AddEventModal from "../components/auth/modals/AddEventModal"
-// import SearchForm from "../components/SearchHost";
+import AddEventModal from "../components/auth/modals/AddEventModal";
+import SearchForm from "../components/forms/SearchHostForm";
 import { seeHost } from "../store/host";
 import { message } from "antd";
 // import {
@@ -33,11 +33,11 @@ const UserHeader = () => {
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
   );
-  const updateSommelier = () => setSommelier(!sommelier);
-  const updateMixologist = () => setMixologist(!mixologist);
+  // const updateSommelier = () => setSommelier(!sommelier);
+  // const updateMixologist = () => setMixologist(!mixologist);
 
   const onSearch = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
       (res) => {
         if (res.Host === "Not found") {
@@ -78,6 +78,7 @@ const UserHeader = () => {
   };
 
   const findHostHandleOk = () => {
+    onSearch();
     setIsFindHostModalVisible(false);
   };
 
@@ -112,46 +113,24 @@ const UserHeader = () => {
                   onOk={findHostHandleOk}
                   onCancel={findHostHandleCancel}
                 >
-                  <form>
-                    <input
-                      className="searchInput w-full border-2"
-                      placeholder="Search Name, City, State, Postal Code"
-                      value={search}
-                      type="text"
-                      onChange={(e) => setSearch(e.target.value)}
-                    ></input>
-                    <label className="container">
-                      Sommelier
-                      <input
-                        className="checkbox"
-                        type="checkbox"
-                        name="a"
-                        checked={sommelier}
-                        onChange={updateSommelier}
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                    <label className="container">
-                      Mixologist
-                      <input
-                        className="checkbox"
-                        type="checkbox"
-                        name="b"
-                        checked={mixologist}
-                        onChange={updateMixologist}
-                        //   disabled={true}
-                      />
-                      <span className="checkmark"></span>
-                    </label>
-                  </form>
+                  <SearchForm
+                    search={search}
+                    setSearch={setSearch}
+                    sommelier={sommelier}
+                    setSommelier={setSommelier}
+                    mixologist={mixologist}
+                    setMixologist={setMixologist}
+                  />
                 </Modal>
               </li>
               <li>
-
                 <AddEventModal />
               </li>
               <li className="welcome">
-                <div className="welcome">Welcome, {sessionUser.first_name}! Today is {dayDate[0]}, {dayDate[1]}.</div>
+                <div className="welcome">
+                  Welcome, {sessionUser.first_name}! Today is {dayDate[0]},{" "}
+                  {dayDate[1]}.
+                </div>
               </li>
               <li className="option menu date" onClick={closeMobileMenu}>
                 {dayDate[0]}, {dayDate[1]}

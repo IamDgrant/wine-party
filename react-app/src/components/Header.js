@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login, createUser } from "../store/session";
-import SignUpForm from "../components/auth/SignUpForm";
-import LoginForm from "../components/auth/LoginForm";
+import SignUpForm from "./forms/SignUpForm";
+import LoginForm from "./forms/LoginForm";
 import { Modal, Button } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
@@ -92,14 +92,17 @@ const Header = () => {
         <div className="logo-container">Wine Party</div>
 
         <ul className={click ? "nav-options active" : "nav-options"}>
-          <li className="option menu" onClick={closeMobileMenu}>
-            <a href="#">ABOUT</a>
+          <li className="option" onClick={closeMobileMenu}>
+            <Button type="text" className="menu">About</Button>
+            {/* <a href="#">ABOUT</a> */}
           </li>
           <li className="option menu" onClick={closeMobileMenu}>
-            <a href="#">FIND A HOST</a>
+            <Button type="text" className="menu">Browse Hosts</Button>
+            {/* <a href="#">Browse Hosts</a> */}
           </li>
           <li className="option menu" onClick={closeMobileMenu}>
-            <a href="#">FAQ</a>
+            <Button type="text" className="menu">FAQ</Button>
+            {/* <a href="#">FAQ</a> */}
           </li>
           <li className="option mobile-option" onClick={closeMobileMenu}>
             <Button
@@ -183,9 +186,9 @@ const Header = () => {
             size="medium"
             ghost="true"
             style={{
-                color: "#f9fbf2",
-                borderColor: "#f9fbf2",
-              }}
+              color: "#f9fbf2",
+              borderColor: "#f9fbf2",
+            }}
             onClick={showSignInModal}
           >
             Sign in
@@ -253,9 +256,8 @@ const Header = () => {
         {click ? (
           <CloseMenu className="menu-icon" />
         ) : (
-        //   <MenuIcon className="menu-icon" />
-         <MenuIcon />
-          
+          //   <MenuIcon className="menu-icon" />
+          <MenuIcon />
         )}
       </div>
     </div>
