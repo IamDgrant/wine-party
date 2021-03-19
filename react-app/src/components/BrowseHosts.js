@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { browseAllHost } from "../store/host";
-import { CSSGrid, measureItems, makeResponsive } from 'react-stonecutter';
+import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import "../components/styling/browseHostStyling.css";
 
 const BrowseHosts = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const BrowseHosts = () => {
 
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
-    minPadding: 100
+    minPadding: 100,
   });
 
   // const { simple, pinterest } = layout;
@@ -34,7 +35,24 @@ const BrowseHosts = () => {
         >
           {sessionHost &&
             sessionHost?.hosts.map((host) => (
-              <li key={host.id}>{host.first_name} {host.last_name}</li>
+              <li key={host.id}>
+                <div
+                  className="host-card"
+                  style={{
+                    backgroundImage: `${sessionHost.profile_image}`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                >
+                  <div className="host-name">
+                    {host.first_name} {host.last_name}
+                  </div>
+                  {/* <div className="host-rating">{host.rating}</div> */}
+                  <div className="host-city-state">
+                    {host.city}, {host.state}
+                  </div>
+                </div>
+              </li>
             ))}
         </Grid>
       </div>
