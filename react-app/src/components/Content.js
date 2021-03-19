@@ -1,5 +1,5 @@
 import React from "react";
-import RandomHost from "../components/RandomHost";
+import RandomHost from "./RandomHostCard";
 // import "../components/styling/splashContent.css";
 
 const Content = () => {
