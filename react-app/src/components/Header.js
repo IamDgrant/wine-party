@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import { login, createUser } from "../store/session";
 import SignUpForm from "./forms/SignUpForm";
 import LoginForm from "./forms/LoginForm";
@@ -93,16 +93,26 @@ const Header = () => {
 
         <ul className={click ? "nav-options active" : "nav-options"}>
           <li className="option" onClick={closeMobileMenu}>
-            <Button type="text" className="menu">About</Button>
-            {/* <a href="#">ABOUT</a> */}
+            <Button type="text" className="menu">
+              About
+            </Button>
           </li>
           <li className="option menu" onClick={closeMobileMenu}>
-            <Button type="text" className="menu">Browse Hosts</Button>
-            {/* <a href="#">Browse Hosts</a> */}
+            <NavLink
+              className="navbar-item"
+              activeClassName="is-active"
+              to="/hosts"
+              // exact
+            >
+              <Button type="text" className="menu">
+                Browse Hosts
+              </Button>
+            </NavLink>
           </li>
           <li className="option menu" onClick={closeMobileMenu}>
-            <Button type="text" className="menu">FAQ</Button>
-            {/* <a href="#">FAQ</a> */}
+            <Button type="text" className="menu">
+              FAQ
+            </Button>
           </li>
           <li className="option mobile-option" onClick={closeMobileMenu}>
             <Button

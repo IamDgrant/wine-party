@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux"
 import Header from "../components/Header";
 import Content from "../components/Content";
 // import NavBarLanding from "../components/NavBarLanding"
@@ -6,6 +7,14 @@ import Content from "../components/Content";
 // import "antd/dist/antd.css";
 
 const SplashPage = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     console.log(position);
+  //   });
+  // }, [dispatch]);
+
   return (
     <>
       <div className="main-container">

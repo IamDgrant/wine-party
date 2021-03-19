@@ -36,12 +36,11 @@ const removeHost = (hostId) => ({
 //   dispatch(setEvent(data));
 // };
 
-export const deleteHost = (hostId) => async (dispatch) => {
-  const res = await fetch(`/api/hosts/${hostId}`, {
-    method: "DELETE",
-  });
-  const deleted = await res.json();
-  console.log(deleted);
+export const browseAllHost = () => async (dispatch) => {
+  const res = await fetch("/api/hosts");
+  const data = await res.json();
+  dispatch(getHost(data));
+  return data;
 };
 
 export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
@@ -62,6 +61,14 @@ export const seeRandomHost = () => async (dispatch) => {
   const data = await res.json();
   dispatch(getHost(data));
   return data;
+};
+
+export const deleteHost = (hostId) => async (dispatch) => {
+  const res = await fetch(`/api/hosts/${hostId}`, {
+    method: "DELETE",
+  });
+  const deleted = await res.json();
+  console.log(deleted);
 };
 
 // export const seeHost = () => async (dispatch) => {

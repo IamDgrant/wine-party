@@ -17,21 +17,21 @@ const RandomHost = () => {
     sessionHost && (
       <div className="random-host">
         <Card
-          hoverable
-          style={{ width: "25vw", height: "25vh"}}
+          size="small"
           cover={
             <img
-              alt="african-american woman Sommelier"
+              alt="example"
               src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
             />
           }
+          title={`${sessionHost.first_name} ${sessionHost.last_name}`}
+          // extra={<a href="#">More</a>}
+          style={{ width: 250 }}
         >
-          <Meta title={sessionHost.first_name} description={sessionHost.about} />
+          <p>Rated: ⭐⭐⭐⭐</p>
+          {sessionHost.about}
+          <p>Add to your Party!</p>
         </Card>
-        <h1>
-          
-        </h1>
-        
       </div>
     )
   );

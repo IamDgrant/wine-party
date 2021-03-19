@@ -7,7 +7,6 @@ const Event = ({ id }) => {
   const dispatch = useDispatch();
 
   const sessionEvent = useSelector((state) => state.event.event);
-  // console.log(sessionEvent);
 
   // const eventId = event.id;
 
@@ -18,27 +17,6 @@ const Event = ({ id }) => {
     //   setData(id);
     // }
   }, [id]);
-
-  // console.log(id);
-
-  // const onEventUpdate = async (e) => {
-  //   e.preventDefault();
-  //   event = { event_name, event_city, event_state };
-  //   const res = await fetch(`/api/events/update/${eventId}`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(event),
-  //   });
-  //   const data = await res.json();
-  //   dispatch(seeEvent());
-  // };
-
-  // const EventDelete = async () => {
-  //   await dispatch(deleteEvent(event.id));
-  //   dispatch(seeEvent());
-  // };
 
   const todaysDate = new Date();
   const futureEvents = sessionEvent.filter((events) => {
