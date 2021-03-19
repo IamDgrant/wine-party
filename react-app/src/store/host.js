@@ -44,8 +44,7 @@ export const deleteHost = (hostId) => async (dispatch) => {
   console.log(deleted);
 };
 
-export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => {
-  
+export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
   const res = await fetch("/api/hosts/search", {
     method: "POST",
     headers: {
@@ -55,7 +54,14 @@ export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => 
   });
   const data = await res.json();
   dispatch(getHost(data.hosts));
-  return data
+  return data;
+};
+
+export const seeRandomHost = () => async (dispatch) => {
+  const res = await fetch("/api/hosts/random");
+  const data = await res.json();
+  dispatch(getHost(data));
+  return data;
 };
 
 // export const seeHost = () => async (dispatch) => {

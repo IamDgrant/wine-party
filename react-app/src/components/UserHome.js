@@ -38,14 +38,10 @@ const Home = () => {
           <div>
             <Event/>
           </div>
+          
           <div>Connect</div>
         </div>
       </div>
-      {/* <div className="main-container">
-        <div className="navBar-container"></div>
-        <div className="main-content-container"></div>
-        <div className="footer-container"></div>
-      </div> */}
     </>
   );
 };
