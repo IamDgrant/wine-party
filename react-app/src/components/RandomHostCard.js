@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import { seeRandomHost } from "../store/host";
-// import { Card } from "antd";
+import "../components/styling/randomHostCardStyling.css"
 
 const RandomHost = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,10 @@ const RandomHost = () => {
           component="ul"
           columns={1}
           columnWidth={250}
-          gutterWidth={5}
-          gutterHeight={5}
-          itemHeight={200}
+          // gutterWidth={5}
+          // gutterHeight={5}
+          itemHeight={300}
+          itemWidth={500}
           // duration={500}
           // easing="ease-out"
         >
@@ -35,8 +36,9 @@ const RandomHost = () => {
               className="host-card"
               style={{
                 backgroundImage: `url(${sessionHost.profile_image})`,
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
               }}
             >
               <div className="host-name">

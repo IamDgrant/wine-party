@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
+import csc from 'country-state-city'
+// import { ICountry, IState, ICity } from 'country-state-city'
 import { login, createUser } from "../store/session";
+import { browseAllHost } from "../store/host";
 import SignUpForm from "./forms/SignUpForm";
 import LoginForm from "./forms/LoginForm";
 import { Modal, Button } from "antd";
@@ -25,6 +28,31 @@ const Header = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
+
+  // const headers = new Headers();
+  // headers.append("X-CSCAPI-KEY", "API_KEY");
+
+  // const requestOptions = {
+  //   method: "GET",
+  //   headers: headers,
+  //   redirect: "follow",
+  // };
+
+  // const csc = () => {
+  //   fetch(
+  //     "https://api.countrystatecity.in/v1/countries/IN/states/MH/cities",
+  //     requestOptions
+  //   )
+  //     .then((response) => response.text())
+  //     .then((result) => console.log(result))
+  //     .catch((error) => console.log("error", error));
+  // };
+
+  // useEffect(() => {csc()}, [])
+
+  // useEffect(() => {
+  //   dispatch(browseAllHost());
+  // }, [dispatch]);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -57,7 +85,6 @@ const Header = () => {
   const onSignIn = async () => {
     const user = await dispatch(login(email, password));
     if (user.ok) history.push("/");
-    // setShowModal(false);
   };
 
   const showSignInModal = () => {

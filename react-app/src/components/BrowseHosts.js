@@ -7,7 +7,6 @@ import "../components/styling/browseHostStyling.css";
 const BrowseHosts = () => {
   const dispatch = useDispatch();
   const sessionHost = useSelector((state) => state.host.host);
-  console.log(sessionHost?.hosts);
 
   // console.log(sessionHost.profile_image);
 
@@ -36,7 +35,7 @@ const BrowseHosts = () => {
         easing="ease-out"
       >
         {sessionHost &&
-          sessionHost.hosts.map((host) => (
+          sessionHost?.hosts.map((host) => (
             <li key={host.id}>
               <div
                 className="host-card"
@@ -44,7 +43,6 @@ const BrowseHosts = () => {
                   backgroundImage: `url(${host.profile_image})`,
                   backgroundSize: "contain",
                   backgroundPosition: "center",
-                  // backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                 }}
               >

@@ -1,16 +1,15 @@
 .host-card {
   display: flex;
+  justify-content: center;
+  align-items: flex-end;
   background-size: cover;
   background-repeat: no-repeat;
-  justify-content: center;
-  /* align-items: flex-start; */
   /* padding: 0px 40px; */
   height: 300px;
   width: 500px;
 }
 
 .host-name {
-    /* justify-content: flex-end; */
   font-family: "Bebas Neue", cursive;
   color: #ffff;
   font-size: 16px;

@@ -1,0 +1,10 @@
+random-host {
+  display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  justify-content: center;
+  /* align-items: flex-start; */
+  /* padding: 0px 40px; */
+  height: 300px;
+  width: 500px;
+}
