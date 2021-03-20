@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import { seeRandomHost } from "../store/host";
-import { Card } from "antd";
-
-const { Meta } = Card;
+// import { Card } from "antd";
 
 const RandomHost = () => {
   const dispatch = useDispatch();
@@ -13,10 +12,44 @@ const RandomHost = () => {
     dispatch(seeRandomHost());
   }, [dispatch]);
 
+  const Grid = makeResponsive(measureItems(CSSGrid), {
+    maxWidth: 1920,
+    minPadding: 100,
+  });
+
   return (
     sessionHost && (
       <div className="random-host">
-        <Card
+        <Grid
+          component="ul"
+          columns={1}
+          columnWidth={250}
+          gutterWidth={5}
+          gutterHeight={5}
+          itemHeight={200}
+          // duration={500}
+          // easing="ease-out"
+        >
+          {sessionHost && (
+            <div
+              className="host-card"
+              style={{
+                backgroundImage: `url(${sessionHost.profile_image})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <div className="host-name">
+                {sessionHost.first_name} {sessionHost.last_name}
+              </div>
+              {/* <div className="host-rating">{host.rating}</div> */}
+              <div className="host-city-state">
+                {sessionHost.city}, {sessionHost.state}
+              </div>
+            </div>
+          )}
+        </Grid>
+        {/* <Card
           size="small"
           cover={
             <img
@@ -31,7 +64,7 @@ const RandomHost = () => {
           <p>Rated: ⭐⭐⭐⭐</p>
           {sessionHost.about}
           <p>Add to your Party!</p>
-        </Card>
+        </Card> */}
       </div>
     )
   );

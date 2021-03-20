@@ -9,6 +9,8 @@ const BrowseHosts = () => {
   const sessionHost = useSelector((state) => state.host.host);
   console.log(sessionHost?.hosts);
 
+  // console.log(sessionHost.profile_image);
+
   useEffect(() => {
     dispatch(browseAllHost());
   }, [dispatch]);
@@ -22,40 +24,41 @@ const BrowseHosts = () => {
 
   return (
     <>
-      <div>
-        <Grid
-          component="ul"
-          columns={5}
-          columnWidth={250}
-          gutterWidth={5}
-          gutterHeight={5}
-          itemHeight={200}
-          duration={500}
-          easing="ease-out"
-        >
-          {sessionHost &&
-            sessionHost?.hosts.map((host) => (
-              <li key={host.id}>
-                <div
-                  className="host-card"
-                  style={{
-                    backgroundImage: `${sessionHost.profile_image}`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <div className="host-name">
-                    {host.first_name} {host.last_name}
-                  </div>
-                  {/* <div className="host-rating">{host.rating}</div> */}
-                  <div className="host-city-state">
-                    {host.city}, {host.state}
-                  </div>
+      <Grid
+        component="ul"
+        columns={5}
+        columnWidth={250}
+        gutterWidth={5}
+        gutterHeight={5}
+        itemHeight={300}
+        itemWidth={500}
+        duration={500}
+        easing="ease-out"
+      >
+        {sessionHost &&
+          sessionHost.hosts.map((host) => (
+            <li key={host.id}>
+              <div
+                className="host-card"
+                style={{
+                  backgroundImage: `url(${host.profile_image})`,
+                  backgroundSize: "contain",
+                  backgroundPosition: "center",
+                  // backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                <div className="host-name">
+                  {host.first_name} {host.last_name}
                 </div>
-              </li>
-            ))}
-        </Grid>
-      </div>
+                {/* <div className="host-rating">{host.rating}</div> */}
+                <div className="host-city-state">
+                  {host.city}, {host.state}
+                </div>
+              </div>
+            </li>
+          ))}
+      </Grid>
     </>
   );
 };
