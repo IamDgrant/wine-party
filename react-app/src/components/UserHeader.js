@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 // import DateTime from "./Date";
 // import Date from "../components/Date";
 import AddEventModal from "../components/auth/modals/AddEventModal";
@@ -25,34 +26,40 @@ import "../components/styling/userHeader.css";
 // import "./styling/navBar.css";
 
 const UserHeader = () => {
+  const history = useHistory();
+
   const [click, setClick] = useState(false);
   const [isFindHostModalVisible, setIsFindHostModalVisible] = useState(false);
   const [search, setSearch] = useState("");
   const [sommelier, setSommelier] = useState(false);
   const [mixologist, setMixologist] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [date, setDate] = useState(new Date());
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
   );
+
+  const dispatch = useDispatch();
   // const updateSommelier = () => setSommelier(!sommelier);
   // const updateMixologist = () => setMixologist(!mixologist);
 
   const onSearch = async (e) => {
+    console.log("SEARCH HIT");
     // e.preventDefault();
     dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
       (res) => {
+        console.log("here!!!!!", res);
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
         }
-        // else {
-        //   message.success(`User ${search} added to Event!`);
-        // }
+        else {
+          // message.success(`User ${search} added to Event!`);
+        }
+        if (res.hosts) history.push("/search")
       }
-    );
+      );
   };
 
-  const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
-  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     setDate(new Date());
@@ -132,9 +139,9 @@ const UserHeader = () => {
                   {dayDate[1]}.
                 </div>
               </li>
-              <li className="option menu date" onClick={closeMobileMenu}>
+              {/* <li className="option menu date" onClick={closeMobileMenu}>
                 {dayDate[0]}, {dayDate[1]}
-              </li>
+              </li> */}
               <li
                 className="option mobile-option"
                 onClick={closeMobileMenu}

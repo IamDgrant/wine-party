@@ -13,6 +13,12 @@ def hosts():
     hosts = Host.query.all()
     return {"hosts": [host.to_dict() for host in hosts]}
 
+@host_routes.route('/random')
+def random_host():
+    random = func.random()
+    hosts = Host.query.order_by(random).first()
+    return hosts.to_dict()
+
 
 @host_routes.route('/search', methods=['POST'])
 @login_required

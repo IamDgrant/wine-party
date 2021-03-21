@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeEvent, deleteEvent } from "../../../store/event";
+import Event from "../../Event"
+import EventForm from "../../forms/CreateEventForm"
 import { Modal, Button } from "antd";
 import "../../styling/eventStyle.css";
 
@@ -28,7 +30,6 @@ const SeeEvent = ({ id }) => {
   };
 
   const seeEventHandleOk = () => {
-    // onSubmission();
     setSeeEventModalVisible(false);
   };
 
@@ -77,7 +78,8 @@ const SeeEvent = ({ id }) => {
                   color: "#0e1c36",
                 }}
               >
-                <h1>Hello</h1>
+                  <Event /> 
+                <EventForm />
               </Modal>
             </div>
           ))}

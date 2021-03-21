@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import BrowseHosts from "./components/BrowseHosts"
+import SearchResult from "./components/SearchResults"
 import LoginForm from "./components/forms/LoginForm";
 import EventForm from "./components/forms/CreateEventForm";
 import Event from "./components/Event";
@@ -37,6 +38,9 @@ const App = () => {
         </Route>
         <ProtectedRoute path="/" exact={true}>
           <UserHome />
+        </ProtectedRoute>
+        <ProtectedRoute path="/search" exact={true}>
+          <SearchResult />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
