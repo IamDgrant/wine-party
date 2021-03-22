@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import { seeHost } from "../store/host"
 // import { message } from "antd";
 
 const SearchResult = () => {
+  const dispatch = useDispatch()
   const sessionHostsResults = useSelector((state) => state.host.host);
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
   );
 
-  console.log(sessionHostsResults);
+  // console.log(sessionHostsResults);
+  // useEffect(() => {
+  //   dispatch(seeHost());
+  // }, [dispatch]);
 
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
@@ -27,7 +32,7 @@ const SearchResult = () => {
             fontSize: "2.5vh"
           }}
         >
-          Host near you
+          Hosts
         </div>
         <Grid
           component="ul"

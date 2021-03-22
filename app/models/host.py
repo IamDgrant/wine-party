@@ -40,9 +40,9 @@ class Host(db.Model):
 
     def ratings(self):  
             reviews = [event.review for event in self.events]
-            print("REVIEWS!!!!!!!!!!!!!!!!", reviews, self.events)
+            # print("REVIEWS!!!!!!!!!!!!!!!!", reviews, self.events)
             ratings = list(map(lambda r: r.rating, reviews))
-            print("RATINGS!!!!!!!!!!!!!!!!", ratings)
+            # print("RATINGS!!!!!!!!!!!!!!!!", ratings)
             avgRating = sum(ratings) / \
                             len(ratings) if len(ratings) > 0 else "n/a"
             return avgRating

@@ -53,6 +53,7 @@ export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(getHost(data.hosts));
+  console.log(data.hosts);
   return data;
 };
 

@@ -6,10 +6,10 @@ import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import BrowseHosts from "./components/BrowseHosts"
 import SearchResult from "./components/SearchResults"
-import LoginForm from "./components/forms/LoginForm";
-import EventForm from "./components/forms/CreateEventForm";
-import Event from "./components/Event";
-// import EventCard from "./components/EventCard";
+// import LoginForm from "./components/forms/LoginForm";
+// import EventForm from "./components/forms/CreateEventForm";
+// import Event from "./components/Event";
+// import FindHost from "./components/FindHost"
 
 import { restoreUser } from "./store/session";
 
@@ -41,6 +41,7 @@ const App = () => {
         </ProtectedRoute>
         <ProtectedRoute path="/search" exact={true}>
           <SearchResult />
+          {/* <FindHost /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

@@ -42,15 +42,17 @@ const UserHeader = () => {
   );
 
   const dispatch = useDispatch();
-  // const updateSommelier = () => setSommelier(!sommelier);
-  // const updateMixologist = () => setMixologist(!mixologist);
+
+  // useEffect(() => {
+  //   dispatch(seeHost());
+  // }, [dispatch]);
 
   const onSearch = async (e) => {
-    console.log("SEARCH HIT");
-    // e.preventDefault();
+    e.preventDefault();
+    // console.log("SEARCH HIT");
     dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
       (res) => {
-        console.log("here!!!!!", res);
+        // console.log("here!!!!!", res);
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
         } else {

@@ -23,6 +23,7 @@ def random_host():
 @host_routes.route('/search', methods=['POST'])
 @login_required
 def hosts_search():
+    # print("WORKING!!!!!!!")
     hosts = Host.query.all()
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -51,7 +52,7 @@ def hosts_search():
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
             else:
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
-        
+        print("THISSTUFF!!!!", [host.to_dict() for host in data])
         return {"hosts": [host.to_dict() for host in data]}
 
 
