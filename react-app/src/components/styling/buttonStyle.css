@@ -1,99 +1,45 @@
-
-
-
-/* .btn {
-  display: inline-block;
-  color: rgba(248, 209, 174);
-  border: 3px solid rgba(248, 209, 174);
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.2vh;
-  font-weight: 800;
-  height: 65px;
-  width: 65px;
-  line-height: 120%;
-  background-color: rgba(255, 255, 255, 0);
-  transition: background-color 300ms ease;
-  cursor: pointer;
-  font-family: 'Rajdhani', sans-serif;
-}
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(248, 209, 174)
+.host-btn {
+  font-family: "Bebas Neue", cursive;
+  color: #f9fbf2;
 }
 
-.signUp-form-btn {
-  display: inline-block;
-  padding: 0.5vh 25px;
-  color: rgba(248, 209, 174);
-  border: 1px solid rgba(248, 209, 174);
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 120%;
-  background-color: rgba(255, 255, 255, 0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transition: background-color 300ms ease;
-  -moz-transition: background-color 300ms ease;
-  transition: background-color 300ms ease;
-  cursor: pointer;
-}
-.signUp-form-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(248, 209, 174, 0.7);
+.host-btn:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
 }
 
-.login-form-btn {
-  margin: 0.5vh;
-  display: inline-block;
-  padding: 0.5vh 25px;
-  color: rgba(248, 209, 174);
-  border: 1px solid rgba(248, 209, 174);
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 120%;
-  background-color: rgba(255, 255, 255, 0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transition: background-color 300ms ease;
-  -moz-transition: background-color 300ms ease;
-  transition: background-color 300ms ease;
-  cursor: pointer;
-}
-.login-form-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(248, 209, 174, 0.7);
+.host-btn:hover:after {
+  width: 100%;
+  left: 0;
 }
 
-.logout-btn {
-  margin: 0.5vh;
-  display: inline-block;
-  padding: 0.5vh 25px;
-  color: rgba(248, 209, 174);
-  border: 1px solid rgba(248, 209, 174);
-  text-decoration: none;
-  font-size: 14px;
-  line-height: 120%;
-  background-color: rgba(255, 255, 255, 0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transition: background-color 300ms ease;
-  -moz-transition: background-color 300ms ease;
-  transition: background-color 300ms ease;
-  cursor: pointer;
-}
-.login-form-btn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgba(248, 209, 174, 0.7);
+.event-btn {
+  font-family: "Bebas Neue", cursive;
+  color: #f9fbf2;
 }
 
-.splash-sign-btn {
-  padding: 1vh;
+.event-btn:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
+  background: #fff;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
 }
 
-/* .splash-log-btn {
-  padding: 1vh;
-} */
+.event-btn:hover:after {
+  width: 100%;
+  left: 0;
+}

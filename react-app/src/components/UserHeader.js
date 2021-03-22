@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 // import DateTime from "./Date";
 // import Date from "../components/Date";
+import FindHost from "../components/FindHost"
 import AddEventModal from "../components/auth/modals/AddEventModal";
 import SearchForm from "../components/forms/SearchHostForm";
 import { seeHost } from "../store/host";
@@ -98,47 +99,20 @@ const UserHeader = () => {
       <div className="user-header">
         <div className="user-logo-nav">
           <div className="user-logo-container">Wine Party</div>
-          <div className="find-host">
+          <div className="nav">
             <ul className={click ? "nav-options active" : "nav-options"}>
-              <li className="option user-menu" onClick={closeMobileMenu}>
-                <Button
-                  htmlType="submit"
-                  type="primary"
-                  size="medium"
-                  style={{
-                    color: "#0e1c36",
-                    backgroundColor: "#f9fbf2",
-                    borderColor: "#f9fbf2",
-                  }}
-                  onClick={showFindHostModal}
-                >
-                  Find a Host
-                </Button>
-                <Modal
-                  title="Find a Host"
-                  visible={isFindHostModalVisible}
-                  onOk={findHostHandleOk}
-                  onCancel={findHostHandleCancel}
-                >
-                  <SearchForm
-                    search={search}
-                    setSearch={setSearch}
-                    sommelier={sommelier}
-                    setSommelier={setSommelier}
-                    mixologist={mixologist}
-                    setMixologist={setMixologist}
-                  />
-                </Modal>
+              <li className="option" onClick={closeMobileMenu}>
+                <FindHost />
               </li>
-              <li>
+              <li className="option">
                 <AddEventModal />
               </li>
-              <li className="welcome">
+              {/* <li className="welcome">
                 <div className="welcome">
                   Welcome, {sessionUser.first_name}! Today is {dayDate[0]},{" "}
                   {dayDate[1]}.
                 </div>
-              </li>
+              </li> */}
               {/* <li className="option menu date" onClick={closeMobileMenu}>
                 {dayDate[0]}, {dayDate[1]}
               </li> */}
@@ -150,9 +124,9 @@ const UserHeader = () => {
                 className="option mobile-option"
                 onClick={closeMobileMenu}
               ></li>
-              <div className="option menu logout">
+              <div className="option menu logout ">
                 {/* <li className="option menu logout" onClick={closeMobileMenu}> */}
-                <LogoutButton />
+                {/* <LogoutButton /> */}
                 {/* </li> */}
               </div>
             </ul>
@@ -170,6 +144,8 @@ const UserHeader = () => {
           )}
         </div>
       </div>
+      <div className="background-image"></div>
+      <div className="search-container"></div>
     </>
   );
 };

@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { seeHost } from "../store/host";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { message } from "antd";
-
+// import { message } from "antd";
 
 const SearchResult = () => {
-  // const [search, setSearch] = useState("");
-  // const [sommelier, setSommelier] = useState(false);
-  // const [mixologist, setMixologist] = useState(false);
   const sessionHostsResults = useSelector((state) => state.host.host);
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
@@ -16,30 +11,6 @@ const SearchResult = () => {
 
   console.log(sessionHostsResults);
 
-  // const onSearch = async (e) => {
-  //   console.log("SEARCH HIT");
-  //   // e.preventDefault();
-  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-  //     (res) => {
-  //       if (res.Host === "Not found") {
-  //         message.error(`User ${search} not found`);
-  //       }
-  //       // else {
-  //       //   message.success(`User ${search} added to Event!`);
-  //       // }
-  //     }
-  //   );
-  //   // history.push("/search")
-  // };
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(seeHost());
-  // }, [dispatch]);
-
-
-  // console.log("MY LOG!!!!!!!!", sessionHostsResults);
-  
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
     minPadding: 100,
@@ -48,7 +19,16 @@ const SearchResult = () => {
   return (
     <>
       <div className="">
-        <div className="search-results">Host near you</div>
+        <div
+          className="host-near"
+          style={{
+            color: "#0e1c36",
+            fontFamily: "Bebas Neue",
+            fontSize: "2.5vh"
+          }}
+        >
+          Host near you
+        </div>
         <Grid
           component="ul"
           columns={3}

@@ -4,6 +4,7 @@ import { Modal, Button } from "antd";
 import { message } from "antd";
 import { createEvent } from "../../../store/event";
 import EventForm from "../../forms/CreateEventForm";
+import "../../styling/buttonStyle.css"
 
 const AddEvent = ({ user_id }) => {
 
@@ -66,19 +67,18 @@ const AddEvent = ({ user_id }) => {
         </div> */}
         <Button
           htmlType="submit"
-          type="primary"
-          size="medium"
+          type="text"
+          size="small"
+          className="event-btn"
           style={{
-            color: "#0e1c36",
-            backgroundColor: "#f9fbf2",
-            borderColor: "#f9fbf2",
-            fontFamily: "Bebas Neue",
+            color: "#f9fbf2",
+            fontFamily: "Montserrat"
           }}
-          onClick={showAddEventModal}
+          // onClick={showAddEventModal}
         >
           Add Event
         </Button>
-        <Modal
+        {/* <Modal
           title="Add an Event"
           visible={isAddEventModalVisible}
           onOk={addEventHandleOk}
@@ -100,7 +100,7 @@ const AddEvent = ({ user_id }) => {
             event_state={event_state}
             event_postal_code={event_postal_code}
           />
-        </Modal>
+        </Modal> */}
       </div>
     </>
   );
