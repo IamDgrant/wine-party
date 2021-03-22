@@ -80,18 +80,22 @@ const UserHeader = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showFindHostModal = () => {
-    setIsFindHostModalVisible(true);
-  };
+  // const showFindHostModal = () => {
+  //   setIsFindHostModalVisible(true);
+  // };
 
-  const findHostHandleOk = () => {
-    onSearch();
-    setIsFindHostModalVisible(false);
-  };
+  // const findHostHandleOk = () => {
+  //   onSearch();
+  //   setIsFindHostModalVisible(false);
+  // };
 
-  const findHostHandleCancel = () => {
-    setIsFindHostModalVisible(false);
-  };
+  // const findHostHandleCancel = () => {
+  //   setIsFindHostModalVisible(false);
+  // };
+
+  const updateSearch = (e) => setSearch(e.target.value);
+  const updateSommelier = () => setSommelier(!sommelier);
+  const updateMixologist = () => setMixologist(!mixologist);
 
   return (
     <>
@@ -145,20 +149,22 @@ const UserHeader = () => {
       </div>
       <div className="background-image">
         <div className="search-form">
-          <form class="form">
+          <form className="form" onSubmit={onSearch}>
             <input
+              value={search}
+              onChange={updateSearch}
               type="search"
               className="search-input"
               placeholder="Search name, city, state, postal code..."
             />
-            <button type="submit" class="search-button">
-              <svg class="submit-button">
+            <button type="submit" className="search-button">
+              <svg className="submit-button">
                 <svg
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fas"
                   data-icon="search"
-                  class="svg-inline--fa fa-search fa-w-16"
+                  className="svg-inline--fa fa-search fa-w-16"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -167,27 +173,32 @@ const UserHeader = () => {
                 </svg>
               </svg>
             </button>
-            <div class="search-option">
+            <div className="search-option">
               <div>
                 <input
+                  // name="a"
+                  checked={sommelier}
+                  onChange={updateSommelier}
                   name="type"
                   type="checkbox"
                   value="type-somm"
                   id="type-somm"
                 />
-                <label for="type-somm">
+                <label htmlFor="type-somm">
                   <span>Sommelier</span>
                 </label>
               </div>
 
               <div>
                 <input
+                  checked={mixologist}
+                  onChange={updateMixologist}
                   name="type"
                   type="checkbox"
                   value="type-mix"
                   id="type-mix"
                 />
-                <label for="type-mix">
+                <label htmlFor="type-mix">
                   <span>Mixologist</span>
                 </label>
               </div>

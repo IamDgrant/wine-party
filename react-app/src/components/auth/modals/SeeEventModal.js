@@ -42,7 +42,7 @@ const SeeEvent = ({ id }) => {
       <div className="event_size">
         {sessionEvent &&
           futureEvents?.map((futureEvent) => (
-            <div>
+            <div key={futureEvent.id}>
               <Button
                 htmlType="submit"
                 type="primary"

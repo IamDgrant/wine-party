@@ -1,6 +1,6 @@
 // const merge = (arr1, arr2) => {
 //     let merged = [];
-    
+
 //     while (arr1.length && arr2.length) {
 //         if (arr1[0] > arr2[0]) {
 //         let ele = arr2.shift();
@@ -25,58 +25,74 @@
 //     if (arr.length <= 1) {
 //     return arr
 //     }
-    
+
 //     let half = Math.floor(arr.length / 2)
-    
+
 //     let left = arr.slice(0, half)
 //     let right = arr.slice(half)
-    
+
 //     let sortedLeft = mergeSort(left);
 //     let sortedRight = mergeSort(right)
-    
+
 //     return merge(sortedLeft, sortedRight)
 //     }
 
-function merge(array1, array2) {
+// function merge(array1, array2) {
 
-    let result = [];
-  
-    while (array1.length !== 0 && array2.length !== 0) {
-      if (array1[0] > array2[0]) {
-        let el = array2.shift();
-        result.push(el);
-      } else {
-        let el = array1.shift();
-        result.push(el);
-      }
-    }
-  
-    while (array1.length !== 0) {
-      let el = array1.shift();
-      result.push(el);
-    }
-  
-    while (array2.length !== 0) {
-      let el = array2.shift();
-      result.push(el);
-    }
-    return result;
-  }
-  
-  function mergeSort(array) {
-    if (array.length <= 1) {
-      return array;
-    }
-    let half = Math.floor((array.length / 2));
-  
-    let left = array.slice(0, half);
-    let right = array.slice(half)
-  
-    left = mergeSort(left);
-    right = mergeSort(right);
-  
-    return merge(left, right);
-  }
-    
+//     let result = [];
 
-    console.log(mergeSort([2, -1, 4, 3, 7, 3]))
+//     while (array1.length !== 0 && array2.length !== 0) {
+//       if (array1[0] > array2[0]) {
+//         let el = array2.shift();
+//         result.push(el);
+//       } else {
+//         let el = array1.shift();
+//         result.push(el);
+//       }
+//     }
+
+//     while (array1.length !== 0) {
+//       let el = array1.shift();
+//       result.push(el);
+//     }
+
+//     while (array2.length !== 0) {
+//       let el = array2.shift();
+//       result.push(el);
+//     }
+//     return result;
+//   }
+
+//   function mergeSort(array) {
+//     if (array.length <= 1) {
+//       return array;
+//     }
+//     let half = Math.floor((array.length / 2));
+
+//     let left = array.slice(0, half);
+//     let right = array.slice(half)
+
+//     left = mergeSort(left);
+//     right = mergeSort(right);
+
+//     return merge(left, right);
+//   }
+
+//     console.log(mergeSort([2, -1, 4, 3, 7, 3]))
+
+function howMany(sentence) {
+  const together = sentence.replace("-", "");
+  const together2 = together.replace("-", "");
+
+  const newSentence = together2.replace(/[^a-z]/gi, " ").split(" ");
+  
+  const finalSentence = newSentence.filter((word) => word != "");
+
+  return finalSentence.length;
+}
+
+console.log(
+  howMany(
+    "he is a good programmer, he won 865 competitions, but sometimes he dont. What do you think? All test-cases should pass. Done-done?"
+  )
+);
