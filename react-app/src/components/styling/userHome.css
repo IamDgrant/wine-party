@@ -1,17 +1,19 @@
 .main-content-container {
   background-color: black;
-  height: 50vh;
+  height: 75vh;
   width: 100%;
 }
 
 .background-image {
+  display: flex;
+  justify-content: center;
   background-image: url("../../assets/images/pexels-rachel-claire-4846351.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 35vh;
+  height: 52.5vh;
   width: 100%;
-  margin-top: -16vh;
+  margin-top: -14vh;
 }
 
 .content-container {
