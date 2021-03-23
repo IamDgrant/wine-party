@@ -5,7 +5,8 @@ import { NavLink, useHistory } from "react-router-dom";
 // import Date from "../components/Date";
 import FindHost from "../components/FindHost";
 import AddEventModal from "../components/auth/modals/AddEventModal";
-import SearchForm from "../components/forms/SearchHostForm";
+import Date from "../components/Date";
+
 import { seeHost } from "../store/host";
 import { message } from "antd";
 // import {
@@ -21,7 +22,6 @@ import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/userHeader.css";
 // import { Menu, Dropdown, Modal, Button } from "antd";
 // import { NavLink } from "react-router-dom";
-// import Search from "../components/Search";
 // import LogoutButton from "../components/auth/LogoutButton";
 // import { profileImage } from "../store/session";
 // import "./styling/navBar.css";
@@ -36,7 +36,7 @@ const UserHeader = () => {
   const [sommelier, setSommelier] = useState(false);
   const [mixologist, setMixologist] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
-  const [date, setDate] = useState(new Date());
+  // const [date, setDate] = useState(new Date());
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
   );
@@ -63,9 +63,9 @@ const UserHeader = () => {
     );
   };
 
-  useEffect(() => {
-    setDate(new Date());
-  }, []);
+  // useEffect(() => {
+  //   setDate(new Date());
+  // }, []);
 
   const options = {
     weekday: "long",
@@ -77,7 +77,7 @@ const UserHeader = () => {
     second: "2-digit",
     hour12: false,
   };
-  const dayDate = new Date().toLocaleTimeString("en-us", options).split(",");
+  // const dayDate = new Date().toLocaleTimeString("en-us", options).split(",");
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -112,15 +112,6 @@ const UserHeader = () => {
               <li className="option">
                 <AddEventModal />
               </li>
-              {/* <li className="welcome">
-                <div className="welcome">
-                  Welcome, {sessionUser.first_name}! Today is {dayDate[0]},{" "}
-                  {dayDate[1]}.
-                </div>
-              </li> */}
-              {/* <li className="option menu date" onClick={closeMobileMenu}>
-                {dayDate[0]}, {dayDate[1]}
-              </li> */}
               <li
                 className="option mobile-option"
                 onClick={closeMobileMenu}

@@ -8,7 +8,6 @@
 
 .user-header {
   display: flex;
-
   justify-content: space-between;
   align-items: flex-start;
   padding: 0px 40px;
@@ -16,8 +15,16 @@
   width: 100%;
 }
 
+.background-image {
+  position: relative;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
 .search-form {
-margin-top: -52.5vh;
+  display: absolute;
+  margin-top: -116px;
+  height: 25vh;
 }
 
 .form {
@@ -59,12 +66,10 @@ margin-top: -52.5vh;
   background: none;
   outline: none !important;
   cursor: pointer;
-
-  
 }
 
 svg {
-  padding-right: .5vh;
+  padding-right: 0.5vh;
   width: 20px;
   height: 20px;
   fill: #656c74;
@@ -89,8 +94,8 @@ svg {
       opacity: 0.01;
       cursor: pointer;
     } */
-    
-    /* span {
+
+  /* span {
       position: absolute;
       display: block;
       text-align: center;
@@ -107,8 +112,8 @@ svg {
       border-radius: 12px;
       top: -18px;
       transition: all .2s ease-in-out; */
-      
-      /* &::after {
+
+  /* &::after {
         content: '';
         position: absolute;
         bottom: -3px;
@@ -119,9 +124,9 @@ svg {
         border-right: 4px solid transparent;
         transition: all .2s ease-in-out;
       } */
-    }
-    
-    /* &:hover span {
+}
+
+/* &:hover span {
       opacity: 1;
       top: -21px;
     }
@@ -158,7 +163,6 @@ svg {
     }
   } */
 
-
 /* } */
 
 span {
@@ -169,6 +173,7 @@ span {
 /* input:checked {
   color: red;
 } */
+
 
 .user-logo-nav {
   display: flex;
@@ -185,11 +190,7 @@ span {
   height: 45px;
 }
 
-.welcome {
-  font-family: "Bebas Neue", cursive;
-  color: #f9fbf2;
-  font-size: 2.5vh;
-}
+
 
 .nav-options {
   padding-left: 25px;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import { message } from "antd";
-import { seeHost } from "../store/host";
+import SearchForm from "../components/forms/SearchHostForm"
 import "../components/styling/buttonStyle.css";
 
 const FindHost = () => {
@@ -12,10 +12,19 @@ const FindHost = () => {
   const [search, setSearch] = useState("");
   const [sommelier, setSommelier] = useState(false);
   const [mixologist, setMixologist] = useState(false);
-
-//   useEffect(() => {
-//     dispatch(seeHost());
-//   }, [dispatch]);
+  const [redWine, setRedWine] = useState(false);
+  const [whiteWine, setWhiteWine] = useState(false);
+  const [roseWine, setRoseWine] = useState(false);
+  const [bourbon, setbourbon] = useState(false);
+  const [brandy, setBrandy] = useState(false);
+  const [cognac, setCognac] = useState(false);
+  const [gin, setGin] = useState(false);
+  const [liqeurs, setLiqeurs] = useState(false);
+  const [rum, setRum] = useState(false);
+  const [scotch, setScotch] = useState(false);
+  const [tequila, setTequila] = useState(false);
+  const [vodka, setVodka] = useState(false);
+  const [whiskey, setWhiskey] = useState(false);
 
   return (
     <>
@@ -35,7 +44,7 @@ const FindHost = () => {
       >
         Find a Host
       </Button>
-      {/* <Modal
+      <Modal
         title="Find a Host"
         // visible={}
         // onOk={}
@@ -49,7 +58,7 @@ const FindHost = () => {
           mixologist={mixologist}
           setMixologist={setMixologist}
         />
-      </Modal> */}
+      </Modal>
     </>
   );
 };

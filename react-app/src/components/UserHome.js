@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import UserHeader from "../components/UserHeader";
-import Date from "../components/Date";
+import TimeUntilEvent from "../components/TimeLeft";
 import SeeEvent from "../components/auth/modals/SeeEventModal";
 import "./styling/userHome.css";
 
@@ -15,25 +15,21 @@ const Home = () => {
         <div className="main-content-container">
           <div className="header-image-bg">
             <UserHeader />
-            {/* <div className="navBar-container">
-              
-            </div> */}
+              <div className="welcome">Welcome, {sessionUser.first_name}!</div>
+            <div className="welcome">
+            </div>
+            <div className="date">
+              <TimeUntilEvent />
+            </div>
           </div>
-
-          {/* <div
-            className="background-image"
-            // style={{
-            //   backgroundImage: `url(${wine1})`,
-            //   backgroundRepeat: "no-repeat",
-            // }}
-          > */}
         </div>
 
         <div className="content-container">
+          <div className="suggested-hosts">Suggested Hosts</div>
           {/* <div>About Wine Party</div> */}
-          <div>
+          {/* <div>
             <SeeEvent />
-          </div>
+          </div> */}
 
           <div>Connect</div>
         </div>

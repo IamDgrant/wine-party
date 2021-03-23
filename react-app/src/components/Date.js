@@ -26,7 +26,7 @@ const DateTime = () => {
 
   return (
     <>
-      <div className="main-date-container flex items-center">
+      <div className="main-date-container">
           <div className="text-base">
            {sessionEvent ? <span><TimeUntilEvent /> until your next party!</span> : null}
           </div>
