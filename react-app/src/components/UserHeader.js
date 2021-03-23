@@ -50,7 +50,7 @@ const UserHeader = () => {
         } else {
           // message.success(`User ${search} added to Event!`);
         }
-        if (res.hosts) history.push("/search");
+        if (res.hosts) history.push("/hosts");
       }
     );
   };

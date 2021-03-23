@@ -120,7 +120,6 @@ const Header = () => {
         <div className="header">
           <div className="logo-nav">
             <div className="logo-container">Wine Party</div>
-
             <ul className={click ? "nav-options active" : "nav-options"}>
               <li className="option" onClick={closeMobileMenu}>
                 <Button type="text" className="menu">

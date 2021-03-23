@@ -37,12 +37,10 @@ const App = () => {
         <Route path="/hosts" exact={true}>
           <BrowseHosts />
           <FindHost />
+          <SearchResult />
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />
-        </ProtectedRoute>
-        <ProtectedRoute path="/search" exact={true}>
-          <SearchResult />
         </ProtectedRoute>
         <ProtectedRoute path="/events" exact={true}>
           <EventForm />
