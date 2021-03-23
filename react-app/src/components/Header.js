@@ -4,13 +4,11 @@ import { useHistory, NavLink } from "react-router-dom";
 // import csc from 'country-state-city'
 // import { ICountry, IState, ICity } from 'country-state-city'
 import { login, createUser } from "../store/session";
-// import { browseAllHost } from "../store/host";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
 import { Modal, Button } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
-// import { ReactComponent as Logo } from "../assets/logo.svg";
 import "../components/styling/header.css";
 
 const Header = () => {
@@ -299,7 +297,6 @@ const Header = () => {
             {click ? (
               <CloseMenu className="menu-icon" />
             ) : (
-              //   <MenuIcon className="menu-icon" />
               <MenuIcon />
             )}
           </div>

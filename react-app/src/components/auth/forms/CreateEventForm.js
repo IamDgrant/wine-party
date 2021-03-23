@@ -2,9 +2,9 @@ import React, { useState } from "react";
 // import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
-import { createEvent } from "../../store/event";
+import { createEvent } from "../../../store/event";
 import SearchHost from "./SearchHostForm";
-import "../styling/eventFormStyle.css";
+import "../../styling/eventFormStyle.css";
 
 const EventForm = ({
   user_id,

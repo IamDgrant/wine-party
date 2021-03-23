@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { seeHost } from "../../store/host";
+import { seeHost } from "../../../store/host";
 import { message } from "antd";
-import "../styling/checkboxStyle.css";
-import "../styling/searchBar.css";
+import "../../styling/checkboxStyle.css";
+// import "../styling/searchBar.css";
 
 const SearchForm = ({
   search,

@@ -5,10 +5,10 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import BrowseHosts from "./components/BrowseHosts";
+import FindHost from "./components/FindHost"
 import SearchResult from "./components/SearchResults";
-import EventForm from "./components/forms/CreateEventForm";
+import EventForm from "./components/auth/forms/CreateEventForm";
 // import LoginForm from "./components/forms/LoginForm";
-// import EventForm from "./components/forms/CreateEventForm";
 // import Event from "./components/Event";
 // import FindHost from "./components/FindHost"
 
@@ -36,6 +36,7 @@ const App = () => {
         </Route>
         <Route path="/hosts" exact={true}>
           <BrowseHosts />
+          <FindHost />
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />

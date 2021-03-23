@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { createUser } from "../../../store/session";
-import csc from "country-state-city";
+import { useSelector } from "react-redux";
+// import csc from "country-state-city";
 // import { Pagination } from 'antd';
 
 const SignUpForm = ({
@@ -25,7 +24,6 @@ const SignUpForm = ({
 }) => {
   const [errors, setErrors] = useState([]);
 
-  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
 
   if (!sessionUser.errors) {

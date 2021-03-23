@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import { login } from "../../../store/session";
 
-const LoginForm = ({ signInEmail, setSignInEmail, signInPassword, setSignInPassword}) => {
+const LoginForm = ({
+  signInEmail,
+  setSignInEmail,
+  signInPassword,
+  setSignInPassword,
+}) => {
   const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);

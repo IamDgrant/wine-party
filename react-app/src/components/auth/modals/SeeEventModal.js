@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeEvent, deleteEvent } from "../../../store/event";
-import Event from "../../Event"
-import EventForm from "../../forms/CreateEventForm"
+// import Event from "../../../store/event"
+import EventForm from "../../auth/forms/CreateEventForm"
 import { Modal, Button } from "antd";
 import "../../styling/eventStyle.css";
 

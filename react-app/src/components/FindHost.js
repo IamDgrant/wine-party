@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import { message } from "antd";
-import SearchForm from "../components/forms/SearchHostForm"
+import SearchForm from "../components/auth/forms/SearchHostForm"
 import "../components/styling/buttonStyle.css";
 
 const FindHost = () => {
@@ -42,10 +42,10 @@ const FindHost = () => {
         }}
         // onClick={}
       >
-        Find a Host
+        Find Host
       </Button>
       <Modal
-        title="Find a Host"
+        title="Find Host"
         // visible={}
         // onOk={}
         // onCancel={}
