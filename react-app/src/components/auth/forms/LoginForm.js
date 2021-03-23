@@ -1,34 +1,28 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../store/session";
+import { useSelector } from "react-redux";
+// import { login } from "../../../store/session";
 
-const LoginForm = ({ email, setEmail, password, setPassword }) => {
-  const sessionUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
-
+const LoginForm = ({ signInEmail, setSignInEmail, signInPassword, setSignInPassword}) => {
   const [errors, setErrors] = useState([]);
 
-  const onLogin = (e) => {
-    e.preventDefault();
-    return dispatch(login({ email, password }));
-  };
+  const sessionUser = useSelector((state) => state.session.user);
 
-  if (sessionUser) {
-    return <Redirect to="/" />;
+  if (!sessionUser.errors) {
+    return <Redirect to="/home" />;
   }
 
   const updateEmail = (e) => {
-    setEmail(e.target.value);
+    setSignInEmail(e.target.value);
   };
 
   const updatePassword = (e) => {
-    setPassword(e.target.value);
+    setSignInPassword(e.target.value);
   };
 
   return (
     <div className="center_box">
-      <form onSubmit={onLogin} className="form">
+      <form className="form">
         <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
@@ -40,7 +34,7 @@ const LoginForm = ({ email, setEmail, password, setPassword }) => {
             type="text"
             placeholder="Email"
             onChange={updateEmail}
-            value={email}
+            value={signInEmail}
           />
         </div>
         <div>
@@ -49,7 +43,7 @@ const LoginForm = ({ email, setEmail, password, setPassword }) => {
             type="password"
             placeholder="Password"
             onChange={updatePassword}
-            value={password}
+            value={signInPassword}
           />
         </div>
       </form>

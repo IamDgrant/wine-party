@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { message } from "antd";
 import { createEvent } from "../../store/event";
@@ -73,10 +73,10 @@ const EventForm = ({
   return (
     sessionUser && (
       <div className="center_box">
-        <form onSubmit={onSubmission} className="form">
+        <form onSubmit={onSubmission} className="">
           <div>
             <input
-              className="form_input"
+              className=""
               type="date"
               name="event_date"
               placeholder="Event Date"
@@ -86,7 +86,7 @@ const EventForm = ({
           </div>
           <div>
             <input
-              className="form_input"
+              className=""
               type="text"
               name="event_name"
               placeholder="Event Name"
@@ -94,22 +94,9 @@ const EventForm = ({
               value={event_name}
             ></input>
           </div>
-          {/* <div>
-            <h3 className="form_text">Ready to add your host?</h3>
-            <p className="p-text">If not continue and reserve.</p>
-            <SearchHost />
-            <input
-              className="form_input"
-              type="text"
-              name="search"
-              placeholder="Find a host..."
-              onChange={UpdateSearch}
-              value={searchTerm}
-            ></input>
-          </div> */}
           <div>
             <input
-              className="form_input"
+              className=""
               type="text"
               name="event_city"
               placeholder="City"
@@ -119,7 +106,7 @@ const EventForm = ({
           </div>
           <div>
             <select
-              className="form_input"
+              className=""
               name="event_state"
               form="stateForm"
               placeholder="State"
@@ -182,7 +169,7 @@ const EventForm = ({
           </div>
           <div>
             <input
-              className="form_input"
+              className=""
               type="text"
               name="event_postal_code"
               placeholder="Postal Code"
@@ -190,8 +177,20 @@ const EventForm = ({
               value={event_postal_code}
             ></input>
           </div>
+          <div>
+            <h3 className="form_text">Next, add your Host</h3>
+            <SearchHost />
+            {/* <input
+              className="form_input"
+              type="text"
+              name="search"
+              placeholder="Find a host..."
+              onChange={UpdateSearch}
+              value={searchTerm}
+            ></input> */}
+          </div>
           {/* <button type="submit" className="reserve-btn">
-            Reserve
+            Find a Host
           </button> */}
         </form>
       </div>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { createUser } from "../../store/session";
+import { createUser } from "../../../store/session";
 import csc from "country-state-city";
-import { Pagination } from 'antd';
+// import { Pagination } from 'antd';
 
 const SignUpForm = ({
   first_name,
@@ -16,63 +16,20 @@ const SignUpForm = ({
   setState,
   postal_code,
   setPostalCode,
-  email,
-  setEmail,
-  password,
-  setPassword,
+  signUpEmail,
+  setSignUpEmail,
+  signUpPassword,
+  setSignUpPassword,
   repeatPassword,
   setRepeatPassword,
 }) => {
   const [errors, setErrors] = useState([]);
-  // const [offset, setOffset] = useState(0);
-  // const [currentCardPage, setCurrentCardPage] = useState([]);
-  // const [cardsPerPage, setCardsPerPage] = useState(1);
-  // const [pagesCount, setPagesCount] = useState(1);
-  // const [allCards, setAllCards] = useState([]);
-  // const [totalCardCount, setTotalCardCount] = useState(0);
 
-
-  //   const [first_name, setFirstName] = useState("");
-  //   const [last_name, setLastName] = useState("");
-  //   const [city, setCity] = useState("");
-  //   const [state, setState] = useState("");
-  //   const [postal_code, setPostalCode] = useState("");
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const [repeatPassword, setRepeatPassword] = useState("");
-
+  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
 
-  const onSignUp = async (e) => {
-    e.preventDefault();
-    let newErrors = [];
-    if (password === repeatPassword) {
-      dispatch(
-        createUser({
-          first_name,
-          last_name,
-          city,
-          state,
-          postal_code,
-          email,
-          password,
-          repeatPassword,
-        })
-      ).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-          // setErrors(newErrors);
-        }
-      });
-    }
-  };
-
-  // <Pagination simple defaultCurrent={2} total={50} />
-
-  if (sessionUser) {
-    return <Redirect to="/" />;
+  if (!sessionUser.errors) {
+    return <Redirect to="/home" />;
   }
 
   const updateFirstName = (e) => {
@@ -91,10 +48,10 @@ const SignUpForm = ({
     setPostalCode(e.target.value);
   };
   const updateEmail = (e) => {
-    setEmail(e.target.value);
+    setSignUpEmail(e.target.value);
   };
   const updatePassword = (e) => {
-    setPassword(e.target.value);
+    setSignUpPassword(e.target.value);
   };
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
@@ -102,7 +59,7 @@ const SignUpForm = ({
 
   return (
     <>
-      <form onSubmit={onSignUp}>
+      <form>
         <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
@@ -216,7 +173,7 @@ const SignUpForm = ({
             name="email"
             placeholder="Email"
             onChange={updateEmail}
-            value={email}
+            value={signUpEmail}
           ></input>
         </div>
         <div>
@@ -226,7 +183,7 @@ const SignUpForm = ({
             name="password"
             placeholder="Password"
             onChange={updatePassword}
-            value={password}
+            value={signUpPassword}
           ></input>
         </div>
         <div>
@@ -239,7 +196,6 @@ const SignUpForm = ({
             value={repeatPassword}
             required={true}
           ></input>
-
         </div>
       </form>
     </>

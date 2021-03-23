@@ -8,7 +8,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-# @login_required
+@login_required
 def users():
     users = User.query.all()
     return {"users": [user.to_dict() for user in users]}
@@ -45,7 +45,7 @@ def update_profile():
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file)
-        print("HERE!!!!!!!!!!!!", current_user.to_dict())
+        # print("HERE!!!!!!!!!!!!", current_user.to_dict())
         current_user.profile_image = str(output)
         db.session.add(current_user)
         db.session.commit()

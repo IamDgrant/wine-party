@@ -74,7 +74,7 @@ const AddEvent = ({ user_id }) => {
             color: "#f9fbf2",
             fontFamily: "Montserrat"
           }}
-          // onClick={showAddEventModal}
+          onClick={showAddEventModal}
         >
           Add Event
         </Button>

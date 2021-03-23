@@ -79,12 +79,12 @@ export const deleteHost = (hostId) => async (dispatch) => {
 //   return data
 // };
 
-// export const seeHostEvent = (id) => async (dispatch) => {
-//   const res = await fetch(`/api/events/host/${id}`);
-//   const data = await res.json();
-//   dispatch(getHost(data.hosts));
-//   return data;
-// };
+export const seeHostEvent = (id) => async (dispatch) => {
+  const res = await fetch(`/api/events/host/${id}`);
+  const data = await res.json();
+  dispatch(getHost(data.hosts));
+  return data;
+};
 
 const initialState = { host: null };
 

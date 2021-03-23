@@ -41,6 +41,7 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
+  console.log("here", email);
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
@@ -50,6 +51,7 @@ export const login = (email, password) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
+    console.log(data);
     dispatch(setUser(data));
   }
   return res;

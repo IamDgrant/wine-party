@@ -42,8 +42,8 @@ const SearchForm = ({
     <div className="search_bar">
       <form onSubmit={onSearch}>
         <input
-          className="searchInput w-full border-2"
-          placeholder="Search here..."
+          className="searchInput"
+          placeholder="Search name, city, state, postal code..."
           value={search}
           type="text"
           onChange={updateSearch}
@@ -70,6 +70,9 @@ const SearchForm = ({
           />
           <span className="checkmark"></span>
         </label>
+        <button type="submit" className="reserve-btn">
+            Find a Host
+          </button>
       </form>
     </div>
   );

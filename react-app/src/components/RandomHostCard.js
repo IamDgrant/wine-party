@@ -51,22 +51,6 @@ const RandomHost = () => {
             </div>
           )}
         </Grid>
-        {/* <Card
-          size="small"
-          cover={
-            <img
-              alt="example"
-              src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-            />
-          }
-          title={`${sessionHost.first_name} ${sessionHost.last_name}`}
-          // extra={<a href="#">More</a>}
-          style={{ width: 250 }}
-        >
-          <p>Rated: ⭐⭐⭐⭐</p>
-          {sessionHost.about}
-          <p>Add to your Party!</p>
-        </Card> */}
       </div>
     )
   );

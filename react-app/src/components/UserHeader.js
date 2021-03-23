@@ -4,7 +4,8 @@ import { NavLink, useHistory } from "react-router-dom";
 // import DateTime from "./Date";
 // import Date from "../components/Date";
 import FindHost from "../components/FindHost";
-import AddEventModal from "../components/auth/modals/AddEventModal";
+// import AddEventModal from "../components/auth/modals/AddEventModal";
+// import EventForm from "../components/forms/CreateEventForm"
 import Date from "../components/Date";
 
 import { seeHost } from "../store/host";
@@ -43,16 +44,10 @@ const UserHeader = () => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(seeHost());
-  // }, [dispatch]);
-
   const onSearch = async (e) => {
     e.preventDefault();
-    // console.log("SEARCH HIT");
     dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
       (res) => {
-        // console.log("here!!!!!", res);
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
         } else {
@@ -104,13 +99,16 @@ const UserHeader = () => {
       <div className="user-header">
         <div className="user-logo-nav">
           <div className="user-logo-container">Wine Party</div>
-          <div className="nav">
             <ul className={click ? "nav-options active" : "nav-options"}>
               <li className="option" onClick={closeMobileMenu}>
                 <FindHost />
               </li>
               <li className="option">
-                <AddEventModal />
+                <NavLink to="/events">
+                  Find a Host
+                  {/* <EventForm /> */}
+                  {/* <AddEventModal /> */}
+                </NavLink>
               </li>
               <li
                 className="option mobile-option"
@@ -126,7 +124,6 @@ const UserHeader = () => {
                 {/* </li> */}
               </div>
             </ul>
-          </div>
           <ul className="signin-up">
             <li className="sign-in" onClick={closeMobileMenu}></li>
             <li onClick={closeMobileMenu}></li>

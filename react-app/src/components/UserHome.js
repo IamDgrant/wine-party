@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import UserHeader from "../components/UserHeader";
-import TimeUntilEvent from "../components/TimeLeft";
-import SeeEvent from "../components/auth/modals/SeeEventModal";
+// import TimeUntilEvent from "../components/TimeLeft";
+// import SeeEvent from "../components/auth/modals/SeeEventModal";
 import "./styling/userHome.css";
 
 const Home = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionEvent = useSelector((state) => state.event.event);
+  // const sessionEvent = useSelector((state) => state.event.event);
 
   return (
     <>
@@ -19,7 +19,7 @@ const Home = () => {
             <div className="welcome">
             </div>
             <div className="date">
-              <TimeUntilEvent />
+              {/* <TimeUntilEvent /> */}
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ const Home = () => {
             <SeeEvent />
           </div> */}
 
-          <div>Connect</div>
+          {/* <div>Connect</div> */}
         </div>
       </div>
     </>
