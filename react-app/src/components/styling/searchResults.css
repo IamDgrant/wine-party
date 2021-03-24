@@ -24,3 +24,13 @@
     display: flex;
     justify-content: flex-start;
 }
+
+/* .host-profile {
+    height: 500px;
+    width: 750px;
+} */
+
+.add-host {
+    display: flex;
+    justify-content: center;
+}
