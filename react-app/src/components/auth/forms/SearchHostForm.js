@@ -40,45 +40,45 @@ const SearchForm = ({
   setWhiskey,
 }) => {
 
-  // const dispatch = useDispatch();
-  // const sessionHostId = useSelector((state) =>
-  //   state.host.host ? state.host.host : null
-  // );
+  const dispatch = useDispatch();
+  const sessionHostId = useSelector((state) =>
+    state.host.host ? state.host.host : null
+  );
 
-  // const onSearch = async (e) => {
-  //   e.preventDefault();
-  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-  //     (res) => {
-  //       if (res.Host === "Not found") {
-  //         message.error(`User ${search} not found`);
-  //       }
-  //       // else {
-  //       //   message.success(`User ${search} added to Event!`);
-  //       // }
-  //     }
-  //   );
-  // };
+  const onSearch = async (e) => {
+    e.preventDefault();
+    dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
+      (res) => {
+        if (res.Host === "Not found") {
+          message.error(`User ${search} not found`);
+        }
+        // else {
+        //   message.success(`User ${search} added to Event!`);
+        // }
+      }
+    );
+  };
 
   const updateSearch = (e) => setSearch(e.target.value);
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);
-  const updateRedWine = () => setRedWine(!mixologist);
-  const updateWhiteWine = () => setWhiteWine(!mixologist);
-  const updateRoseWine = () => setRoseWine(!mixologist);
-  const updateBourbon = () => setBourbon(!mixologist);
-  const updateBrandy = () => setBrandy(!mixologist);
-  const updateCognac = () => setCognac(!mixologist);
-  const updateGin = () => setGin(!mixologist);
-  const updateLiqueurs = () => setLiqueurs(!mixologist);
-  const updateRum = () => setRum(!mixologist);
-  const updateScotch = () => setScotch(!mixologist);
-  const updateTequila = () => setTequila(!mixologist);
-  const updateVodka = () => setVodka(!mixologist);
-  const updateWhiskey = () => setWhiskey(!mixologist);
+  const updateRedWine = () => setRedWine(!redWine);
+  const updateWhiteWine = () => setWhiteWine(!whiteWine);
+  const updateRoseWine = () => setRoseWine(!roseWine);
+  const updateBourbon = () => setBourbon(!bourbon);
+  const updateBrandy = () => setBrandy(!brandy);
+  const updateCognac = () => setCognac(!cognac);
+  const updateGin = () => setGin(!gin);
+  const updateLiqueurs = () => setLiqueurs(!liqueurs);
+  const updateRum = () => setRum(!rum);
+  const updateScotch = () => setScotch(!scotch);
+  const updateTequila = () => setTequila(!tequila);
+  const updateVodka = () => setVodka(!vodka);
+  const updateWhiskey = () => setWhiskey(!whiskey);
 
   return (
     <div className="search_bar">
-      <form>
+      <form onSubmit={onSearch}>
         <input
           className="searchInput"
           placeholder="Search name, city, state, postal code..."

@@ -1,4 +1,26 @@
-/* .host-card {
+.host-card {
+    height: 400;
+    width: 240px;
+    padding-bottom: 2px;
+    box-shadow: 2px 2px 7px grey;
+}
+
+.host-name-type {
     display: flex;
-    justify-content: flex-end;
-} */
+    justify-content: space-evenly;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.host-result-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.host-type {
+    display: flex;
+    justify-content: flex-start;
+}
