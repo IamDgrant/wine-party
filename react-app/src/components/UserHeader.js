@@ -15,6 +15,7 @@ import { message } from "antd";
 // } from "@ant-design/icons";
 import { Avatar, Modal, Button } from "antd";
 import LogoutButton from "./auth/LogoutButton";
+import UserProfile from "../components/UserProfile"
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/userHeader.css";
@@ -116,6 +117,7 @@ const UserHeader = () => {
             </li>
             <li className="option">
               <LogoutButton />
+              {/* <UserProfile /> */}
             </li>
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}

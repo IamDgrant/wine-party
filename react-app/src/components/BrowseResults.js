@@ -96,7 +96,7 @@ const BrowseResults = () => {
           columnWidth={250}
           itemWidth={250}
         >
-          {sessionHosts && 
+          {Array.isArray(sessionHosts) && 
           sessionHosts.map((host) => (
             <div
             key={host.id}

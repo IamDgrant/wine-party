@@ -7,7 +7,7 @@ from app.models import Host, db
 host_routes = Blueprint('hosts', __name__)
 
 
-@host_routes.route('/')
+@host_routes.route('')
 # @login_required
 def hosts():
     hosts = Host.query.all()

@@ -18,6 +18,11 @@ const FutureEvent = ({ id }) => {
   const sessionEvent = useSelector((state) => state.event.event);
   const sessionHost = useSelector((state) => state.host.host);
 
+  const getEvent = (i) => () => {
+    setModalEvent(i);
+    showSeeEventModal(true);
+  };
+
   const showSeeEventModal = () => {
     setSeeEventModalVisible(true);
   };
@@ -66,6 +71,10 @@ const FutureEvent = ({ id }) => {
     </svg>
   );
 
+  // const modalSessionEvents = (sessionEvent.map(sessionEvent))
+
+  const [modalEvent, setModalEvent] = useState(0);
+
   const { Meta } = Card;
 
   return (
@@ -92,7 +101,7 @@ const FutureEvent = ({ id }) => {
           // easing="ease-out"
         >
           {sessionEvent &&
-            futureEvents?.map((futureEvent) => (
+            futureEvents?.map((futureEvent, i) => (
               <div className="event-cards" key={futureEvent.id}>
                 <button
                   htmlType="submit"
@@ -105,7 +114,7 @@ const FutureEvent = ({ id }) => {
                     borderColor: "#f9fbf2",
                     fontFamily: "Bebas Neue",
                   }}
-                  onClick={showSeeEventModal}
+                  onClick={getEvent(i)}
                 >
                   <Card
                     hoverable
@@ -122,38 +131,42 @@ const FutureEvent = ({ id }) => {
                     }
                   >
                     <Meta
-                      title={futureEvent.event_name}
-                      // description={<TimeUntilEvent />}
+                    // title={modalEvent.event_name}
+                    // description={<TimeUntilEvent />}
                     />
                   </Card>
                 </button>
-                <Modal
-                  title={futureEvent.event_name}
-                  visible={isSeeEventModalVisible}
-                  onOk={seeEventHandleOk}
-                  onCancel={seeEventHandleCancel}
-                  style={{
-                    backgroundColor: "#f9fbf2",
-                    color: "#0e1c36",
-                  }}
-                >
-                  <Card
-                    // style={{ width: 240 }}
-                    // cover={
-                    //   <img
-                    //     alt={futureEvent.event_date.slice(0, 16)}
-                    //     src="../assets/images/shutterstock_1006797736.jpeg"
-                    //   />
-                    // }
-                    actions={[<EditOutlined key="edit" />]}
-                  >
-                    <Meta
-                      title={futureEvent.event_date.slice(0, 16)}
-                      description={futureEvent.event_city}
-                      // description="This is the description"
-                    />
-                  </Card>
-                  {/* <div className="party-icon">{party}</div>
+              </div>
+            ))}
+          <Modal
+            // title={futureEvent.event_name}
+            visible={isSeeEventModalVisible}
+            onOk={seeEventHandleOk}
+            onCancel={seeEventHandleCancel}
+            style={{
+              backgroundColor: "#f9fbf2",
+              color: "#0e1c36",
+            }}
+          >
+            <Card
+              // style={{ width: 240 }}
+              // cover={
+              //   <img
+              //     alt={futureEvent.event_date.slice(0, 16)}
+              //     src="../assets/images/shutterstock_1006797736.jpeg"
+              //   />
+              // }
+              actions={[<EditOutlined key="edit" />]}
+            >
+              {futureEvents && futureEvents.length > 0 && (
+                <Meta
+                  title={futureEvents[modalEvent].event_date.slice(0, 16)}
+                  description={futureEvents.event_city}
+                  // description="This is the description"
+                />
+              )}
+            </Card>
+            {/* <div className="party-icon">{party}</div>
                   <div className="events">
                     <div className="event-name">
                       <h1>{futureEvent.event_date.slice(0, 16)}</h1>
@@ -162,9 +175,7 @@ const FutureEvent = ({ id }) => {
                       <div className="host-name">Your Host is: </div>
                     </div>
                   </div> */}
-                </Modal>
-              </div>
-            ))}
+          </Modal>
         </Grid>
       </div>
       {/* </div> */}
