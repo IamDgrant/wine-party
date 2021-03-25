@@ -157,7 +157,7 @@ const Header = () => {
               <Button
                 htmlType="submit"
                 type="dashed"
-                size="medium"
+                size="small;"
                 ghost="true"
                 style={{
                   color: "#f9fbf2",
@@ -189,7 +189,7 @@ const Header = () => {
               <Button
                 htmlType="submit"
                 type="primary"
-                size="medium"
+                size="small"
                 style={{
                   color: "#0e1c36",
                   backgroundColor: "#f9fbf2",
@@ -232,7 +232,7 @@ const Header = () => {
             <Button
               htmlType="submit"
               type="dashed"
-              size="medium"
+              size="small"
               ghost="true"
               style={{
                 color: "#f9fbf2",
@@ -264,7 +264,7 @@ const Header = () => {
             <Button
               htmlType="submit"
               type="primary"
-              size="medium"
+              size="small"
               style={{
                 color: "#0e1c36",
                 backgroundColor: "#f9fbf2",
