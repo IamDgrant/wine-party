@@ -119,9 +119,7 @@ const Header = () => {
   const clickAbout = () => {
     const anchor = document.querySelector("#about");
     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-
-  
+  };
 
   return (
     <>
@@ -130,11 +128,6 @@ const Header = () => {
           <div className="logo-container">Wine Party</div>
           <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-              <Button type="text" onClick={clickAbout} className="menu host-btn">
-                About
-              </Button>
-            </li>
-            <li className="option menu" onClick={closeMobileMenu}>
               <NavLink
                 className="navbar-item"
                 activeClassName="is-active"
@@ -149,6 +142,15 @@ const Header = () => {
             <li className="option menu" onClick={closeMobileMenu}>
               <Button type="text" className="menu host-btn">
                 FAQ
+              </Button>
+            </li>
+            <li className="option menu" onClick={closeMobileMenu}>
+              <Button
+                type="text"
+                onClick={clickAbout}
+                className="menu host-btn"
+              >
+                About
               </Button>
             </li>
             <li className="option mobile-option" onClick={closeMobileMenu}>

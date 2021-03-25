@@ -86,7 +86,7 @@ const FutureEvent = ({ id }) => {
           component="ul"
           columns={2}
           columnWidth={250}
-          // itemHeight={200}
+          itemHeight={250}
           itemWidth={250}
           // duration={500}
           // easing="ease-out"

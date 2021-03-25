@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SearchResults from "../components/SearchResults"
+import SearchResults from "./SearchResults"
 import { browseAllHost } from "../store/host";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import "../components/styling/browseHostStyling.css";
 
-const BrowseHosts = () => {
+const BrowseResults = () => {
   const dispatch = useDispatch();
   const sessionHosts = useSelector((state) => state.host.host);
 
@@ -91,13 +91,15 @@ const BrowseHosts = () => {
         <Grid
           component="ul"
           columns={5}
+          columnHeight={350}
+          itemHeight={350}
           columnWidth={250}
-          itemHeight={400}
           itemWidth={250}
         >
           {sessionHosts && 
           sessionHosts.map((host) => (
             <div
+            key={host.id}
               className="host-card"
               style={{
                 backgroundImage: `url(${host.profile_image})`,
@@ -136,4 +138,4 @@ const BrowseHosts = () => {
   );
 };
 
-export default BrowseHosts;
+export default BrowseResults;

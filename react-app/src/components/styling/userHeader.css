@@ -1,5 +1,4 @@
 /*Desktop View*/
-
 .user-header {
   display: flex;
   justify-content: space-between;
@@ -87,6 +86,7 @@ span {
   align-items: center;
   justify-content: space-evenly;
 }
+
 .user-logo-container {
   font-family: "Bebas Neue", cursive;
   color: #f9fbf2;
@@ -95,6 +95,12 @@ span {
 .date {
   width: 45px;
   height: 45px;
+}
+
+.menu {
+  /* align-items: ; */
+  font-family: "Bebas Neue", cursive;
+  color: #f9fbf2; 
 }
 
 .nav-options {

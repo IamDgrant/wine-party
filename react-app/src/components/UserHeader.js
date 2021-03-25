@@ -23,7 +23,7 @@ import "../components/styling/userHeader.css";
 // import LogoutButton from "../components/auth/LogoutButton";
 // import { profileImage } from "../store/session";
 import "../components/styling/buttonStyle.css";
-import SearchIcon from "../assets/icons/search-solid.svg";
+
 
 const UserHeader = () => {
   const history = useHistory();
@@ -48,7 +48,7 @@ const UserHeader = () => {
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
         } else {
-          history.push("/search")
+          history.push("/search");
           // message.success(`User ${search} added to Event!`);
         }
         // if (res.hosts) history.push("/search");
@@ -92,6 +92,11 @@ const UserHeader = () => {
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);
 
+  const clickEvents = () => {
+    const anchor = document.querySelector("#futureEvent");
+    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <>
       <div className="user-header">
@@ -99,25 +104,18 @@ const UserHeader = () => {
           <div className="user-logo-container">Wine Party</div>
           <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-              <NavLink to="/events">
-                <button
-                  className="host-btn"
-                  style={{
-                    color: "#f9fbf2",
-                    fontFamily: "Montserrat",
-                    // fontWeight: "lighter",
-                    // backgroundColor: "#f9fbf2",
-                    // borderColor: "#f9fbf2",
-                  }}
-                >
-                  Add Event
-                </button>
+            <Button
+                type="text"
+                onClick={clickEvents}
+                className="menu host-btn"
+              >
+                Your Events
+              </Button>
 
-                {/* <FindHost /> */}
-              </NavLink>
+              {/* <FindHost /> */}
             </li>
             <li className="option">
-            <LogoutButton />
+              <LogoutButton />
             </li>
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}

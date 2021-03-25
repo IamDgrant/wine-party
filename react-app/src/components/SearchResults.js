@@ -99,15 +99,15 @@ const SearchResult = () => {
           style={{
             color: "#0e1c36",
             fontFamily: "Bebas Neue",
-            fontSize: "2.5vh",
+            fontSize: "3.5vh",
           }}
-        >
+          >
           <div className="title">Hosts near you</div>
         </div>
         <div className="host-result-btns">
           <Grid
             component="ul"
-            columns={2}
+            columns={5}
             columnWidth={250}
             itemHeight={400}
             itemWidth={250}

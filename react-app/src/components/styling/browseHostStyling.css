@@ -1,7 +1,7 @@
-.browsed-hosts {
-  height: 400px;
+.host-card {
+  height: 350px;
   width: 240px;
-  padding-bottom: 2px;
+  /* padding-bottom: 2px; */
   box-shadow: 2px 2px 7px grey;
 }
 
@@ -10,9 +10,14 @@
   color: white;
 }
 
+.host-name {
+  display: flex;
+  justify-content: center;
+}
+
 .host-name-type {
   display: flex;
-  justify-content: space-evenly;
+  justify-content:  center;
 }
 
 .title {

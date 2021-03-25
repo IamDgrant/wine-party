@@ -1,4 +1,18 @@
+.host-near {
+    margin-top: 15px;
+}
+
+.hosts {
+    display: flex;
+    /* justify-content: center; */
+    justify-content: flex-end;
+}
+
 .host-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* align-items: center; */
     height: 400px;
     width: 240px;
     padding-bottom: 2px;
@@ -7,7 +21,7 @@
 
 .host-name-type {
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
 }
 
 .title {
@@ -17,10 +31,10 @@
 
 .host-result-btns {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     overflow: scroll;
-    /* height: 80vh;x    */
-    /* width: 50vh; */
+    height: 100%    ;
+    width: 100%;
 }
 
 .host-type {
