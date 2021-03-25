@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeEvent, deleteEvent } from "../store/event";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-
+import TimeUntilEvent from "../components/TimeLeft";
 import { Card, Col, Row, Modal, Button } from "antd";
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import "./styling/futureEventStyle.css";
 
 const FutureEvent = ({ id }) => {
@@ -31,7 +36,7 @@ const FutureEvent = ({ id }) => {
     //   dispatch();
     //   setData(id);
     // }
-  }, [id]);
+  }, [dispatch, id]);
 
   const todaysDate = new Date();
   const futureEvents = sessionEvent?.filter((events) => {
@@ -61,6 +66,8 @@ const FutureEvent = ({ id }) => {
     </svg>
   );
 
+  const { Meta } = Card;
+
   return (
     <>
       <div className="results">
@@ -69,7 +76,7 @@ const FutureEvent = ({ id }) => {
           style={{
             color: "#0e1c36",
             fontFamily: "Bebas Neue",
-            fontSize: "2.5vh",
+            fontSize: "4vh",
           }}
         >
           <h1>Upcoming Events</h1>
@@ -78,9 +85,9 @@ const FutureEvent = ({ id }) => {
           className="grid"
           component="ul"
           columns={2}
-          columnWidth={125}
-          itemHeight={200}
-          itemWidth={150}
+          columnWidth={250}
+          // itemHeight={200}
+          itemWidth={250}
           // duration={500}
           // easing="ease-out"
         >
@@ -100,16 +107,28 @@ const FutureEvent = ({ id }) => {
                   }}
                   onClick={showSeeEventModal}
                 >
-                  <div className="party-icon">{party}</div>
-                  <div className="events">
-                    <div className="event-name">
-                      <h1>{futureEvent.event_name}</h1>
-                      <h1>{futureEvent.event_date.slice(0, 16)}</h1>
-                    </div>
-                  </div>
+                  <Card
+                    hoverable
+                    style={{ width: 240 }}
+                    cover={
+                      <img
+                        alt={futureEvent.event_date.slice(0, 16)}
+                        src="https://images.pexels.com/photos/2324423/pexels-photo-2324423.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                      />
+                      // <img
+                      //   alt={futureEvent.event_date.slice(0, 16)}
+                      //   src="https://images.pexels.com/photos/3566120/pexels-photo-3566120.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                      // />
+                    }
+                  >
+                    <Meta
+                      title={futureEvent.event_name}
+                      // description={<TimeUntilEvent />}
+                    />
+                  </Card>
                 </button>
-                <Modal 
-                  title="Your Event"
+                <Modal
+                  title={futureEvent.event_name}
                   visible={isSeeEventModalVisible}
                   onOk={seeEventHandleOk}
                   onCancel={seeEventHandleCancel}
@@ -118,16 +137,31 @@ const FutureEvent = ({ id }) => {
                     color: "#0e1c36",
                   }}
                 >
-                  <div className="party-icon">{party}</div>
+                  <Card
+                    // style={{ width: 240 }}
+                    // cover={
+                    //   <img
+                    //     alt={futureEvent.event_date.slice(0, 16)}
+                    //     src="../assets/images/shutterstock_1006797736.jpeg"
+                    //   />
+                    // }
+                    actions={[<EditOutlined key="edit" />]}
+                  >
+                    <Meta
+                      title={futureEvent.event_date.slice(0, 16)}
+                      description={futureEvent.event_city}
+                      // description="This is the description"
+                    />
+                  </Card>
+                  {/* <div className="party-icon">{party}</div>
                   <div className="events">
                     <div className="event-name">
-                      <h1>{futureEvent.event_name}</h1>
                       <h1>{futureEvent.event_date.slice(0, 16)}</h1>
                     </div>
                     <div className="host-name">
                       <div className="host-name">Your Host is: </div>
                     </div>
-                  </div>
+                  </div> */}
                 </Modal>
               </div>
             ))}

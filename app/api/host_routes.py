@@ -52,7 +52,7 @@ def hosts_search():
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
             else:
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
-        print("THISSTUFF!!!!", [host.to_dict() for host in data])
+        # print("THISSTUFF!!!!", [host.to_dict() for host in data])
         return {"hosts": [host.to_dict() for host in data]}
 
 

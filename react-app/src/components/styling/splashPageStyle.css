@@ -1,0 +1,41 @@
+.main-content-container {
+    background-color: black;
+    height: 90vh;
+    width: 100%;
+  }
+  
+  .header-background-image {
+    display: flex;
+    justify-content: center;
+    background-image: url("../../assets/images/pexels-fauxels-3184183.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70vh;
+    width: 100%;
+    margin-top: -14vh;
+  }
+  
+  .welcome {
+    display: flex;
+    justify-content: center;
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2;
+    font-size: 19px;
+  }
+  
+  .date {
+    display: flex;
+    justify-content: center;
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2;
+    font-size: 25px;
+  }
+  
+  .suggested-hosts {
+    /* padding-top: 100px;
+    padding-left: 100px; */
+    font-family: "Bebas Neue", cursive;
+    font-size: 2vh;
+  }
+  

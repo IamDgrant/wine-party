@@ -1,5 +1,5 @@
 .host-card {
-    height: 400;
+    height: 400px;
     width: 240px;
     padding-bottom: 2px;
     box-shadow: 2px 2px 7px grey;
@@ -19,8 +19,8 @@
     display: flex;
     justify-content: center;
     overflow: scroll;
-    height: 80vh;
-    width: 50vh;
+    /* height: 80vh;x    */
+    /* width: 50vh; */
 }
 
 .host-type {

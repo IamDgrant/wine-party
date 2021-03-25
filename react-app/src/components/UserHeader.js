@@ -29,7 +29,7 @@ const UserHeader = () => {
   const history = useHistory();
 
   const [click, setClick] = useState(false);
-  const [isFindHostModalVisible, setIsFindHostModalVisible] = useState(false);
+  // const [isFindHostModalVisible, setIsFindHostModalVisible] = useState(false);
   const [search, setSearch] = useState("");
   const [sommelier, setSommelier] = useState(false);
   const [mixologist, setMixologist] = useState(false);
@@ -48,9 +48,10 @@ const UserHeader = () => {
         if (res.Host === "Not found") {
           message.error(`User ${search} not found`);
         } else {
+          history.push("/search")
           // message.success(`User ${search} added to Event!`);
         }
-        if (res.hosts) history.push("/search");
+        // if (res.hosts) history.push("/search");
       }
     );
   };
@@ -118,8 +119,8 @@ const UserHeader = () => {
             <li className="option">
             <LogoutButton />
             </li>
-            <li className="option mobile-option" onClick={closeMobileMenu}></li>
-            <li className="option mobile-option" onClick={closeMobileMenu}></li>
+            {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
+            {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
             {/* <div className="option menu logout ">
               <li className="option menu logout" onClick={closeMobileMenu}>
               <LogoutButton />
@@ -199,7 +200,7 @@ const UserHeader = () => {
         </div>
       </div>
 
-      <div className="search-container"></div>
+      {/* <div className="search-container"></div> */}
     </>
   );
 };

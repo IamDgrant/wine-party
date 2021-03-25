@@ -17,7 +17,7 @@ const SearchResult = () => {
   //   state.host.host ? state.host.host : null
   // );
 
-  // console.log(sessionHostsResults[0].ratings);
+  console.log(sessionHostsResults);
 
   // const showModal = (e) => {
   //   e.preventDefault();
@@ -145,9 +145,9 @@ const SearchResult = () => {
                           {host.city}, {host.state}
                         </div>
                         {/* <div className="host-type"></div> */} 
-                        <div className="host-rating">
+                        {/* <div className="host-rating">
                           <Rate disabled defaultValue={4} />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                 </div>

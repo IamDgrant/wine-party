@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux"
+import React, { useSelector } from "react";
 import Header from "../components/Header";
-import Content from "../components/Content";
+import RandomHost from "../components/RandomHostCard";
+import "./styling/splashPageStyle.css";
 
 const SplashPage = () => {
-  // const dispatch = useDispatch();
+  // const sessionUser = useSelector((state) => state.session.user);
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition((position) => {
@@ -14,14 +14,22 @@ const SplashPage = () => {
 
   return (
     <>
-      <div className="main-container">
-        <div className="header-container">
+      <div className="main-content-container">
+        <div className="header-image-bg">
           <Header />
         </div>
         <div className="content-container">
-          <Content />
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+          <RandomHost />
         </div>
-        <div className="footer-container"></div>
+        {/* <div className="footer-container"></div> */}
       </div>
     </>
   );

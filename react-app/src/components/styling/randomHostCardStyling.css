@@ -1,10 +1,34 @@
-random-host {
+.random-host-card {
+  height: 250px;
+  width: 240px;
+  padding-bottom: 2px;
+  box-shadow: 2px 2px 7px grey;
+}
+
+.host-name-type {
   display: flex;
-  background-size: cover;
-  background-repeat: no-repeat;
+  justify-content: space-evenly;
+}
+
+.title {
+  display: flex;
   justify-content: center;
-  /* align-items: flex-start; */
-  /* padding: 0px 40px; */
-  height: 300px;
-  width: 500px;
+}
+
+.host-result-btns {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  height: 250px;   
+  width: 240px;
+}
+
+.host-type {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.add-host {
+  display: flex;
+  justify-content: center;
 }

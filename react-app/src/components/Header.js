@@ -162,13 +162,12 @@ const Header = () => {
                   visible={isSignInModalVisible}
                   onOk={signInHandleOk}
                   onCancel={signInHandleCancel}
-                  style={{
-                    backgroundColor: "#f9fbf2",
-                    color: "#0e1c36",
-                  }}
+                  // style={{
+                  //   backgroundColor: "#f9fbf2",
+                  //   color: "#0e1c36",
+                  // }}
                 >
                   <LoginForm
-                    // onSubmit={onSignIn}
                     signInEmail={signInEmail}
                     setSignInEmail={setSignInEmail}
                     signInPassword={signInPassword}

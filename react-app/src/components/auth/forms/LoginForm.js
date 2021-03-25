@@ -26,7 +26,7 @@ const LoginForm = ({
 
   return (
     <div className="center_box">
-      <form className="form">
+      <form className="-loginform">
         {/* <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>

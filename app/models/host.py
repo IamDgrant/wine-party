@@ -38,14 +38,14 @@ class Host(db.Model):
     events = db.relationship("Event", foreign_keys=Event.host_id, back_populates="host")
     # reviews = db.relationship("Review", secondary="events", back_populates="host")
 
-    def ratings(self):  
-            reviews = [event.review for event in self.events]
-            # print("REVIEWS!!!!!!!!!!!!!!!!", reviews, self.events)
-            ratings = list(map(lambda r: r.rating, reviews))
-            # print("RATINGS!!!!!!!!!!!!!!!!", ratings)
-            avgRating = sum(ratings) / \
-                            len(ratings) if len(ratings) > 0 else "n/a"
-            return avgRating
+    # def ratings(self):  
+    #         reviews = [event.review for event in self.events]
+    #         # print("REVIEWS!!!!!!!!!!!!!!!!", reviews, self.events)
+    #         ratings = list(map(lambda r: r.rating, reviews))
+    #         # print("RATINGS!!!!!!!!!!!!!!!!", ratings)
+    #         avgRating = sum(ratings) / \
+    #                         len(ratings) if len(ratings) > 0 else "n/a"
+    #         return avgRating
 
     def to_dict(self):
         return {
@@ -56,7 +56,7 @@ class Host(db.Model):
             "state": self.state,
             "postal_code": self.postal_code,
             "about": self.about,
-            "ratings": self.ratings(),
+            # "ratings": self.ratings(),
             "sommelier": self.sommelier,
             "mixologist": self.mixologist,
             "profile_image": self.profile_image,

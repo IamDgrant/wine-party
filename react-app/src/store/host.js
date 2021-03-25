@@ -39,7 +39,7 @@ const removeHost = (hostId) => ({
 export const browseAllHost = () => async (dispatch) => {
   const res = await fetch("/api/hosts");
   const data = await res.json();
-  dispatch(getHost(data));
+  dispatch(getHost(data.hosts));
   return data;
 };
 
