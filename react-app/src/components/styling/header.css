@@ -33,7 +33,7 @@
   }
 
 .menu {
-    align-items: ;
+    /* align-items: ; */
     font-family: "Bebas Neue", cursive;
     color: #f9fbf2; 
 }
@@ -50,7 +50,7 @@
   }
   
   .option :hover {
-    color: #ffede1;
+    color: #f9fbf2;
   }
 
   .mobile-hover {

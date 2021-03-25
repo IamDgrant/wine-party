@@ -11,7 +11,7 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #fff;
+  background: #f9fbf2;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -19,6 +19,7 @@
 .host-btn:hover:after {
   width: 100%;
   left: 0;
+  color: #f9fbf2; 
 }
 
 .event-btn {

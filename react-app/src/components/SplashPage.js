@@ -1,5 +1,6 @@
 import React, { useSelector } from "react";
 import Header from "../components/Header";
+import About from "../components/About";
 import RandomHost from "../components/RandomHostCard";
 import "./styling/splashPageStyle.css";
 
@@ -19,14 +20,19 @@ const SplashPage = () => {
           <Header />
         </div>
         <div className="content-container">
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
-<br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <div id="about">
+            <About />
+          </div>
+
+          <br></br>
           <RandomHost />
         </div>
         {/* <div className="footer-container"></div> */}
