@@ -33,12 +33,11 @@
 }
 
 .content-container {
-  height: 40vh;
 }
 
 .suggested-hosts {
-  padding-top: 100px;
-  padding-left: 100px;
+  /* padding-top: 100px;
+  padding-left: 100px; */
   font-family: "Bebas Neue", cursive;
-  font-size: 4vh;
+  font-size: 2vh;
 }

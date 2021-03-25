@@ -8,7 +8,7 @@ const LoginForm = ({
   signInPassword,
   setSignInPassword,
 }) => {
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -27,11 +27,11 @@ const LoginForm = ({
   return (
     <div className="center_box">
       <form className="form">
-        <div>
+        {/* <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
-        </div>
+        </div> */}
         <div>
           <input
             name="email"

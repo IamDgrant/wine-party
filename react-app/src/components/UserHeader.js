@@ -22,7 +22,7 @@ import "../components/styling/userHeader.css";
 // import { NavLink } from "react-router-dom";
 // import LogoutButton from "../components/auth/LogoutButton";
 // import { profileImage } from "../store/session";
-// import "./styling/navBar.css";
+import "../components/styling/buttonStyle.css";
 import SearchIcon from "../assets/icons/search-solid.svg";
 
 const UserHeader = () => {
@@ -98,24 +98,33 @@ const UserHeader = () => {
           <div className="user-logo-container">Wine Party</div>
           <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-              <NavLink to="/hosts">
-                <FindHost />
+              <NavLink to="/events">
+                <button
+                  className="host-btn"
+                  style={{
+                    color: "#f9fbf2",
+                    fontFamily: "Montserrat",
+                    // fontWeight: "lighter",
+                    // backgroundColor: "#f9fbf2",
+                    // borderColor: "#f9fbf2",
+                  }}
+                >
+                  Add Event
+                </button>
+
+                {/* <FindHost /> */}
               </NavLink>
             </li>
             <li className="option">
-              <NavLink to="/events">
-                Add Event
-                {/* <EventForm /> */}
-                {/* <AddEventModal /> */}
-              </NavLink>
+            <LogoutButton />
             </li>
             <li className="option mobile-option" onClick={closeMobileMenu}></li>
             <li className="option mobile-option" onClick={closeMobileMenu}></li>
-            <div className="option menu logout ">
-              {/* <li className="option menu logout" onClick={closeMobileMenu}> */}
-              {/* <LogoutButton /> */}
-              {/* </li> */}
-            </div>
+            {/* <div className="option menu logout ">
+              <li className="option menu logout" onClick={closeMobileMenu}>
+              <LogoutButton />
+              </li>
+            </div> */}
           </ul>
           <ul className="signin-up">
             <li className="sign-in" onClick={closeMobileMenu}></li>
@@ -124,7 +133,7 @@ const UserHeader = () => {
         </div>
         <div className="mobile-menu" onClick={handleClick}>
           {click ? (
-            <CloseMenu className="menu-icon" style={{ fill: "#f9fbf2" }} />
+            <CloseMenu className="menu-icon" style={{ fill: "#fffff" }} />
           ) : (
             <MenuIcon className="menu-icon" />
           )}

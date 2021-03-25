@@ -11,7 +11,7 @@ const LogoutButton = () => {
 
   const onLogout = async (e) => {
     const user = await dispatch(logout());
-    if (!user.ok) history.push("/splash");
+    if (!user.ok) history.push("/");
   };
 
   return (

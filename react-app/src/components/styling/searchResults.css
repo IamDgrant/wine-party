@@ -18,17 +18,15 @@
 .host-result-btns {
     display: flex;
     justify-content: center;
+    overflow: scroll;
+    height: 80vh;
+    width: 50vh;
 }
 
 .host-type {
     display: flex;
     justify-content: flex-start;
 }
-
-/* .host-profile {
-    height: 500px;
-    width: 750px;
-} */
 
 .add-host {
     display: flex;

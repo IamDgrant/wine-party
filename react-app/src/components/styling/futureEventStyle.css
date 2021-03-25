@@ -1,0 +1,33 @@
+.results {
+  margin-bottom: 0px;
+}
+
+.upcoming-events  {
+  margin: 0px 0px 0px 10px;
+}
+
+.events {
+  display: flex;
+}
+
+.grid {
+  margin-top: -35px;
+  /* width: 75px; */
+}
+
+.event-cards {
+  display: flex;
+  justify-content: center;
+  /* margin-top: -35px; */
+  width: 75px;
+}
+
+/* .party-icon {
+  font-size: 50px;
+} */
+
+.delete-button {
+  margin: 0px 0px 0px 0px;
+  border: 1px solid red;
+  font-size: 1vh;
+}

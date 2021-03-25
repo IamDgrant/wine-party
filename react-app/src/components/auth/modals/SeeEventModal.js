@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeEvent, deleteEvent } from "../../../store/event";
-// import Event from "../../../store/event"
-import EventForm from "../../auth/forms/CreateEventForm"
+import Event from "../../FutureEvent"
 import { Modal, Button } from "antd";
-import "../../styling/eventStyle.css";
+// import "../../styling/eventStyle.css";
 
 const SeeEvent = ({ id }) => {
   const [isSeeEventModalVisible, setSeeEventModalVisible] = useState(false);
@@ -79,7 +78,6 @@ const SeeEvent = ({ id }) => {
                 }}
               >
                   <Event /> 
-                <EventForm />
               </Modal>
             </div>
           ))}

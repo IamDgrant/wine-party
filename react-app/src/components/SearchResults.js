@@ -9,28 +9,28 @@ import { Rate } from "antd";
 // import { message } from "antd";
 
 const SearchResult = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   const sessionHostsResults = useSelector((state) => state.host.host);
-  const sessionEvent = useSelector((state) => state.event.event);
-  const sessionHostId = useSelector((state) =>
-    state.host.host ? state.host.host : null
-  );
+  // const sessionEvent = useSelector((state) => state.event.event);
+  // const sessionHostId = useSelector((state) =>
+  //   state.host.host ? state.host.host : null
+  // );
 
   // console.log(sessionHostsResults[0].ratings);
 
-  const showModal = (e) => {
-    e.preventDefault();
-    setIsModalVisible(true);
-  };
+  // const showModal = (e) => {
+  //   e.preventDefault();
+  //   setIsModalVisible(true);
+  // };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalVisible(false);
+  // };
 
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalVisible(false);
+  // };
 
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
@@ -91,8 +91,6 @@ const SearchResult = () => {
     </svg>
   );
 
-  const { Meta } = Card;
-
   return (
     <>
       <div className="results">
@@ -109,7 +107,7 @@ const SearchResult = () => {
         <div className="host-result-btns">
           <Grid
             component="ul"
-            columns={3}
+            columns={2}
             columnWidth={250}
             itemHeight={400}
             itemWidth={250}
@@ -146,7 +144,7 @@ const SearchResult = () => {
                         <div className="host-city-state">
                           {host.city}, {host.state}
                         </div>
-                        {/* <div className="host-type"></div> */}
+                        {/* <div className="host-type"></div> */} 
                         <div className="host-rating">
                           <Rate disabled defaultValue={4} />
                         </div>

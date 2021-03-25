@@ -1,7 +1,7 @@
 import React, { useSelector, UseEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { seeEvent } from "../store/event";
-import "./styling/eventStyle.css";
+// import "./styling/eventStyle.css";
 
 const prevEvents = ({ id }) => {
   const dispatch = useDispatch();

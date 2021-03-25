@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import UserHeader from "../components/UserHeader";
 // import TimeUntilEvent from "../components/TimeLeft";
-// import SeeEvent from "../components/auth/modals/SeeEventModal";
+import SeeEvent from "../components/auth/modals/SeeEventModal";
+import FutureEvent from "../components/FutureEvent"
 import "./styling/userHome.css";
 
 const Home = () => {
@@ -18,20 +19,14 @@ const Home = () => {
               <div className="welcome">Welcome, {sessionUser.first_name}!</div>
             <div className="welcome">
             </div>
-            <div className="date">
-              {/* <TimeUntilEvent /> */}
-            </div>
+            {/* <div className="date">
+              <TimeUntilEvent />
+            </div> */}
           </div>
         </div>
 
         <div className="content-container">
-          <div className="suggested-hosts">Suggested Hosts</div>
-          {/* <div>About Wine Party</div> */}
-          {/* <div>
-            <SeeEvent />
-          </div> */}
-
-          {/* <div>Connect</div> */}
+          <div className="suggested-hosts"><FutureEvent /></div>
         </div>
       </div>
     </>
