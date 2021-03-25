@@ -208,9 +208,9 @@ span {
   .signin-up {
     display: none;
   }
-}
-.mobile-menu {
-  display: block;
+  .mobile-menu {
+    display: block;
+  }
 }
 
 /* .menu-icon {

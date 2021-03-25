@@ -12,9 +12,9 @@ const LoginForm = ({
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  if (!sessionUser.errors) {
-    return <Redirect to="/home" />;
-  }
+  // if (!sessionUser.errors) {
+  //   return <Redirect to="/home" />;
+  // }
 
   const updateEmail = (e) => {
     setSignInEmail(e.target.value);
