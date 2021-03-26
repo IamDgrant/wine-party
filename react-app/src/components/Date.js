@@ -30,7 +30,7 @@ const DateTime = () => {
             {dayDate[0]}, {dayDate[1]}
           </div> */}
           <div className="event-date">
-           {sessionEvent ? <p style={{fontSize: "16px"}}>Your next event is in <TimeUntilEvent /></p> : null}
+           {sessionEvent ? <p style={{fontSize: "16px", display: "flex", justifyContent: "center"}}>Your next event is in <TimeUntilEvent /></p> : null}
           </div>
         {/* </div> */}
       </div>

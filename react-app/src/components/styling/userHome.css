@@ -17,6 +17,7 @@
 }
 
 .welcome {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   font-family: "Bebas Neue", cursive;
@@ -36,6 +37,7 @@ h4 {
 } */
 
 .date-until {
+  margin-top: 5px;
   display: flex;
   justify-content: center;
   font-family: "Bebas Neue", cursive;
