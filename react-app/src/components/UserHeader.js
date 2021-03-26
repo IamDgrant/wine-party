@@ -109,7 +109,7 @@ const UserHeader = () => {
                 onClick={clickEvents}
                 className="menu host-btn"
               >
-                Your Events
+                Events
               </Button>
             </li>
 
