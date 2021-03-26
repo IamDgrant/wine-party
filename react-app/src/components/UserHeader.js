@@ -21,7 +21,6 @@ import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/userHeader.css";
 // import { Menu, Dropdown, Modal, Button } from "antd";
 // import { NavLink } from "react-router-dom";
-// import LogoutButton from "../components/auth/LogoutButton";
 // import { profileImage } from "../store/session";
 import "../components/styling/buttonStyle.css";
 
