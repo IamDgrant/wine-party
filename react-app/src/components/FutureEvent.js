@@ -48,10 +48,7 @@ const FutureEvent = ({ id }) => {
     return new Date(events.event_date) > todaysDate;
   });
 
-  const Grid = makeResponsive(measureItems(CSSGrid), {
-    maxWidth: 1920,
-    minPadding: 100,
-  });
+  const Grid = measureItems(CSSGrid)
 
   const party = (
     <svg
@@ -86,6 +83,7 @@ const FutureEvent = ({ id }) => {
             color: "#0e1c36",
             fontFamily: "Bebas Neue",
             fontSize: "4vh",
+            width: "fit-content",
           }}
         >
           <h1>Upcoming Events</h1>
@@ -93,10 +91,10 @@ const FutureEvent = ({ id }) => {
         <Grid
           className="grid"
           component="ul"
-          columns={2}
+          columns={3}
           columnWidth={250}
           itemHeight={250}
-          itemWidth={250}
+          itemWidth={50}
           // duration={500}
           // easing="ease-out"
         >

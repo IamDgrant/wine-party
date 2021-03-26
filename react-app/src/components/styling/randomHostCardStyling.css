@@ -1,13 +1,27 @@
+
+.random-host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .random-host-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 250px;
   width: 240px;
-  padding-bottom: 2px;
   box-shadow: 2px 2px 7px grey;
 }
 
 .host-name-type {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.host-city-state {
+  padding-left: 5px;
 }
 
 .title {
@@ -17,10 +31,9 @@
 
 .host-result-btns {
   display: flex;
-  justify-content: center;
   overflow: scroll;
-  height: 250px;   
-  width: 240px;
+  height: 100%;   
+  width: 100%;
 }
 
 .host-type {

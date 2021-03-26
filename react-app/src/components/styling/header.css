@@ -93,10 +93,12 @@
   .header {
     padding: 0px 10px;
   }
+
   .logo {
     width: 45px;
     height: 45px;
   }
+  
   .nav-options {
     display: flex;
     width: 100%;
@@ -144,6 +146,7 @@
   .signin-up {
     display: none;
   }
+
   .mobile-menu {
     display: block;
   }

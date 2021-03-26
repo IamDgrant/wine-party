@@ -82,6 +82,7 @@ const RandomHost = () => {
         }}
       >
         <div className="title">Featured Host</div>
+        {/* <div className="host-bio">{sessionHost.about}</div> */}
       </div>
       <Grid
         component="ul"
