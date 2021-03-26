@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { seeEvent, deleteEvent } from "../store/event";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import TimeUntilEvent from "../components/TimeLeft";
-import { Card, Col, Row, Modal, Button } from "antd";
+import { Card, Col, Row, Modal, Button, Avatar } from "antd";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -59,7 +59,7 @@ const FutureEvent = ({ id }) => {
       focusable="false"
       data-prefix="fas"
       data-icon="glass-cheers"
-      class="svg-inline--fa fa-glass-cheers fa-w-20"
+      class="svg-inline--fa2 fa-glass-cheers fa-w-20"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 640 512"
@@ -79,7 +79,7 @@ const FutureEvent = ({ id }) => {
 
   return (
     <>
-      <div className="results">
+      <div className="event-results">
         <div
           className="upcoming-events"
           style={{
@@ -131,8 +131,8 @@ const FutureEvent = ({ id }) => {
                     }
                   >
                     <Meta
-                    // title={modalEvent.event_name}
-                    // description={<TimeUntilEvent />}
+                      title={futureEvent.event_name}
+                      // description={<TimeUntilEvent />}
                     />
                   </Card>
                 </button>
@@ -160,21 +160,13 @@ const FutureEvent = ({ id }) => {
             >
               {futureEvents && futureEvents.length > 0 && (
                 <Meta
+                  avatar={<Avatar src={party} />}
                   title={futureEvents[modalEvent].event_date.slice(0, 16)}
-                  description={futureEvents.event_city}
+                  description={futureEvents[modalEvent].event_city}
                   // description="This is the description"
                 />
               )}
             </Card>
-            {/* <div className="party-icon">{party}</div>
-                  <div className="events">
-                    <div className="event-name">
-                      <h1>{futureEvent.event_date.slice(0, 16)}</h1>
-                    </div>
-                    <div className="host-name">
-                      <div className="host-name">Your Host is: </div>
-                    </div>
-                  </div> */}
           </Modal>
         </Grid>
       </div>

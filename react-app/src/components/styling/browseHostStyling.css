@@ -1,23 +1,50 @@
+.browsed-hosts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hosts {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .host-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   height: 350px;
   width: 240px;
-  /* padding-bottom: 2px; */
   box-shadow: 2px 2px 7px grey;
 }
 
-.host-name, .somm, .mix, .host-city-state {
+.host-name,
+.somm,
+.mix,
+.host-city-state {
   font-family: "Bebas Neue", cursive;
   color: white;
 }
 
-.host-name {
+/* .host-name {
   display: flex;
   justify-content: center;
+} */
+
+.back-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;
+}
+
+.svg-inline--fa2 {
+  height: 32px;
+  width: 32px;
 }
 
 .host-name-type {
   display: flex;
-  justify-content:  center;
 }
 
 .title {
@@ -27,10 +54,9 @@
 
 .host-result-btns {
   display: flex;
-  justify-content: center;
   overflow: scroll;
-  /* height: 400px;   
-  width: 240px; */
+  height: 100%    ;
+    width: 100%;
 }
 
 .host-type {

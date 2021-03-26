@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { seeHost } from "../store/host";
-import { Modal, Card, Avatar } from "antd";
+// import { seeHost } from "../store/host";
+// import { Modal, Card, Avatar } from "antd";
 import "../components/styling/searchResults.css";
-import { Rate } from "antd";
+// import { Rate } from "antd";
 
 // import { message } from "antd";
 
 const SearchResult = () => {
+  const history = useHistory();
   // const [isModalVisible, setIsModalVisible] = useState(false);
 
   const sessionHostsResults = useSelector((state) => state.host.host);
@@ -16,8 +18,6 @@ const SearchResult = () => {
   // const sessionHostId = useSelector((state) =>
   //   state.host.host ? state.host.host : null
   // );
-
-  console.log(sessionHostsResults);
 
   // const showModal = (e) => {
   //   e.preventDefault();
@@ -31,6 +31,10 @@ const SearchResult = () => {
   // const handleCancel = () => {
   //   setIsModalVisible(false);
   // };
+
+  const backClick = () => {
+    history.push("/home");
+  };
 
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
@@ -91,6 +95,24 @@ const SearchResult = () => {
     </svg>
   );
 
+  const backButton = (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="far"
+      data-icon="arrow-alt-circle-left"
+      class="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path
+        fill="currentColor"
+        d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zm-72-20v40c0 6.6-5.4 12-12 12H256v67c0 10.7-12.9 16-20.5 8.5l-99-99c-4.7-4.7-4.7-12.3 0-17l99-99c7.6-7.6 20.5-2.2 20.5 8.5v67h116c6.6 0 12 5.4 12 12z"
+      ></path>
+    </svg>
+  );
+
   return (
     <>
       <div className="results">
@@ -101,7 +123,10 @@ const SearchResult = () => {
             fontFamily: "Bebas Neue",
             fontSize: "3.5vh",
           }}
-          >
+        >
+          <div className="back-arrow">
+            <button onClick={backClick}>{backButton}</button>
+          </div>
           <div className="title">Hosts near you</div>
         </div>
         <div className="host-result-btns">
@@ -117,39 +142,40 @@ const SearchResult = () => {
             {sessionHostsResults &&
               sessionHostsResults.map((host) => (
                 <div className="card" key={host.id}>
-                    <div
-                      className="host-card"
-                      style={{
-                        backgroundImage: `url(${host.profile_image})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        backgroundRepeat: "no-repeat",
-                      }}
-                    >
-                      <div className="hosts">
-                        
-                        <div className="add-host"><button>{addBtn}</button></div>
-                        <div className="host-name-type">
-                          <div className="host-name">
-                            {host.first_name} {host.last_name}
-                          </div>
-                          <div className="somm">
-                            {host.sommelier === true ? sommelier : null}{" "}
-                          </div>
-                          <div className="mix">
-                            {host.mixologist === true ? mixologist : null}{" "}
-                          </div>
+                  <div
+                    className="host-card"
+                    style={{
+                      backgroundImage: `url(${host.profile_image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="hosts">
+                      <div className="add-host">
+                        <button>{addBtn}</button>
+                      </div>
+                      <div className="host-name-type">
+                        <div className="host-name">
+                          {host.first_name} {host.last_name}
                         </div>
+                        <div className="somm">
+                          {host.sommelier === true ? sommelier : null}{" "}
+                        </div>
+                        <div className="mix">
+                          {host.mixologist === true ? mixologist : null}{" "}
+                        </div>
+                      </div>
 
-                        <div className="host-city-state">
-                          {host.city}, {host.state}
-                        </div>
-                        {/* <div className="host-type"></div> */} 
-                        {/* <div className="host-rating">
+                      <div className="host-city-state">
+                        {host.city}, {host.state}
+                      </div>
+                      {/* <div className="host-type"></div> */}
+                      {/* <div className="host-rating">
                           <Rate disabled defaultValue={4} />
                         </div> */}
-                      </div>
                     </div>
+                  </div>
                 </div>
               ))}
           </Grid>
