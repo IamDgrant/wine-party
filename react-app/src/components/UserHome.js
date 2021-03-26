@@ -5,6 +5,7 @@ import UserHeader from "../components/UserHeader";
 import FutureEvent from "../components/FutureEvent";
 import PastEvent from "../components/PastEvents";
 import AddEvent from "../components/auth/modals/AddEventModal";
+import Date from "../components/Date"
 import "./styling/userHome.css";
 import { PlusOutlined } from "@ant-design/icons";
 
@@ -18,6 +19,9 @@ const Home = () => {
           <div className="header-image-bg">
             <UserHeader />
             <div className="welcome">Welcome, {sessionUser.first_name}!</div>
+            <div className="date-until">
+              <Date />
+            </div>
           </div>
         </div>
         <br></br>

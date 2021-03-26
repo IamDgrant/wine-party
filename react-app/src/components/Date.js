@@ -6,7 +6,7 @@ const DateTime = () => {
   const [date, setDate] = useState(new Date());
   const sessionEvent = useSelector((state) => state.event.event.length > 0) 
 
-  // console.log(sessionEvent);
+  console.log(sessionEvent);
 
   useEffect(() => {
     setDate(new Date());
