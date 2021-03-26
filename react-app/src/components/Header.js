@@ -153,7 +153,7 @@ const Header = () => {
                 About
               </Button>
             </li>
-            <li className="option mobile-option" onClick={closeMobileMenu}>
+            <li className="option mobile-option host-btn" onClick={closeMobileMenu}>
               <Button
                 htmlType="submit"
                 type="dashed"
@@ -185,7 +185,7 @@ const Header = () => {
                 />
               </Modal>
             </li>
-            <li className="option mobile-option" onClick={closeMobileMenu}>
+            <li className="option mobile-option host-btn" onClick={closeMobileMenu}>
               <Button
                 htmlType="submit"
                 type="primary"
@@ -228,7 +228,7 @@ const Header = () => {
           </ul>
         </div>
         <ul className="signin-up">
-          <li className="sign-in" onClick={closeMobileMenu}>
+          <li className="sign-in host-btn" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="dashed"
@@ -260,7 +260,7 @@ const Header = () => {
               />
             </Modal>
           </li>
-          <li onClick={closeMobileMenu}>
+          <li className=" host-btn" onClick={closeMobileMenu}>
             <Button
               htmlType="submit"
               type="primary"
