@@ -8,6 +8,7 @@ import BrowseResults from "./components/BrowseResults";
 import FindHost from "./components/FindHost"
 import SearchResult from "./components/SearchResults";
 import EventForm from "./components/auth/forms/CreateEventForm";
+import FAQ from "./components/FAQ"
 // import LoginForm from "./components/forms/LoginForm";
 // import Event from "./components/Event";
 // import FindHost from "./components/FindHost"
@@ -36,8 +37,9 @@ const App = () => {
         </Route>
         <Route path="/hosts" exact={true}>
           <BrowseResults />
-          {/* <FindHost /> */}
-          {/* <SearchResult /> */}
+        </Route>
+        <Route path="/faq" exact={true}>
+          <FAQ />
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />

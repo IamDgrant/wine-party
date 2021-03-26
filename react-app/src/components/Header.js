@@ -132,7 +132,7 @@ const Header = () => {
                 className="navbar-item"
                 activeClassName="is-active"
                 to="/hosts"
-                // exact
+                exact
               >
                 <Button type="text" className="menu host-btn">
                   Browse Hosts
@@ -140,9 +140,16 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="option menu" onClick={closeMobileMenu}>
-              <Button type="text" className="menu host-btn">
-                FAQ
-              </Button>
+              <NavLink
+                className="navbar-item"
+                activeClassName="is-active"
+                to="/faq"
+                exact
+              >
+                <Button type="text" className="menu host-btn">
+                  FAQ
+                </Button>
+              </NavLink>
             </li>
             <li className="option menu" onClick={closeMobileMenu}>
               <Button
@@ -153,7 +160,10 @@ const Header = () => {
                 About
               </Button>
             </li>
-            <li className="option mobile-option host-btn" onClick={closeMobileMenu}>
+            <li
+              className="option mobile-option host-btn"
+              onClick={closeMobileMenu}
+            >
               <Button
                 htmlType="submit"
                 type="dashed"
@@ -185,7 +195,10 @@ const Header = () => {
                 />
               </Modal>
             </li>
-            <li className="option mobile-option host-btn" onClick={closeMobileMenu}>
+            <li
+              className="option mobile-option host-btn"
+              onClick={closeMobileMenu}
+            >
               <Button
                 htmlType="submit"
                 type="primary"
