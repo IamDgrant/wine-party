@@ -15,7 +15,7 @@ import { message } from "antd";
 // } from "@ant-design/icons";
 import { Avatar, Modal, Button } from "antd";
 import LogoutButton from "./auth/LogoutButton";
-import UserProfile from "../components/UserProfile"
+import UserProfile from "../components/UserProfile";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/userHeader.css";
@@ -23,7 +23,6 @@ import "../components/styling/userHeader.css";
 // import { NavLink } from "react-router-dom";
 // import { profileImage } from "../store/session";
 import "../components/styling/buttonStyle.css";
-
 
 const UserHeader = () => {
   const history = useHistory();
@@ -102,30 +101,24 @@ const UserHeader = () => {
       <div className="user-header">
         <div className="user-logo-nav">
           <div className="user-logo-container">Wine Party</div>
+
           <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-            <Button
+              <Button
                 type="text"
                 onClick={clickEvents}
                 className="menu host-btn"
               >
                 Your Events
               </Button>
+            </li>
 
-              {/* <FindHost /> */}
-            </li>
-            <li className="option">
-              <LogoutButton />
-              {/* <UserProfile /> */}
-            </li>
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
             {/* <li className="option mobile-option" onClick={closeMobileMenu}></li> */}
-            {/* <div className="option menu logout ">
-              <li className="option menu logout" onClick={closeMobileMenu}>
-              <LogoutButton />
-              </li>
-            </div> */}
           </ul>
+          <div className="option menu logout" onClick={closeMobileMenu}>
+            <LogoutButton />
+          </div>
           <ul className="signin-up">
             <li className="sign-in" onClick={closeMobileMenu}></li>
             <li onClick={closeMobileMenu}></li>

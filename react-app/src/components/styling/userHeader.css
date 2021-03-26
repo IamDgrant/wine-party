@@ -14,10 +14,14 @@
   /* flex-direction: column; */
 }
 
+.logout {
+  padding-left: 63vw;
+}
+
 .search-form {
   display: absolute;
-  margin-top: -116px;
-  height: 25vh;
+  margin-top: 0px;
+  height: 0vh;
 }
 
 .form {
@@ -82,9 +86,10 @@ span {
 
 
 .user-logo-nav {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .user-logo-container {
