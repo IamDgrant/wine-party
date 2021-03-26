@@ -6,8 +6,6 @@ const DateTime = () => {
   const [date, setDate] = useState(new Date());
   const sessionEvent = useSelector((state) => state.event.event.length > 0) 
 
-  console.log(sessionEvent);
-
   useEffect(() => {
     setDate(new Date());
   }, []);
@@ -26,10 +24,15 @@ const DateTime = () => {
 
   return (
     <>
-      <div className="main-date-container">
-          <div className="text-base">
-           {sessionEvent ? <span><TimeUntilEvent /> until your next party!</span> : null}
+      <div className="main-date-container flex items-center">
+        {/* <div className="date-countdown-container"> */}
+          <div className="today-date text-2xl">
+            {dayDate[0]}, {dayDate[1]}
           </div>
+          <div className="event-date text-base">
+           {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null}
+          </div>
+        {/* </div> */}
       </div>
     </>
   );

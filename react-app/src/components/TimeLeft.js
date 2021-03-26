@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { seeEvent } from "../store/event";
+import { useSelector } from "react-redux";
 
-const TimeUntilEvent = ({ id }) => {
-  const dispatch = useDispatch();
+const TimeUntilEvent = () => {
+  const sessionEvents = useSelector((state) => state.event.event);
 
-  useEffect(() => {
-    if (!id) dispatch(seeEvent());
-    // else {
-    //   dispatch();
-    //   setData(id);
-    // }
-  }, [id]);
+  const todaysDate = new Date();
+
+  const sessionFutureEvents = sessionEvents?.filter((events) => {
+    return new Date(events.event_date) > todaysDate;
+  });
 
   const sessionEventDate = useSelector((state) =>
-    state.event.event.length > 0 ? state.event.event[0].event_date : null
+    (state.event.event.length > 0)? sessionFutureEvents[0].event_date : null
   );
-
-  // console.log(sessionEventDate);
 
   const calculateTimeLeft = () => {
     const difference = +new Date(sessionEventDate) - +new Date();
+    console.log(difference);
     let timeLeft = {};
 
     if (difference > 0) {
@@ -62,7 +58,7 @@ const TimeUntilEvent = ({ id }) => {
         timerComponents.length ? (
           timerComponents
         ) : (
-          <span></span>
+          <span>Time's up!</span>
         )
       ) : (
         ""
