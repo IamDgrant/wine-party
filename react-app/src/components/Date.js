@@ -26,11 +26,11 @@ const DateTime = () => {
     <>
       <div className="main-date-container flex items-center">
         {/* <div className="date-countdown-container"> */}
-          <div className="today-date text-2xl">
+          {/* <div className="today-date text-2xl">
             {dayDate[0]}, {dayDate[1]}
-          </div>
-          <div className="event-date text-base">
-           {sessionEvent ? <span>Your next event is in <TimeUntilEvent /></span> : null}
+          </div> */}
+          <div className="event-date">
+           {sessionEvent ? <p style={{fontSize: "16px"}}>Your next event is in <TimeUntilEvent /></p> : null}
           </div>
         {/* </div> */}
       </div>
