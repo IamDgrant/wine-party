@@ -92,7 +92,7 @@ const UserHeader = () => {
   const updateMixologist = () => setMixologist(!mixologist);
 
   const clickEvents = () => {
-    const anchor = document.querySelector("#futureEvent");
+    const anchor = document.querySelector("#Events");
     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 

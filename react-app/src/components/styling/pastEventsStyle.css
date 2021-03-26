@@ -1,0 +1,42 @@
+.results {
+    margin-bottom: 0px;
+  }
+  
+  .past-events  {
+    margin: 0px 0px 0px 50px;
+  }
+
+  .p-events {
+    margin-left: -175px;
+  }
+  
+  .events {
+    display: flex;
+  }
+  
+  .grid {
+    /* margin-top: -0px; */
+    margin-left: 50px;
+    height: 250px250;
+  }
+  
+  .event-cards {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  /* .party-icon {
+    font-size: 50px;
+  } */
+  
+  .delete-button {
+    margin: 0px 0px 0px 0px;
+    border: 1px solid red;
+    font-size: 1vh;
+  }
+  
+  /* .event-results {
+    width: fit-content;
+  } */
+  

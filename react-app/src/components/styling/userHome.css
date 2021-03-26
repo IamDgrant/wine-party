@@ -55,9 +55,19 @@ h4 {
   justify-content: center;
 }
 
+.past-e {
+  display: flex;
+  justify-content: center;
+}
+
 .f-events {
   display: flex;
-  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+.p-events {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -65,27 +75,24 @@ h4 {
 .add-event {
   width: 160px;
   height: 160px;
-  border: 5px dashed rgb(158, 166, 174);
-  /* border-radius: 50%; */
-  margin: .5vh;
+  border: 1px dashed rgb(158, 166, 174);
+  margin: 0.5vh;
   margin-top: -12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.5s;
+  /* transition: 0.5s; */
 }
 
 .add-event-btn {
-  
   border: none;
   background: none;
-  /* border-radius: 50%; */
   outline: none;
   cursor: pointer;
 }
 
 .add-event:hover {
-  border: 5px dashed rgb(90, 95, 99);
+  border: 1px dashed rgb(158, 166, 174);
   color: rgb(90, 95, 99);
   /* transform: translateY(-5px); */
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;

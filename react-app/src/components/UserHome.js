@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import UserHeader from "../components/UserHeader";
 import FutureEvent from "../components/FutureEvent";
+import PastEvent from "../components/PastEvents";
 import AddEvent from "../components/auth/modals/AddEventModal";
 import "./styling/userHome.css";
 import { PlusOutlined } from "@ant-design/icons";
@@ -25,13 +26,18 @@ const Home = () => {
         <br></br>
         <div className="content-container">
           <div className="events">
-            <div className="f-events" id="futureEvent">
+            <div className="f-events" id="Events">
               <FutureEvent />
               <div className="add-event">
                 <AddEvent
                   style={{ fontSize: "6vh", color: "rgb(158, 166, 174)" }}
                 />
               </div>
+            </div>
+          </div>
+          <div className="past-e">
+            <div className="p-events">
+              <PastEvent />
             </div>
           </div>
 
