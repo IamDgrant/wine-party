@@ -1,43 +1,46 @@
-.top-logo-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
-  background: url("../../images/pexels-cottonbro-3171837.jpg") no-repeat center
-    center fixed;
-  background-size: cover;
-}
-
-.logo-container {
-  width: 100%;
-  font-family: "Bebas Neue", cursive;
-  padding: 27vh 0vw 0vh 70vw;
-  font-size: 7.5vh;
-  animation: glowing 1750ms infinite;
-}
-
-@keyframes glowing {
-  0% {
-    color: white;
-    text-shadow: 0 0 3px white;
+.main-content-container {
+    background-color: black;
+    height: 90vh;
+    width: 100%;
   }
-  50% {
-    color: #eaebe4;
-    text-shadow: 0 0 15px #eaebe4;
-  }
-  100% {
-    color: white;
-    text-shadow: 0 0 3px white;
-  }
-}
 
-.buttons-container {
-  display: flex;
-  width: 100%;
-  padding: 0vh 0vw 0vh 75.1vw;
-  margin-top: 0px;
-}
-
-.login {
-  padding-left: .5vh;
-}
+  #about {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-background-image {
+    display: flex;
+    justify-content: center;
+    background-image: url("../../assets/images/pexels-fauxels-3184183.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 75vh;
+    width: 100%;
+    margin-top: -16.5vh;
+  }
+  
+  .welcome {
+    display: flex;
+    justify-content: center;
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2;
+    font-size: 19px;
+  }
+  
+  .date {
+    display: flex;
+    justify-content: center;
+    font-family: "Bebas Neue", cursive;
+    color: #f9fbf2;
+    font-size: 25px;
+  }
+  
+  .suggested-hosts {
+    /* padding-top: 100px;
+    padding-left: 100px; */
+    font-family: "Bebas Neue", cursive;
+    font-size: 2vh;
+  }
+  

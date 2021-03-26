@@ -1,29 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import Profile from "../components/Profile";
-import LogoutButton from "./auth/LogoutButton";
-import DateTime from "../components/Date";
+import UserHeader from "../components/UserHeader";
+import FutureEvent from "../components/FutureEvent";
+import PastEvent from "../components/PastEvents";
+import AddEvent from "../components/auth/modals/AddEventModal";
+import Date from "../components/Date"
 import "./styling/userHome.css";
+import { PlusOutlined } from "@ant-design/icons";
 
 const Home = () => {
+  const sessionUser = useSelector((state) => state.session.user);
+
   return (
     <>
-      <div className="main-container">
-        <div className="logo">Wine Party</div>
-        <div className="center-main">
-          <div className="date-bar flex">
-            <DateTime />
-          </div>
-          <div className="homeCard">
-            <div>
-              <Profile />
+      <div>
+        <div className="main-content-container">
+          <div className="header-image-bg">
+            <UserHeader />
+            <div className="welcome">Welcome, {sessionUser.first_name}!</div>
+            <div className="date-until">
+              <Date />
             </div>
           </div>
         </div>
-        <div className="logout">
-        <div>
-            <LogoutButton />
-        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className="content-container">
+          <div className="events">
+            <div className="f-events" id="Events">
+              <FutureEvent />
+              <div className="add-event">
+                <AddEvent
+                  style={{ fontSize: "6vh", color: "rgb(158, 166, 174)" }}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="past-e">
+            <div className="p-events">
+              <PastEvent />
+            </div>
+          </div>
+
+          {/* <div className="suggested-hosts"></div> */}
         </div>
       </div>
     </>

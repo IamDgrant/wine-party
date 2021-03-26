@@ -17,7 +17,7 @@ const removeEvent = (eventId) => ({
   payload: eventId,
 });
 
-export const createEvent = ({ event_name, event_date, event_city, event_state }) => async (
+export const createEvent = ({ event_name, event_date, event_city, event_state, event_postal_code }) => async (
   dispatch
 ) => {
   const res = await fetch("/api/events", {
@@ -30,6 +30,7 @@ export const createEvent = ({ event_name, event_date, event_city, event_state })
       event_date,
       event_city,
       event_state,
+      event_postal_code
     }),
   });
   const data = await res.json();
@@ -38,7 +39,6 @@ export const createEvent = ({ event_name, event_date, event_city, event_state })
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-  console.log("hit");
   const res = await fetch(`/api/events/${eventId}`, {
     method: "DELETE",
   });

@@ -13,13 +13,6 @@ def reviews():
     return {"reviews": [review.to_dict() for review in reviews]}
 
 
-# @review_routes.route('/project/<id>')
-# @login_required
-# def project_reviews(id):
-#     reviews = Review.query.filter_by(projectId=id).all()
-#     return {"reviews": [review.to_dict() for review in reviews]}
-
-
 @review_routes.route('/<id>')
 def review(id):
     reviews = Review.query.filter_by(eventId=id).all()

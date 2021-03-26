@@ -1,8 +1,4 @@
-.date-countdown-container {
-    display: flex;
-    justify-content: space-between;
-}
-
 .event-date {
-
+    display: flex;
+    justify-content: center;
 }

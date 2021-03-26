@@ -1,64 +1,101 @@
-/* font-family: 'Bebas Neue', cursive; */
-
-body {
-  background-color: #edc7b7;;
+.main-content-container {
+  background-color: black;
+  height: 90vh;
+  width: 100%;
 }
 
-.main-container {
+.background-image {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: space-between;
+  justify-content: center;
+  background-image: url("../../assets/images/pexels-rachel-claire-4846351.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 70vh;
+  width: 100%;
+  margin-top: -14vh;
 }
 
-.logo {
-  /* display: flex; */
-  /* align-self: flex-start; */
-  width: 33.3vh;
+.welcome {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
   font-family: "Bebas Neue", cursive;
-  font-size: 5vh;
-  color: white;
-  padding: 0vh 0vh 0vh 2vh;
-  /* margin: 0vh 33.3vh 0vh 33.3vh; */
-  text-shadow: 2px 2px rgba(126, 110, 97, 0.5);
+  color: #f9fbf2;
+  font-size: 19px;
 }
 
-.center-main {
+h4 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 17px;
+}
+
+/* .add-event {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  color: #0000;
+} */
+
+.date-until {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  font-family: "Bebas Neue", cursive;
+  color: #f9fbf2;
+  font-size: 25px;
+}
+
+.suggested-hosts {
+  /* padding-top: 100px;
+  padding-left: 100px; */
+  font-family: "Bebas Neue", cursive;
+  font-size: 2vh;
+}
+
+.events {
+  display: flex;
+  justify-content: center;
+}
+
+.past-e {
+  display: flex;
+  justify-content: center;
+}
+
+.f-events {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
-.date-bar {
+.p-events {
   display: flex;
-  /* width: 100%; */
-  font-family: 'Bebas Neue', cursive;
-  /* font-size: 5vh; */
-  font-style: italic;
-  color: white;
-  /* justify-content: space-between; */
+  justify-content: center;
+  align-items: center;
 }
 
-
-.homeCard {
-  height: 85vh;
-  width: 100%;
-  background-color: white;
-  border: transparent;
-  /* border-radius: 0.5%; */
-  box-shadow: 1px 1px 50px 3px rgb(126, 110, 97);
-}
-
-.logout {
+.add-event {
+  width: 160px;
+  height: 160px;
+  border: 1px dashed rgb(158, 166, 174);
+  margin: 0.5vh;
+  margin-top: -12px;
   display: flex;
-  justify-content: flex-end;
-  /* align-items: center; */
-  font-family: "Nanum Gothic", sans-serif;
-  font-size: 1.25vh;
-  color: white;
-  /* border: 1px solid white; */
-  /* height: 3vh; */
-  width: 33.3vh;
-  margin: 2vh 5vh 0vh 0vh;
+  justify-content: center;
+  align-items: center;
+  /* transition: 0.5s; */
+}
 
+.add-event-btn {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-event:hover {
+  border: 1px dashed rgb(158, 166, 174);
+  color: rgb(90, 95, 99);
+  /* transform: translateY(-5px); */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
 }

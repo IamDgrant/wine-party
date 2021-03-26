@@ -36,17 +36,14 @@ const removeHost = (hostId) => ({
 //   dispatch(setEvent(data));
 // };
 
-export const deleteHost = (hostId) => async (dispatch) => {
-  console.log("hit");
-  const res = await fetch(`/api/hosts/${hostId}`, {
-    method: "DELETE",
-  });
-  const deleted = await res.json();
-  console.log(deleted);
+export const browseAllHost = () => async (dispatch) => {
+  const res = await fetch("/api/hosts");
+  const data = await res.json();
+  dispatch(getHost(data.hosts));
+  return data;
 };
 
-export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => {
-  // console.log(search);
+export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
   const res = await fetch("/api/hosts/search", {
     method: "POST",
     headers: {
@@ -56,7 +53,23 @@ export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => 
   });
   const data = await res.json();
   dispatch(getHost(data.hosts));
-  return data
+  console.log(data.hosts);
+  return data;
+};
+
+export const seeRandomHost = () => async (dispatch) => {
+  const res = await fetch("/api/hosts/random");
+  const data = await res.json();
+  dispatch(getHost(data));
+  return data;
+};
+
+export const deleteHost = (hostId) => async (dispatch) => {
+  const res = await fetch(`/api/hosts/${hostId}`, {
+    method: "DELETE",
+  });
+  const deleted = await res.json();
+  console.log(deleted);
 };
 
 // export const seeHost = () => async (dispatch) => {
@@ -66,12 +79,12 @@ export const seeHost = ( search, sommelier, mixologist ) => async (dispatch) => 
 //   return data
 // };
 
-// export const seeHostEvent = (id) => async (dispatch) => {
-//   const res = await fetch(`/api/events/host/${id}`);
-//   const data = await res.json();
-//   dispatch(getHost(data.hosts));
-//   return data;
-// };
+export const seeHostEvent = (id) => async (dispatch) => {
+  const res = await fetch(`/api/events/host/${id}`);
+  const data = await res.json();
+  dispatch(getHost(data.hosts));
+  return data;
+};
 
 const initialState = { host: null };
 

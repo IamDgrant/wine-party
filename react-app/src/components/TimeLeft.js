@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const TimeUntilEvent = () => {
-  
-  const sessionEventDate = useSelector((state) => (
-  (state.event.event.length > 0) ? state.event.event[0].event_date : null
-  ));
+  const sessionEvents = useSelector((state) => state.event.event);
 
-  console.log((sessionEventDate));
+  const todaysDate = new Date();
+
+  const sessionFutureEvents = sessionEvents?.filter((events) => {
+    return new Date(events.event_date) > todaysDate;
+  });
+
+  const sessionEventDate = useSelector((state) =>
+    (state.event.event.length > 0)? sessionFutureEvents[0].event_date : null
+  );
 
   const calculateTimeLeft = () => {
     const difference = +new Date(sessionEventDate) - +new Date();
+    console.log(difference);
     let timeLeft = {};
 
     if (difference > 0) {
@@ -48,7 +54,15 @@ const TimeUntilEvent = () => {
   });
   return (
     <div>
-      {sessionEventDate ? (timerComponents.length ? timerComponents : <span>Time's up!</span>) : ""}
+      {sessionEventDate ? (
+        timerComponents.length ? (
+          timerComponents
+        ) : (
+          <span>Time's up!</span>
+        )
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const removeReview = () => ({
 });
 
 export const createReview = (review) => async (dispatch) => {
-  const res = await fetch(`/api/auth/signup`, {
+  const res = await fetch(`/api/auth/review`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

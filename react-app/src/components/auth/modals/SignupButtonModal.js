@@ -43,7 +43,7 @@ const SignupModal = () => {
   };
 
   if (sessionUser) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   const updateFirstName = (e) => {

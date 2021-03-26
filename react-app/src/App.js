@@ -4,6 +4,14 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
+import BrowseResults from "./components/BrowseResults";
+import FindHost from "./components/FindHost"
+import SearchResult from "./components/SearchResults";
+import EventForm from "./components/auth/forms/CreateEventForm";
+import FAQ from "./components/FAQ"
+// import LoginForm from "./components/forms/LoginForm";
+// import Event from "./components/Event";
+// import FindHost from "./components/FindHost"
 
 import { restoreUser } from "./store/session";
 
@@ -24,25 +32,24 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/splash" exact={true}>
+        <Route path="/" exact={true}>
           <SplashPage />
         </Route>
-        <ProtectedRoute path="/" exact={true}>
+        <Route path="/hosts" exact={true}>
+          <BrowseResults />
+        </Route>
+        <Route path="/faq" exact={true}>
+          <FAQ />
+        </Route>
+        <ProtectedRoute path="/home" exact={true}>
           <UserHome />
         </ProtectedRoute>
-        {/* <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route> */}
-        {/* <ProtectedRoute path="/" exact={true}>
-          <NavBar />
-        </ProtectedRoute> */}
-        {/* <ProtectedRoute path="/events" exact={true}>
+        <ProtectedRoute path="/events" exact={true}>
           <EventForm />
-          <Event></Event>
-        </ProtectedRoute> */}
-        {/* <Route path="/hosts" exact={true}>
-          <Search />
-        </Route> */}
+        </ProtectedRoute>
+        <ProtectedRoute path="/search" exact={true}>
+          <SearchResult />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

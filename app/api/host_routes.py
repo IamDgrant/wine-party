@@ -7,16 +7,23 @@ from app.models import Host, db
 host_routes = Blueprint('hosts', __name__)
 
 
-@host_routes.route('/')
+@host_routes.route('')
 # @login_required
 def hosts():
     hosts = Host.query.all()
     return {"hosts": [host.to_dict() for host in hosts]}
 
+@host_routes.route('/random')
+def random_host():
+    random = func.random()
+    hosts = Host.query.order_by(random).first()
+    return hosts.to_dict()
+
 
 @host_routes.route('/search', methods=['POST'])
 @login_required
 def hosts_search():
+    # print("WORKING!!!!!!!")
     hosts = Host.query.all()
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -45,7 +52,7 @@ def hosts_search():
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")) & (Host.mixologist == True)).all()
             else:
                 data = Host.query.filter(or_(func.lower(Host.first_name).like(f"{search}%"), func.lower(Host.last_name).like(f"{search}%"), func.lower(Host.state).like(f"{search}%"), func.lower(Host.city).like(f"{search}%")))
-        
+        # print("THISSTUFF!!!!", [host.to_dict() for host in data])
         return {"hosts": [host.to_dict() for host in data]}
 
 

@@ -1,23 +1,41 @@
-import React from "react";
-import SignupButtonModal from "./auth/modals/SignupButtonModal";
-import LoginButtonModal from "./auth/modals/LoginButtonModal";
-import "../components/styling/splashPageStyle.css";
+import React, { useSelector } from "react";
+import Header from "../components/Header";
+import About from "../components/About";
+import RandomHost from "../components/RandomHostCard";
+import "./styling/splashPageStyle.css";
 
 const SplashPage = () => {
+  // const sessionUser = useSelector((state) => state.session.user);
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition((position) => {
+  //     console.log(position);
+  //   });
+  // }, [dispatch]);
+
   return (
     <>
-      <div className="top-logo-container">
-        <div className="logo-container">
-          <div className="logo-inner">Wine Party➤</div>
+      <div className="main-content-container">
+        <div className="header-image-bg">
+          <Header />
         </div>
-        <div className="buttons-container">
-          <div className="signup">
-            <SignupButtonModal />
+        <div className="content-container">
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <div id="about">
+            <About />
           </div>
-          <div className="login">
-            <LoginButtonModal />
-          </div>
+
+          <br></br>
+          <RandomHost />
         </div>
+        {/* <div className="footer-container"></div> */}
       </div>
     </>
   );
