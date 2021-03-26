@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import { message } from "antd";
 import { createEvent } from "../../../store/event";
-// import EventForm from "../../auth/forms/CreateEventForm";
-import "../../styling/buttonStyle.css"
+import EventForm from "../../auth/forms/CreateEventForm";
+import "../../styling/buttonStyle.css";
+import { PlusOutlined } from "@ant-design/icons";
 
 const AddEvent = ({ user_id }) => {
-
   const dispatch = useDispatch();
   // const sessionUser = useSelector((state) => state.session.user);
   const [isAddEventModalVisible, setAddEventModalVisible] = useState(false);
@@ -61,24 +61,27 @@ const AddEvent = ({ user_id }) => {
   return (
     <>
       <div className="">
-        {/* <div className=""> */}
-        {/* <div className="">Upcoming Parties</div>
-          <Event />
-        </div> */}
         <Button
           htmlType="submit"
           type="text"
           size="small"
           className="event-btn"
           style={{
+            height: "150px",
+            width: "150px",
             color: "#f9fbf2",
-            fontFamily: "Montserrat"
+            fontFamily: "Montserrat",
           }}
           onClick={showAddEventModal}
         >
-          Add Event
+          <div className="plus">
+            <PlusOutlined
+              style={{ fontSize: "6vh", color: "rgb(158, 166, 174)" }}
+            />
+          </div>
+          <div className="add-event-inside"><h5>Add Event</h5></div>
         </Button>
-        {/* <Modal
+        <Modal
           title="Add an Event"
           visible={isAddEventModalVisible}
           onOk={addEventHandleOk}
@@ -100,7 +103,7 @@ const AddEvent = ({ user_id }) => {
             event_state={event_state}
             event_postal_code={event_postal_code}
           />
-        </Modal> */}
+        </Modal>
       </div>
     </>
   );

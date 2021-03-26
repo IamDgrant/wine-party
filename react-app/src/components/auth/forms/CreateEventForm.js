@@ -9,29 +9,19 @@ import SearchForm from "./SearchHostForm";
 import SearchResult from "../../SearchResults";
 import "../../styling/createEventFormStyling.css";
 
-const EventForm = ({ user_id }) => {
-  const [event_name, setEventName] = useState("");
-  const [event_date, setEventDate] = useState("");
-  const [event_city, setEventCity] = useState("");
-  const [event_state, setEventState] = useState("");
-  const [event_postal_code, setEventPostalCode] = useState("");
-  // const [search, setSearch] = useState("");
-  // const [sommelier, setSommelier] = useState("");
-  // const [mixologist, setMixologist] = useState("");
-  // const [redWine, setRedWine] = useState("");
-  // const [roseWine, setRoseWine] = useState("");
-  // const [whiteWine, setWhiteWine] = useState("");
-  // const [bourbon, setBourbon] = useState("");
-  // const [brandy, setBrandy] = useState("");
-  // const [cognac, setCognac] = useState("");
-  // const [gin, setGin] = useState("");
-  // const [liqueurs, setLiqueurs] = useState("");
-  // const [rum, setRum] = useState("");
-  // const [scotch, setScotch] = useState("");
-  // const [tequila, setTequila] = useState("");
-  // const [vodka, setVodka] = useState("");
-  // const [whiskey, setWhiskey] = useState("");
-
+const EventForm = ({
+  user_id,
+  event_name,
+  setEventName,
+  event_date,
+  setEventDate,
+  event_city,
+  setEventCity,
+  event_state,
+  setEventState,
+  event_postal_code,
+  setEventPostalCode,
+}) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const sessionHostsResults = useSelector((state) => state.host.host);
@@ -42,62 +32,6 @@ const EventForm = ({ user_id }) => {
   const error = () => {
     message.error("Please enter a event name!");
   };
-
-  const onSubmission = async (e) => {
-    // e.preventDefault();
-    if (!event_name) {
-      error();
-      return;
-    }
-    dispatch(
-      createEvent({
-        user_id,
-        // host_id,
-        event_name,
-        event_date,
-        event_city,
-        event_state,
-        event_postal_code,
-      })
-    ).then(() => {
-      setEventName("");
-      setEventDate("");
-      setEventCity("");
-      setEventState("");
-      setEventPostalCode("");
-    });
-  };
-
-  // const onSearch = async (e) => {
-  //   e.preventDefault();
-  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-  //     (res) => {
-  //       if (res.Host === "Not found") {
-  //         message.error(`User ${search} not found`);
-  //       }
-  //       // else {
-  //       //   message.success(`User ${search} added to Event!`);
-  //       // }
-  //     }
-  //   );
-  // };
-
-  // const updateSearch = (e) => setSearch(e.target.value);
-  // const updateSommelier = () => setSommelier(!sommelier);
-  // const updateMixologist = () => setMixologist(!mixologist);
-  // const updateRedWine = () => setRedWine(!redWine);
-  // const updateWhiteWine = () => setWhiteWine(!whiteWine);
-  // const updateRoseWine = () => setRoseWine(!roseWine);
-  // const updateBourbon = () => setBourbon(!bourbon);
-  // const updateBrandy = () => setBrandy(!brandy);
-  // const updateCognac = () => setCognac(!cognac);
-  // const updateGin = () => setGin(!gin);
-  // const updateLiqueurs = () => setLiqueurs(!liqueurs);
-  // const updateRum = () => setRum(!rum);
-  // const updateScotch = () => setScotch(!scotch);
-  // const updateTequila = () => setTequila(!tequila);
-  // const updateVodka = () => setVodka(!vodka);
-  // const updateWhiskey = () => setWhiskey(!whiskey);
 
   const updateEventName = (e) => {
     setEventName(e.target.value);
@@ -127,9 +61,6 @@ const EventForm = ({ user_id }) => {
   return (
     <>
       <div className="events-container">
-        <div>
-          <h1> Add Event</h1>
-        </div>
         {/* <Grid
           columns={2}
           columnWidth={250}
@@ -142,7 +73,7 @@ const EventForm = ({ user_id }) => {
         > */}
         {sessionUser && (
           <div className="left-search-box">
-            <form onSubmit={onSubmission} className="">
+            <form>
               <div>
                 <input
                   className=""
@@ -284,7 +215,7 @@ const EventForm = ({ user_id }) => {
                   whiskey={whiskey}
                   setWhiskey={setWhiskey}
                 /> */}
-                {/* <div className="search_bar">
+              {/* <div className="search_bar">
                     <input
                       className="searchInput"
                       placeholder="Search name, city, state, postal code..."
@@ -459,9 +390,9 @@ const EventForm = ({ user_id }) => {
                     </label>
                     
                 </div> */}
-                <button type="submit" className="reserve-btn">
+              {/* <button type="submit" className="reserve-btn">
                   Add Event and Find a Host
-                </button>
+                </button> */}
               {/* </div> */}
               {/* <button type="submit" className="reserve-btn">
                 Find a Host
@@ -469,10 +400,6 @@ const EventForm = ({ user_id }) => {
             </form>
           </div>
         )}
-        <div className="right-results-box">
-          <SearchResult />
-        </div>
-        {/* </Grid> */}
       </div>
     </>
   );
