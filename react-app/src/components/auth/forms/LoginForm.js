@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { login } from "../../../store/session"
+import { Button } from 'antd';
 
 const LoginForm = ({
   signInEmail,
@@ -8,6 +11,8 @@ const LoginForm = ({
   signInPassword,
   setSignInPassword,
 }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   // const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -15,6 +20,13 @@ const LoginForm = ({
   // if (!sessionUser.errors) {
   //   return <Redirect to="/home" />;
   // }
+
+  // const demoLogin = async (e) => {
+  //   // e.preventDefault();
+  //   console.log("HITTING");
+  //   await dispatch(login({ email: "jessica@wheeler.org", password: "password" }));
+  //   history.push("/home");
+  // };
 
   const updateEmail = (e) => {
     setSignInEmail(e.target.value);
@@ -50,6 +62,16 @@ const LoginForm = ({
             value={signInPassword}
           />
         </div>
+        {/* <Button
+          className="submit_button"
+          onClick={demoLogin}
+          // shape="round"
+          htmlType="submit"
+          size="small"
+          type="primary"
+        >
+          Demo User
+        </Button> */}
       </form>
     </div>
   );

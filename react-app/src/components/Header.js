@@ -85,7 +85,6 @@ const Header = () => {
 
   const onSignIn = async (e) => {
     // e.preventDefault();
-    console.log("HITTING");
     const user = await dispatch(login(signInEmail, signInPassword));
     if (user.ok) history.push("/home");
   };
