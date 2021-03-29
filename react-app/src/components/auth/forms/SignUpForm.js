@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Select from "react-select";
 // import { login } from "../../../store/session";
 // import csc from "country-state-city";
 // import { ICountry, IState, ICity } from "country-state-city";
@@ -26,6 +27,7 @@ const SignUpForm = ({
   setRepeatPassword,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showStateDropdown, setShowStateDropdown] = useState(false);
   const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
   const [errors, setErrors] = useState([]);
@@ -39,8 +41,11 @@ const SignUpForm = ({
 
   headers.append("X-CSCAPI-KEY", cscAPIKey);
 
-  const fetchCscStateUrl = `https://api.countrystatecity.in/v1/countries/US/states`
-  const fetchCscCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${cscState}/cities`;
+  const fetchCscStateUrl = `https://api.countrystatecity.in/v1/countries/US/states`;
+  const fetchCscCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${state}/cities`;
+
+  // console.log(state);
+  // console.log(cscCity);
 
   const requestOptions = {
     method: "GET",
@@ -50,20 +55,25 @@ const SignUpForm = ({
 
   const cscCityFetch = async () => {
     const res = await fetch(fetchCscCityUrl, requestOptions);
+    console.log(res);
     if (res.ok) {
       const data = await res.json();
-      const sortedData = data.sort((city1, city2) => (city1.name > city2.name) ? 1 : -1)
-      console.log(sortedData);
+      console.log(data);
+      const sortedData = data.sort((city1, city2) =>
+        city1.name > city2.name ? 1 : -1
+      );
       return sortedData;
     }
   };
-  
+
   const cscStateFetch = async () => {
     const res = await fetch(fetchCscStateUrl, requestOptions);
     if (res.ok) {
       const data = await res.json();
-      const sortedData = data.sort((state1, state2) => (state1.name > state2.name) ? 1 : -1)
-      console.log(sortedData);
+      const sortedData = data.sort((state1, state2) =>
+        state1.name > state2.name ? 1 : -1
+      );
+      // console.log(sortedData);
       return sortedData;
     }
   };
@@ -72,9 +82,8 @@ const SignUpForm = ({
     cscStateFetch().then((res) => {
       setCscState(res);
       setIsLoaded(true);
-    })
+    });
   }, []);
-
 
   // const demoLogin = async (e) => {
   //   // e.preventDefault();
@@ -95,7 +104,11 @@ const SignUpForm = ({
     setCity(e.target.value);
   };
   const updateState = (e) => {
-    setState(e.target.value);
+    setState(e);
+    // cscCityFetch().then((res) => {
+    //   setCscCity(res);
+    //   setIsLoaded(true);
+    // });
   };
   const updatePostalCode = (e) => {
     setPostalCode(e.target.value);
@@ -109,6 +122,8 @@ const SignUpForm = ({
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+ console.log(state);
 
   if (!isLoaded) {
     return null;
@@ -142,37 +157,35 @@ const SignUpForm = ({
             value={last_name}
           ></input>
         </div>
+
         <div>
-        <input
-            className="form_input"
-            type="text"
-            name="city"
-            placeholder="City"
-            onChange={updateCity}
-            value={city}
-          ></input>
-          {/* <select
-            className="form_input"
-            name="city"
-            placeholder="city"
-            // onClick={updateData}
-            onChange={updateCity}
-            value={cscCity}
-          >
-            {cscCity.length > 0 &&
-              cscCity.map((city) => (
-                <option key={city.id} value={city.name}>
-                  {city.name}
+          <Fragment>
+            <Select
+              className="state-search-dropdown"
+              classNamePrefix="select"
+              // defaultValue="State..."
+              placeholder="State..."
+              name="states"
+              options={cscState.map((state) => ({
+                label: state.name,
+                value: state.name,
+              }))}
+              onChange={state => updateState(state.value)}
+              // onChange={updateState}
+              // onInputChange={updateState}
+            />
+            {/* {cscState.length > 0 &&
+              cscState.map((state) => (
+                <option key={state.id} value={state.name}>
+                  {state.name}
                 </option>
-              ))}
-          </select> */}
-        </div>
-        <div>
-          <select
+              ))} */}
+          </Fragment>
+          {/* <select
             className="form_input"
             name="state"
             placeholder="State"
-            // onClick={updateData}
+            // onClick={updateDropdown}
             onChange={updateState}
             value={state}
           >
@@ -182,7 +195,7 @@ const SignUpForm = ({
                   {state.name}
                 </option>
               ))}
-          </select>
+          </select> */}
         </div>
         <div>
           <input
