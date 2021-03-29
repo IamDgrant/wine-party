@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { login } from "../../../store/session"
-import { Button } from 'antd';
+import React from "react";
+// import { Redirect } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
+// import { login } from "../../../store/session"
+// import { Button } from 'antd';
+import "../../styling/loginFormStyle.css";
 
 const LoginForm = ({
   signInEmail,
@@ -11,11 +12,11 @@ const LoginForm = ({
   signInPassword,
   setSignInPassword,
 }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   // const [errors, setErrors] = useState([]);
 
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
 
   // if (!sessionUser.errors) {
   //   return <Redirect to="/home" />;
@@ -38,14 +39,15 @@ const LoginForm = ({
 
   return (
     <div className="center_box">
-      <form className="-loginform">
+      <form className="login-form">
         {/* <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
         </div> */}
-        <div>
+        <div className="email">
           <input
+            className="form-input"
             name="email"
             type="text"
             placeholder="Email"
@@ -53,8 +55,9 @@ const LoginForm = ({
             value={signInEmail}
           />
         </div>
-        <div>
+        <div className="password">
           <input
+            className="form-input"
             name="password"
             type="password"
             placeholder="Password"

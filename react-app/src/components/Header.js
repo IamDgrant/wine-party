@@ -30,27 +30,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const headers = new Headers();
-  // headers.append("X-CSCAPI-KEY", "API_KEY");
-
-  // const requestOptions = {
-  //   method: "GET",
-  //   headers: headers,
-  //   redirect: "follow",
-  // };
-
-  // const csc = () => {
-  //   fetch(
-  //     "https://api.countrystatecity.in/v1/countries/IN/states/MH/cities",
-  //     requestOptions
-  //   )
-  //     .then((response) => response.text())
-  //     .then((result) => console.log(result))
-  //     .catch((error) => console.log("error", error));
-  // };
-
-  // useEffect(() => {csc()}, [])
-
   // useEffect(() => {
   //   dispatch(browseAllHost());
   // }, [dispatch]);
@@ -59,7 +38,7 @@ const Header = () => {
   const closeMobileMenu = () => setClick(false);
 
   const onSignUp = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let newErrors = [];
     if (signUpPassword === repeatPassword) {
       dispatch(
