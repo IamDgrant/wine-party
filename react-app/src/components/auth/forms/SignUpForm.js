@@ -86,6 +86,7 @@ const SignUpForm = ({
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
+  const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
 
   // const dispatch = useDispatch();
@@ -130,7 +131,10 @@ const SignUpForm = ({
     if (state.length > 0) {
       cityFetch();
     }
-  }, [state]);
+    if (cscCity !== undefined) {
+      setIsDisabled(false)
+    }
+  }, [state, cscCity]);
 
   // const demoLogin = async (e) => {
   //   // e.preventDefault();
@@ -176,7 +180,11 @@ const SignUpForm = ({
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+  const toggleIsDisabled = () => {
+    setIsDisabled(false);
+  };
 
+  console.log(cscCity);
   // if (!isLoaded) {
   //   return null;
   // }
@@ -231,6 +239,7 @@ const SignUpForm = ({
               classNamePrefix="select"
               placeholder="City"
               name="cities"
+              isDisabled={isDisabled}
               options={
                 cscCity !== undefined
                   ? cscCity.map((city) => ({
