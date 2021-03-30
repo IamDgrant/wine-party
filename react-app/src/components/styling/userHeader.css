@@ -84,7 +84,6 @@ span {
   /* color: #b7c0ca; */
 }
 
-
 .user-logo-nav {
   width: 100%;
   display: flex;
@@ -105,7 +104,7 @@ span {
 .menu {
   /* align-items: ; */
   font-family: "Bebas Neue", cursive;
-  color: #f9fbf2; 
+  color: #f9fbf2;
 }
 
 .nav-options {
@@ -139,8 +138,8 @@ span {
   padding-right: 10px;
   align-self: center;
 }
-.sign-in :hover {
-  color: #ffede1;
+.sign-in:hover {
+  background-color: rgb(44, 44, 44);
 }
 .signup-btn {
   padding: 10px 10px;
@@ -160,6 +159,7 @@ span {
   .header {
     padding: 0px 10px;
   }
+  
   .logo {
     width: 45px;
     height: 45px;
@@ -177,8 +177,9 @@ span {
     list-style-type: none;
     grid-gap: 0px;
   }
+  
   .nav-options.active {
-    background: #0e1c36;
+    background: #000000;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -201,9 +202,9 @@ span {
   }
 
   .sign-up {
-    background-color: #afcbff;
+    /* background-color: #afcbff; */
     border-radius: 3px;
-    color: #0e1c36;
+    /* color: #0e1c36; */
     padding: 20px 0px;
     width: 80%;
     align-self: center;
@@ -213,11 +214,8 @@ span {
   .signin-up {
     display: none;
   }
+
   .mobile-menu {
     display: block;
   }
 }
-
-/* .menu-icon {
-      fill: #f9fbf2;
-  } */

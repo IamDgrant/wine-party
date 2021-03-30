@@ -31,6 +31,7 @@
   color: #f9fbf2;
   font-size: 6vh;
 }
+
 .logo {
   width: 45px;
   height: 45px;
@@ -73,7 +74,7 @@
   align-self: center;
 }
 .sign-in :hover {
-  color: #ffede1;
+  background-color: rgb(44, 44, 44);
 }
 .signup-btn {
   padding: 10px 10px;
@@ -88,7 +89,7 @@
   display: none;
 }
 
-@media (max-width: 648px) {
+@media (max-width: 750px) {
   /*Mobile View */
   .header {
     padding: 0px 10px;
@@ -98,7 +99,7 @@
     width: 45px;
     height: 45px;
   }
-  
+
   .nav-options {
     display: flex;
     width: 100%;
@@ -113,7 +114,7 @@
     grid-gap: 0px;
   }
   .nav-options.active {
-    background: #0e1c36;
+    background: #000000;
     left: 0;
     opacity: 1;
     transition: all 0.5s ease;
@@ -151,7 +152,3 @@
     display: block;
   }
 }
-
-/* .menu-icon {
-      fill: #f9fbf2;
-  } */

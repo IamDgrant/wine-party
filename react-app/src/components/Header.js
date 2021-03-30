@@ -9,7 +9,7 @@ import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/header.css";
 import "../components/styling/buttonStyle.css";
-import "../components/styling/modalStyle.css"
+import "../components/styling/modalStyle.css";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -151,16 +151,16 @@ const Header = () => {
                 Sign in
               </Button>
               <Modal
-               bodyStyle={{ backgroundColor: "black" }}
-               okText="Sign in"
-               title="Sign in"
-               visible={isSignInModalVisible}
-               onOk={signInHandleOk}
-               onCancel={signInHandleCancel}
-               // style={{
-               //   backgroundColor: "#c3073f",
-               //   color: "#1a1a1d",
-               // }}
+                bodyStyle={{ backgroundColor: "black" }}
+                okText="Sign in"
+                title="Sign in"
+                visible={isSignInModalVisible}
+                onOk={signInHandleOk}
+                onCancel={signInHandleCancel}
+                // style={{
+                //   backgroundColor: "#c3073f",
+                //   color: "#1a1a1d",
+                // }}
               >
                 <LoginForm
                   signInEmail={signInEmail}
@@ -294,7 +294,11 @@ const Header = () => {
           </li>
         </ul>
         <div className="mobile-menu" onClick={handleClick}>
-          {click ? <CloseMenu className="menu-icon" /> : <MenuIcon />}
+          {click ? (
+            <CloseMenu className="menu-icon" />
+          ) : (
+            <MenuIcon className="menu-icon" />
+          )}
         </div>
       </div>
       <div className="header-background-image"></div>
