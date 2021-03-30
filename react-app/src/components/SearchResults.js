@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import {
+  sortByAlphabet,
+  sortByPrice,
+  sortByRating,
+  filterByCity,
+  filterByState,
+  filterBySommelier,
+  filterByMixologist,
+} from "../store/sort";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 // import { seeHost } from "../store/host";
 // import { Modal, Card, Avatar } from "antd";
@@ -10,6 +19,9 @@ import "../components/styling/searchResults.css";
 // import { message } from "antd";
 
 const SearchResult = () => {
+  const [selected, setSelected] = useState("sort by");
+
+  const dispatch = useDispatch();
   const history = useHistory();
   // const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -47,7 +59,7 @@ const SearchResult = () => {
       focusable="false"
       data-prefix="fas"
       data-icon="wine-glass"
-      class="svg-inline--fa fa-wine-glass fa-w-9"
+      className="svg-inline--fa fa-wine-glass fa-w-9"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 288 512"
@@ -65,7 +77,7 @@ const SearchResult = () => {
       focusable="false"
       data-prefix="fas"
       data-icon="glass-martini"
-      class="svg-inline--fa fa-glass-martini fa-w-16"
+      className="svg-inline--fa fa-glass-martini fa-w-16"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -83,7 +95,7 @@ const SearchResult = () => {
       focusable="false"
       data-prefix="far"
       data-icon="plus-square"
-      class="svg-inline--fa fa-plus-square fa-w-14"
+      className="svg-inline--fa fa-plus-square fa-w-14"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
@@ -101,7 +113,7 @@ const SearchResult = () => {
       focusable="false"
       data-prefix="far"
       data-icon="arrow-alt-circle-left"
-      class="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
+      className="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -112,6 +124,17 @@ const SearchResult = () => {
       ></path>
     </svg>
   );
+
+  const sorts = (e) => {
+    setSelected(e.event.target);
+    if (e.event.target === "rating-asc") {
+      console.log("YES!!!");
+    }
+  };
+
+  const filterInput = (e) => {
+    dispatch(filterByCity(e.target.value));
+  };
 
   return (
     <>
@@ -131,20 +154,19 @@ const SearchResult = () => {
         </div>
         <div className="sort-filter">
           <div className="sort">
-            <select>
-              <option value="" disabled selected>
-                Sort by
-              </option>
-              <option>Rating - Highest to Lowest</option>
-              <option>Rating - Lowest to Highest</option>
-              <option>Price - Lowest to Highest</option>
-              <option>Price - Highest to Lowest</option>
-              <option>Alphabet - A-Z</option>
-              <option>Alphabet - Z-A</option>
+            <select value={selected} onChange={sorts}>
+              <option value="sort by">Sort by</option>
+              <option value="rating-asc">Rating - Lowest to Highest</option>
+              <option value="rating-dsc">Rating - Highest to Lowest</option>
+              <option value="price-asc">Price - Lowest to Highest</option>
+              <option value="price-dsc">Price - Highest to Lowest</option>
+              <option value="alpha-asc">Alphabet - A-Z</option>
+              <option value="alpha-dsc">Alphabet - Z-A</option>
             </select>
           </div>
           <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
             <input
+              onChange={filterInput}
               style={{ width: "100%", height: "27px" }}
               placeholder="Filter by"
               type="text"
@@ -162,6 +184,7 @@ const SearchResult = () => {
             easing="ease-out"
           >
             {sessionHostsResults &&
+              sessionHostsResults.length &&
               sessionHostsResults.map((host) => (
                 <div className="card" key={host.id}>
                   <div
