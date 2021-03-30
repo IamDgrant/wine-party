@@ -15,7 +15,7 @@ class Event(db.Model):
     event_address = db.Column(db.String)
     event_city = db.Column(db.String(50), nullable=False)
     event_state = db.Column(db.String(50), nullable=False)
-    event_postal_code = db.Column(db.String)
+    # event_postal_code = db.Column(db.String)
     fee = db.Column(db.Integer)
     total = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
@@ -33,7 +33,7 @@ class Event(db.Model):
             "event_address":self.event_address,
             "event_city": self.event_city,
             "event_state": self.event_state,
-            "event_postal_code": self.event_postal_code,
+            # "event_postal_code": self.event_postal_code,
             "fee": self.fee,
             "total": self.total,
             "created_at": self.created_at
