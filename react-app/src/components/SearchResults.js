@@ -129,6 +129,28 @@ const SearchResult = () => {
           </div>
           <div className="title">Hosts near you</div>
         </div>
+        <div className="sort-filter">
+          <div className="sort">
+            <select>
+              <option value="" disabled selected>
+                Sort by
+              </option>
+              <option>Rating - Highest to Lowest</option>
+              <option>Rating - Lowest to Highest</option>
+              <option>Price - Lowest to Highest</option>
+              <option>Price - Highest to Lowest</option>
+              <option>Alphabet - A-Z</option>
+              <option>Alphabet - Z-A</option>
+            </select>
+          </div>
+          <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
+            <input
+              style={{ width: "100%", height: "27px" }}
+              placeholder="Filter by"
+              type="text"
+            />
+          </div>
+        </div>
         <div className="host-result-btns">
           <Grid
             component="ul"

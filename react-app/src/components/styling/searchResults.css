@@ -5,7 +5,16 @@
   }
 
 .host-near {
+    display: flex;
     margin-top: 15px;
+}
+
+.sort-filter {
+    display: flex;
+}
+
+.filter {
+    margin-left: 10px;
 }
 
 .hosts {

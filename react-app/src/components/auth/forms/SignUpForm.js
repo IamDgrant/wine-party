@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Select from "react-select";
-import { usStates } from "../../States"
+import { usStates } from "../../States";
 // import { Pagination } from 'antd';
 // import { Button } from "antd";
 import "../../styling/signUpFormStyle.css";
@@ -31,8 +31,21 @@ const SignUpForm = ({
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
 
-  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  // const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (state.length > 0) {
+      cityFetch();
+    }
+    if (cscCity !== undefined) {
+      setIsDisabled(false);
+    }
+  }, [state, cscCity]);
+
+  if (!sessionUser.errors) {
+    return <Redirect to="/home" />;
+  }
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -69,23 +82,10 @@ const SignUpForm = ({
   //   }
   // };
 
-  useEffect(() => {
-    if (state.length > 0) {
-      cityFetch();
-    }
-    if (cscCity !== undefined) {
-      setIsDisabled(false)
-    }
-  }, [state, cscCity]);
-
   // const demoLogin = async (e) => {
   //   // e.preventDefault();
   //   return dispatch(login({ email: "jessica@wheeler.org", password: "password" }));
   // };
-
-  if (!sessionUser.errors) {
-    return <Redirect to="/home" />;
-  }
 
   const updateFirstName = (e) => {
     setFirstName(e.target.value);

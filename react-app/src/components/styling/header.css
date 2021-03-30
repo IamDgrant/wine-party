@@ -58,6 +58,10 @@
   color: #f9fbf2;
 }
 
+.option:active {
+  color: #f9fbf2;
+}
+
 .mobile-hover {
   color: #ffede1;
 }
