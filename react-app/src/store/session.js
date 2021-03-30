@@ -18,8 +18,6 @@ const setPhoto = (photoUrl) => ({
 
 
 export const createUser = (user) => async (dispatch) => {
-  console.log("YES!!!!!!!");
-  console.log(user);
   const res = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {
@@ -28,7 +26,6 @@ export const createUser = (user) => async (dispatch) => {
     body: JSON.stringify(user),
   });
   const data = await res.json();
-  console.log(data);
   dispatch(setUser(data));
   return res;
 };
@@ -42,7 +39,6 @@ export const restoreUser = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
-  console.log("here", email);
   const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
@@ -52,7 +48,6 @@ export const login = (email, password) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    console.log(data);
     dispatch(setUser(data));
   }
   return res;
@@ -79,8 +74,6 @@ export const photoUpload = (file) => async (dispatch) => {
     body: formData,
   });
   if (res.ok) {
-    // console.log('ITS HITTING!!!!!', res);
-    // console.log(res);
     photoUrl = await res.json();
     console.log(photoUrl);
     dispatch(setPhoto(photoUrl));

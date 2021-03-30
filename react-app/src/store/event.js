@@ -34,7 +34,6 @@ export const createEvent = ({ event_name, event_date, event_city, event_state, e
     }),
   });
   const data = await res.json();
-  console.log("IS IT WORKING!!!!!!!!!!!", data);
   dispatch(setEvent(data));
 };
 

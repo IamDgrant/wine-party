@@ -11,8 +11,6 @@ const BrowseResults = () => {
   const history = useHistory();
   const sessionHosts = useSelector((state) => state.host.host);
 
-  console.log(sessionHosts);
-
   useEffect(() => {
     dispatch(browseAllHost());
   }, [dispatch]);

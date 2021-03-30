@@ -89,7 +89,7 @@ const RandomHost = () => {
         columns={1}
         columnWidth={250}
         itemHeight={400}
-        itemWidth={250}
+        itemwidth={250}
       >
         {sessionHost && (
           <div

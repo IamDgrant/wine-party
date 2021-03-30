@@ -79,7 +79,7 @@ const AddEvent = ({ user_id }) => {
               style={{ fontSize: "6vh", color: "rgb(158, 166, 174)" }}
             />
           </div>
-          <div className="add-event-inside"><h5>Add Event</h5></div>
+          <div className="add-event-btn"><h5>Add Event</h5></div>
         </Button>
         <Modal
           title="Add an Event"

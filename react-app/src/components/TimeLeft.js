@@ -16,7 +16,7 @@ const TimeUntilEvent = () => {
 
   const calculateTimeLeft = () => {
     const difference = +new Date(sessionEventDate) - +new Date();
-    console.log(difference);
+    
     let timeLeft = {};
 
     if (difference > 0) {

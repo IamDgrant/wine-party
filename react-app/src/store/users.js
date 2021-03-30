@@ -14,7 +14,6 @@ export const GetAllUsers = () => async (dispatch) => {
 const initialState = {}
 
 const reducer = (state = initialState, action) => {
-    // console.log(action);
     switch (action.type) {
       case GET_USERS:
         const allUsers = {};
