@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Component, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Select from "react-select";
 // import { Pagination } from 'antd';
 // import { Button } from "antd";
-import "../../styling/signUpFormStyle.css"
+import "../../styling/signUpFormStyle.css";
 
 const usStates = [
   { value: "AL", label: "Alabama" },
@@ -83,7 +83,7 @@ const SignUpForm = ({
   repeatPassword,
   setRepeatPassword,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
   const [errors, setErrors] = useState([]);
@@ -142,9 +142,11 @@ const SignUpForm = ({
   }
 
   const updateFirstName = (e) => {
+    // console.log(e.target.value);
     setFirstName(e.target.value);
   };
   const updateLastName = (e) => {
+    // console.log(e.target.value);
     setLastName(e.target.value);
   };
   const updateCity = (city) => {

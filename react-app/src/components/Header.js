@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
-// import csc from 'country-state-city'
-// import { ICountry, IState, ICity } from 'country-state-city'
 import { login, createUser } from "../store/session";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
