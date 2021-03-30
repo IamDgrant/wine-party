@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 // import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Select from "react-select";
 import { message } from "antd";
-import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { createEvent } from "../../../store/event";
-import { seeHost } from "../../../store/host";
-import SearchForm from "./SearchHostForm";
-import SearchResult from "../../SearchResults";
+import { usStates } from "../../States";
+// import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+// import { createEvent } from "../../../store/event";
+// import { seeHost } from "../../../store/host";
+// import SearchForm from "./SearchHostForm";
+// import SearchResult from "../../SearchResults";
 import "../../styling/createEventFormStyling.css";
 
 const EventForm = ({
@@ -22,12 +24,48 @@ const EventForm = ({
   event_postal_code,
   setEventPostalCode,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionHostsResults = useSelector((state) => state.host.host);
-  const sessionHostId = useSelector((state) =>
-    state.host.host ? state.host.host : null
-  );
+  // const sessionHostsResults = useSelector((state) => state.host.host);
+  // const sessionHostId = useSelector((state) =>
+  //   state.host.host ? state.host.host : null
+  // );
+  const [cscCity, setCscCity] = useState();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [errors, setErrors] = useState([]);
+
+  const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
+
+  const headers = new Headers();
+  headers.append("X-CSCAPI-KEY", cscAPIKey);
+
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const cityFetch = async () => {
+    const fetchCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${event_state}/cities`;
+    const res = await fetch(fetchCityUrl, requestOptions);
+    if (res.ok) {
+      const data = await res.json();
+      const sortedData = data.sort((city1, city2) =>
+        city1.name > city2.name ? 1 : -1
+      );
+      setCscCity(sortedData);
+      // return sortedData;
+    }
+  };
+
+  useEffect(() => {
+    if (event_state.length > 0) {
+      cityFetch();
+    }
+    if (cscCity !== undefined) {
+      setIsDisabled(false);
+    }
+  }, [event_state, cscCity]);
 
   const error = () => {
     message.error("Please enter a event name!");
@@ -41,12 +79,12 @@ const EventForm = ({
     setEventDate(e.target.value);
   };
 
-  const updateEventCity = (e) => {
-    setEventCity(e.target.value);
+  const updateEventCity = (city) => {
+    setEventCity(city);
   };
 
-  const updateEventState = (e) => {
-    setEventState(e.target.value);
+  const updateEventState = (onChangeState) => {
+    setEventState(onChangeState);
   };
 
   const updatePostalCode = (e) => {
@@ -75,8 +113,13 @@ const EventForm = ({
           <div className="left-search-box">
             <form>
               <div>
+                {errors.map((error, i) => (
+                  <div key={i}>{error}</div>
+                ))}
+              </div>
+              <div>
                 <input
-                  className=""
+                  className="form-input"
                   type="date"
                   name="event_date"
                   placeholder="Event Date"
@@ -86,7 +129,7 @@ const EventForm = ({
               </div>
               <div>
                 <input
-                  className=""
+                  className="form-input"
                   type="text"
                   name="event_name"
                   placeholder="Event Name"
@@ -94,84 +137,44 @@ const EventForm = ({
                   value={event_name}
                 ></input>
               </div>
-              <div>
-                <input
-                  className=""
-                  type="text"
-                  name="event_city"
-                  placeholder="City"
-                  onChange={updateEventCity}
-                  value={event_city}
-                ></input>
+              <div className="event-state">
+                <Fragment>
+                  <Select
+                    className="state-search-dropdown"
+                    classNamePrefix="select"
+                    placeholder="State"
+                    name="states"
+                    options={usStates.map((state) => ({
+                      label: state.label,
+                      value: state.value,
+                    }))}
+                    onChange={(state) => updateEventState(state.value)}
+                  />
+                </Fragment>
               </div>
               <div>
-                <select
-                  className=""
-                  name="event_state"
-                  form="stateForm"
-                  placeholder="State"
-                  onChange={updateEventState}
-                  value={event_state}
-                >
-                  <option value=""></option>
-                  <option value="Alabama">Alabama</option>
-                  <option value="Alaska">Alaska</option>
-                  <option value="Arizona">Arizona</option>
-                  <option value="Arkansas">Arkansas</option>
-                  <option value="California">California</option>
-                  <option value="Colorado">Colorado</option>
-                  <option value="Connecticut">Connecticut</option>
-                  <option value="Delaware">Delaware</option>
-                  <option value="District Of Columbia">
-                    District Of Columbia
-                  </option>
-                  <option value="Florida">Florida</option>
-                  <option value="Georgia">Georgia</option>
-                  <option value="Hawaii">Hawaii</option>
-                  <option value="Idaho">Idaho</option>
-                  <option value="Illinois">Illinois</option>
-                  <option value="Indiana">Indiana</option>
-                  <option value="Iowa">Iowa</option>
-                  <option value="Kansas">Kansas</option>
-                  <option value="Kentucky">Kentucky</option>
-                  <option value="Louisiana">Louisiana</option>
-                  <option value="Maine">Maine</option>
-                  <option value="Maryland">Maryland</option>
-                  <option value="Massachusetts">Massachusetts</option>
-                  <option value="Michigan">Michigan</option>
-                  <option value="Minnesota">Minnesota</option>
-                  <option value="Mississippi">Mississippi</option>
-                  <option value="Missouri">Missouri</option>
-                  <option value="Montana">Montana</option>
-                  <option value="Nebraska">Nebraska</option>
-                  <option value="Nevada">Nevada</option>
-                  <option value="New Hampshire">New Hampshire</option>
-                  <option value="New Jersey">New Jersey</option>
-                  <option value="New Mexico">New Mexico</option>
-                  <option value="New York">New York</option>
-                  <option value="North Carolina">North Carolina</option>
-                  <option value="North Dakota">North Dakota</option>
-                  <option value="Ohio">Ohio</option>
-                  <option value="Oklahoma">Oklahoma</option>
-                  <option value="Oregon">Oregon</option>
-                  <option value="Pennsylvania">Pennsylvania</option>
-                  <option value="Rhode Island">Rhode Island</option>
-                  <option value="South Carolina">South Carolina</option>
-                  <option value="South Dakota">South Dakota</option>
-                  <option value="Tennessee">Tennessee</option>
-                  <option value="Texas">Texas</option>
-                  <option value="Utah">Utah</option>
-                  <option value="Vermont">Vermont</option>
-                  <option value="Virginia">Virginia</option>
-                  <option value="Washington">Washington</option>
-                  <option value="West Virginia">West Virginia</option>
-                  <option value="Wisconsin">Wisconsin</option>
-                  <option value="Wyoming">Wyoming</option>
-                </select>
+                <Fragment>
+                  <Select
+                    className="city-search-dropdown"
+                    classNamePrefix="select"
+                    placeholder="City"
+                    name="cities"
+                    isDisabled={isDisabled}
+                    options={
+                      cscCity !== undefined
+                        ? cscCity.map((city) => ({
+                            label: city.name,
+                            value: city.name,
+                          }))
+                        : null
+                    }
+                    onChange={(city) => updateEventCity(city.value)}
+                  />
+                </Fragment>
               </div>
               <div>
                 <input
-                  className=""
+                  className="form-input"
                   type="text"
                   name="event_postal_code"
                   placeholder="Postal Code"

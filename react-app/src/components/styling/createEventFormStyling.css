@@ -3,6 +3,10 @@
     justify-content:space-evenly;
 }
 
+.event-state {
+  margin-top: 5px;
+}
+
 .left-search-box {
     width: 50vh;
 }
