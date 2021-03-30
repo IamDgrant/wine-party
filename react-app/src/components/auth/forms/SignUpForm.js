@@ -1,8 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import csc from "country-state-city";
+import Select from "react-select";
 // import { Pagination } from 'antd';
+// import { Button } from "antd";
+import "../../styling/signUpFormStyle.css";
+
+const usStates = [
+  { value: "AL", label: "Alabama" },
+  { value: "AK", label: "Alaska" },
+  { value: "AS", label: "American Samoa" },
+  { value: "AZ", label: "Arizona" },
+  { value: "AR", label: "Arkansas" },
+  { value: "CA", label: "California" },
+  { value: "CO", label: "Colorado" },
+  { value: "CT", label: "Connecticut" },
+  { value: "DE", label: "Delaware" },
+  { value: "DC", label: "District of Columbia" },
+  { value: "FL", label: "Florida" },
+  { value: "GA", label: "Georgia" },
+  { value: "GU", label: "Guam" },
+  { value: "HI", label: "Hawaii" },
+  { value: "ID", label: "Idaho" },
+  { value: "IL", label: "Illinois" },
+  { value: "IN", label: "Indiana" },
+  { value: "IA", label: "Iowa" },
+  { value: "KS", label: "Kansas" },
+  { value: "KY", label: "Kentucky" },
+  { value: "LA", label: "Louisiana" },
+  { value: "ME", label: "Maine" },
+  { value: "MD", label: "Maryland" },
+  { value: "MA", label: "Massachusetts" },
+  { value: "MI", label: "Michigan" },
+  { value: "MN", label: "Minnesota" },
+  { value: "MS", label: "Mississippi" },
+  { value: "MO", label: "Missouri" },
+  { value: "MT", label: "Montana" },
+  { value: "NE", label: "Nebraska" },
+  { value: "NV", label: "Nevada" },
+  { value: "NH", label: "New Hampshire" },
+  { value: "NJ", label: "New Jersey" },
+  { value: "NM", label: "New Mexico" },
+  { value: "NY", label: "New York" },
+  { value: "NC", label: "North Carolina" },
+  { value: "ND", label: "North Dakota" },
+  { value: "MP", label: "Northern Mariana Islands" },
+  { value: "OH", label: "Ohio" },
+  { value: "OK", label: "Oklahoma" },
+  { value: "OR", label: "Oregon" },
+  { value: "PA", label: "Pennsylvania" },
+  { value: "PR", label: "Puerto Rico" },
+  { value: "RI", label: "Rhoda Island" },
+  { value: "SC", label: "South Carolina" },
+  { value: "SD", label: "South Dakota" },
+  { value: "TN", label: "Tennessee" },
+  { value: "TX", label: "Texas" },
+  { value: "UT", label: "Utah" },
+  { value: "VT", label: "Vermont" },
+  { value: "VA", label: "Virginia" },
+  { value: "VI", label: "Virgin Islands" },
+  { value: "WA", label: "Washington" },
+  { value: "WV", label: "West Virginia" },
+  { value: "WI", label: "Wisconsin" },
+  { value: "WY", label: "Wyoming" },
+];
 
 const SignUpForm = ({
   first_name,
@@ -22,9 +83,63 @@ const SignUpForm = ({
   repeatPassword,
   setRepeatPassword,
 }) => {
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [cscState, setCscState] = useState();
+  const [cscCity, setCscCity] = useState();
+  const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
 
+  // const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
+
+  const headers = new Headers();
+  headers.append("X-CSCAPI-KEY", cscAPIKey);
+
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const cityFetch = async () => {
+    const fetchCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${state}/cities`;
+    const res = await fetch(fetchCityUrl, requestOptions);
+    if (res.ok) {
+      const data = await res.json();
+      const sortedData = data.sort((city1, city2) =>
+        city1.name > city2.name ? 1 : -1
+      );
+      setCscCity(sortedData);
+      // return sortedData;
+    }
+  };
+
+  // const cscStateFetch = async () => {
+  //   const res = await fetch(fetchCscStateUrl, requestOptions);
+  //   if (res.ok) {
+  //     const data = await res.json();
+  //     const sortedData = data.sort((state1, state2) =>
+  //       state1.name > state2.name ? 1 : -1
+  //     );
+  //     return sortedData;
+  //   }
+  // };
+
+  useEffect(() => {
+    if (state.length > 0) {
+      cityFetch();
+    }
+    if (cscCity !== undefined) {
+      setIsDisabled(false)
+    }
+  }, [state, cscCity]);
+
+  // const demoLogin = async (e) => {
+  //   // e.preventDefault();
+  //   return dispatch(login({ email: "jessica@wheeler.org", password: "password" }));
+  // };
 
   if (!sessionUser.errors) {
     return <Redirect to="/home" />;
@@ -36,11 +151,19 @@ const SignUpForm = ({
   const updateLastName = (e) => {
     setLastName(e.target.value);
   };
-  const updateCity = (e) => {
-    setCity(e.target.value);
+  const updateCity = (city) => {
+    // console.log(state);
+    // if (
+    //   state === "American Samoa" &&
+    //   state === "Northern Mariana Islands" &&
+    //   state === "Virgin Islands"
+    // ) {
+    //   setCity("");
+    // }
+    setCity(city);
   };
-  const updateState = (e) => {
-    setState(e.target.value);
+  const updateState = (onChangeState) => {
+    setState(onChangeState);
   };
   const updatePostalCode = (e) => {
     setPostalCode(e.target.value);
@@ -55,6 +178,10 @@ const SignUpForm = ({
     setRepeatPassword(e.target.value);
   };
 
+  // if (!isLoaded) {
+  //   return null;
+  // }
+
   return (
     <>
       <form>
@@ -65,7 +192,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form_input"
+            className="form-input"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -73,9 +200,9 @@ const SignUpForm = ({
             value={first_name}
           ></input>
         </div>
-        <div>
+        <div className="last-name">
           <input
-            className="form_input"
+            className="form-input"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -84,79 +211,43 @@ const SignUpForm = ({
           ></input>
         </div>
         <div>
-          <input
-            className="form_input"
-            type="text"
-            name="city"
-            placeholder="City"
-            onChange={updateCity}
-            value={city}
-          ></input>
+          <Fragment>
+            <Select
+              className="state-search-dropdown"
+              classNamePrefix="select"
+              placeholder="State"
+              name="states"
+              options={usStates.map((state) => ({
+                label: state.label,
+                value: state.value,
+              }))}
+              onChange={(state) => updateState(state.value)}
+            />
+          </Fragment>
         </div>
         <div>
-          <select
-            className="form_input"
-            name="state"
-            placeholder="State"
-            onChange={updateState}
-          >
-            <option value=""></option>
-            <option value="Alabama">Alabama</option>
-            <option value="Alaska">Alaska</option>
-            <option value="Arizona">Arizona</option>
-            <option value="Arkansas">Arkansas</option>
-            <option value="California">California</option>
-            <option value="Colorado">Colorado</option>
-            <option value="Connecticut">Connecticut</option>
-            <option value="Delaware">Delaware</option>
-            <option value="District Of Columbia">District Of Columbia</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Hawaii">Hawaii</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Indiana">Indiana</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
-            <option value="Kentucky">Kentucky</option>
-            <option value="Louisiana">Louisiana</option>
-            <option value="Maine">Maine</option>
-            <option value="Maryland">Maryland</option>
-            <option value="Massachusetts">Massachusetts</option>
-            <option value="Michigan">Michigan</option>
-            <option value="Minnesota">Minnesota</option>
-            <option value="Mississippi">Mississippi</option>
-            <option value="Missouri">Missouri</option>
-            <option value="Montana">Montana</option>
-            <option value="Nebraska">Nebraska</option>
-            <option value="Nevada">Nevada</option>
-            <option value="New Hampshire">New Hampshire</option>
-            <option value="New Jersey">New Jersey</option>
-            <option value="New Mexico">New Mexico</option>
-            <option value="New York">New York</option>
-            <option value="North Carolina">North Carolina</option>
-            <option value="North Dakota">North Dakota</option>
-            <option value="Ohio">Ohio</option>
-            <option value="Oklahoma">Oklahoma</option>
-            <option value="Oregon">Oregon</option>
-            <option value="Pennsylvania">Pennsylvania</option>
-            <option value="Rhode Island">Rhode Island</option>
-            <option value="South Carolina">South Carolina</option>
-            <option value="South Dakota">South Dakota</option>
-            <option value="Tennessee">Tennessee</option>
-            <option value="Texas">Texas</option>
-            <option value="Utah">Utah</option>
-            <option value="Vermont">Vermont</option>
-            <option value="Virginia">Virginia</option>
-            <option value="Washington">Washington</option>
-            <option value="West Virginia">West Virginia</option>
-            <option value="Wisconsin">Wisconsin</option>
-            <option value="Wyoming">Wyoming</option>
-          </select>
+          <Fragment>
+            <Select
+              className="city-search-dropdown"
+              classNamePrefix="select"
+              placeholder="City"
+              name="cities"
+              isDisabled={isDisabled}
+              options={
+                cscCity !== undefined
+                  ? cscCity.map((city) => ({
+                      label: city.name,
+                      value: city.name,
+                    }))
+                  : null
+              }
+              onChange={(city) => updateCity(city.value)}
+            />
+          </Fragment>
         </div>
-        <div>
+        <div className="postal-code">
           <input
-            className="form_input"
+            className="form-input"
             type="text"
             name="postal_code"
             placeholder="Postal Code"
@@ -166,7 +257,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form_input"
+            className="form-input"
             type="text"
             name="email"
             placeholder="Email"
@@ -176,7 +267,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form_input"
+            className="form-input"
             type="password"
             name="password"
             placeholder="Password"
@@ -186,7 +277,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form_input"
+            className="form-input"
             type="password"
             name="repeat_password"
             placeholder="Confirm Password"
@@ -195,6 +286,16 @@ const SignUpForm = ({
             required={true}
           ></input>
         </div>
+        {/* <Button
+          className="submit_button"
+          onClick={demoLogin}
+          // shape="round"
+          htmlType="submit"
+          size="small"
+          type="primary"
+        >
+          Demo User
+        </Button> */}
       </form>
     </>
   );

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
-// import csc from 'country-state-city'
-// import { ICountry, IState, ICity } from 'country-state-city'
 import { login, createUser } from "../store/session";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
@@ -11,6 +9,7 @@ import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/header.css";
 import "../components/styling/buttonStyle.css";
+import "../components/styling/modalStyle.css";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -30,27 +29,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const headers = new Headers();
-  // headers.append("X-CSCAPI-KEY", "API_KEY");
-
-  // const requestOptions = {
-  //   method: "GET",
-  //   headers: headers,
-  //   redirect: "follow",
-  // };
-
-  // const csc = () => {
-  //   fetch(
-  //     "https://api.countrystatecity.in/v1/countries/IN/states/MH/cities",
-  //     requestOptions
-  //   )
-  //     .then((response) => response.text())
-  //     .then((result) => console.log(result))
-  //     .catch((error) => console.log("error", error));
-  // };
-
-  // useEffect(() => {csc()}, [])
-
   // useEffect(() => {
   //   dispatch(browseAllHost());
   // }, [dispatch]);
@@ -59,7 +37,7 @@ const Header = () => {
   const closeMobileMenu = () => setClick(false);
 
   const onSignUp = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let newErrors = [];
     if (signUpPassword === repeatPassword) {
       dispatch(
@@ -85,7 +63,6 @@ const Header = () => {
 
   const onSignIn = async (e) => {
     // e.preventDefault();
-    console.log("HITTING");
     const user = await dispatch(login(signInEmail, signInPassword));
     if (user.ok) history.push("/home");
   };
@@ -167,24 +144,22 @@ const Header = () => {
               <Button
                 htmlType="submit"
                 type="dashed"
-                size="small;"
+                size="small"
                 ghost="true"
-                style={{
-                  color: "#f9fbf2",
-                  borderColor: "#f9fbf2",
-                }}
                 onClick={showSignInModal}
               >
                 Sign in
               </Button>
               <Modal
+                bodyStyle={{ backgroundColor: "black" }}
+                okText="Sign in"
                 title="Sign in"
                 visible={isSignInModalVisible}
                 onOk={signInHandleOk}
                 onCancel={signInHandleCancel}
                 // style={{
-                //   backgroundColor: "#f9fbf2",
-                //   color: "#0e1c36",
+                //   backgroundColor: "#c3073f",
+                //   color: "#1a1a1d",
                 // }}
               >
                 <LoginForm
@@ -203,17 +178,18 @@ const Header = () => {
                 htmlType="submit"
                 type="primary"
                 size="small"
-                style={{
-                  color: "#0e1c36",
-                  backgroundColor: "#f9fbf2",
-                  borderColor: "#f9fbf2",
-                }}
+                // style={{
+                //   color: "#0e1c36",
+                //   backgroundColor: "#f9fbf2",
+                //   borderColor: "#f9fbf2",
+                // }}
                 onClick={showSignUpModal}
               >
                 Sign up
               </Button>
               <Modal
                 title="Sign up"
+                okText="Sign up"
                 visible={isSignUpModalVisible}
                 onOk={signUpHandleOk}
                 onCancel={signUpHandleCancel}
@@ -256,14 +232,16 @@ const Header = () => {
               Sign in
             </Button>
             <Modal
+              bodyStyle={{ backgroundColor: "black" }}
+              okText="Sign in"
               title="Sign in"
               visible={isSignInModalVisible}
               onOk={signInHandleOk}
               onCancel={signInHandleCancel}
-              style={{
-                backgroundColor: "#c3073f",
-                color: "#1a1a1d",
-              }}
+              // style={{
+              //   backgroundColor: "#c3073f",
+              //   color: "#1a1a1d",
+              // }}
             >
               <LoginForm
                 signInEmail={signInEmail}
@@ -289,6 +267,7 @@ const Header = () => {
             </Button>
             <Modal
               title="Sign up"
+              okText="Sign up"
               visible={isSignUpModalVisible}
               onOk={signUpHandleOk}
               onCancel={signUpHandleCancel}
@@ -315,7 +294,11 @@ const Header = () => {
           </li>
         </ul>
         <div className="mobile-menu" onClick={handleClick}>
-          {click ? <CloseMenu className="menu-icon" /> : <MenuIcon />}
+          {click ? (
+            <CloseMenu className="menu-icon" />
+          ) : (
+            <MenuIcon className="menu-icon" />
+          )}
         </div>
       </div>
       <div className="header-background-image"></div>

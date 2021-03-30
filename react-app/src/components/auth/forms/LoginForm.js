@@ -1,6 +1,10 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React from "react";
+// import { Redirect } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useHistory } from "react-router-dom";
+// import { login } from "../../../store/session"
+// import { Button } from 'antd';
+import "../../styling/loginFormStyle.css";
 
 const LoginForm = ({
   signInEmail,
@@ -8,13 +12,22 @@ const LoginForm = ({
   signInPassword,
   setSignInPassword,
 }) => {
+  // const dispatch = useDispatch();
+  // const history = useHistory();
   // const [errors, setErrors] = useState([]);
 
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
 
   // if (!sessionUser.errors) {
   //   return <Redirect to="/home" />;
   // }
+
+  // const demoLogin = async (e) => {
+  //   // e.preventDefault();
+  //   console.log("HITTING");
+  //   await dispatch(login({ email: "jessica@wheeler.org", password: "password" }));
+  //   history.push("/home");
+  // };
 
   const updateEmail = (e) => {
     setSignInEmail(e.target.value);
@@ -26,14 +39,15 @@ const LoginForm = ({
 
   return (
     <div className="center_box">
-      <form className="-loginform">
+      <form className="login-form">
         {/* <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
         </div> */}
-        <div>
+        <div className="email">
           <input
+            className="form-input"
             name="email"
             type="text"
             placeholder="Email"
@@ -41,8 +55,9 @@ const LoginForm = ({
             value={signInEmail}
           />
         </div>
-        <div>
+        <div className="password">
           <input
+            className="form-input"
             name="password"
             type="password"
             placeholder="Password"
@@ -50,6 +65,16 @@ const LoginForm = ({
             value={signInPassword}
           />
         </div>
+        {/* <Button
+          className="submit_button"
+          onClick={demoLogin}
+          // shape="round"
+          htmlType="submit"
+          size="small"
+          type="primary"
+        >
+          Demo User
+        </Button> */}
       </form>
     </div>
   );

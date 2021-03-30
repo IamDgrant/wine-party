@@ -18,7 +18,8 @@ const setPhoto = (photoUrl) => ({
 
 
 export const createUser = (user) => async (dispatch) => {
-  // console.log("YES!!!!!!!");
+  console.log("YES!!!!!!!");
+  console.log(user);
   const res = await fetch(`/api/auth/signup`, {
     method: "POST",
     headers: {

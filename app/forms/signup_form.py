@@ -5,7 +5,6 @@ from app.models import User
 
 
 def user_exists(form, field):
-    print("Checking if user exits", field.data)
     email = field.data
     user = User.query.filter(User.email == email).first()
     if user:
@@ -17,7 +16,9 @@ class SignUpForm(FlaskForm):
     last_name = StringField('last_name', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    postal_code = StringField('postal_code', validators=[DataRequired()])
+    signUpEmail = StringField('signUpEmail', validators=[DataRequired(), user_exists])
+    signUpPassword = StringField('signUpPassword', validators=[DataRequired()])
     red = BooleanField('red')
     white = BooleanField('white')
     rose = BooleanField('rosé')
@@ -56,5 +57,4 @@ class SignUpForm(FlaskForm):
     tequila = BooleanField('tequila')
     vodka = BooleanField('vodka')
     liqueurs = BooleanField('liqueurs')
-    password = StringField('password', validators=[DataRequired()])
     submit = SubmitField("Submit")

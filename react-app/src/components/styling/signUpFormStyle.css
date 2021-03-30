@@ -1,0 +1,17 @@
+.state-search-dropdown, .city-search-dropdown {
+    width: 300px;
+    height: 55px;
+}
+
+.form-input {
+    width: 275px;
+    height: 44px;
+}
+
+.last-name {
+    margin-bottom: 5px;
+}
+
+.postal-code {
+    margin-top: -5px;
+}
