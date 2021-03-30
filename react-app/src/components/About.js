@@ -18,11 +18,11 @@ const About = () => {
           Single Barrel. 
           <br></br>
           <br></br>
-          When Wine Party was launched, it wasn't just about wine. It was truly about connection.
+          When Wine Party isn't just about wine. It is truly about connection.
           Connecting everyday people, to exclusive and luxury experiences that
-          most otherwise did not have access to. How many of us, have had the
+          most otherwise do not have access to. How many of us have had the
           experience of a Sommelier, talking about and giving us true history 
-          and perspective on your favorite wine? Or perhaps learning about the
+          and perspective on your favorite wine? Or perhaps learning the
           history of and having the live experience of a champagne sabering? This
           is what Wine Party is about, connecting you to those experiences.
           <br></br>
