@@ -9,6 +9,7 @@ import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/header.css";
 import "../components/styling/buttonStyle.css";
+import "../components/styling/modalStyle.css"
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -143,25 +144,23 @@ const Header = () => {
               <Button
                 htmlType="submit"
                 type="dashed"
-                size="small;"
+                size="small"
                 ghost="true"
-                style={{
-                  color: "#f9fbf2",
-                  borderColor: "#f9fbf2",
-                }}
                 onClick={showSignInModal}
               >
                 Sign in
               </Button>
               <Modal
-                title="Sign in"
-                visible={isSignInModalVisible}
-                onOk={signInHandleOk}
-                onCancel={signInHandleCancel}
-                // style={{
-                //   backgroundColor: "#f9fbf2",
-                //   color: "#0e1c36",
-                // }}
+               bodyStyle={{ backgroundColor: "black" }}
+               okText="Sign in"
+               title="Sign in"
+               visible={isSignInModalVisible}
+               onOk={signInHandleOk}
+               onCancel={signInHandleCancel}
+               // style={{
+               //   backgroundColor: "#c3073f",
+               //   color: "#1a1a1d",
+               // }}
               >
                 <LoginForm
                   signInEmail={signInEmail}
@@ -179,17 +178,18 @@ const Header = () => {
                 htmlType="submit"
                 type="primary"
                 size="small"
-                style={{
-                  color: "#0e1c36",
-                  backgroundColor: "#f9fbf2",
-                  borderColor: "#f9fbf2",
-                }}
+                // style={{
+                //   color: "#0e1c36",
+                //   backgroundColor: "#f9fbf2",
+                //   borderColor: "#f9fbf2",
+                // }}
                 onClick={showSignUpModal}
               >
                 Sign up
               </Button>
               <Modal
                 title="Sign up"
+                okText="Sign up"
                 visible={isSignUpModalVisible}
                 onOk={signUpHandleOk}
                 onCancel={signUpHandleCancel}
@@ -232,14 +232,16 @@ const Header = () => {
               Sign in
             </Button>
             <Modal
+              bodyStyle={{ backgroundColor: "black" }}
+              okText="Sign in"
               title="Sign in"
               visible={isSignInModalVisible}
               onOk={signInHandleOk}
               onCancel={signInHandleCancel}
-              style={{
-                backgroundColor: "#c3073f",
-                color: "#1a1a1d",
-              }}
+              // style={{
+              //   backgroundColor: "#c3073f",
+              //   color: "#1a1a1d",
+              // }}
             >
               <LoginForm
                 signInEmail={signInEmail}
@@ -265,6 +267,7 @@ const Header = () => {
             </Button>
             <Modal
               title="Sign up"
+              okText="Sign up"
               visible={isSignUpModalVisible}
               onOk={signUpHandleOk}
               onCancel={signUpHandleCancel}

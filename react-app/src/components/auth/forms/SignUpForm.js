@@ -146,11 +146,9 @@ const SignUpForm = ({
   }
 
   const updateFirstName = (e) => {
-    // console.log(e.target.value);
     setFirstName(e.target.value);
   };
   const updateLastName = (e) => {
-    // console.log(e.target.value);
     setLastName(e.target.value);
   };
   const updateCity = (city) => {
@@ -171,7 +169,6 @@ const SignUpForm = ({
     setPostalCode(e.target.value);
   };
   const updateEmail = (e) => {
-    // console.log(e);
     setSignUpEmail(e.target.value);
   };
   const updatePassword = (e) => {
@@ -180,11 +177,7 @@ const SignUpForm = ({
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
-  const toggleIsDisabled = () => {
-    setIsDisabled(false);
-  };
 
-  console.log(cscCity);
   // if (!isLoaded) {
   //   return null;
   // }
