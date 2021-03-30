@@ -7,7 +7,9 @@ const FILTER_BY_STATE = "sort/filterByState";
 const FILTER_BY_SOMMELIER = "sort/filterBySommelier";
 const FILTER_BY_MIXOLOGIST = "sort/filterByMixologist";
 
-export const sortByAlphabet = (payload) => ({
+export const sortByAlphabet = (payload) => (
+    console.log(payload),
+    {
   type: SORT_BY_ALPHABET,
   payload,
 });
@@ -74,19 +76,21 @@ const sortDesc = (arr, field) => {
 const initialState = {};
 
 const reducer = (state = initialState, action) => {
+    console.log("REDUCER PAYLOAD", action.payload);
   switch (action.type) {
     case SORT_BY_ALPHABET:
-      let sortedNameArr =
+        
+      let sortedNamesArr =
         action.payload.direction === "asc"
-          ? sortAsc(state.filteredHosts, "name")
-          : sortDesc(state.filteredHosts, "name");
+          ? sortAsc(action.payload, "first_name")
+          : sortDesc(action.payload, "first_name");
 
       return {
         ...state,
-        filteredHosts: sortedNameArr,
+        payload: sortedNamesArr,
       };
     case SORT_BY_PRICE:
-        let sortedPriceArr =
+      let sortedPriceArr =
         action.payload.direction === "asc"
           ? sortAsc(state.filteredHosts, "price")
           : sortDesc(state.filteredHosts, "price");
@@ -96,7 +100,7 @@ const reducer = (state = initialState, action) => {
         filteredHosts: sortedPriceArr,
       };
     case SORT_BY_RATING:
-        let sortedRatingArr =
+      let sortedRatingArr =
         action.payload.direction === "asc"
           ? sortAsc(state.filteredHosts, "rating")
           : sortDesc(state.filteredHosts, "rating");
@@ -109,7 +113,7 @@ const reducer = (state = initialState, action) => {
       let newState = Object.assign({}, state);
       //the value received from our presentational component
       let value = action.payload.value;
-      let filteredValues = state.cities.filter((city) => {
+      let filteredValues = state.city.filter((city) => {
         //look for objects with the received value in their ‘name’ or ‘designer’ fields
         return city.name.toLowerCase().includes(value);
       });
@@ -122,7 +126,7 @@ const reducer = (state = initialState, action) => {
           //if it doesn’t, add it.
           appliedFilters.push(FILTER_BY_CITY);
         //change the filtered products to reflect the change
-        newState.filteredProducts = filteredValues;
+        newState.payload = filteredValues;
       } else {
         //if the value is empty, we can assume everything has been erased
         let index = appliedFilters.indexOf(FILTER_BY_CITY);

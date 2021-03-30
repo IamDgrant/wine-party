@@ -19,13 +19,15 @@ import "../components/styling/searchResults.css";
 // import { message } from "antd";
 
 const SearchResult = () => {
-  const [selected, setSelected] = useState("sort by");
+  const [isSortedType, setIsSortedType] = useState("asc");
+  // const [selected, setSelected] = useState("sort by");
 
   const dispatch = useDispatch();
   const history = useHistory();
   // const [isModalVisible, setIsModalVisible] = useState(false);
 
   const sessionHostsResults = useSelector((state) => state.host.host);
+
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
   //   state.host.host ? state.host.host : null
@@ -125,16 +127,38 @@ const SearchResult = () => {
     </svg>
   );
 
-  const sorts = (e) => {
-    setSelected(e.event.target);
-    if (e.event.target === "rating-asc") {
-      console.log("YES!!!");
-    }
-  };
+  const hosts = sessionHostsResults.map((host) => host);
 
-  const filterInput = (e) => {
-    dispatch(filterByCity(e.target.value));
-  };
+  const sorted = hosts.sort((name1, name2) => {
+    const isReversed = isSortedType === "asc" ? 1 : -1;
+    return name1.first_name > name2.first_name ? 1 : -1
+    // return isReversed * name1.first_name.localCompare(name2.first_name);
+  }
+  );
+
+    console.log(sorted)
+
+  // const isReversed = (isSortedType === "asc")
+  // setIsSortedType(sortedData)
+  // };
+
+  // console.log(sorter);
+
+  // const sorts = (e) => {
+  //   console.log(e.target.value);
+  //   const selected = e.target.value;
+  //   // setSelected(e.event.target);
+  //   // if (selected === "rating-asc") {
+  //   //   sortByRating(sessionHostsResults.rating);
+  //   // }
+  //   if (selected === "alpha-asc") {
+  //     sorter();
+  //   }
+  // };
+
+  // const filterInput = (e) => {
+  //   dispatch(filterByCity(e.target.value));
+  // };
 
   return (
     <>
@@ -154,19 +178,19 @@ const SearchResult = () => {
         </div>
         <div className="sort-filter">
           <div className="sort">
-            <select value={selected} onChange={sorts}>
+            <select name="select" placeholder="Sort by" >
               <option value="sort by">Sort by</option>
-              <option value="rating-asc">Rating - Lowest to Highest</option>
-              <option value="rating-dsc">Rating - Highest to Lowest</option>
-              <option value="price-asc">Price - Lowest to Highest</option>
-              <option value="price-dsc">Price - Highest to Lowest</option>
               <option value="alpha-asc">Alphabet - A-Z</option>
               <option value="alpha-dsc">Alphabet - Z-A</option>
+              <option value="price-asc">Price - Lowest to Highest</option>
+              <option value="price-dsc">Price - Highest to Lowest</option>
+              <option value="rating-asc">Rating - Lowest to Highest</option>
+              <option value="rating-dsc">Rating - Highest to Lowest</option>
             </select>
           </div>
           <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
             <input
-              onChange={filterInput}
+              // onChange={filterInput}
               style={{ width: "100%", height: "27px" }}
               placeholder="Filter by"
               type="text"
@@ -185,7 +209,7 @@ const SearchResult = () => {
           >
             {sessionHostsResults &&
               sessionHostsResults.length &&
-              sessionHostsResults.map((host) => (
+              sorted.map((host) => (
                 <div className="card" key={host.id}>
                   <div
                     className="host-card"
