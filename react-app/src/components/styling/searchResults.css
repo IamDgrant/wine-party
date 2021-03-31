@@ -13,6 +13,16 @@
     display: flex;
 }
 
+.select-dropdown {
+    width: 100%;
+    height: 35px;
+}
+
+.filter-field {
+    width: 100%;
+    height: 35px;
+}
+
 .filter {
     margin-left: 10px;
 }

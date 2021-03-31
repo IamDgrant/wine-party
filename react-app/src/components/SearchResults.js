@@ -187,7 +187,7 @@ const SearchResult = () => {
         </div>
         <div className="sort-filter">
           <div className="sort">
-            <select name="select" placeholder="Sort by" onChange={updateSorted}>
+            <select className="select-dropdown" name="select" placeholder="Sort by" onChange={updateSorted}>
               <option value="sort by">Sort by</option>
               <option value="alpha-asc">Alphabet - A-Z</option>
               <option value="alpha-desc">Alphabet - Z-A</option>
@@ -199,8 +199,9 @@ const SearchResult = () => {
           </div>
           <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
             <input
+            className="filter-field"
               // onChange={filterInput}
-              style={{ width: "100%", height: "27px" }}
+              // style={{ width: "100%", height: "27px" }}
               placeholder="Filter by"
               type="text"
             />
