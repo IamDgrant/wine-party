@@ -71,6 +71,8 @@ const EventForm = ({
     message.error("Please enter a event name!");
   };
 
+  
+
   const updateEventName = (e) => {
     setEventName(e.target.value);
   };

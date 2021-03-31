@@ -34,16 +34,16 @@ const SearchForm = () => {
   const updateRedWine = () => setRedWine(!redWine);
   const updateWhiteWine = () => setWhiteWine(!whiteWine);
   const updateRoseWine = () => setRoseWine(!roseWine);
-  const updateBourbon = () => setBourbon(!bourbon);
-  const updateBrandy = () => setBrandy(!brandy);
-  const updateCognac = () => setCognac(!cognac);
-  const updateGin = () => setGin(!gin);
-  const updateLiqueurs = () => setLiqueurs(!liqueurs);
-  const updateRum = () => setRum(!rum);
-  const updateScotch = () => setScotch(!scotch);
-  const updateTequila = () => setTequila(!tequila);
-  const updateVodka = () => setVodka(!vodka);
-  const updateWhiskey = () => setWhiskey(!whiskey);
+  // const updateBourbon = () => setBourbon(!bourbon);
+  // const updateBrandy = () => setBrandy(!brandy);
+  // const updateCognac = () => setCognac(!cognac);
+  // const updateGin = () => setGin(!gin);
+  // const updateLiqueurs = () => setLiqueurs(!liqueurs);
+  // const updateRum = () => setRum(!rum);
+  // const updateScotch = () => setScotch(!scotch);
+  // const updateTequila = () => setTequila(!tequila);
+  // const updateVodka = () => setVodka(!vodka);
+  // const updateWhiskey = () => setWhiskey(!whiskey);
 
   return (
     <div className="search-bar">
