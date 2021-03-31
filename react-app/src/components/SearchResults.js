@@ -19,7 +19,7 @@ import "../components/styling/searchResults.css";
 // import { message } from "antd";
 
 const SearchResult = () => {
-  const [isSortedType, setIsSortedType] = useState("asc");
+  const [isSortedType, setIsSortedType] = useState("");
   // const [selected, setSelected] = useState("sort by");
 
   const dispatch = useDispatch();
@@ -130,13 +130,22 @@ const SearchResult = () => {
   const hosts = sessionHostsResults.map((host) => host);
 
   const sorted = hosts.sort((name1, name2) => {
-    const isReversed = isSortedType === "asc" ? 1 : -1;
-    return name1.first_name > name2.first_name ? 1 : -1
-    // return isReversed * name1.first_name.localCompare(name2.first_name);
-  }
-  );
+    if (isSortedType === "asc") {
+      return name1.first_name > name2.first_name ? 1 : -1;
+    } else if (isSortedType === "desc") {
+      return name1.first_name < name2.first_name ? 1 : -1;
+    }
 
-    console.log(sorted)
+  });
+
+  const updateSorted = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "alpha-asc") {
+      setIsSortedType("asc");
+    } else if (e.target.value === "alpha-desc") {
+      setIsSortedType("desc");
+    }
+  };
 
   // const isReversed = (isSortedType === "asc")
   // setIsSortedType(sortedData)
@@ -178,14 +187,14 @@ const SearchResult = () => {
         </div>
         <div className="sort-filter">
           <div className="sort">
-            <select name="select" placeholder="Sort by" >
+            <select name="select" placeholder="Sort by" onChange={updateSorted}>
               <option value="sort by">Sort by</option>
               <option value="alpha-asc">Alphabet - A-Z</option>
-              <option value="alpha-dsc">Alphabet - Z-A</option>
+              <option value="alpha-desc">Alphabet - Z-A</option>
               <option value="price-asc">Price - Lowest to Highest</option>
-              <option value="price-dsc">Price - Highest to Lowest</option>
+              <option value="price-desc">Price - Highest to Lowest</option>
               <option value="rating-asc">Rating - Lowest to Highest</option>
-              <option value="rating-dsc">Rating - Highest to Lowest</option>
+              <option value="rating-desc">Rating - Highest to Lowest</option>
             </select>
           </div>
           <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
