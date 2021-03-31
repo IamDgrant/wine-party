@@ -1,4 +1,7 @@
 .container {
+  font-family: "Bebas Neue", cursive;
+  color: #fff;
+  font-size: 25px;
   display: block;
   position: relative;
   padding-left: 35px;

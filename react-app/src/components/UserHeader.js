@@ -74,18 +74,6 @@ const UserHeader = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  // const showFindHostModal = () => {
-  //   setIsFindHostModalVisible(true);
-  // };
-
-  // const findHostHandleOk = () => {
-  //   onSearch();
-  //   setIsFindHostModalVisible(false);
-  // };
-
-  // const findHostHandleCancel = () => {
-  //   setIsFindHostModalVisible(false);
-  // };
 
   const updateSearch = (e) => setSearch(e.target.value);
   const updateSommelier = () => setSommelier(!sommelier);

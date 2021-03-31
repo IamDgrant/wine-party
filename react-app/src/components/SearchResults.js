@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import SearchForm from "../components/auth/forms/SearchHostForm";
 import "../components/styling/searchResults.css";
 import { Modal, Button } from "antd";
 // import { message } from "antd";
@@ -14,11 +15,13 @@ const SearchResult = () => {
   const history = useHistory();
 
   const sessionHostsResults = useSelector((state) => state.host.host);
-
+  const hosts = sessionHostsResults.map((host) => host);
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
   //   state.host.host ? state.host.host : null
   // );
+
+  const onSubmit = (e) => {};
 
   const showFilterModal = (e) => {
     // e.preventDefault();
@@ -27,6 +30,7 @@ const SearchResult = () => {
 
   const filterHandleOk = () => {
     setIsFilterModalVisible(false);
+    onSubmit();
   };
 
   const filterHandleCancel = () => {
@@ -114,7 +118,13 @@ const SearchResult = () => {
     </svg>
   );
 
-  const hosts = sessionHostsResults.map((host) => host);
+  const updateSorted = (e) => {
+    if (e.target.value === "alpha-asc") {
+      setIsSortedType("asc");
+    } else if (e.target.value === "alpha-desc") {
+      setIsSortedType("desc");
+    }
+  };
 
   const sorted = hosts.sort((name1, name2) => {
     if (isSortedType === "asc") {
@@ -124,13 +134,327 @@ const SearchResult = () => {
     }
   });
 
-  const updateSorted = (e) => {
+  const updateFiltered = (e) => {
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
     } else if (e.target.value === "alpha-desc") {
       setIsSortedType("desc");
     }
   };
+
+  // const allPossibilities = () => {
+  //   const numberOfPossibilities = 5;
+  //   const boolArrCollection = [];
+
+  //   for (let i = 0; i < 1 << numberOfPossibilities; i++) {
+  //     const boolArr = [];
+  //     //Increasing or decreasing depending on which direction
+  //     //you want your array to represent the boolean
+  //     for (let j = numberOfPossibilities - 1; j >= 0; j--) {
+  //       boolArr.push(Boolean(i & (1 << j)));
+  //     }
+
+  //     // console.log(boolArr);
+  //   }
+  // };
+
+  // const results = allPossibilities();
+
+  console.log(sorted);
+
+  const filteredSort = sorted.filter((host) => {
+    console.log(host);
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  false &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  false &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  false &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  false &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === false 
+    ) {
+      return host;
+    }
+    if (
+      host.sommelier ===  true &&
+      host.mixologist ===  true &&
+      host.red ===  true &&
+      host.white ===  true &&
+      host.rose === true 
+    ) {
+      return host;
+    }
+  });
+
+  console.log(filteredSort);
 
   return (
     <>
@@ -177,18 +501,13 @@ const SearchResult = () => {
               Filter by
             </Button>
             <Modal
-              // bodyStyle={{ backgroundColor: "black" }}
+              style={{ display: "flex", width: "100%" }}
               okText="Save"
-              // title="Sign in"
               visible={isFilterModalVisible}
               onOk={filterHandleOk}
               onCancel={filterHandleCancel}
-              // style={{
-              //   backgroundColor: "#c3073f",
-              //   color: "#1a1a1d",
-              // }}
             >
-              Here
+              <SearchForm />
             </Modal>
             {/* <input
             className="filter-field"
@@ -211,7 +530,7 @@ const SearchResult = () => {
           >
             {sessionHostsResults &&
               sessionHostsResults.length &&
-              sorted.map((host) => (
+              filteredSort.map((host) => (
                 <div className="card" key={host.id}>
                   <div
                     className="host-card"
