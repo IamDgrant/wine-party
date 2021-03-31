@@ -11,6 +11,7 @@
 
 .sort-filter {
     display: flex;
+    align-items: center;
 }
 
 .select-dropdown {
@@ -37,6 +38,11 @@ input[type=text] {
 .filter {
     font-family: "Bebas Neue", cursive;
     margin-left: 10px;
+}
+
+.filter-btn {
+    width: 100%;
+    height:35px;
 }
 
 .hosts {

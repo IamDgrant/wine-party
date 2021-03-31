@@ -1,30 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  sortByAlphabet,
-  sortByPrice,
-  sortByRating,
-  filterByCity,
-  filterByState,
-  filterBySommelier,
-  filterByMixologist,
-} from "../store/sort";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-// import { seeHost } from "../store/host";
-// import { Modal, Card, Avatar } from "antd";
 import "../components/styling/searchResults.css";
-// import { Rate } from "antd";
-
+import { Modal, Button } from "antd";
 // import { message } from "antd";
 
 const SearchResult = () => {
   const [isSortedType, setIsSortedType] = useState("");
-  // const [selected, setSelected] = useState("sort by");
+  const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
-  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   const sessionHostsResults = useSelector((state) => state.host.host);
 
@@ -33,18 +20,18 @@ const SearchResult = () => {
   //   state.host.host ? state.host.host : null
   // );
 
-  // const showModal = (e) => {
-  //   e.preventDefault();
-  //   setIsModalVisible(true);
-  // };
+  const showFilterModal = (e) => {
+    // e.preventDefault();
+    setIsFilterModalVisible(true);
+  };
 
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
+  const filterHandleOk = () => {
+    setIsFilterModalVisible(false);
+  };
 
-  // const handleCancel = () => {
-  //   setIsModalVisible(false);
-  // };
+  const filterHandleCancel = () => {
+    setIsFilterModalVisible(false);
+  };
 
   const backClick = () => {
     history.push("/home");
@@ -135,39 +122,15 @@ const SearchResult = () => {
     } else if (isSortedType === "desc") {
       return name1.first_name < name2.first_name ? 1 : -1;
     }
-
   });
 
   const updateSorted = (e) => {
-    console.log(e.target.value);
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
     } else if (e.target.value === "alpha-desc") {
       setIsSortedType("desc");
     }
   };
-
-  // const isReversed = (isSortedType === "asc")
-  // setIsSortedType(sortedData)
-  // };
-
-  // console.log(sorter);
-
-  // const sorts = (e) => {
-  //   console.log(e.target.value);
-  //   const selected = e.target.value;
-  //   // setSelected(e.event.target);
-  //   // if (selected === "rating-asc") {
-  //   //   sortByRating(sessionHostsResults.rating);
-  //   // }
-  //   if (selected === "alpha-asc") {
-  //     sorter();
-  //   }
-  // };
-
-  // const filterInput = (e) => {
-  //   dispatch(filterByCity(e.target.value));
-  // };
 
   return (
     <>
@@ -187,7 +150,12 @@ const SearchResult = () => {
         </div>
         <div className="sort-filter">
           <div className="sort">
-            <select className="select-dropdown" name="select" placeholder="Sort by" onChange={updateSorted}>
+            <select
+              className="select-dropdown"
+              name="select"
+              placeholder="Sort by"
+              onChange={updateSorted}
+            >
               <option value="sort by">Sort by</option>
               <option value="alpha-asc">Alphabet - A-Z</option>
               <option value="alpha-desc">Alphabet - Z-A</option>
@@ -197,14 +165,38 @@ const SearchResult = () => {
               <option value="rating-desc">Rating - Highest to Lowest</option>
             </select>
           </div>
-          <div className="filter" style={{ minWidth: "300px", height: "50px" }}>
-            <input
+          <div className="filter">
+            <Button
+              className="filter-btn"
+              htmlType="submit"
+              type="dashed"
+              size="small"
+              ghost="true"
+              onClick={showFilterModal}
+            >
+              Filter by
+            </Button>
+            <Modal
+              // bodyStyle={{ backgroundColor: "black" }}
+              okText="Save"
+              // title="Sign in"
+              visible={isFilterModalVisible}
+              onOk={filterHandleOk}
+              onCancel={filterHandleCancel}
+              // style={{
+              //   backgroundColor: "#c3073f",
+              //   color: "#1a1a1d",
+              // }}
+            >
+              Here
+            </Modal>
+            {/* <input
             className="filter-field"
               // onChange={filterInput}
               // style={{ width: "100%", height: "27px" }}
               placeholder="Filter by"
               type="text"
-            />
+            /> */}
           </div>
         </div>
         <div className="host-result-btns">
