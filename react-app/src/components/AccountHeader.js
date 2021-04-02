@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { photoUpload } from "../store/session";
 import { Menu, Dropdown, Button } from "antd";
-import LogoutButton from "../components/auth/LogoutButton";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
-import "../components/styling/eventsHeaderStyling.css";
+import "../components/styling/accountHeaderStyling.css";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -107,8 +106,8 @@ const Header = () => {
 
   return (
     sessionUser && (
-      <div className="main-events-header-container">
-        <div className="events-logo-container">
+      <div className="main-account-header-container">
+        <div className="account-logo-container">
           <NavLink to="/home">Wine Party</NavLink>
         </div>
         <div className="user-menu">

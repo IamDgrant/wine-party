@@ -1,0 +1,15 @@
+.account-content-container {
+    width: 80%;
+    margin: 7rem 15% 0 15%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+  }
+
+  .account-title {
+      width: 100%;
+    font-family: "Montserrat", sans-serif;
+    color: #000;
+    font-size: 3.5vh;
+    font-weight: bold;
+  }

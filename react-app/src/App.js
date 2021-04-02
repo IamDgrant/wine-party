@@ -6,6 +6,7 @@ import SplashPage from "./components/SplashPage";
 import UserHome from "./components/UserHome";
 import BrowseResults from "./components/BrowseResults";
 import FindHost from "./components/FindHost"
+import Account from "./components/Account"
 import SearchResult from "./components/SearchResults";
 import Events from "./components/Events";
 import FAQ from "./components/FAQ"
@@ -43,6 +44,9 @@ const App = () => {
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />
+        </ProtectedRoute>
+        <ProtectedRoute path="/account" exact={true}>
+          <Account />
         </ProtectedRoute>
         <ProtectedRoute path="/events" exact={true}>
           <Events />

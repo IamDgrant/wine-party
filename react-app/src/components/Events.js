@@ -1,14 +1,17 @@
 import React from "react";
 import EventsHeader from "../components/EventsHeader";
+import EventsContent from "../components/EventsContent";
 import "../components/styling/eventStyling.css";
 
 const Events = () => {
   return (
     <>
-      <EventsHeader />
       <div className="events">
-        <div className="event-title">
-          {/* <h1>Events</h1> */}
+        <div className="e-header">
+          <EventsHeader />
+        </div>
+        <div className="e-contents">
+          <EventsContent />
         </div>
       </div>
     </>

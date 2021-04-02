@@ -1,17 +1,16 @@
 /*Desktop View*/
-.events {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
 
-.events-header {
+.main-events-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 0px 40px;
   height: 9vh;
   width: 100%;
+  background-color: #fff;
   border-bottom: 1px rgb(201, 201, 201) solid;
 }
 
