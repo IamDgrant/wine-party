@@ -8,7 +8,7 @@ const Events = () => {
       <EventsHeader />
       <div className="events">
         <div className="event-title">
-          <h1>Events</h1>
+          {/* <h1>Events</h1> */}
         </div>
       </div>
     </>

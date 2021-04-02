@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 40px;
-  height: 8vh;
+  height: 9vh;
   width: 100%;
   border-bottom: 1px rgb(201, 201, 201) solid;
 }
@@ -23,6 +23,10 @@
   font-family: "Bebas Neue", cursive;
   color: #000;
   font-size: 6vh;
+}
+
+.line-break {
+  border-top: 1px rgb(201, 201, 201) solid;
 }
 
 .navbar-item {
