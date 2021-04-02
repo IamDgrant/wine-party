@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { photoUpload } from "../store/session";
 import { Menu, Dropdown, Button } from "antd";
+import LogoutButton from "../components/auth/LogoutButton";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
-import "../components/styling/accountHeaderStyling.css";
+import "../components/styling/mainHeaderStyling.css";
 
-const Header = () => {
+const MainHeader = () => {
   const [click, setClick] = useState(false);
   const [photoFile, setPhotoFile] = useState();
   const [projects, setProjects] = useState();
@@ -106,8 +107,8 @@ const Header = () => {
 
   return (
     sessionUser && (
-      <div className="main-account-header-container">
-        <div className="account-logo-container">
+      <div className="main-events-header-container">
+        <div className="events-logo-container">
           <NavLink to="/home">Wine Party</NavLink>
         </div>
         <div className="user-menu">
@@ -134,4 +135,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainHeader;
