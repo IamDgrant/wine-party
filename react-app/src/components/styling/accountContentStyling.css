@@ -4,12 +4,17 @@
     max-width: 100%;
     box-sizing: border-box;
     min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
   }
 
   .account-title {
       width: 100%;
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
     color: #000;
     font-size: 3.5vh;
     font-weight: bold;
+  }
+
+  .account-info-profile {
+      color: rgb(50, 133, 50);
   }
