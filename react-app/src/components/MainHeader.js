@@ -107,8 +107,8 @@ const MainHeader = () => {
 
   return (
     sessionUser && (
-      <div className="main-events-header-container">
-        <div className="events-logo-container">
+      <div className="main-header-container">
+        <div className="main-logo-container">
           <NavLink to="/home">Wine Party</NavLink>
         </div>
         <div className="user-menu">
