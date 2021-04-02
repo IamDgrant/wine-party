@@ -74,7 +74,6 @@ const UserHeader = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-
   const updateSearch = (e) => setSearch(e.target.value);
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);
@@ -149,7 +148,6 @@ const UserHeader = () => {
             <div className="search-option">
               <div>
                 <input
-                  // name="a"
                   checked={sommelier}
                   onChange={updateSommelier}
                   name="type"
@@ -158,10 +156,9 @@ const UserHeader = () => {
                   id="type-somm"
                 />
                 <label htmlFor="type-somm">
-                  <span>Sommelier</span>
+                  <span className="search-check">Sommelier</span>
                 </label>
               </div>
-
               <div>
                 <input
                   checked={mixologist}
@@ -172,7 +169,7 @@ const UserHeader = () => {
                   id="type-mix"
                 />
                 <label htmlFor="type-mix">
-                  <span>Mixologist</span>
+                  <span className="search-check">Mixologist</span>
                 </label>
               </div>
             </div>

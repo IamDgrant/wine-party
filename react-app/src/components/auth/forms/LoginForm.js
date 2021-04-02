@@ -1,26 +1,24 @@
-import React from "react";
-// import { Redirect } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
 // import { login } from "../../../store/session"
 // import { Button } from 'antd';
-import "../../styling/loginFormStyle.css";
+import "../../styling/formStyling.css"
 
 const LoginForm = ({
   signInEmail,
   setSignInEmail,
   signInPassword,
   setSignInPassword,
+  errors,
+  setErrors,
 }) => {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
-  // const [errors, setErrors] = useState([]);
+  const sessionUser = useSelector((state) => state.session.user);
 
-  // const sessionUser = useSelector((state) => state.session.user);
-
-  // if (!sessionUser.errors) {
-  //   return <Redirect to="/home" />;
-  // }
+  if (sessionUser) {
+    return <Redirect to="/home" />;
+  }
 
   // const demoLogin = async (e) => {
   //   // e.preventDefault();
@@ -33,6 +31,8 @@ const LoginForm = ({
     setSignInEmail(e.target.value);
   };
 
+  console.log(signInEmail);
+
   const updatePassword = (e) => {
     setSignInPassword(e.target.value);
   };
@@ -40,14 +40,14 @@ const LoginForm = ({
   return (
     <div className="center_box">
       <form className="login-form">
-        {/* <div>
-          {errors.map((error, i) => (
-            <div key={i}>{error}</div>
+        <div>
+          {errors && errors.map((error) => (
+            <div>{error}</div>
           ))}
-        </div> */}
+        </div>
         <div className="email">
           <input
-            className="form-input"
+            // className="form-input"
             name="email"
             type="text"
             placeholder="Email"
@@ -57,7 +57,7 @@ const LoginForm = ({
         </div>
         <div className="password">
           <input
-            className="form-input"
+            // className="form-input"
             name="password"
             type="password"
             placeholder="Password"

@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { message } from "antd";
 import { usStates } from "../../States";
+import { Pagination } from "antd";
 // import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 // import { createEvent } from "../../../store/event";
 // import { seeHost } from "../../../store/host";
 // import SearchForm from "./SearchHostForm";
 // import SearchResult from "../../SearchResults";
-import "../../styling/createEventFormStyling.css";
+import "../../styling/formStyling.css";
 
 const EventForm = ({
   user_id,
@@ -71,8 +72,6 @@ const EventForm = ({
     message.error("Please enter a event name!");
   };
 
-  
-
   const updateEventName = (e) => {
     setEventName(e.target.value);
   };
@@ -89,9 +88,9 @@ const EventForm = ({
     setEventState(onChangeState);
   };
 
-  const updatePostalCode = (e) => {
-    setEventPostalCode(e.target.value);
-  };
+  // const updatePostalCode = (e) => {
+  //   setEventPostalCode(e.target.value);
+  // };
 
   // const Grid = makeResponsive(measureItems(CSSGrid), {
   //   maxWidth: 1920,
@@ -121,7 +120,7 @@ const EventForm = ({
               </div>
               <div>
                 <input
-                  className="form-input"
+                  // className="form-input"
                   type="date"
                   name="event_date"
                   placeholder="Event Date"
@@ -131,7 +130,7 @@ const EventForm = ({
               </div>
               <div>
                 <input
-                  className="form-input"
+                  // className="form-input"
                   type="text"
                   name="event_name"
                   placeholder="Event Name"
@@ -142,7 +141,7 @@ const EventForm = ({
               <div className="event-state">
                 <Fragment>
                   <Select
-                    className="state-search-dropdown"
+                    // className="state-search-dropdown"
                     classNamePrefix="select"
                     placeholder="State"
                     name="states"
@@ -157,7 +156,7 @@ const EventForm = ({
               <div>
                 <Fragment>
                   <Select
-                    className="city-search-dropdown"
+                    // className="city-search-dropdown"
                     classNamePrefix="select"
                     placeholder="City"
                     name="cities"
@@ -174,16 +173,16 @@ const EventForm = ({
                   />
                 </Fragment>
               </div>
-              <div>
+              {/* <div>
                 <input
-                  className="form-input"
+                  // className="form-input"
                   type="text"
                   name="event_postal_code"
                   placeholder="Postal Code"
                   onChange={updatePostalCode}
                   value={event_postal_code}
                 ></input>
-              </div>
+              </div> */}
               {/* <div>
                 <h3 className="form_text">Next, add your Host</h3>
                 <SearchForm

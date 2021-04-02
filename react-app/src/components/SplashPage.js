@@ -1,4 +1,4 @@
-import React, { useSelector } from "react";
+import React, { useSelector, useEffect } from "react";
 import Header from "../components/Header";
 import About from "../components/About";
 import RandomHost from "../components/RandomHostCard";
@@ -6,6 +6,10 @@ import "./styling/splashPageStyle.css";
 
 const SplashPage = () => {
   // const sessionUser = useSelector((state) => state.session.user);
+
+  // if (sessionUser) {
+  //   return <Redirect to="/home" />;
+  // }
 
   // useEffect(() => {
   //   navigator.geolocation.getCurrentPosition((position) => {

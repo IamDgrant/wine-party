@@ -500,7 +500,7 @@ const SearchResult = () => {
   const { Option } = Select;
 
   const children = [];
-  for (let i = 5; i < 36; i++) {
+  for (let i = 0; i < 36; i++) {
     children.push(
       <Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>
     );
@@ -508,24 +508,35 @@ const SearchResult = () => {
 
   const handleChange = (value) => {
     if (value.toString() === "Sommelier") {
-      console.log("SOMM");
-      updateSommelier();
+      // console.log("SOMM");
+      setIsSommelier(true)
+    } else if (value.toString() === "") {
+      console.log("OFF");
+      setIsSommelier(false)
     }
     if (value.toString() === "Mixologist") {
       console.log("MIX");
-      updateMixologist();
+      setIsMixologist(true)
+    } else if (value.toString() === "") {
+      setIsMixologist(false)
     }
     if (value.toString() === "red-wine") {
       console.log("RED");
-      updateRedWine();
+      setIsRedWine(true)
+    } else if (value.toString() === "") {
+      setIsRedWine(false)
     }
     if (value.toString() === "white-wine") {
       console.log("WHITE");
-      updateWhiteWine();
+      setIsWhiteWine(true)
+    } else if (value.toString() === "") {
+      setIsWhiteWine(false)
     }
     if (value.toString() === "rose-wine") {
       console.log("ROSE");
-      updateRoseWine();
+      setIsRoseWine(true)
+    } else if (value.toString() === "") {
+      setIsRoseWine(false)
     }
   };
 
@@ -566,7 +577,6 @@ const SearchResult = () => {
             <Select
               className="filter-dropdown"
               mode="multiple"
-              // size="large"
               placeholder="Filter by"
               // style={{ width: "300px" }}
               // defaultValue={["china"]}
@@ -580,13 +590,13 @@ const SearchResult = () => {
                 <div className="demo-option-label-item">Mixologist 🍸</div>
               </Option>
               <Option value="red-wine" label="red-wine">
-                <div className="demo-option-label-item">Red Wine</div>
+                <div className="demo-option-label-item">Red Wine Expert</div>
               </Option>
               <Option value="white-wine" label="white-wine">
-                <div className="demo-option-label-item">White Wine</div>
+                <div className="demo-option-label-item">White Wine Expert</div>
               </Option>
               <Option value="rose-wine" label="rose-wine">
-                <div className="demo-option-label-item">Rose Wine</div>
+                <div className="demo-option-label-item">Rose Wine Expert</div>
               </Option>
             </Select>
             {/* <Button

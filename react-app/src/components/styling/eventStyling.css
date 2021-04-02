@@ -1,0 +1,8 @@
+.events {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-title {
+  font-family: "Bebas Neue", cursive;
+}

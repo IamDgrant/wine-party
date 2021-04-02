@@ -90,6 +90,7 @@ const RandomHost = () => {
         columnWidth={250}
         itemHeight={400}
         itemwidth={250}
+        duration={0}
       >
         {sessionHost && (
           <div
@@ -100,28 +101,32 @@ const RandomHost = () => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
             }}
-            >
+          >
             <div className="hosts"></div>
-              <div className="add-host">
-                <button>{addBtn}</button>
+            <div className="name-type">
+              <div className="host-city-state-name-type">
+                <div className="city-state">
+                  {sessionHost.city}, {sessionHost.state}
+                </div>
+                <div className="host-name-type-container">
+                  <div className="host-name">
+                    {sessionHost.first_name} {sessionHost.last_name}
+                  </div>
+                  <div className="host-type">
+                    <div className="host-type">
+                      {sessionHost.sommelier === true ? sommelier : null}
+                    </div>
+                    <div className="host-type">
+                      {sessionHost.mixologist === true ? mixologist : null}
+                    </div>
+                  </div>
+                </div>
+                
               </div>
-              <div className="host-name-type">
-                <div className="host-name">
-                  {sessionHost.first_name} {sessionHost.last_name}
-                </div>
-                <div className="somm">
-                  {sessionHost.sommelier === true ? sommelier : null}{" "}
-                </div>
-                <div className="mix">
-                  {sessionHost.mixologist === true ? mixologist : null}{" "}
-                </div>
-              </div>
+            </div>
 
-              <div className="host-city-state">
-                {sessionHost.city}, {sessionHost.state}
-              </div>
-              {/* <div className="host-type"></div> */}
-              {/* <div className="host-rating">
+            {/* <div className="host-type"></div> */}
+            {/* <div className="host-rating">
                 <Rate disabled defaultValue={4} />
               </div> */}
           </div>

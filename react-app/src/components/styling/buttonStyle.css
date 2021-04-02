@@ -1,6 +1,6 @@
 .host-btn {
   font-family: "Bebas Neue", cursive;
-  color: #f9fbf2;
+  color: #ffffff;
 }
 
 .host-btn:after {
@@ -11,7 +11,7 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #f9fbf2;
+  background: #ffffff;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -19,12 +19,12 @@
 .host-btn:hover:after {
   width: 100%;
   left: 0;
-  color: #f9fbf2; 
+  color: #ffffff; 
 }
 
 .event-btn {
   font-family: "Bebas Neue", cursive;
-  color: #f9fbf2;
+  color: #ffffff;
 }
 
 .event-btn:after {
@@ -35,7 +35,7 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #fff;
+  background: #ffffff;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -44,3 +44,5 @@
   width: 100%;
   left: 0;
 }
+
+

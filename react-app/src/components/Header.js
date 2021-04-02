@@ -25,6 +25,7 @@ const Header = () => {
   const [signInPassword, setSignInPassword] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -52,10 +53,10 @@ const Header = () => {
           repeatPassword,
         })
       ).catch(async (res) => {
+        console.log(res);
         const data = await res.json();
         if (data && data.errors) {
           newErrors = data.errors;
-          // setErrors(newErrors);
         }
       });
     }
@@ -64,7 +65,11 @@ const Header = () => {
   const onSignIn = async (e) => {
     // e.preventDefault();
     const user = await dispatch(login(signInEmail, signInPassword));
-    if (user.ok) history.push("/home");
+    if (signInEmail.length === 0) {
+      alert("You must provide valid email address")
+    }
+    console.log(user);
+    // if (user.ok) history.push("/home");
   };
 
   const showSignInModal = () => {
@@ -167,6 +172,7 @@ const Header = () => {
                   setSignInEmail={setSignInEmail}
                   signInPassword={signInPassword}
                   setSignInPassword={setSignInPassword}
+                  errors={errors}
                 />
               </Modal>
             </li>

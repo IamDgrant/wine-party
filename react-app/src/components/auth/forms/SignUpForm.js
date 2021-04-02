@@ -5,7 +5,7 @@ import Select from "react-select";
 import { usStates } from "../../States";
 // import { Pagination } from 'antd';
 // import { Button } from "antd";
-import "../../styling/signUpFormStyle.css";
+import "../../styling/formStyling.css"
 
 const SignUpForm = ({
   first_name,
@@ -29,10 +29,6 @@ const SignUpForm = ({
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [errors, setErrors] = useState([]);
-
-  const sessionUser = useSelector((state) => state.session.user);
-  // const dispatch = useDispatch();
 
   useEffect(() => {
     if (state.length > 0) {
@@ -43,7 +39,9 @@ const SignUpForm = ({
     }
   }, [state, cscCity]);
 
-  if (!sessionUser.errors) {
+  const sessionUser = useSelector((state) => state.session.user);
+
+  if (sessionUser) {
     return <Redirect to="/home" />;
   }
 
@@ -67,7 +65,6 @@ const SignUpForm = ({
         city1.name > city2.name ? 1 : -1
       );
       setCscCity(sortedData);
-      // return sortedData;
     }
   };
 
@@ -94,14 +91,6 @@ const SignUpForm = ({
     setLastName(e.target.value);
   };
   const updateCity = (city) => {
-    // console.log(state);
-    // if (
-    //   state === "American Samoa" &&
-    //   state === "Northern Mariana Islands" &&
-    //   state === "Virgin Islands"
-    // ) {
-    //   setCity("");
-    // }
     setCity(city);
   };
   const updateState = (onChangeState) => {
@@ -127,14 +116,14 @@ const SignUpForm = ({
   return (
     <>
       <form>
-        <div>
+        {/* <div>
           {errors.map((error, i) => (
             <div key={i}>{error}</div>
           ))}
-        </div>
+        </div> */}
         <div>
           <input
-            className="form-input"
+            // className="form-input"
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -144,7 +133,7 @@ const SignUpForm = ({
         </div>
         <div className="last-name">
           <input
-            className="form-input"
+            // className="form-input"
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -155,7 +144,7 @@ const SignUpForm = ({
         <div>
           <Fragment>
             <Select
-              className="state-search-dropdown"
+              // className="state-search-dropdown"
               classNamePrefix="select"
               placeholder="State"
               name="states"
@@ -170,7 +159,7 @@ const SignUpForm = ({
         <div>
           <Fragment>
             <Select
-              className="city-search-dropdown"
+              // className="city-search-dropdown"
               classNamePrefix="select"
               placeholder="City"
               name="cities"
@@ -189,7 +178,7 @@ const SignUpForm = ({
         </div>
         <div className="postal-code">
           <input
-            className="form-input"
+            // className="form-input"
             type="text"
             name="postal_code"
             placeholder="Postal Code"
@@ -199,7 +188,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form-input"
+            // className="form-input"
             type="text"
             name="email"
             placeholder="Email"
@@ -209,7 +198,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form-input"
+            // className="form-input"
             type="password"
             name="password"
             placeholder="Password"
@@ -219,7 +208,7 @@ const SignUpForm = ({
         </div>
         <div>
           <input
-            className="form-input"
+            // className="form-input"
             type="password"
             name="repeat_password"
             placeholder="Confirm Password"

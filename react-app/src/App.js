@@ -7,7 +7,7 @@ import UserHome from "./components/UserHome";
 import BrowseResults from "./components/BrowseResults";
 import FindHost from "./components/FindHost"
 import SearchResult from "./components/SearchResults";
-import EventForm from "./components/auth/forms/CreateEventForm";
+import Events from "./components/Events";
 import FAQ from "./components/FAQ"
 // import LoginForm from "./components/forms/LoginForm";
 // import Event from "./components/Event";
@@ -45,7 +45,7 @@ const App = () => {
           <UserHome />
         </ProtectedRoute>
         <ProtectedRoute path="/events" exact={true}>
-          <EventForm />
+          <Events />
         </ProtectedRoute>
         <ProtectedRoute path="/search" exact={true}>
           <SearchResult />

@@ -14,20 +14,13 @@
     align-items: center;
 }
 
-.select-dropdown {
+/* .select-dropdown {
     font-family: "Bebas Neue", cursive;
     width: 100%;
     height: 35px;
     font-size: 18px;
     background-color: #0000;
-}
-
-input[type=text] {
-    /* background-color: #3CBC8D; */
-    font-family: "Bebas Neue", cursive;
-    font-size: 18px;
-    color: white;
-  }
+} */
 
 /* .filter-field {
     width: 100%;

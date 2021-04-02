@@ -95,8 +95,7 @@ const FutureEvent = ({ id }) => {
           columnWidth={250}
           itemHeight={250}
           itemWidth={50}
-          // duration={500}
-          // easing="ease-out"
+          duration={0}
         >
           {sessionEvent &&
             futureEvents?.map((futureEvent, i) => (

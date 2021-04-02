@@ -1,0 +1,78 @@
+input[type="text"],
+input[type="password"],
+input[type="date"],
+select {
+  font-family: "Bebas Neue", cursive;
+  font-size: 18px;
+  height: 35px;
+  width: 300px;
+  padding: 0vh 1vh;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(116, 116, 116);
+  background-color: #fff;
+}
+
+.css-2b097c-container,
+.css-14jk2my-container {
+  font-family: "Bebas Neue", cursive;
+  font-size: 18px;
+  width: 300px;
+  margin: 4px 0;
+  display: inline-block;
+  box-sizing: border-box;
+  color: rgb(116, 116, 116);
+}
+
+input[type="submit"] {
+  width: 25%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* ::placeholder {
+  color: rgb(226, 160, 102, 0.5);
+}
+
+.form_text {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(226, 160, 102);
+}
+
+.form_title {
+  font-family: "Bebas Neue", cursive;
+  color: white;
+}
+
+.form_link {
+  text-decoration: none;
+  border: 1px solid rgb(226, 160, 102);
+}
+
+.form_link:visited {
+  color: rgb(226, 160, 102);
+}
+
+.form_link:hover {
+  border-bottom: 1px solid rgb(226, 160, 102);
+}
+
+.p-text {
+  font-size: 1.25vh;
+  font-family: "Montserrat", sans-serif;
+  color: red;
+} */
