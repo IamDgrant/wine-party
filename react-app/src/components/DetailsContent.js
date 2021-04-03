@@ -10,6 +10,7 @@ const DetailsContent = () => {
   const [isEditingPhone, setIsEditingPhone] = useState(false);
   const [isEditingAddress, setIsEditingAddress] = useState(false);
   const [isEditingIdentification, setIsEditingIdentification] = useState(false);
+  const [isEditingBirthday, setIsEditingBirthday] = useState(false);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [street, setStreet] = useState("");
@@ -19,6 +20,7 @@ const DetailsContent = () => {
   const [signInEmail, setSignInEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
   const [identification, setIdentification] = useState("");
+  const [birthday, setBirthday] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -50,6 +52,12 @@ const DetailsContent = () => {
     setIsEditingAddress(!isEditingAddress);
   };
 
+  const updateEditingBirthday = () => {
+    setIsEditingIdentification(!isEditingIdentification);
+  };
+  const saveEditingBirthday = () => {
+    setIsEditingIdentification(!isEditingIdentification);
+  };
   const updateEditingIdentification = () => {
     setIsEditingIdentification(!isEditingIdentification);
   };
@@ -80,6 +88,10 @@ const DetailsContent = () => {
   };
   const updatePhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
+  };
+  const updateBirthday = (e) => {
+    console.log(e.target.value);
+    setBirthday(e.target.value);
   };
   const updateIdentification = (e) => {
     setIdentification(e.target.value);
@@ -329,6 +341,48 @@ const DetailsContent = () => {
           <div className="details-name">
             <div className="full-name-edit">
               {isEditingIdentification}
+              <div className="full-name">Date of Birth</div>
+              {isEditingIdentification ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingBirthday}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingBirthday}>Edit</Button>
+                </div>
+              )}
+            </div>
+            {isEditingIdentification ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="identification"
+                    type="date"
+                    placeholder=""
+                    onChange={updateBirthday}
+                    value={birthday}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">
+                {/* {sessionUser.first_name} {sessionUser.last_name} */}
+              </div>
+            )}
+          </div>
+          <div className="line-break"></div>
+        </div>
+        <div className="personal-details">
+          <div className="details-name">
+            <div className="full-name-edit">
+              {isEditingIdentification}
               <div className="full-name">State id</div>
               {isEditingIdentification ? (
                 <div className="edit-name">
@@ -361,7 +415,7 @@ const DetailsContent = () => {
               </div>
             ) : (
               <div className="name">
-                {sessionUser.first_name} {sessionUser.last_name}
+                {/* {sessionUser.first_name} {sessionUser.last_name} */}
               </div>
             )}
           </div>
