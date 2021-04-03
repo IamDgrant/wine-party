@@ -1,7 +1,6 @@
 .personal-details {
-    margin-top: 15px;
+  margin-top: 15px;
 }
-
 
 .details-content-container {
   width: 80%;
@@ -13,7 +12,7 @@
 }
 
 .breadcrumb {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .details-name {
@@ -21,10 +20,18 @@
   flex-direction: column;
 }
 
+.first-last-name-forms {
+  display: flex;
+}
+
+.details-name-input {
+  font-family: "Montserrat", sans-serif;
+}
+
 .full-name-edit {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .details-title {
@@ -35,7 +42,7 @@
 }
 
 .details-inner-main {
-    width: 50%;
+  width: 50%;
 }
 
 .details-inner-main {
@@ -56,6 +63,6 @@
 }
 
 .line-break {
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(224, 224, 224, 0.185);
+  margin-top: 10px;
+  border-bottom: 1px solid rgba(224, 224, 224, 0.185);
 }

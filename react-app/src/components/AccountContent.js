@@ -105,8 +105,7 @@ const AccountContent = () => {
                   style={{ width: 300 }}
                 >
                   <p>
-                    Tell us about yourself so we can keep you to date with Wine
-                    Party
+                    Don't miss any updates, let us know how to reach you.
                   </p>
                 </Card>
               </div>

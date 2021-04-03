@@ -5,12 +5,84 @@ import { Breadcrumb, Button } from "antd";
 import "../components/styling/detailsContentStyling.css";
 
 const DetailsContent = () => {
-  const [isEditing, setIsEditing] = useState(true);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [isEditingPhone, setIsEditingPhone] = useState(false);
+  const [isEditingAddress, setIsEditingAddress] = useState(false);
+  const [isEditingIdentification, setIsEditingIdentification] = useState(false);
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [postal_code, setPostalCode] = useState("");
+  const [signInEmail, setSignInEmail] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [identification, setIdentification] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const updateEditing = () => {
-    setIsEditing(true);
+  const updateEditingName = () => {
+    setIsEditingName(!isEditingName);
+  };
+  const saveEditingName = () => {
+    setIsEditingName(!isEditingName);
+  };
+
+  const updateEditingEmail = () => {
+    setIsEditingEmail(!isEditingEmail);
+  };
+  const saveEditingEmail = () => {
+    setIsEditingEmail(!isEditingEmail);
+  };
+
+  const updateEditingPhone = () => {
+    setIsEditingPhone(!isEditingPhone);
+  };
+  const saveEditingPhone = () => {
+    setIsEditingPhone(!isEditingPhone);
+  };
+
+  const updateEditingAddress = () => {
+    setIsEditingAddress(!isEditingAddress);
+  };
+  const saveEditingAddress = () => {
+    setIsEditingAddress(!isEditingAddress);
+  };
+
+  const updateEditingIdentification = () => {
+    setIsEditingIdentification(!isEditingIdentification);
+  };
+  const saveEditingIdentification = () => {
+    setIsEditingIdentification(!isEditingIdentification);
+  };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+  const updateStreet = (e) => {
+    setCity(e.target.value);
+  };
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  };
+  const updateState = (e) => {
+    setState(e.target.value);
+  };
+  const updatePostalCode = (e) => {
+    setPostalCode(e.target.value);
+  };
+  const updateEmail = (e) => {
+    setSignInEmail(e.target.value);
+  };
+  const updatePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+  const updateIdentification = (e) => {
+    setIdentification(e.target.value);
   };
 
   return (
@@ -28,62 +100,270 @@ const DetailsContent = () => {
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
+              {isEditingName}
               <div className="full-name">Full Name</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
+              {isEditingName ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingName}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingName}>Edit</Button>
+                </div>
+              )}
+            </div>
+            {isEditingName ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-first-name-input"
+                    name="first name"
+                    type="text"
+                    placeholder={sessionUser.first_name}
+                    onChange={updateFirstName}
+                    value={first_name}
+                  />
+                </form>
+                <form>
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-last-name-input"
+                    name="last name"
+                    type="text"
+                    placeholder={sessionUser.last_name}
+                    onChange={updateLastName}
+                    value={last_name}
+                  />
+                </form>
               </div>
-            </div>
-            <div className="name">
-              {sessionUser.first_name} {sessionUser.last_name}
-            </div>
+            ) : (
+              <div className="name">
+                {sessionUser.first_name} {sessionUser.last_name}
+              </div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
+              {isEditingEmail}
               <div className="full-name">Email</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
-              </div>
+              {isEditingEmail ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingEmail}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingEmail}>Edit</Button>
+                </div>
+              )}
             </div>
-            <div className="name">{sessionUser.email}</div>
+            {isEditingEmail ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-email-input"
+                    name="email"
+                    type="text"
+                    placeholder={sessionUser.email}
+                    onChange={updateEmail}
+                    value={signInEmail}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">{sessionUser.email}</div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
-              <div className="full-name">Phone number</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
-              </div>
+              {isEditingPhone}
+              <div className="full-name">Phone Number</div>
+              {isEditingPhone ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingPhone}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingPhone}>Edit</Button>
+                </div>
+              )}
             </div>
-            <div className="name">{sessionUser.phone_number}</div>
+            {isEditingPhone ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="phone number"
+                    type="text"
+                    placeholder={sessionUser.phone_number}
+                    onChange={updatePhoneNumber}
+                    value={phone_number}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">{sessionUser.phone_number}</div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
+              {isEditingAddress}
               <div className="full-name">Address</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
-              </div>
+              {isEditingAddress ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingAddress}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingAddress}>Edit</Button>
+                </div>
+              )}
             </div>
-            <div className="name">{sessionUser.city}, {sessionUser.state} {sessionUser.postal_code}</div>
+            {isEditingAddress ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="first name"
+                    type="text"
+                    placeholder=""
+                    onChange={updateStreet}
+                    value={street}
+                  />
+                </form>
+                <form>
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="last name"
+                    type="text"
+                    placeholder={sessionUser.city}
+                    onChange={updateCity}
+                    value={city}
+                  />
+                </form>
+                <form>
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="last name"
+                    type="text"
+                    placeholder={sessionUser.state}
+                    onChange={updateState}
+                    value={state}
+                  />
+                </form>
+                <form>
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="last name"
+                    type="text"
+                    placeholder={sessionUser.postal_code}
+                    onChange={updatePostalCode}
+                    value={postal_code}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">
+                {sessionUser.city} {sessionUser.state} {sessionUser.postal_code}
+              </div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
-              <div className="full-name">State ID</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
-              </div>
+              {isEditingIdentification}
+              <div className="full-name">State id</div>
+              {isEditingIdentification ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingIdentification}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingIdentification}>Edit</Button>
+                </div>
+              )}
             </div>
-            {/* <div className="name">{sessionUser.id_image}</div> */}
+            {isEditingIdentification ? (
+              <div className="details-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-name-input"
+                    name="identification"
+                    type="text"
+                    placeholder=""
+                    onChange={updateIdentification}
+                    value={identification}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">
+                {sessionUser.first_name} {sessionUser.last_name}
+              </div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
