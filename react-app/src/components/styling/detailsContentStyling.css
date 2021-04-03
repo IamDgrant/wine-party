@@ -7,6 +7,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.breadcrumbs {
+    padding-bottom: 20px;
+}
+
 .details-name {
   display: flex;
   flex-direction: column;
