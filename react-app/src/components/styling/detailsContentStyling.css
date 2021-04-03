@@ -1,0 +1,46 @@
+.details-content-container {
+  width: 80%;
+  max-width: 100%;
+  margin: 7rem 15% 0 15%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+.details-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-name-edit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-title {
+  width: 100%;
+  color: #000;
+  font-size: 3vh;
+  font-weight: 400;
+}
+
+.details-inner-main {
+    width: 50%;
+}
+
+.details-inner-main {
+  margin-top: 50px;
+}
+
+.full-name {
+  width: fit-content;
+  font-weight: 900;
+}
+
+.name {
+  width: fit-content;
+}
+
+.edit-name {
+  width: fit-content;
+}

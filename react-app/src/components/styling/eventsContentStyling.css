@@ -6,3 +6,9 @@
     min-height: 100vh;
   }
 
+  .events-title {
+    width: 100%;
+  color: #000;
+  font-size: 3vh;
+  font-weight: 400;
+}
