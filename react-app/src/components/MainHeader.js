@@ -5,6 +5,7 @@ import { photoUpload, logout } from "../store/session";
 import { Menu, Dropdown, Button } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
+import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 import "../components/styling/mainHeaderStyling.css";
 
 const MainHeader = () => {
@@ -58,37 +59,36 @@ const MainHeader = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  
   const userMenu = (
     <Menu>
-      <Menu.Item>
+      <Menu.Item >
         <NavLink exact to="/messages">
-          <Button type="link">Messages</Button>
+          <Button className="antd-btn" type="link">Messages</Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
         <NavLink exact to="/events">
-          <Button type="link">Events</Button>
+          <Button className="antd-btn" type="link">Events</Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
         <NavLink exact to="/favorites">
-          <Button type="link">Favorites</Button>
+          <Button className="antd-btn" type="link">Favorites</Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
         <NavLink exact to="/help">
-          <Button type="link">Help</Button>
+          <Button className="antd-btn" type="link">Help</Button>
         </NavLink>
       </Menu.Item>
       <div className="line-break"></div>
       <Menu.Item>
         <NavLink exact to="/account">
-          <Button type="link">Account</Button>
+          <Button className="antd-btn" type="link">Account</Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <Button type="link" onClick={onLogout}>
+        <Button className="antd-btn" type="link" onClick={onLogout}>
           Log out
         </Button>
       </Menu.Item>
@@ -99,17 +99,28 @@ const MainHeader = () => {
     sessionUser && (
       <div className="main-header-container">
         <div className="main-logo-container">
-          <NavLink to="/home">Wine Party</NavLink>
+          <NavLink className="logo-nav" to="/home">Wine Party</NavLink>
         </div>
         <div className="user-menu">
-          <Dropdown overlay={userMenu} trigger={["click"]}>
+          <Dropdown className="antd-drop" overlay={userMenu} trigger={["click"]}>
             <Button
               className="profile_button"
               shape="circle"
               type="primary"
               onClick={(e) => e.preventDefault()}
             >
-              <p>{sessionUser.profile_image}</p>
+              <div className="user-image">
+                {" "}
+                {sessionUser.profile_image != null ? (
+                  <img
+                    src={sessionUser.profile_image}
+                    alt="UserPhoto"
+                    className=""
+                  ></img>
+                ) : (
+                  <img src={img_placeholder} alt="Avatar" className="img_placeholder"></img>
+                )}
+              </div>
             </Button>
           </Dropdown>
         </div>
