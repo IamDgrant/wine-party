@@ -53,11 +53,12 @@ const DetailsContent = () => {
   };
 
   const updateEditingBirthday = () => {
-    setIsEditingIdentification(!isEditingIdentification);
+    setIsEditingBirthday(!isEditingBirthday);
   };
   const saveEditingBirthday = () => {
-    setIsEditingIdentification(!isEditingIdentification);
+    setIsEditingBirthday(!isEditingBirthday);
   };
+
   const updateEditingIdentification = () => {
     setIsEditingIdentification(!isEditingIdentification);
   };
@@ -340,9 +341,9 @@ const DetailsContent = () => {
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
-              {isEditingIdentification}
+              {isEditingBirthday}
               <div className="full-name">Date of Birth</div>
-              {isEditingIdentification ? (
+              {isEditingBirthday ? (
                 <div className="edit-name">
                   <Button onClick={saveEditingBirthday}>Save</Button>
                 </div>
@@ -352,7 +353,7 @@ const DetailsContent = () => {
                 </div>
               )}
             </div>
-            {isEditingIdentification ? (
+            {isEditingBirthday ? (
               <div className="details-form">
                 <form className="first-last-name-forms">
                   <input
