@@ -9,7 +9,7 @@ const Account = () => {
 
   return (
     <div className="main-account-container">
-      <div className="account">
+      <div className="account-header">
         <MainHeader />
       </div>
       <div className="a-contents">

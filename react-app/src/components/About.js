@@ -1,10 +1,12 @@
 import React from "react";
+
 import "../components/styling/aboutStyle.css";
 
 const About = () => {
   return (
     <>
       <div className="about">
+      
         <div className="welcome">
           <h1>Welcome to Wine Party!</h1>
           <br></br>

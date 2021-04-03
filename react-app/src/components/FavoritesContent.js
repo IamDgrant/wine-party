@@ -1,14 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import "../components/styling/profileContentStyling.css";
+import "../components/styling/favoritesContentStyling.css";
 
-const ProfileContent = () => {
+const FavoritesContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   return (
-    <div className="profile-content-container">
-      <div className="profile-title">Profile</div>
-      <div ClassName="profile-info-name" style={{fontWeight: "900"}}>
+    <div className="favorite-content-container">
+      <div className="favorite-title">Favorites</div>
+      <div ClassName="favorite-info-name">
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
       <div ClassName="profile-info-email">{sessionUser.email}</div>
@@ -16,4 +15,4 @@ const ProfileContent = () => {
     </div>
   );
 };
-export default ProfileContent;
+export default FavoritesContent;

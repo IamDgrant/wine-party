@@ -8,6 +8,11 @@ import BrowseResults from "./components/BrowseResults";
 import FindHost from "./components/FindHost"
 import Account from "./components/Account"
 import Profile from "./components/Profile"
+import Favorites from "./components/Favorites"
+import Details from "./components/Details"
+import Help from "./components/Help"
+import Messages from "./components/Messages"
+
 import SearchResult from "./components/SearchResults";
 import Events from "./components/Events";
 import FAQ from "./components/FAQ"
@@ -52,11 +57,20 @@ const App = () => {
         <ProtectedRoute path="/profile" exact={true}>
           <Profile />
         </ProtectedRoute>
-        <ProtectedRoute path="/account" exact={true}>
-          <Account />
+        <ProtectedRoute path="/favorites" exact={true}>
+          <Favorites />
+        </ProtectedRoute>
+        <ProtectedRoute path="/help" exact={true}>
+          <Help />
+        </ProtectedRoute>
+        <ProtectedRoute path="/messages" exact={true}>
+          <Messages />
         </ProtectedRoute>
         <ProtectedRoute path="/events" exact={true}>
           <Events />
+        </ProtectedRoute>
+        <ProtectedRoute path="/details" exact={true}>
+          <Details />
         </ProtectedRoute>
         <ProtectedRoute path="/search" exact={true}>
           <SearchResult />

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
-import { photoUpload } from "../store/session";
+import { photoUpload, logout } from "../store/session";
 import { Menu, Dropdown, Button } from "antd";
-import LogoutButton from "../components/auth/LogoutButton";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/mainHeaderStyling.css";
@@ -47,6 +46,11 @@ const MainHeader = () => {
     });
   };
 
+  const onLogout = async (e) => {
+    const user = await dispatch(logout());
+    if (!user.ok) history.push("/");
+  };
+
   // useEffect(() => {
   //   dispatch(browseAllHost());
   // }, [dispatch]);
@@ -54,44 +58,28 @@ const MainHeader = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  //   const showSignInModal = () => {
-  //     setIsSignInModalVisible(true);
-  //   };
-
-  //   const signInHandleOk = () => {
-  //     onSignIn();
-  //     setIsSignInModalVisible(false);
-  //   };
-
-  //   const signInHandleCancel = () => {
-  //     setIsSignInModalVisible(false);
-  //   };
-
-  //   const showSignUpModal = () => {
-  //     setIsisSignUpModalVisible(true);
-  //   };
-
-  //   const signUpHandleOk = () => {
-  //     onSignUp();
-  //     setIsisSignUpModalVisible(false);
-  //   };
-
-  //   const signUpHandleCancel = () => {
-  //     setIsisSignUpModalVisible(false);
-  //   };
+  
   const userMenu = (
     <Menu>
       <Menu.Item>
-        <Button type="link">Messages</Button>
+        <NavLink exact to="/messages">
+          <Button type="link">Messages</Button>
+        </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <Button type="link">Events</Button>
+        <NavLink exact to="/events">
+          <Button type="link">Events</Button>
+        </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <Button type="link">Favorites</Button>
+        <NavLink exact to="/favorites">
+          <Button type="link">Favorites</Button>
+        </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <Button type="link">Help</Button>
+        <NavLink exact to="/help">
+          <Button type="link">Help</Button>
+        </NavLink>
       </Menu.Item>
       <div className="line-break"></div>
       <Menu.Item>
@@ -100,7 +88,9 @@ const MainHeader = () => {
         </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <Button type="link">Log out</Button>
+        <Button type="link" onClick={onLogout}>
+          Log out
+        </Button>
       </Menu.Item>
     </Menu>
   );
