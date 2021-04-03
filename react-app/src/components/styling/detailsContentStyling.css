@@ -1,3 +1,8 @@
+.personal-details {
+    margin-top: 15px;
+}
+
+
 .details-content-container {
   width: 80%;
   max-width: 100%;
@@ -7,7 +12,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.breadcrumbs {
+.breadcrumb {
     padding-bottom: 20px;
 }
 
@@ -19,6 +24,7 @@
 .full-name-edit {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .details-title {
@@ -47,4 +53,9 @@
 
 .edit-name {
   width: fit-content;
+}
+
+.line-break {
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(224, 224, 224, 0.185);
 }
