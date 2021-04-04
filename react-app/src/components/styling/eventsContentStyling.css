@@ -6,8 +6,8 @@
   min-height: 100vh;
 }
 
-.upcoming-events {
-  margin-top: 5vh;
+.events-list {
+  margin-top: 50px;
 }
 
 .events-title {
@@ -26,4 +26,14 @@
 .ant-collapse,
 .ant-collapse-icon-position-left {
   width: 500px;
+}
+
+.edit-button, .trash-button {
+  display:flex;
+  justify-content: flex-start;
+}
+
+.edit-delete {
+  display: flex;
+  justify-content: flex-start;
 }
