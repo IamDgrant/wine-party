@@ -9,7 +9,7 @@ import {
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import "./styling/futureEventStyle.css";
+// import "./styling/futureEventStyle.css";
 
 const FutureEvent = ({ id }) => {
   const [isSeeEventModalVisible, setSeeEventModalVisible] = useState(false);

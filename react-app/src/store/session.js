@@ -14,8 +14,7 @@ const removeUser = () => ({
 const setPhoto = (photoUrl) => ({
   type: SET_PHOTO,
   payload: photoUrl,
-})
-
+});
 
 export const createUser = (user) => async (dispatch) => {
   const res = await fetch(`/api/auth/signup`, {
@@ -45,6 +44,34 @@ export const login = (email, password) => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setUser(data));
+  }
+  return res;
+};
+export const updateUser = (
+  first_name,
+  last_name,
+  city,
+  state,
+  postal_code,
+  signUpEmail
+) => async (dispatch) => {
+  const res = await fetch("/api/auth/update", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      first_name,
+      last_name,
+      city,
+      state,
+      postal_code,
+      signUpEmail,
+    }),
   });
   if (res.ok) {
     const data = await res.json();
@@ -91,7 +118,10 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, { user: null });
       return newState;
     case SET_PHOTO:
-      return { ...state, user: {...state.user, profile_image: action.payload.url}}
+      return {
+        ...state,
+        user: { ...state.user, profile_image: action.payload.url },
+      };
     default:
       return state;
   }

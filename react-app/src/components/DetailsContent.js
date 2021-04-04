@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Breadcrumb, Button } from "antd";
+import { updateUser } from "../store/session";
 import "../components/styling/detailsContentStyling.css";
 
 const DetailsContent = () => {
@@ -23,12 +24,15 @@ const DetailsContent = () => {
   const [birthday, setBirthday] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
 
   const updateEditingName = () => {
     setIsEditingName(!isEditingName);
   };
   const saveEditingName = () => {
+    console.log("SAVED");
     setIsEditingName(!isEditingName);
+    onSave();
   };
 
   const updateEditingEmail = () => {
@@ -36,6 +40,7 @@ const DetailsContent = () => {
   };
   const saveEditingEmail = () => {
     setIsEditingEmail(!isEditingEmail);
+    onSave();
   };
 
   const updateEditingPhone = () => {
@@ -43,6 +48,7 @@ const DetailsContent = () => {
   };
   const saveEditingPhone = () => {
     setIsEditingPhone(!isEditingPhone);
+    onSave();
   };
 
   const updateEditingAddress = () => {
@@ -50,6 +56,7 @@ const DetailsContent = () => {
   };
   const saveEditingAddress = () => {
     setIsEditingAddress(!isEditingAddress);
+    onSave();
   };
 
   const updateEditingBirthday = () => {
@@ -57,6 +64,7 @@ const DetailsContent = () => {
   };
   const saveEditingBirthday = () => {
     setIsEditingBirthday(!isEditingBirthday);
+    onSave();
   };
 
   const updateEditingIdentification = () => {
@@ -64,6 +72,7 @@ const DetailsContent = () => {
   };
   const saveEditingIdentification = () => {
     setIsEditingIdentification(!isEditingIdentification);
+    onSave();
   };
 
   const updateFirstName = (e) => {
@@ -96,6 +105,27 @@ const DetailsContent = () => {
   };
   const updateIdentification = (e) => {
     setIdentification(e.target.value);
+  };
+
+  const onSave = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      updateUser({
+        first_name,
+        last_name,
+        city,
+        state,
+        postal_code,
+        signInEmail,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
   };
 
   return (

@@ -1,14 +1,29 @@
-.event-content-container {
-    width: 80%;
-    margin: 7rem 15% 0 15%;
-    max-width: 100%;
-    box-sizing: border-box;
-    min-height: 100vh;
-  }
+.events-content-container {
+  width: 80%;
+  margin: 7rem 15% 0 15%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
 
-  .events-title {
-    width: 100%;
+.upcoming-events {
+  margin-top: 5vh;
+}
+
+.events-title {
+  width: 100%;
   color: #000;
   font-size: 3vh;
   font-weight: 400;
+}
+
+.anticon,
+.anticon-right,
+.ant-collapse-arrow {
+  margin-top: -4px;
+}
+
+.ant-collapse,
+.ant-collapse-icon-position-left {
+  width: 500px;
 }
