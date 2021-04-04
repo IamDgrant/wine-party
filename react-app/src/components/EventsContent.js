@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { seeEvent, deleteEvent } from "../store/event";
 import { Collapse, Button, Modal } from "antd";
 import "../components/styling/eventsContentStyling.css";
-import party from "../assets/images/shutterstock_1006797736.jpeg";
+import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
+// import party from "../assets/images/shutterstock_1006797736.jpeg";
 
 const EventsContent = ({ id }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -46,9 +47,9 @@ const EventsContent = ({ id }) => {
 
   const { Panel } = Collapse;
 
-  function callback(key) {
+  const callback = (key) => {
     console.log(key);
-  }
+  };
 
   const todaysDate = new Date();
 
@@ -182,11 +183,21 @@ const EventsContent = ({ id }) => {
                     key={event.id}
                     style={{ fontWeight: "900" }}
                   >
-                    <p>{party}</p>
-                    <p>
-                      {event.event_city}, {event.event_state}
-                    </p>
-                    <p>{event.event_date}</p>
+                    <div>
+                      <div>
+                        <img
+                          style={{ opacity: ".3" }}
+                          src={party}
+                          alt="neon lights"
+                        ></img>
+                      </div>
+                      <div>
+                        <p>
+                          {event.event_city}, {event.event_state}
+                        </p>
+                      </div>
+                    </div>
+                    <p>{event.event_date.slice(0, 16)}</p>
                   </Panel>
                 ))}
             </Collapse>
