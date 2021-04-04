@@ -61,30 +61,41 @@ const MainHeader = () => {
 
   const userMenu = (
     <Menu>
-      <Menu.Item >
-        <NavLink exact to="/messages">
-          <Button className="antd-btn" type="link">Messages</Button>
-        </NavLink>
-      </Menu.Item>
       <Menu.Item>
         <NavLink exact to="/events">
-          <Button className="antd-btn" type="link">Events</Button>
+          <Button className="antd-btn" type="link">
+            Events
+          </Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
+        <NavLink exact to="/messages">
+          <Button className="antd-btn" type="link">
+            Messages
+          </Button>
+        </NavLink>
+      </Menu.Item>
+
+      <Menu.Item>
         <NavLink exact to="/favorites">
-          <Button className="antd-btn" type="link">Favorites</Button>
+          <Button className="antd-btn" type="link">
+            Favorites
+          </Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
         <NavLink exact to="/help">
-          <Button className="antd-btn" type="link">Help</Button>
+          <Button className="antd-btn" type="link">
+            Help
+          </Button>
         </NavLink>
       </Menu.Item>
       <div className="line-break"></div>
       <Menu.Item>
         <NavLink exact to="/account">
-          <Button className="antd-btn" type="link">Account</Button>
+          <Button className="antd-btn" type="link">
+            Account
+          </Button>
         </NavLink>
       </Menu.Item>
       <Menu.Item>
@@ -99,10 +110,16 @@ const MainHeader = () => {
     sessionUser && (
       <div className="main-header-container">
         <div className="main-logo-container">
-          <NavLink className="logo-nav" to="/home">Wine Party</NavLink>
+          <NavLink className="logo-nav" to="/home">
+            Wine Party
+          </NavLink>
         </div>
         <div className="user-menu">
-          <Dropdown className="antd-drop" overlay={userMenu} trigger={["click"]}>
+          <Dropdown
+            className="antd-drop"
+            overlay={userMenu}
+            trigger={["click"]}
+          >
             <Button
               className="profile_button"
               shape="circle"
@@ -118,7 +135,11 @@ const MainHeader = () => {
                     className=""
                   ></img>
                 ) : (
-                  <img src={img_placeholder} alt="Avatar" className="img_placeholder"></img>
+                  <img
+                    src={img_placeholder}
+                    alt="Avatar"
+                    className="img_placeholder"
+                  ></img>
                 )}
               </div>
             </Button>

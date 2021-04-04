@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { seeEvent, deleteEvent } from "../store/event";
-import { Collapse, Button, Modal } from "antd";
+import { Collapse, Button, Modal, Popconfirm } from "antd";
+import { QuestionCircleOutlined } from "@ant-design/icons";
 import "../components/styling/eventsContentStyling.css";
 import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
-// import party from "../assets/images/shutterstock_1006797736.jpeg";
 
 const EventsContent = ({ id }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -38,6 +38,7 @@ const EventsContent = ({ id }) => {
   };
 
   const deleteHandleOk = () => {
+    console.log("THIS WORKS");
     setIsDeleteEditModalVisible(false);
   };
 
@@ -145,26 +146,38 @@ const EventsContent = ({ id }) => {
                         </Modal>
                       </div>
                       <div className="trash-btn">
-                        <Button
-                          type="link"
-                          className="trash-button"
-                          onClick={showDeleteModal}
+                        <Popconfirm
+                          title="Are you sure？"
+                          okText="Submit"
+                          icon={
+                            <QuestionCircleOutlined style={{ color: "red" }} />
+                          }
+                          onConfirm={deleteHandleOk}
                         >
-                          {trashButton}
-                        </Button>
-                        <Modal
+                          <Button
+                            type="link"
+                            className="trash-button"
+                            // onOk={deleteHandleOk}
+                            // onCancel={deleteHandleCancel}
+                            // onClick={showDeleteModal}
+                          >
+                            {trashButton}
+                          </Button>
+                        </Popconfirm>
+
+                        {/* <Modal
                           title="Delete Event"
                           visible={isDeleteModalVisible}
                           okText="Submit"
                           onOk={deleteHandleOk}
                           onCancel={deleteHandleCancel}
-                          // style={{
-                          //   backgroundColor: "#f9fbf2",
-                          //   color: "#0e1c36",
-                          // }}
+                          style={{
+                            backgroundColor: "#f9fbf2",
+                            color: "#0e1c36",
+                          }}
                         >
-                          {/* <Event /> */}
-                        </Modal>
+                          <Event />
+                        </Modal> */}
                       </div>
                     </div>
                   </Panel>
