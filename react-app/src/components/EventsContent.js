@@ -3,7 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
 import { createEvent, seeEvent, deleteEvent } from "../store/event";
 // import EventForm from "../components/auth/forms/CreateEventForm";
-import { Collapse, Button, Modal, Popconfirm, Drawer, message } from "antd";
+import {
+  Collapse,
+  Button,
+  Modal,
+  Popconfirm,
+  Drawer,
+  message,
+  autoFocus,
+} from "antd";
 import { usStates } from ".././components/States";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import "../components/styling/eventsContentStyling.css";
@@ -71,11 +79,10 @@ const EventsContent = (user_id, { id }) => {
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
-    nameInputFocus.current.focus()
+    nameInputFocus.current.focus();
     // nameFocus();
     // if (isDrawerVisible === true) nameInputFocus.current.focus();
   };
- 
 
   // const nameFocus = () => {
   //   console.log("yes");
@@ -86,7 +93,6 @@ const EventsContent = (user_id, { id }) => {
   // if (isDrawerVisible === true) {
   //   console.log("HERE");
   //   nameInputFocus.current.focus()}
-
 
   const closeDrawer = () => {
     setIsDrawerVisible(false);
@@ -132,10 +138,21 @@ const EventsContent = (user_id, { id }) => {
     setIsDeleteEditModalVisible(true);
   };
 
-  const deleteHandleOk = () => {
-    console.log("THIS WORKS");
-    setIsDeleteEditModalVisible(false);
+  const deleteOneEvent = async (id) => {
+    console.log(id);
+    await dispatch(deleteEvent(id));
+    // if (projectID) {
+    //   dispatch(seeProjectTask(projectID));
+    // } else {
+    //   dispatch(seeTask());
+    // }
   };
+
+  // const deleteHandleOk = () => {
+  //   console.log("THIS WORKS");
+  //   setIsDeleteEditModalVisible(false);
+  //   deleteOneEvent();
+  // };
 
   const deleteHandleCancel = () => {
     setIsDeleteEditModalVisible(false);
@@ -231,6 +248,7 @@ const EventsContent = (user_id, { id }) => {
         // afterVisibleChange={}
         title=""
         placement="bottom"
+        autoFocus={false}
         closable={false}
         mask={false}
         visible={isDrawerVisible}
@@ -329,15 +347,9 @@ const EventsContent = (user_id, { id }) => {
                                 style={{ color: "red" }}
                               />
                             }
-                            onConfirm={deleteHandleOk}
+                            onConfirm={() => deleteOneEvent(event.id)}
                           >
-                            <Button
-                              type="link"
-                              className="trash-button"
-                              // onOk={deleteHandleOk}
-                              // onCancel={deleteHandleCancel}
-                              // onClick={showDeleteModal}
-                            >
+                            <Button type="link" className="trash-button">
                               {trashButton}
                             </Button>
                           </Popconfirm>
