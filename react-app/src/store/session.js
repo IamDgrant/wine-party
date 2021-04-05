@@ -59,8 +59,9 @@ export const updateUser = (
   postal_code,
   signUpEmail
 ) => async (dispatch) => {
-  const res = await fetch("/api/auth/update", {
-    method: "PATCH",
+  console.log("MADE IT HERE");
+  const res = await fetch("/api/users/update", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

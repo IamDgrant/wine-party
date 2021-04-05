@@ -3,7 +3,9 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from ..aws_s3 import *
 from app.models import User, db
+from app.forms import UpdateFirstNameForm
 from flask_login import current_user, login_user, logout_user, login_required
+from wtforms.validators import DataRequired, Email, ValidationError
 
 user_routes = Blueprint('users', __name__)
 
@@ -21,11 +23,49 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+# @task_routes.route('/update/<id>', methods=['POST'])
+# @login_required
+# def update_user(id):
+#     user = User.query.filter_by(id=id).first()
+#     update = request.data.decode("utf-8")
+#     updated = ast.literal_eval(update)
+#     if "status" in updated.keys():
+#         status = updated["status"]
+#         task.status = status
+#     if "priority" in updated.keys():
+#         priority = updated["priority"]
+#         task.priority = priority
+#     if "desc" in updated.keys():
+#         desc = updated["desc"]
+#         task.description = desc
 
-# @auth_routes.route('/update', methods=['POST'])
+#     db.session.commit()
+
+#     return task.to_dict()
+
+
+# @user_routes.route('/update', methods=['POST'])
+# # @login_required
 # def update_user():
 #     form = UpdateFirstNameForm()
 #     form['csrf_token'].data = request.cookies['csrf_token']
+#     print("HERE I AM", current_user.to_dict())
+#     if form.validate_on_submit():
+#         print("DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.data)
+#         print("IN!!!!!!!!!!!!!!!!!!!")
+#         user = User(
+#             first_name=form.data['first_name'],
+#         )
+#         db.session.add(user)
+#         print("USER!!!!!!!!!!!!!!!!!!", user)
+#         db.session.commit()
+#         return user.to_dict()
+#     return('Invalid Info')
+
+
+# def update_user():
+#     form = UpdateFirstNameForm()
+#     # form['csrf_token'].data = request.cookies['csrf_token']
 #     if form.validate_on_submit():
 #         user = User(
 #             first_name=form.data['first_name'],
@@ -38,9 +78,9 @@ def user(id):
 #         )
 #         db.session.add(user)
 #         db.session.commit()
-#         login_user(user)
 #         return user.to_dict()
 #     return {'errors': validation_errors_to_error_messages(form.errors)}
+#     return('Invalid Info')
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

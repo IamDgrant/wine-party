@@ -74,7 +74,7 @@ h4 {
   align-items: center;
 }
 
-.add-event {
+/* .add-event {
   width: 160px;
   height: 160px;
   border: 1px dashed rgb(158, 166, 174);
@@ -83,10 +83,10 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* transition: 0.5s; */
-}
+  transition: 0.5s;
+} */
 
-.add-event-btn {
+/* .add-event-btn {
   border: none;
   background: none;
   outline: none;
@@ -96,6 +96,6 @@ h4 {
 .add-event:hover {
   border: 1px dashed rgb(158, 166, 174);
   color: rgb(90, 95, 99);
-  /* transform: translateY(-5px); */
+  transform: translateY(-5px);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
-}
+} */

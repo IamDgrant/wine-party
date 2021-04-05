@@ -26,6 +26,27 @@ const DetailsContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const onSave = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      updateUser({
+        first_name,
+        last_name,
+        city,
+        state,
+        postal_code,
+        signInEmail,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+
   const updateEditingName = () => {
     setIsEditingName(!isEditingName);
   };
@@ -105,27 +126,6 @@ const DetailsContent = () => {
   };
   const updateIdentification = (e) => {
     setIdentification(e.target.value);
-  };
-
-  const onSave = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      updateUser({
-        first_name,
-        last_name,
-        city,
-        state,
-        postal_code,
-        signInEmail,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
   };
 
   return (

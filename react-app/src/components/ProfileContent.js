@@ -6,6 +6,7 @@ import "../components/styling/profileContentStyling.css";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  
 
 
   const updateEditing = () => {

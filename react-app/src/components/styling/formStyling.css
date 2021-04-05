@@ -2,9 +2,9 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 select {
-  font-family: "Bebas Neue", cursive;
-  font-size: 18px;
-  height: 35px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  height: 30px;
   width: 300px;
   padding: 0vh 1vh;
   margin: 4px 0;
@@ -18,8 +18,8 @@ select {
 
 .css-2b097c-container,
 .css-14jk2my-container {
-  font-family: "Bebas Neue", cursive;
-  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
   width: 300px;
   margin: 4px 0;
   display: inline-block;

@@ -2,9 +2,9 @@ import React, { useState, useEffect, Fragment } from "react";
 // import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
+import { createEvent } from "../../../store/event";
 import { message } from "antd";
 import { usStates } from "../../States";
-import { Pagination } from "antd";
 // import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 // import { createEvent } from "../../../store/event";
 // import { seeHost } from "../../../store/host";
@@ -12,20 +12,27 @@ import { Pagination } from "antd";
 // import SearchResult from "../../SearchResults";
 import "../../styling/formStyling.css";
 
-const EventForm = ({
-  user_id,
-  event_name,
-  setEventName,
-  event_date,
-  setEventDate,
-  event_city,
-  setEventCity,
-  event_state,
-  setEventState,
-  event_postal_code,
-  setEventPostalCode,
-}) => {
-  // const dispatch = useDispatch();
+const EventForm = (
+  user_id
+  // user_id,
+  // event_name,
+  // setEventName,
+  // event_date,
+  // setEventDate,
+  // event_city,
+  // setEventCity,
+  // event_state,
+  // setEventState,
+  // event_postal_code,
+  // setEventPostalCode,
+) => {
+  const [event_name, setEventName] = useState("");
+  const [event_date, setEventDate] = useState("");
+  const [event_city, setEventCity] = useState("");
+  const [event_state, setEventState] = useState("");
+  const [event_postal_code, setEventPostalCode] = useState("");
+
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   // const sessionHostsResults = useSelector((state) => state.host.host);
   // const sessionHostId = useSelector((state) =>
@@ -68,6 +75,30 @@ const EventForm = ({
     }
   }, [event_state, cscCity]);
 
+  const onSubmission = async (e) => {
+    //   // e.preventDefault();
+    if (!event_name) {
+      error();
+      return;
+    }
+    dispatch(
+      createEvent({
+        user_id,
+        event_name,
+        event_date,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).then(() => {
+      setEventName("");
+      setEventDate("");
+      setEventCity("");
+      setEventState("");
+      setEventPostalCode("");
+    });
+  };
+
   const error = () => {
     message.error("Please enter a event name!");
   };
@@ -88,28 +119,13 @@ const EventForm = ({
     setEventState(onChangeState);
   };
 
-  // const updatePostalCode = (e) => {
-  //   setEventPostalCode(e.target.value);
-  // };
-
-  // const Grid = makeResponsive(measureItems(CSSGrid), {
-  //   maxWidth: 1920,
-  //   minPadding: 100,
-  // });
+  const updatePostalCode = (e) => {
+    setEventPostalCode(e.target.value);
+  };
 
   return (
     <>
       <div className="events-container">
-        {/* <Grid
-          columns={2}
-          columnWidth={250}
-          gutterWidth={5}
-          gutterHeight={5}
-          itemHeight={300}
-          itemWidth={500}
-          duration={500}
-          easing="ease-out"
-        > */}
         {sessionUser && (
           <div className="left-search-box">
             <form>
@@ -121,21 +137,21 @@ const EventForm = ({
               <div>
                 <input
                   // className="form-input"
-                  type="date"
-                  name="event_date"
-                  placeholder="Event Date"
-                  onChange={updateEventDate}
-                  value={event_date}
-                ></input>
-              </div>
-              <div>
-                <input
-                  // className="form-input"
                   type="text"
                   name="event_name"
                   placeholder="Event Name"
                   onChange={updateEventName}
                   value={event_name}
+                ></input>
+              </div>
+              <div>
+                <input
+                  // className="form-input"
+                  type="date"
+                  name="event_date"
+                  placeholder="Event Date"
+                  onChange={updateEventDate}
+                  value={event_date}
                 ></input>
               </div>
               <div className="event-state">
@@ -173,7 +189,7 @@ const EventForm = ({
                   />
                 </Fragment>
               </div>
-              {/* <div>
+              <div>
                 <input
                   // className="form-input"
                   type="text"
@@ -182,7 +198,7 @@ const EventForm = ({
                   onChange={updatePostalCode}
                   value={event_postal_code}
                 ></input>
-              </div> */}
+              </div>
               {/* <div>
                 <h3 className="form_text">Next, add your Host</h3>
                 <SearchForm

@@ -1,25 +1,135 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { seeEvent, deleteEvent } from "../store/event";
-import { Collapse, Button, Modal, Popconfirm } from "antd";
+import Select from "react-select";
+import { createEvent, seeEvent, deleteEvent } from "../store/event";
+// import EventForm from "../components/auth/forms/CreateEventForm";
+import { Collapse, Button, Modal, Popconfirm, Drawer, message } from "antd";
+import { usStates } from ".././components/States";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import "../components/styling/eventsContentStyling.css";
+import "../components/styling/formStyling.css";
 import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
 
-const EventsContent = ({ id }) => {
+const EventsContent = (user_id, { id }) => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isDeleteModalVisible, setIsDeleteEditModalVisible] = useState(false);
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [event_name, setEventName] = useState("");
+  const [event_date, setEventDate] = useState("");
+  const [event_city, setEventCity] = useState("");
+  const [event_state, setEventState] = useState("");
+  const [event_postal_code, setEventPostalCode] = useState("");
+
   const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
 
+  const [cscCity, setCscCity] = useState();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [errors, setErrors] = useState([]);
+
+  const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
+
+  const headers = new Headers();
+  headers.append("X-CSCAPI-KEY", cscAPIKey);
+
+  const requestOptions = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const cityFetch = async () => {
+    const fetchCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${event_state}/cities`;
+    const res = await fetch(fetchCityUrl, requestOptions);
+    if (res.ok) {
+      const data = await res.json();
+      const sortedData = data.sort((city1, city2) =>
+        city1.name > city2.name ? 1 : -1
+      );
+      setCscCity(sortedData);
+      // return sortedData;
+    }
+  };
+
+  const nameInputFocus = useRef();
+
   useEffect(() => {
     if (!id) dispatch(seeEvent());
+    if (event_state.length > 0) {
+      cityFetch();
+    }
+    if (cscCity !== undefined) {
+      setIsDisabled(false);
+    }
     // else {
     //   dispatch();
     //   setData(id);
     // }
-  }, [id]);
+  }, [id, event_state, cscCity, isDrawerVisible]);
+
+  console.log(isDrawerVisible);
+
+  const onSubmission = async (e) => {
+    //   // e.preventDefault();
+    if (!event_name) {
+      error();
+      return;
+    }
+    dispatch(
+      createEvent({
+        user_id,
+        event_name,
+        event_date,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).then(() => {
+      setEventName("");
+      setEventDate("");
+      setEventCity("");
+      setEventState("");
+      setEventPostalCode("");
+    });
+  };
+
+  const error = () => {
+    message.error("Please enter a event name!");
+  };
+
+  const showDrawer = () => {
+    setIsDrawerVisible(true);
+    nameInputFocus.current.focus();
+  };
+
+  const closeDrawer = () => {
+    setIsDrawerVisible(false);
+  };
+
+  const updateEventName = (e) => {
+    showDrawer();
+    if (e.target.value.length < 1) {
+      setIsDrawerVisible(false);
+    }
+    setEventName(e.target.value);
+  };
+
+  const updateEventDate = (e) => {
+    setEventDate(e.target.value);
+  };
+
+  const updateEventCity = (city) => {
+    setEventCity(city);
+  };
+
+  const updateEventState = (onChangeState) => {
+    setEventState(onChangeState);
+  };
+
+  const updatePostalCode = (e) => {
+    setEventPostalCode(e.target.value);
+  };
 
   const showEditModal = () => {
     setIsEditModalVisible(true);
@@ -99,73 +209,121 @@ const EventsContent = ({ id }) => {
 
   return (
     <div className="events-content-container">
-      <div className="all-events">
-        <div className="upcoming-events">
-          <div className="events-title">Upcoming Events</div>
-          <div ClassName="events-list">
-            <Collapse defaultActiveKey={["1"]} onChange={callback}>
-              {upcomingEvents &&
-                upcomingEvents.map((event) => (
-                  <Panel
-                    header={event.event_name}
-                    key={event.id}
-                    style={{ fontWeight: "900" }}
-                  >
-                    <div>
+      <Drawer
+        // afterVisibleChange={}
+        title=""
+        placement="bottom"
+        closable={false}
+        mask={false}
+        visible={isDrawerVisible}
+        width={"100%"}
+        height={"10vh"}
+      >
+        <div className="drawer-buttons">
+          <div className="cancel-btn">
+            <Button
+              danger
+              htmlType="submit"
+              type="text"
+              size="middle"
+              style={{
+                border: "1px solid red",
+                fontFamily: "Montserrat",
+                color: "red",
+              }}
+              onClick={closeDrawer}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className="save-btn">
+            <Button
+              htmlType="submit"
+              type="text"
+              size="middle"
+              style={{
+                border: "1px solid #058532",
+                fontFamily: "Montserrat",
+                color: "#058532",
+                width: "5.25vw",
+              }}
+            >
+              Save
+            </Button>
+          </div>
+        </div>
+      </Drawer>
+      <div className="main-event-title">Events</div>
+      <div className="inner-events-content-container">
+        <div className="all-events-container">
+          <div className="upcoming-events">
+            <div className="events-title">Upcoming Events</div>
+            <div ClassName="events-list" style={{ paddingTop: "1vh" }}>
+              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+                {upcomingEvents &&
+                  upcomingEvents.map((event) => (
+                    <Panel
+                      header={event.event_name}
+                      key={event.id}
+                      style={{ fontWeight: "900" }}
+                    >
                       <div>
-                        <img src={party} alt="neon lights"></img>
+                        <div>
+                          <img src={party} alt="neon lights"></img>
+                        </div>
+                        <div>
+                          <p>
+                            {event.event_city}, {event.event_state}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p>
-                          {event.event_city}, {event.event_state}
-                        </p>
-                      </div>
-                    </div>
-                    <p>{event.event_date.slice(0, 16)}</p>
-                    <div className="edit-delete">
-                      <div className="edit-btn">
-                        <Button
-                          type="link"
-                          className="edit-button"
-                          onClick={showEditModal}
-                        >
-                          {editButton}
-                        </Button>
-                        <Modal
-                          title="Edit Event"
-                          visible={isEditModalVisible}
-                          okText="Submit"
-                          onOk={editHandleOk}
-                          onCancel={editHandleCancel}
-                          style={{
-                            backgroundColor: "#f9fbf2",
-                            color: "#0e1c36",
-                          }}
-                        >
-                          {/* <Event /> */}
-                        </Modal>
-                      </div>
-                      <div className="trash-btn">
-                        <Popconfirm
-                          title="Are you sure？"
-                          okText="Submit"
-                          icon={
-                            <QuestionCircleOutlined style={{ color: "red" }} />
-                          }
-                          onConfirm={deleteHandleOk}
-                        >
+                      <p>{event.event_date.slice(0, 16)}</p>
+                      <div className="edit-delete">
+                        <div className="edit-btn">
                           <Button
                             type="link"
-                            className="trash-button"
-                            // onOk={deleteHandleOk}
-                            // onCancel={deleteHandleCancel}
-                            // onClick={showDeleteModal}
+                            className="edit-button"
+                            onClick={showEditModal}
                           >
-                            {trashButton}
+                            {editButton}
                           </Button>
-                        </Popconfirm>
+                          <Modal
+                            title="Edit Event"
+                            visible={isEditModalVisible}
+                            okText="Submit"
+                            onOk={editHandleOk}
+                            onCancel={editHandleCancel}
+                            style={{
+                              backgroundColor: "#f9fbf2",
+                              color: "#0e1c36",
+                            }}
+                          >
+                            {/* <Event /> */}
+                          </Modal>
+                        </div>
+                        <div className="trash-btn">
+                          <Popconfirm
+                            title="Are you sure？"
+                            okText="Submit"
+                            icon={
+                              <QuestionCircleOutlined
+                                style={{ color: "red" }}
+                              />
+                            }
+                            onConfirm={deleteHandleOk}
+                          >
+                            <Button
+                              type="link"
+                              className="trash-button"
+                              // onOk={deleteHandleOk}
+                              // onCancel={deleteHandleCancel}
+                              // onClick={showDeleteModal}
+                            >
+                              {trashButton}
+                            </Button>
+                          </Popconfirm>
 
-                        {/* <Modal
+                          {/* <Modal
                           title="Delete Event"
                           visible={isDeleteModalVisible}
                           okText="Submit"
@@ -178,42 +336,347 @@ const EventsContent = ({ id }) => {
                         >
                           <Event />
                         </Modal> */}
+                        </div>
                       </div>
-                    </div>
-                  </Panel>
-                ))}
-            </Collapse>
+                    </Panel>
+                  ))}
+              </Collapse>
+            </div>
+          </div>
+          <div className="previous-events">
+            <div
+              className="events-title"
+              style={{ marginTop: "1vh", paddingBottom: "1vh" }}
+            >
+              Previous Events
+            </div>
+            <div ClassName="events-list">
+              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+                {pastEvents &&
+                  pastEvents.map((event) => (
+                    <Panel
+                      header={event.event_name}
+                      key={event.id}
+                      style={{ fontWeight: "900" }}
+                    >
+                      <div>
+                        <div>
+                          <img
+                            style={{ opacity: ".3" }}
+                            src={party}
+                            alt="neon lights"
+                          ></img>
+                        </div>
+                        <div>
+                          <p>
+                            {event.event_city}, {event.event_state}
+                          </p>
+                        </div>
+                      </div>
+                      <p>{event.event_date.slice(0, 16)}</p>
+                    </Panel>
+                  ))}
+              </Collapse>
+            </div>
           </div>
         </div>
-        <div className="previous-events">
-          <div className="events-title">Previous Events</div>
-          <div ClassName="events-list">
-            <Collapse defaultActiveKey={["1"]} onChange={callback}>
-              {pastEvents &&
-                pastEvents.map((event) => (
-                  <Panel
-                    header={event.event_name}
-                    key={event.id}
-                    style={{ fontWeight: "900" }}
-                  >
-                    <div>
-                      <div>
-                        <img
-                          style={{ opacity: ".3" }}
-                          src={party}
-                          alt="neon lights"
-                        ></img>
-                      </div>
-                      <div>
-                        <p>
-                          {event.event_city}, {event.event_state}
-                        </p>
-                      </div>
-                    </div>
-                    <p>{event.event_date.slice(0, 16)}</p>
-                  </Panel>
-                ))}
-            </Collapse>
+        <div className="add-event-main-container">
+          <div className="add-event">
+            <div className="add-events-title">Add Event</div>
+            <div className="add-event-form">
+              <form>
+                <div>
+                  {errors.map((error, i) => (
+                    <div key={i}>{error}</div>
+                  ))}
+                </div>
+                <div>
+                  <input
+                    // className="form-input"
+                    ref={nameInputFocus}
+                    autoFocus={true}
+                    type="text"
+                    name="event_name"
+                    placeholder="Event Name"
+                    onChange={updateEventName}
+                    value={event_name}
+                  ></input>
+                </div>
+                <div>
+                  <input
+                    // className="form-input"
+                    type="date"
+                    name="event_date"
+                    placeholder="Event Date"
+                    onChange={updateEventDate}
+                    value={event_date}
+                  ></input>
+                </div>
+                <div className="event-state">
+                  <Fragment>
+                    <Select
+                      // className="state-search-dropdown"
+                      classNamePrefix="select"
+                      placeholder="State"
+                      name="states"
+                      options={usStates.map((state) => ({
+                        label: state.label,
+                        value: state.value,
+                      }))}
+                      onChange={(state) => updateEventState(state.value)}
+                    />
+                  </Fragment>
+                </div>
+                <div>
+                  <Fragment>
+                    <Select
+                      // className="city-search-dropdown"
+                      classNamePrefix="select"
+                      placeholder="City"
+                      name="cities"
+                      isDisabled={isDisabled}
+                      options={
+                        cscCity !== undefined
+                          ? cscCity.map((city) => ({
+                              label: city.name,
+                              value: city.name,
+                            }))
+                          : null
+                      }
+                      onChange={(city) => updateEventCity(city.value)}
+                    />
+                  </Fragment>
+                </div>
+                <div>
+                  <input
+                    // className="form-input"
+                    type="text"
+                    name="event_postal_code"
+                    placeholder="Postal Code"
+                    onChange={updatePostalCode}
+                    value={event_postal_code}
+                  ></input>
+                </div>
+                {/* <div>
+                <h3 className="form_text">Next, add your Host</h3>
+                <SearchForm
+                  search={search}
+                  setSearch={setSearch}
+                  sommelier={sommelier}
+                  setSommelier={setSommelier}
+                  mixologist={mixologist}
+                  setMixologist={setMixologist}
+                  redWine={redWine}
+                  setRedWine={setRedWine}
+                  whiteWine={whiteWine}
+                  setWhiteWine={setWhiteWine}
+                  roseWine={roseWine}
+                  setRoseWine={setRoseWine}
+                  bourbon={bourbon}
+                  setBourbon={setBourbon}
+                  brandy={brandy}
+                  setBrandy={setBrandy}
+                  cognac={cognac}
+                  setCognac={setCognac}
+                  gin={gin}
+                  setGin={setGin}
+                  liqueurs={liqueurs}
+                  setLiqueurs={setLiqueurs}
+                  rum={rum}
+                  setRum={setRum}
+                  scotch={scotch}
+                  setScotch={setScotch}
+                  tequila={tequila}
+                  setTequila={setTequila}
+                  vodka={vodka}
+                  setVodka={setVodka}
+                  whiskey={whiskey}
+                  setWhiskey={setWhiskey}
+                /> */}
+                {/* <div className="search_bar">
+                    <input
+                      className="searchInput"
+                      placeholder="Search name, city, state, postal code..."
+                      value={search}
+                      type="text"
+                      onChange={updateSearch}
+                    ></input>
+                    <label className="container">
+                      Sommelier
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="sommelier"
+                        checked={sommelier}
+                        onChange={updateSommelier}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Mixologist
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="mixologist"
+                        checked={mixologist}
+                        onChange={updateMixologist}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Red Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="redWine"
+                        checked={redWine}
+                        onChange={updateRedWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      White Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="whiteWine"
+                        checked={whiteWine}
+                        onChange={updateWhiteWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Rose Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="roseWine"
+                        checked={roseWine}
+                        onChange={updateRoseWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Bourbon
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="bourbon"
+                        checked={bourbon}
+                        onChange={updateBourbon}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Brandy
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="brandy"
+                        checked={brandy}
+                        onChange={updateBrandy}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Cognac
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="cognac"
+                        checked={cognac}
+                        onChange={updateCognac}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Gin
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="gin"
+                        checked={gin}
+                        onChange={updateGin}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Liqueurs
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="liqueurs"
+                        checked={liqueurs}
+                        onChange={updateLiqueurs}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Rum
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="rum"
+                        checked={rum}
+                        onChange={updateRum}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Scotch
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="scotch"
+                        checked={scotch}
+                        onChange={updateScotch}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Tequila
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="tequila"
+                        checked={tequila}
+                        onChange={updateTequila}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Vodka
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="vodka"
+                        checked={vodka}
+                        onChange={updateVodka}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Whiskey
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="whiskey"
+                        checked={whiskey}
+                        onChange={updateWhiskey}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    
+                </div> */}
+                {/* <button type="submit" className="reserve-btn">
+                  Add Event and Find a Host
+                </button> */}
+                {/* </div> */}
+                {/* <button type="submit" className="reserve-btn">
+                Find a Host
+              </button> */}
+              </form>
+            </div>
           </div>
         </div>
       </div>

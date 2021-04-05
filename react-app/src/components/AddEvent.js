@@ -48,7 +48,7 @@ const AddEvent = ({ user_id }) => {
 
   return (
     <>
-      <div className="">
+      {/* <div className="">
         <NavLink exact to="/events">
           <Button
             htmlType="submit"
@@ -60,10 +60,10 @@ const AddEvent = ({ user_id }) => {
               width: "150px",
               color: "#f9fbf2",
               fontFamily: "Montserrat",
-            }}
-            // onClick={showAddEventModal}
-          >
-            <div className="plus">
+            }} */}
+            {/* // onClick={showAddEventModal} */}
+          {/* // > */}
+            {/* <div className="plus">
               <PlusOutlined
                 style={{ fontSize: "6vh", color: "rgb(158, 166, 174)" }}
               />
@@ -72,7 +72,7 @@ const AddEvent = ({ user_id }) => {
               <h5>Add Event</h5>
             </div>
           </Button>
-        </NavLink>
+        </NavLink> */}
         {/* <Modal
           okText="Submit"
           title="Add an Event"
@@ -98,7 +98,7 @@ const AddEvent = ({ user_id }) => {
           />
           
         </Modal> */}
-      </div>
+      {/* </div> */}
     </>
   );
 };
