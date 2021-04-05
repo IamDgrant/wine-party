@@ -19,6 +19,7 @@ const EventsContent = (user_id, { id }) => {
   const [event_city, setEventCity] = useState("");
   const [event_state, setEventState] = useState("");
   const [event_postal_code, setEventPostalCode] = useState("");
+  const [focus, setFocus] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
   const sessionEvent = useSelector((state) => state.event.event);
@@ -66,42 +67,26 @@ const EventsContent = (user_id, { id }) => {
     //   dispatch();
     //   setData(id);
     // }
-  }, [id, event_state, cscCity, isDrawerVisible]);
-
-  console.log(isDrawerVisible);
-
-  const onSubmission = async (e) => {
-    //   // e.preventDefault();
-    if (!event_name) {
-      error();
-      return;
-    }
-    dispatch(
-      createEvent({
-        user_id,
-        event_name,
-        event_date,
-        event_city,
-        event_state,
-        event_postal_code,
-      })
-    ).then(() => {
-      setEventName("");
-      setEventDate("");
-      setEventCity("");
-      setEventState("");
-      setEventPostalCode("");
-    });
-  };
-
-  const error = () => {
-    message.error("Please enter a event name!");
-  };
+  }, [id, event_state, cscCity]);
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
-    nameInputFocus.current.focus();
+    nameInputFocus.current.focus()
+    // nameFocus();
+    // if (isDrawerVisible === true) nameInputFocus.current.focus();
   };
+ 
+
+  // const nameFocus = () => {
+  //   console.log("yes");
+  //   console.log(isDrawerVisible);
+  //   nameInputFocus.current.focus()
+  // };
+  // console.log(isDrawerVisible);
+  // if (isDrawerVisible === true) {
+  //   console.log("HERE");
+  //   nameInputFocus.current.focus()}
+
 
   const closeDrawer = () => {
     setIsDrawerVisible(false);
@@ -156,6 +141,39 @@ const EventsContent = (user_id, { id }) => {
     setIsDeleteEditModalVisible(false);
   };
 
+  const save = () => {
+    onSubmission();
+    setIsDrawerVisible(false);
+  };
+
+  const onSubmission = async (e) => {
+    //   // e.preventDefault();
+    if (!event_name) {
+      error();
+      return;
+    }
+    dispatch(
+      createEvent({
+        user_id,
+        event_name,
+        event_date,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).then(() => {
+      setEventName("");
+      setEventDate("");
+      setEventCity("");
+      setEventState("");
+      setEventPostalCode("");
+    });
+  };
+
+  const error = () => {
+    message.error("Please enter a event name!");
+  };
+
   const { Panel } = Collapse;
 
   const callback = (key) => {
@@ -167,7 +185,7 @@ const EventsContent = (user_id, { id }) => {
   const upcomingEvents = sessionEvent.filter((events) => {
     return new Date(events.event_date) > todaysDate;
   });
-  const pastEvents = sessionEvent.filter((events) => {
+  const previousEvents = sessionEvent.filter((events) => {
     return new Date(events.event_date) < todaysDate;
   });
 
@@ -217,7 +235,7 @@ const EventsContent = (user_id, { id }) => {
         mask={false}
         visible={isDrawerVisible}
         width={"100%"}
-        height={"10vh"}
+        height={"9vh"}
       >
         <div className="drawer-buttons">
           <div className="cancel-btn">
@@ -247,6 +265,7 @@ const EventsContent = (user_id, { id }) => {
                 color: "#058532",
                 width: "5.25vw",
               }}
+              onClick={save}
             >
               Save
             </Button>
@@ -352,8 +371,8 @@ const EventsContent = (user_id, { id }) => {
             </div>
             <div ClassName="events-list">
               <Collapse defaultActiveKey={["1"]} onChange={callback}>
-                {pastEvents &&
-                  pastEvents.map((event) => (
+                {previousEvents &&
+                  previousEvents.map((event) => (
                     <Panel
                       header={event.event_name}
                       key={event.id}

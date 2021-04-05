@@ -4,7 +4,7 @@ input[type="date"],
 select {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
-  height: 30px;
+  height: 50px;
   width: 300px;
   padding: 0vh 1vh;
   margin: 4px 0;
@@ -36,6 +36,17 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
+.select__control,
+.css-yk16xz-control,.select__value-container,
+.css-g1d714-ValueContainer  {
+  height: 50px;
+}
+
+/* .select__value-container,
+.css-g1d714-ValueContainer {
+  height: 40px;
+} */
 
 .pagination {
   margin-top: 25px;
