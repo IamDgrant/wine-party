@@ -44,9 +44,6 @@ def user(id):
 #     return task.to_dict()
 
 
-
-
-
 # def update_user():
 #     form = UpdateFirstNameForm()
 #     # form['csrf_token'].data = request.cookies['csrf_token']
@@ -66,23 +63,16 @@ def user(id):
 #     return {'errors': validation_errors_to_error_messages(form.errors)}
 #     return('Invalid Info')
 
-@user_routes.route('/update', methods=['POST'])
-# @login_required
+
+@user_routes.route('/update', methods=['PUT'])
+@login_required
 def update_user():
-    form = UpdateFirstNameForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    print("HERE I AM", current_user.to_dict())
-    if form.validate_on_submit():
-        print("DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.data)
-        print("IN!!!!!!!!!!!!!!!!!!!")
-        user = User(
-            first_name=form.data['first_name'],
-        )
-        db.session.add(user)
-        print("USER!!!!!!!!!!!!!!!!!!", user)
-        db.session.commit()
-        return user.to_dict()
-    return('Invalid Info')
+    user = current_user
+    new_name = request.get_json()
+    print("NAME!!!!!!!!!!!!!!!!!!!!!!!", new_name)
+    user.first_name = new_name["first_name"]
+    db.session.commit()
+    return {"user": user.to_dict()}
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

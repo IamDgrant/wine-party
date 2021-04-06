@@ -36,9 +36,35 @@
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  opacity: .5;
+  opacity: 0.5;
 }
 
-.image-upload>form {
+.image-upload > form {
   display: none;
+}
+
+.edit-image > form {
+  display: none;
+}
+
+.profile-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+}
+
+.join-date {
+  margin-top: 1vh;
+  font-size: 1.25vh;
+  font-style: italic;
+}
+
+.profile-full-name, .profile-edit-name {
+  margin-top: 2vh;
+}
+
+.about-form {
+  margin-top: 1vh;
 }

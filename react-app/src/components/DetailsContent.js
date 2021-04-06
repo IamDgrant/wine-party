@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Breadcrumb, Button } from "antd";
-import { updateUser } from "../store/session";
+import { update_User } from "../store/session";
 import "../components/styling/detailsContentStyling.css";
 
 const DetailsContent = () => {
@@ -31,7 +31,7 @@ const DetailsContent = () => {
     // e.preventDefault();
     let newErrors = [];
     dispatch(
-      updateUser({
+      update_User({
         first_name,
         last_name,
         city,

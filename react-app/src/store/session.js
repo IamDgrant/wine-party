@@ -1,10 +1,16 @@
 const SET_USER = "session/setUser";
+const UPDATE_USER = "session/updateUser";
 const REMOVE_USER = "session/removeUser";
 const SET_PHOTO = "session/setPhoto";
 
 const setUser = (user) => ({
   type: SET_USER,
   payload: user,
+});
+
+const updateUser = (data) => ({
+  type: UPDATE_USER,
+  payload: data,
 });
 
 const removeUser = () => ({
@@ -52,17 +58,18 @@ export const login = (email, password) => async (dispatch) => {
   return res;
 };
 
-export const updateUser = (
-  first_name,
-  last_name,
-  city,
-  state,
-  postal_code,
-  signUpEmail
-) => async (dispatch) => {
-  console.log("MADE IT HERE");
+export const update_User = (updateData) => async (dispatch) => {
+  const {
+    first_name,
+    last_name,
+    city,
+    state,
+    postal_code,
+    signUpEmail,
+  } = updateData;
+  console.log("MADE IT HERE", first_name);
   const res = await fetch("/api/users/update", {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -75,9 +82,10 @@ export const updateUser = (
       signUpEmail,
     }),
   });
+  console.log(res);
   if (res.ok) {
     const data = await res.json();
-    dispatch(setUser(data));
+    dispatch(updateUser(data));
   }
   return res;
 };

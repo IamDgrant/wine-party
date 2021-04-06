@@ -1,36 +1,95 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { photoUpload } from "../store/session";
+import { photoUpload, update_User } from "../store/session";
 import { Breadcrumb, Button, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "../components/styling/profileContentStyling.css";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [isEditingPhone, setIsEditingPhone] = useState(false);
+  const [isEditingAbout, setIsEditingAbout] = useState(false);
+  const [isEditingAddress, setIsEditingAddress] = useState(false);
+  const [isEditingIdentification, setIsEditingIdentification] = useState(false);
+  const [isEditingBirthday, setIsEditingBirthday] = useState(false);
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [about, setAbout] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [postal_code, setPostalCode] = useState("");
+  const [signInEmail, setSignInEmail] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [identification, setIdentification] = useState("");
+  const [birthday, setBirthday] = useState("");
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
-  // const [photoUrl, setPhotoUrl] = useState(
-  //   sessionUser ? sessionUser.photoUrl : ""
-  // );
 
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [sessionUser.profile_image]);
+  useEffect(() => {}, [sessionUser]);
+
+  const onSaveFirstName = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      update_User({
+        first_name,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+
+  const onSaveLastName = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      update_User({
+        last_name,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+
+  const onSaveAbout = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      update_User({
+        about,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+
+  const submit = () => {
+    dispatch(photoUpload(photoFile));
+  };
 
   const updateEditing = () => {
     // setIsEditing(true);
   };
 
-  const submit = () => {
-    dispatch(photoUpload(photoFile)).then((res) => {
-      // console.log(res);
-      // setPhotoUrl(res.url);
-    });
-  };
-
   const handleUpload = (e) => {
-    console.log(e);
     setPhotoFile(e.target.files[0]);
   };
 
@@ -43,23 +102,65 @@ const ProfileContent = () => {
     setIsEditingImage(!isEditingImage);
   };
 
-  // const props = {
-  //   name: "user_file",
-  //   // action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  //   headers: {
-  //     authorization: "authorization-text",
-  //   },
-  //   onChange(info) {
-  //     if (info.file.status !== "uploading") {
-  //       console.log(info.file, info.fileList);
-  //     }
-  //     if (info.file.status === "done") {
-  //       message.success(`${info.file.name} file uploaded successfully`);
-  //     } else if (info.file.status === "error") {
-  //       message.error(`${info.file.name} file upload failed.`);
-  //     }
-  //   },
-  // };
+  const updateEditingName = () => {
+    setIsEditingName(!isEditingName);
+  };
+  const saveEditingName = () => {
+    if (first_name === "") {
+      console.log('EMPTY');
+    } else {
+      console.log(first_name);
+      onSaveFirstName();
+    }
+    if (last_name === "") {
+      console.log('EMPTY');
+    } else {
+      onSaveLastName();
+    }
+    setIsEditingName(!isEditingName);
+  };
+
+  const updateEditingAbout = () => {
+    setIsEditingAbout(!isEditingAbout);
+  };
+  const saveEditingAbout = () => {
+    if (about === "") {
+      console.log('EMPTY');
+    } else {
+      onSaveAbout();
+    }
+    setIsEditingAbout(!isEditingAbout);
+  };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+
+  const updateAbout = (e) => {
+    setAbout(e.target.value);
+  };
+
+  const edit = (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="far"
+      data-icon="edit"
+      class="svg-inline--fa fa-edit fa-w-18"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 576 512"
+    >
+      <path
+        fill="currentColor"
+        d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"
+      ></path>
+    </svg>
+  );
 
   return (
     <div className="profile-content-container">
@@ -76,87 +177,39 @@ const ProfileContent = () => {
         <div className="personal-details">
           <div className="profile-image-container">
             <div className="profile-image">
-              {
-                isEditingImage ? (
-                  sessionUser.profile_image != null ? (
-                    <div className="image-upload">
-                      <label for="file-input">
-                        <img
-                          src={sessionUser.profile_image}
-                          alt="UserPhoto"
-                          className="profile-pic2"
-                        ></img>
-                      </label>
-                      <form
-                        className="image-forms"
-                        encType="multipart/form-data"
-                        onSubmit={submit}
-                      >
-                        <input
-                          id="file-input"
-                          type="file"
-                          name="user_file"
-                          onChange={handleUpload}
-                        ></input>
-                      </form>
-                    </div>
-                  ) : (
-                    //    <form
-                    //    className="image-forms"
-                    //    encType="multipart/form-data"
-                    //    onSubmit={submit}
-                    //  >
-
-                    //  </form>
+              {isEditingImage ? (
+                sessionUser.profile_image != null ? (
+                  <div className="image-upload">
                     <label for="file-input">
                       <img
-                        src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                        alt="Avatar"
+                        src={sessionUser.profile_image}
+                        alt="UserPhoto"
                         className="profile-pic2"
                       ></img>
                     </label>
-                  )
-                ) : sessionUser.profile_image != null ? (
-                  <img
-                    src={sessionUser.profile_image}
-                    alt="UserPhoto"
-                    className="profile-pic"
-                  ></img>
+                    <form
+                      className="image-forms"
+                      encType="multipart/form-data"
+                      onSubmit={submit}
+                    >
+                      <input
+                        id="file-input"
+                        type="file"
+                        name="user_file"
+                        onChange={handleUpload}
+                      ></input>
+                    </form>
+                  </div>
                 ) : (
-                  <img
-                    src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                    alt="Avatar"
-                    className="profile-pic "
-                  ></img>
+                  <label for="file-input">
+                    <img
+                      src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                      alt="Avatar"
+                      className="profile-pic2"
+                    ></img>
+                  </label>
                 )
-
-                //  (
-                //     <img
-                //       src={sessionUser.profile_image}
-                //       alt="UserPhoto"
-                //       className="profile-pic2"
-                //     ></img>
-                //   ) : (
-                //     <img
-                //       src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                //       alt="Avatar"
-                //       className="profile-pic2"
-                //     ></img>
-                //   )) : (sessionUser.profile_image != null ? (
-                //     <img
-                //       src={sessionUser.profile_image}
-                //       alt="UserPhoto"
-                //       className="profile-pic"
-                //     ></img>
-                //   ) : (
-                //     <img
-                //       src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                //       alt="Avatar"
-                //       className="profile-pic "
-                //     ></img>
-                //   )
-              }
-              {/* {sessionUser.profile_image != null ? (
+              ) : sessionUser.profile_image != null ? (
                 <img
                   src={sessionUser.profile_image}
                   alt="UserPhoto"
@@ -168,7 +221,10 @@ const ProfileContent = () => {
                   alt="Avatar"
                   className="profile-pic "
                 ></img>
-              )} */}
+              )}
+              <div className="join-date">
+                Toasting with us since {sessionUser.created_at.slice(12, 17)}
+              </div>
             </div>
             <div className="edit-image">
               {isEditingImage ? (
@@ -181,51 +237,106 @@ const ProfileContent = () => {
                 </div>
               )}
             </div>
-            {/* {isEditingImage ? (
-              <div className="image-form-container">
-                <form
-                  className="image-forms"
-                  encType="multipart/form-data"
-                  onSubmit={submit}
-                >
-                  <input
-                    id="myuniqueid"
-                    type="file"
-                    name="user_file"
-                    onChange={handleUpload}
-                  ></input>
-                </form>
-              </div>
-            ) : (
-              ""
-            )} */}
           </div>
           <div className="details-name">
             <div className="full-name-edit">
-              <div className="full-name">Full Name</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
+              {isEditingName}
+              <div className="profile-name">
+                <div className="full-name">Full Name</div>
               </div>
+
+              {isEditingName ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingName}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingName}>Edit</Button>
+                </div>
+              )}
             </div>
-            <div className="name">
-              {sessionUser.first_name} {sessionUser.last_name}
-            </div>
+            {isEditingName ? (
+              <div className="profile-form">
+                <form className="first-last-name-forms">
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-first-name-input"
+                    name="first name"
+                    type="text"
+                    placeholder={sessionUser.first_name}
+                    onChange={updateFirstName}
+                    value={first_name}
+                  />
+                </form>
+                <form>
+                  <input
+                    style={{
+                      height: "25px",
+                      width: "200px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="details-last-name-input"
+                    name="last name"
+                    type="text"
+                    placeholder={sessionUser.last_name}
+                    onChange={updateLastName}
+                    value={last_name}
+                  />
+                </form>
+              </div>
+            ) : (
+              <div className="name">
+                {sessionUser.first_name} {sessionUser.last_name}
+              </div>
+            )}
           </div>
           <div className="line-break"></div>
         </div>
         <div className="personal-details">
           <div className="details-name">
             <div className="full-name-edit">
+              {isEditingAbout}
               <div className="full-name">Full Name</div>
-              <div className="edit-name">
-                <Button onClick={updateEditing}>Edit</Button>
+              {isEditingAbout ? (
+                <div className="edit-name">
+                  <Button onClick={saveEditingAbout}>Save</Button>
+                </div>
+              ) : (
+                <div className="edit-name">
+                  <Button onClick={updateEditingAbout}>Edit</Button>
+                </div>
+              )}
+            </div>
+            {isEditingAbout ? (
+              <div className="details-form">
+                <form className="about-form">
+                  <input
+                    style={{
+                      height: "100px",
+                      width: "500px",
+                      fontFamily: "Montserrat",
+                      fontSize: "13px",
+                    }}
+                    className="profile-about-input"
+                    name="about"
+                    type="text"
+                    placeholder={sessionUser.about}
+                    onChange={updateAbout}
+                    value={about}
+                  />
+                </form>
               </div>
-            </div>
-            <div className="name">
-              {sessionUser.first_name} {sessionUser.last_name}
-            </div>
+            ) : (
+              <div className="profile-about">{sessionUser.about}</div>
+            )}
           </div>
-          <div className="line-break"></div>
+          {/* <div className="line-break"></div> */}
         </div>
       </div>
     </div>
