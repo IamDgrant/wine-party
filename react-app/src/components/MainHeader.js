@@ -10,14 +10,8 @@ import "../components/styling/mainHeaderStyling.css";
 
 const MainHeader = () => {
   const [click, setClick] = useState(false);
-  const [photoFile, setPhotoFile] = useState();
-  const [projects, setProjects] = useState();
-  const [bio, setBio] = useState("visible");
 
   const sessionUser = useSelector((state) => state.session.user);
-  const [photoUrl, setPhotoUrl] = useState(
-    sessionUser ? sessionUser.photoUrl : ""
-  );
 
   //   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
   //   const [isSignUpModalVisible, setIsisSignUpModalVisible] = useState(false);
@@ -35,17 +29,6 @@ const MainHeader = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
-  function handleUpload(e) {
-    setPhotoFile(e.target.files[0]);
-  }
-
-  const submit = (e) => {
-    e.preventDefault();
-    dispatch(photoUpload(photoFile)).then((res) => {
-      setPhotoUrl(res.url);
-    });
-  };
 
   const onLogout = async (e) => {
     const user = await dispatch(logout());
@@ -114,37 +97,41 @@ const MainHeader = () => {
             Wine Party
           </NavLink>
         </div>
-        <div className="user-menu">
-          <Dropdown
-            className="antd-drop"
-            overlay={userMenu}
-            trigger={["click"]}
-          >
-            <Button
-              className="profile_button"
-              shape="circle"
-              type="primary"
-              onClick={(e) => e.preventDefault()}
+        <div className="dropdown-container">
+          <div className="dropdown-inner-container">
+            <Dropdown
+              className="antd-drop"
+              overlay={userMenu}
+              trigger={["click"]}
             >
-              <div className="user-image">
-                {" "}
-                {sessionUser.profile_image != null ? (
-                  <img
-                    src={sessionUser.profile_image}
-                    alt="UserPhoto"
-                    className=""
-                  ></img>
-                ) : (
-                  <img
-                    src={img_placeholder}
-                    alt="Avatar"
-                    className="img_placeholder"
-                  ></img>
-                )}
+              <div className="button-container">
+                <Button
+                  className="profile-button"
+                  shape="circle"
+                  type="primary"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  <div className="inner-img-container">
+                    {sessionUser.profile_image != null ? (
+                      <img
+                        src={sessionUser.profile_image}
+                        alt="UserPhoto"
+                        className="small-profile-pic"
+                      ></img>
+                    ) : (
+                      <img
+                        src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                        alt="Avatar"
+                        className="small-profile-pic"
+                      ></img>
+                    )}
+                  </div>
+                </Button>
               </div>
-            </Button>
-          </Dropdown>
+            </Dropdown>
+          </div>
         </div>
+
         <div className="mobile-menu" onClick={handleClick}>
           {click ? (
             <CloseMenu className="menu-icon" />

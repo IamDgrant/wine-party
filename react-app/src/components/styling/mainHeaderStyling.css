@@ -24,39 +24,35 @@
   font-size: 6vh;
 }
 
+.inner-img-container {
+  margin: -5px 0px 0px 0px;
+}
+
 .logo-nav:hover {
-color: rgba(0, 0, 0, 0.658)
+  color: rgba(0, 0, 0, 0.658);
 }
 
 .line-break {
   border-top: 1px rgb(201, 201, 201) solid;
 }
 
-.user-image {
-  width: 25px;
-  height: 25px;
-}
-
-.profile_button {
-  width: 35px;
-  height: 35px;
+.profile-button {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
   background-color: transparent;
+  border: none;
 }
 
-.profile_button:hover {
+.profile-button:hover {
   background-color: rgba(128, 128, 128, 0.151);
 }
 
-.img_placeholder {
-  padding: 2px 0px 0px 8px;
-}
-
-.antd-btn {
-  color: rgb(0, 0, 0);
-}
-
-.antd-btn:hover {
-  color: rgba(0, 0, 0, 0.658)
+.small-profile-pic {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  /* margin: ; */
 }
 
 /* .ant-dropdown-menu-vertical {
