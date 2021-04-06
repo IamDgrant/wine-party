@@ -95,6 +95,7 @@ export const logout = () => async (dispatch) => {
 };
 
 export const photoUpload = (file) => async (dispatch) => {
+  console.log("hitting photo upload");
   let photoUrl;
   const formData = new FormData();
   formData.append("user_file", file);

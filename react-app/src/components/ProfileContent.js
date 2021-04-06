@@ -9,34 +9,42 @@ const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
-  const [photoUrl, setPhotoUrl] = useState(
-    sessionUser ? sessionUser.photoUrl : ""
-  );
+  // const [photoUrl, setPhotoUrl] = useState(
+  //   sessionUser ? sessionUser.photoUrl : ""
+  // );
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+  }, [sessionUser.profile_image])
 
   const updateEditing = () => {
     // setIsEditing(true);
   };
 
-  function handleUpload(e) {
-    setPhotoFile(e.target.files[0]);
-  }
-
-  function submit(e) {
-    e.preventDefault();
+  const submit = () => {
     dispatch(photoUpload(photoFile)).then((res) => {
-      setPhotoUrl(res.url);
+      // console.log(res);
+      // setPhotoUrl(res.url);
     });
-  }
+  };
+
+  const handleUpload = (e) => {
+    console.log(e);
+    setPhotoFile(e.target.files[0]);
+  };
+
+  const saveEditingImage = () => {
+    submit();
+    setIsEditingImage(!isEditingImage);
+  };
 
   const updateEditingImage = () => {
     setIsEditingImage(!isEditingImage);
   };
-  const saveEditingImage = () => {
-    setIsEditingImage(!isEditingImage);
-    handleUpload();
-  };
+
+  console.log(sessionUser.profile_image);
 
   return (
     <div className="profile-content-container">
@@ -53,9 +61,9 @@ const ProfileContent = () => {
         <div className="personal-details">
           <div className="profile-image-container">
             <div className="profile-image">
-              {photoUrl != null ? (
+              {sessionUser.profile_image != null ? (
                 <img
-                  src={photoUrl}
+                  src={sessionUser.profile_image}
                   alt="UserPhoto"
                   className="profile-pic"
                 ></img>
@@ -80,16 +88,18 @@ const ProfileContent = () => {
             </div>
             {isEditingImage ? (
               <div className="image-form-container">
-                <form className="image-forms">
-                  <form encType="multipart/form-data" onSubmit={submit}>
-                    <input
-                      id="myuniqueid"
-                      type="file"
-                      name="user_file"
-                      onChange={handleUpload}
-                    ></input>
-                    <label for="myuniqueid">Upload Photo</label>
-                  </form>
+                <form
+                  className="image-forms"
+                  encType="multipart/form-data"
+                  onSubmit={submit}
+                >
+                  <input
+                    id="myuniqueid"
+                    type="file"
+                    name="user_file"
+                    onChange={handleUpload}
+                  ></input>
+                  <label for="myuniqueid">Upload Photo</label>
                 </form>
               </div>
             ) : (
