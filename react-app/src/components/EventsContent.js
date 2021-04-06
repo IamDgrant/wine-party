@@ -1,5 +1,6 @@
 import React, { useEffect, useState, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom"
 import Select from "react-select";
 import { createEvent, seeEvent, deleteEvent } from "../store/event";
 // import EventForm from "../components/auth/forms/CreateEventForm";
@@ -27,11 +28,13 @@ const EventsContent = (user_id, { id }) => {
   const [event_city, setEventCity] = useState("");
   const [event_state, setEventState] = useState("");
   const [event_postal_code, setEventPostalCode] = useState("");
-  const [focus, setFocus] = useState("");
+  // const [focus, setFocus] = useState("");
 
   const sessionUser = useSelector((state) => state.session.user);
+  const sessionHost = useSelector((state) => state.session.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
@@ -134,10 +137,6 @@ const EventsContent = (user_id, { id }) => {
     setIsEditModalVisible(false);
   };
 
-  const showDeleteModal = () => {
-    setIsDeleteEditModalVisible(true);
-  };
-
   const deleteOneEvent = async (id) => {
     console.log(id);
     await dispatch(deleteEvent(id));
@@ -160,8 +159,13 @@ const EventsContent = (user_id, { id }) => {
 
   const save = () => {
     onSubmission();
-    setIsDrawerVisible(false);
+   
+    // setIsDrawerVisible(false);
   };
+
+  const onConfirm = () => {
+    history.push("/search")
+  }
 
   const onSubmission = async (e) => {
     //   // e.preventDefault();
@@ -273,7 +277,14 @@ const EventsContent = (user_id, { id }) => {
             </Button>
           </div>
           <div className="save-btn">
-            <Button
+            <Popconfirm
+              title="Ready to add a host？"
+              okText="Yes"
+              cancelText="No"
+              icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+              onConfirm={onConfirm}
+            >
+              <Button
               htmlType="submit"
               type="text"
               size="middle"
@@ -287,6 +298,7 @@ const EventsContent = (user_id, { id }) => {
             >
               Save
             </Button>
+            </Popconfirm>
           </div>
         </div>
       </Drawer>
@@ -410,85 +422,99 @@ const EventsContent = (user_id, { id }) => {
               </Collapse>
             </div>
           </div>
-        </div>
-        <div className="add-event-main-container">
-          <div className="add-event">
-            <div className="add-events-title">Add Event</div>
-            <div className="add-event-form">
-              <form>
-                <div>
-                  {errors.map((error, i) => (
-                    <div key={i}>{error}</div>
-                  ))}
-                </div>
-                <div>
-                  <input
-                    // className="form-input"
-                    ref={nameInputFocus}
-                    autoFocus={true}
-                    type="text"
-                    name="event_name"
-                    placeholder="Event Name"
-                    onChange={updateEventName}
-                    value={event_name}
-                  ></input>
-                </div>
-                <div>
-                  <input
-                    // className="form-input"
-                    type="date"
-                    name="event_date"
-                    placeholder="Event Date"
-                    onChange={updateEventDate}
-                    value={event_date}
-                  ></input>
-                </div>
-                <div className="event-state">
-                  <Fragment>
-                    <Select
-                      // className="state-search-dropdown"
-                      classNamePrefix="select"
-                      placeholder="State"
-                      name="states"
-                      options={usStates.map((state) => ({
-                        label: state.label,
-                        value: state.value,
-                      }))}
-                      onChange={(state) => updateEventState(state.value)}
-                    />
-                  </Fragment>
-                </div>
-                <div>
-                  <Fragment>
-                    <Select
-                      // className="city-search-dropdown"
-                      classNamePrefix="select"
-                      placeholder="City"
-                      name="cities"
-                      isDisabled={isDisabled}
-                      options={
-                        cscCity !== undefined
-                          ? cscCity.map((city) => ({
-                              label: city.name,
-                              value: city.name,
-                            }))
-                          : null
-                      }
-                      onChange={(city) => updateEventCity(city.value)}
-                    />
-                  </Fragment>
-                </div>
-                <div>
-                  <input
-                    // className="form-input"
-                    type="text"
-                    name="event_postal_code"
-                    placeholder="Postal Code"
-                    onChange={updatePostalCode}
-                    value={event_postal_code}
-                  ></input>
-                </div>
-                {/* <div>
+          <div className="add-event-main-container">
+            <div className="add-event">
+              <div
+                className="add-events-title"
+                style={{
+                  marginTop: "1vh",
+                  paddingBottom: "1vh",
+                  fontWeight: "400",
+                }}
+              >
+                Add Event
+              </div>
+              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+                <Panel
+                  header="Add your event"
+                  // key={event.id}
+                  style={{ fontWeight: "900" }}
+                >
+                  <div className="add-event-form">
+                    <form>
+                      <div>
+                        {errors.map((error, i) => (
+                          <div key={i}>{error}</div>
+                        ))}
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          ref={nameInputFocus}
+                          autoFocus={true}
+                          type="text"
+                          name="event_name"
+                          placeholder="Event Name"
+                          onChange={updateEventName}
+                          value={event_name}
+                        ></input>
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          type="date"
+                          name="event_date"
+                          placeholder="Event Date"
+                          onChange={updateEventDate}
+                          value={event_date}
+                        ></input>
+                      </div>
+                      <div className="event-state">
+                        <Fragment>
+                          <Select
+                            // className="state-search-dropdown"
+                            classNamePrefix="select"
+                            placeholder="State"
+                            name="states"
+                            options={usStates.map((state) => ({
+                              label: state.label,
+                              value: state.value,
+                            }))}
+                            onChange={(state) => updateEventState(state.value)}
+                          />
+                        </Fragment>
+                      </div>
+                      <div>
+                        <Fragment>
+                          <Select
+                            // className="city-search-dropdown"
+                            classNamePrefix="select"
+                            placeholder="City"
+                            name="cities"
+                            isDisabled={isDisabled}
+                            options={
+                              cscCity !== undefined
+                                ? cscCity.map((city) => ({
+                                    label: city.name,
+                                    value: city.name,
+                                  }))
+                                : null
+                            }
+                            onChange={(city) => updateEventCity(city.value)}
+                          />
+                        </Fragment>
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          type="text"
+                          name="event_postal_code"
+                          placeholder="Postal Code"
+                          onChange={updatePostalCode}
+                          value={event_postal_code}
+                        ></input>
+                      </div>
+                      {/* <div>
                 <h3 className="form_text">Next, add your Host</h3>
                 <SearchForm
                   search={search}
@@ -524,7 +550,7 @@ const EventsContent = (user_id, { id }) => {
                   whiskey={whiskey}
                   setWhiskey={setWhiskey}
                 /> */}
-                {/* <div className="search_bar">
+                      {/* <div className="search_bar">
                     <input
                       className="searchInput"
                       placeholder="Search name, city, state, postal code..."
@@ -699,14 +725,17 @@ const EventsContent = (user_id, { id }) => {
                     </label>
                     
                 </div> */}
-                {/* <button type="submit" className="reserve-btn">
+                      {/* <button type="submit" className="reserve-btn">
                   Add Event and Find a Host
                 </button> */}
-                {/* </div> */}
-                {/* <button type="submit" className="reserve-btn">
+                      {/* </div> */}
+                      {/* <button type="submit" className="reserve-btn">
                 Find a Host
               </button> */}
-              </form>
+                    </form>
+                  </div>
+                </Panel>
+              </Collapse>
             </div>
           </div>
         </div>

@@ -1,15 +1,32 @@
 .profile-content-container {
-    width: 80%;
-    max-width: 100%;
-    margin: 7rem 15% 0 15%;
-    box-sizing: border-box;
-    min-height: 100vh;
-    font-family: "Montserrat", sans-serif;
-  }
+  width: 80%;
+  max-width: 100%;
+  margin: 7rem 15% 0 15%;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
 
-  .profile-title {
-      width: 100%;
-    color: #000;
-    font-size: 3vh;
-    font-weight: 400;
-  }
+.profile-title {
+  width: 100%;
+  color: #000;
+  font-size: 3vh;
+  font-weight: 400;
+}
+
+.profile-image-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-image {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  display: flex;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}

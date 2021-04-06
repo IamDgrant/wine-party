@@ -51,6 +51,7 @@ export const login = (email, password) => async (dispatch) => {
   }
   return res;
 };
+
 export const updateUser = (
   first_name,
   last_name,

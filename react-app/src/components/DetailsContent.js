@@ -6,6 +6,7 @@ import { updateUser } from "../store/session";
 import "../components/styling/detailsContentStyling.css";
 
 const DetailsContent = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingPhone, setIsEditingPhone] = useState(false);
@@ -23,7 +24,7 @@ const DetailsContent = () => {
   const [identification, setIdentification] = useState("");
   const [birthday, setBirthday] = useState("");
 
-  const sessionUser = useSelector((state) => state.session.user);
+  
   const dispatch = useDispatch();
 
   const onSave = async (e) => {
@@ -51,7 +52,6 @@ const DetailsContent = () => {
     setIsEditingName(!isEditingName);
   };
   const saveEditingName = () => {
-    console.log("SAVED");
     setIsEditingName(!isEditingName);
     onSave();
   };

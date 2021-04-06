@@ -15,9 +15,9 @@ const BrowseResults = () => {
     dispatch(browseAllHost());
   }, [dispatch]);
 
-  const backClick = () => {
-    history.push("/");
-  };
+  // const backClick = () => {
+  //   history.push("/");
+  // };
 
   const Grid = makeResponsive(measureItems(CSSGrid), {
     maxWidth: 1920,
@@ -78,23 +78,23 @@ const BrowseResults = () => {
     </svg>
   );
 
-  const backButton = (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="far"
-      data-icon="arrow-alt-circle-left"
-      class="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
-    >
-      <path
-        fill="currentColor"
-        d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zm-72-20v40c0 6.6-5.4 12-12 12H256v67c0 10.7-12.9 16-20.5 8.5l-99-99c-4.7-4.7-4.7-12.3 0-17l99-99c7.6-7.6 20.5-2.2 20.5 8.5v67h116c6.6 0 12 5.4 12 12z"
-      ></path>
-    </svg>
-  );
+  // const backButton = (
+  //   <svg
+  //     aria-hidden="true"
+  //     focusable="false"
+  //     data-prefix="far"
+  //     data-icon="arrow-alt-circle-left"
+  //     class="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
+  //     role="img"
+  //     xmlns="http://www.w3.org/2000/svg"
+  //     viewBox="0 0 512 512"
+  //   >
+  //     <path
+  //       fill="currentColor"
+  //       d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zm-72-20v40c0 6.6-5.4 12-12 12H256v67c0 10.7-12.9 16-20.5 8.5l-99-99c-4.7-4.7-4.7-12.3 0-17l99-99c7.6-7.6 20.5-2.2 20.5 8.5v67h116c6.6 0 12 5.4 12 12z"
+  //     ></path>
+  //   </svg>
+  // );
 
   return (
     <>
@@ -102,16 +102,16 @@ const BrowseResults = () => {
       <div className="browsed-hosts">
         <div
           className="hosts"
-          style={{
-            color: "#0e1c36",
-            fontFamily: "Bebas Neue",
-            fontSize: "3.5vh",
-          }}
+          // style={{
+          //   color: "#0e1c36",
+          //   fontFamily: "Bebas Neue",
+          //   fontSize: "3.5vh",
+          // }}
         >
-          <div className="back-arrow">
+          {/* <div className="back-arrow">
             <button onClick={backClick}>{backButton}</button>
-          </div>
-          <div className="title">Our Hosts</div>
+          </div> */}
+          {/* <div className="title">Our Hosts</div> */}
         </div>
         <div className="host-result-btns">
           <Grid

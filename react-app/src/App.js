@@ -13,7 +13,7 @@ import Details from "./components/Details"
 import Help from "./components/Help"
 import Messages from "./components/Messages"
 
-import SearchResult from "./components/SearchResults";
+import Search from "./components/Search";
 import Events from "./components/Events";
 import FAQ from "./components/FAQ"
 // import LoginForm from "./components/forms/LoginForm";
@@ -73,7 +73,7 @@ const App = () => {
           <Details />
         </ProtectedRoute>
         <ProtectedRoute path="/search" exact={true}>
-          <SearchResult />
+          <Search />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

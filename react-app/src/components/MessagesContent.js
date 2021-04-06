@@ -6,12 +6,12 @@ const MessagesContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   return (
     <div className="messages-content-container">
-      <div className="messages-title">Messages</div>
-      <div ClassName="messages-info-name">
+      <div className="messages-title">Messages</div>  
+      <div ClassName="messages-info-name" style={{ fontWeight: "900" }}>
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
-      <div className="profile-info-email">{sessionUser.email}</div>
-      <div className="account-info"></div>
+      <div className="messages-info-email">{sessionUser.email}</div>
+      <div className="messages-info"></div>
     </div>
   );
 };

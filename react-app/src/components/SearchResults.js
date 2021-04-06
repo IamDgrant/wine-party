@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import { browseAllHost } from "../store/host";
 import SearchForm from "../components/auth/forms/SearchHostForm";
 import "../components/styling/searchResults.css";
 import { Modal, Button, Select } from "antd";
@@ -9,8 +10,8 @@ import { Modal, Button, Select } from "antd";
 // import { message } from "antd";
 
 const SearchResult = () => {
+   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
-  // const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
   const [isSommelier, setIsSommelier] = useState(false);
   const [isMixologist, setIsMixologist] = useState(false);
   const [isRedWine, setIsRedWine] = useState(false);
@@ -20,8 +21,19 @@ const SearchResult = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const sessionHostsResults = useSelector((state) => state.host.host);
-  const hosts = sessionHostsResults.map((host) => host);
+  useEffect(() => {
+    dispatch(browseAllHost());
+  }, [dispatch]);
+
+  
+
+  const sessionHosts = useSelector((state) => state.host.host);
+  const hosts = sessionHosts && sessionHosts.map((host) => host);
+
+  if (!isLoaded) {
+    return null;
+  }
+
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
   //   state.host.host ? state.host.host : null
@@ -50,14 +62,14 @@ const SearchResult = () => {
   //   // setIsRoseWine(!isRoseWine);
   // }, [dispatch, isSommelier, isMixologist, isRedWine, isWhiteWine, isRoseWine]);
 
-  const backClick = () => {
-    history.push("/home");
-  };
+  // const backClick = () => {
+  //   history.push("/home");
+  // };
 
-  const Grid = makeResponsive(measureItems(CSSGrid), {
-    maxWidth: 1920,
-    minPadding: 100,
-  });
+  // const Grid = makeResponsive(measureItems(CSSGrid), {
+  //   maxWidth: 1920,
+  //   minPadding: 100,
+  // });
 
   const sommelier = (
     <svg
@@ -113,24 +125,6 @@ const SearchResult = () => {
     </svg>
   );
 
-  const backButton = (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="far"
-      data-icon="arrow-alt-circle-left"
-      className="svg-inline--fa2 fa-arrow-alt-circle-left fa-w-16"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
-    >
-      <path
-        fill="currentColor"
-        d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zm-72-20v40c0 6.6-5.4 12-12 12H256v67c0 10.7-12.9 16-20.5 8.5l-99-99c-4.7-4.7-4.7-12.3 0-17l99-99c7.6-7.6 20.5-2.2 20.5 8.5v67h116c6.6 0 12 5.4 12 12z"
-      ></path>
-    </svg>
-  );
-
   const updateSorted = (e) => {
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
@@ -176,7 +170,6 @@ const SearchResult = () => {
 
   // const results = allPossibilities();
 
-  // console.log(sorted);
 
   const filteredSort = activateSort.filter((host) => {
     // console.log(sorted);
@@ -470,8 +463,6 @@ const SearchResult = () => {
     }
   });
 
-  console.log(filteredSort);
-
   // const showFilterModal = (e) => {
   //   // e.preventDefault();
   //   // setIsFilterModalVisible(true);
@@ -487,11 +478,11 @@ const SearchResult = () => {
   const updateWhiteWine = () => setIsWhiteWine(!isWhiteWine);
   const updateRoseWine = () => setIsRoseWine(!isRoseWine);
 
-  console.log(isSommelier);
-  console.log(isMixologist);
-  console.log(isRedWine);
-  console.log(isWhiteWine);
-  console.log(isRoseWine);
+  // console.log(isSommelier);
+  // console.log(isMixologist);
+  // console.log(isRedWine);
+  // console.log(isWhiteWine);
+  // console.log(isRoseWine);
 
   // const filterHandleCancel = () => {
   //   setIsFilterModalVisible(false);
@@ -509,34 +500,34 @@ const SearchResult = () => {
   const handleChange = (value) => {
     if (value.toString() === "Sommelier") {
       // console.log("SOMM");
-      setIsSommelier(true)
+      setIsSommelier(true);
     } else if (value.toString() === "") {
       console.log("OFF");
-      setIsSommelier(false)
+      setIsSommelier(false);
     }
     if (value.toString() === "Mixologist") {
       console.log("MIX");
-      setIsMixologist(true)
+      setIsMixologist(true);
     } else if (value.toString() === "") {
-      setIsMixologist(false)
+      setIsMixologist(false);
     }
     if (value.toString() === "red-wine") {
       console.log("RED");
-      setIsRedWine(true)
+      setIsRedWine(true);
     } else if (value.toString() === "") {
-      setIsRedWine(false)
+      setIsRedWine(false);
     }
     if (value.toString() === "white-wine") {
       console.log("WHITE");
-      setIsWhiteWine(true)
+      setIsWhiteWine(true);
     } else if (value.toString() === "") {
-      setIsWhiteWine(false)
+      setIsWhiteWine(false);
     }
     if (value.toString() === "rose-wine") {
       console.log("ROSE");
-      setIsRoseWine(true)
+      setIsRoseWine(true);
     } else if (value.toString() === "") {
-      setIsRoseWine(false)
+      setIsRoseWine(false);
     }
   };
 
@@ -545,16 +536,16 @@ const SearchResult = () => {
       <div className="results">
         <div
           className="host-near"
-          style={{
-            color: "#0e1c36",
-            fontFamily: "Bebas Neue",
-            fontSize: "3.5vh",
-          }}
+          // style={{
+          //   color: "#0e1c36",
+          //   fontFamily: "Bebas Neue",
+          //   fontSize: "3.5vh",
+          // }}
         >
-          <div className="back-arrow">
+          {/* <div className="back-arrow">
             <button onClick={backClick}>{backButton}</button>
-          </div>
-          <div className="title">Hosts near you</div>
+          </div> */}
+          {/* <div className="title">Hosts near you</div> */}
         </div>
         <div className="sort-filter">
           <div className="sort">
@@ -628,17 +619,17 @@ const SearchResult = () => {
           </div>
         </div>
         <div className="host-result-btns">
-          <Grid
+          <CSSGrid
             component="ul"
-            columns={5}
+            columns={4}
             columnWidth={250}
             itemHeight={400}
             itemWidth={250}
-            duration={500}
+            duration={250}
             easing="ease-out"
           >
-            {sessionHostsResults &&
-              sessionHostsResults.length &&
+            {sessionHosts &&
+              sessionHosts.length &&
               filteredSort.map((host) => (
                 <div className="card" key={host.id}>
                   <div
@@ -677,7 +668,7 @@ const SearchResult = () => {
                   </div>
                 </div>
               ))}
-          </Grid>
+          </CSSGrid>
         </div>
       </div>
     </>

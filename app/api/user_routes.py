@@ -44,23 +44,7 @@ def user(id):
 #     return task.to_dict()
 
 
-# @user_routes.route('/update', methods=['POST'])
-# # @login_required
-# def update_user():
-#     form = UpdateFirstNameForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     print("HERE I AM", current_user.to_dict())
-#     if form.validate_on_submit():
-#         print("DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.data)
-#         print("IN!!!!!!!!!!!!!!!!!!!")
-#         user = User(
-#             first_name=form.data['first_name'],
-#         )
-#         db.session.add(user)
-#         print("USER!!!!!!!!!!!!!!!!!!", user)
-#         db.session.commit()
-#         return user.to_dict()
-#     return('Invalid Info')
+
 
 
 # def update_user():
@@ -81,6 +65,24 @@ def user(id):
 #         return user.to_dict()
 #     return {'errors': validation_errors_to_error_messages(form.errors)}
 #     return('Invalid Info')
+
+@user_routes.route('/update', methods=['POST'])
+# @login_required
+def update_user():
+    form = UpdateFirstNameForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print("HERE I AM", current_user.to_dict())
+    if form.validate_on_submit():
+        print("DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", form.data)
+        print("IN!!!!!!!!!!!!!!!!!!!")
+        user = User(
+            first_name=form.data['first_name'],
+        )
+        db.session.add(user)
+        print("USER!!!!!!!!!!!!!!!!!!", user)
+        db.session.commit()
+        return user.to_dict()
+    return('Invalid Info')
 
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}

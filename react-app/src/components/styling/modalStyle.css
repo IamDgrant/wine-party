@@ -1,4 +1,4 @@
-.ant-modal-header {
+/* .ant-modal-header {
   background-color: black;
 }
 
@@ -10,9 +10,9 @@
   background-color: black;
 }
 
-/* .ant-modal-wrap {
+.ant-modal-wrap {
     background-color: black;
-} */
+}
 
 .ant-modal-title {
   font-family: "Bebas Neue", cursive;
@@ -23,10 +23,10 @@
   font-family: "Bebas Neue", cursive;
 }
 
-/* .ant-btn:hover {
+.ant-btn:hover {
   font-family: "Bebas Neue", cursive;
   color: rgb(44, 44, 44)
-} */
+}
 
 .ant-btn-primary {
   font-family: "Bebas Neue", cursive;
@@ -38,4 +38,4 @@
   font-family: "Bebas Neue", cursive;
   background-color: rgb(44, 44, 44);
   border: 1px dashed #ccc;
-}
+} */

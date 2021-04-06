@@ -1,6 +1,6 @@
 .events-content-container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 80%;
   max-width: 100%;
   margin: 7rem 15% 0 15%;
@@ -14,9 +14,9 @@
   justify-content: space-between;
 }
 
-.add-event-main-container {
+/* .add-event-main-container {
   width: 50%;
-}
+} */
 
 .all-events-container {
   width: 50%;
@@ -47,22 +47,22 @@
   font-weight: 400;
 }
 
-.add-event {
+/* .add-event {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-top: 5vh;
   padding-left: 2vw;
-}
+} */
 
 .add-event-form {
   padding-top: .5vh;
 }
 
 .drawer-buttons {
-  padding-right: 20vw;
+  padding-right: 1vw;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .anticon,
