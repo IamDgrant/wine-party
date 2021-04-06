@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { photoUpload } from "../store/session";
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb, Button, Upload, message } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import "../components/styling/profileContentStyling.css";
 
 const ProfileContent = () => {
@@ -15,9 +16,7 @@ const ProfileContent = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    
-  }, [sessionUser.profile_image])
+  useEffect(() => {}, [sessionUser.profile_image]);
 
   const updateEditing = () => {
     // setIsEditing(true);
@@ -44,7 +43,23 @@ const ProfileContent = () => {
     setIsEditingImage(!isEditingImage);
   };
 
-  console.log(sessionUser.profile_image);
+  // const props = {
+  //   name: "user_file",
+  //   // action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  //   headers: {
+  //     authorization: "authorization-text",
+  //   },
+  //   onChange(info) {
+  //     if (info.file.status !== "uploading") {
+  //       console.log(info.file, info.fileList);
+  //     }
+  //     if (info.file.status === "done") {
+  //       message.success(`${info.file.name} file uploaded successfully`);
+  //     } else if (info.file.status === "error") {
+  //       message.error(`${info.file.name} file upload failed.`);
+  //     }
+  //   },
+  // };
 
   return (
     <div className="profile-content-container">
@@ -61,7 +76,87 @@ const ProfileContent = () => {
         <div className="personal-details">
           <div className="profile-image-container">
             <div className="profile-image">
-              {sessionUser.profile_image != null ? (
+              {
+                isEditingImage ? (
+                  sessionUser.profile_image != null ? (
+                    <div className="image-upload">
+                      <label for="file-input">
+                        <img
+                          src={sessionUser.profile_image}
+                          alt="UserPhoto"
+                          className="profile-pic2"
+                        ></img>
+                      </label>
+                      <form
+                        className="image-forms"
+                        encType="multipart/form-data"
+                        onSubmit={submit}
+                      >
+                        <input
+                          id="file-input"
+                          type="file"
+                          name="user_file"
+                          onChange={handleUpload}
+                        ></input>
+                      </form>
+                    </div>
+                  ) : (
+                    //    <form
+                    //    className="image-forms"
+                    //    encType="multipart/form-data"
+                    //    onSubmit={submit}
+                    //  >
+
+                    //  </form>
+                    <label for="file-input">
+                      <img
+                        src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                        alt="Avatar"
+                        className="profile-pic2"
+                      ></img>
+                    </label>
+                  )
+                ) : sessionUser.profile_image != null ? (
+                  <img
+                    src={sessionUser.profile_image}
+                    alt="UserPhoto"
+                    className="profile-pic"
+                  ></img>
+                ) : (
+                  <img
+                    src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                    alt="Avatar"
+                    className="profile-pic "
+                  ></img>
+                )
+
+                //  (
+                //     <img
+                //       src={sessionUser.profile_image}
+                //       alt="UserPhoto"
+                //       className="profile-pic2"
+                //     ></img>
+                //   ) : (
+                //     <img
+                //       src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                //       alt="Avatar"
+                //       className="profile-pic2"
+                //     ></img>
+                //   )) : (sessionUser.profile_image != null ? (
+                //     <img
+                //       src={sessionUser.profile_image}
+                //       alt="UserPhoto"
+                //       className="profile-pic"
+                //     ></img>
+                //   ) : (
+                //     <img
+                //       src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                //       alt="Avatar"
+                //       className="profile-pic "
+                //     ></img>
+                //   )
+              }
+              {/* {sessionUser.profile_image != null ? (
                 <img
                   src={sessionUser.profile_image}
                   alt="UserPhoto"
@@ -73,7 +168,7 @@ const ProfileContent = () => {
                   alt="Avatar"
                   className="profile-pic "
                 ></img>
-              )}
+              )} */}
             </div>
             <div className="edit-image">
               {isEditingImage ? (
@@ -86,7 +181,7 @@ const ProfileContent = () => {
                 </div>
               )}
             </div>
-            {isEditingImage ? (
+            {/* {isEditingImage ? (
               <div className="image-form-container">
                 <form
                   className="image-forms"
@@ -99,12 +194,11 @@ const ProfileContent = () => {
                     name="user_file"
                     onChange={handleUpload}
                   ></input>
-                  <label for="myuniqueid">Upload Photo</label>
                 </form>
               </div>
             ) : (
               ""
-            )}
+            )} */}
           </div>
           <div className="details-name">
             <div className="full-name-edit">

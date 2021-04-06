@@ -30,3 +30,15 @@
   height: 150px;
   width: 150px;
 }
+
+.profile-pic2 {
+  display: flex;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  opacity: .5;
+}
+
+.image-upload>form {
+  display: none;
+}

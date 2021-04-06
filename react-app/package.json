@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.13.0",
     "country-state-city": "^2.0.0",
+    "google-map-react": "^2.1.9",
     "http-proxy-middleware": "^1.0.5",
     "popper.js": "1.15.0",
     "react": "^17.0.0",

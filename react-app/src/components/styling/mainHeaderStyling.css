@@ -55,6 +55,14 @@
   /* margin: ; */
 }
 
+.ant-dropdown, .ant-dropdown-placement-bottomRight {
+  width: 17.5vw;
+}
+
+/* .ant-dropdown-menu, .ant-dropdown-menu-light, .ant-dropdown-menu-root, .ant-dropdown-menu-vertical {
+  width: 20vw;
+} */
+
 /* .ant-dropdown-menu-vertical {
   width: 5vh;
 } */

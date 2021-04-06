@@ -101,6 +101,7 @@ const MainHeader = () => {
           <div className="dropdown-inner-container">
             <Dropdown
               className="antd-drop"
+              style={{width: "25vw"}}
               overlay={userMenu}
               trigger={["click"]}
             >

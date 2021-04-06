@@ -1,7 +1,8 @@
 import React, { useEffect, useState, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import Select from "react-select";
+import Map from "../components/map/Map";
 import { createEvent, seeEvent, deleteEvent } from "../store/event";
 // import EventForm from "../components/auth/forms/CreateEventForm";
 import {
@@ -41,6 +42,8 @@ const EventsContent = (user_id, { id }) => {
   const [errors, setErrors] = useState([]);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
+
+  console.log();
 
   const headers = new Headers();
   headers.append("X-CSCAPI-KEY", cscAPIKey);
@@ -159,13 +162,13 @@ const EventsContent = (user_id, { id }) => {
 
   const save = () => {
     onSubmission();
-   
+
     // setIsDrawerVisible(false);
   };
 
   const onConfirm = () => {
-    history.push("/search")
-  }
+    history.push("/search");
+  };
 
   const onSubmission = async (e) => {
     //   // e.preventDefault();
@@ -285,19 +288,19 @@ const EventsContent = (user_id, { id }) => {
               onConfirm={onConfirm}
             >
               <Button
-              htmlType="submit"
-              type="text"
-              size="middle"
-              style={{
-                border: "1px solid #058532",
-                fontFamily: "Montserrat",
-                color: "#058532",
-                width: "5.25vw",
-              }}
-              onClick={save}
-            >
-              Save
-            </Button>
+                htmlType="submit"
+                type="text"
+                size="middle"
+                style={{
+                  border: "1px solid #058532",
+                  fontFamily: "Montserrat",
+                  color: "#058532",
+                  width: "5.25vw",
+                }}
+                onClick={save}
+              >
+                Save
+              </Button>
             </Popconfirm>
           </div>
         </div>
@@ -738,6 +741,9 @@ const EventsContent = (user_id, { id }) => {
               </Collapse>
             </div>
           </div>
+        </div>
+        <div className="maps-container">
+          <Map />
         </div>
       </div>
     </div>

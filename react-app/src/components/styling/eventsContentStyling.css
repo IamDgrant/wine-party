@@ -91,3 +91,8 @@
 .cancel-btn {
   margin-right: .5vw;
 }
+
+.maps-container {
+  /* heigh: 100%; */
+  width: 50%;
+}
