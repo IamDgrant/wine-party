@@ -78,3 +78,24 @@
   justify-content: space-between;
   text-align: center;
 }
+
+.id-pic {
+  display: flex;
+  height: 150px;
+  width: 150px;
+}
+
+.id-pic2 {
+  display: flex;
+  height: 150px;
+  width: 150px;
+  opacity: 0.5;
+}
+
+.id-image-upload > form {
+  display: none;
+}
+
+.id-edit-image > form {
+  display: none;
+}

@@ -600,14 +600,13 @@ const DetailsContent = () => {
               <div className="outer-full-name-container">
                 <div className="full-name">Government id</div>
               </div>
-
               <div className="edit-image">
                 {isEditingIdentification ? (
-                  <div className="edit-image">
+                  <div className="id-edit-image">
                     <Button onClick={saveEditingIdentification}>Save</Button>
                   </div>
                 ) : (
-                  <div className="edit-image">
+                  <div className="id-edit-image">
                     <Button onClick={updateEditingIdentification}>Edit</Button>
                   </div>
                 )}
@@ -620,7 +619,7 @@ const DetailsContent = () => {
                     <img
                       src={sessionUser.identification}
                       alt="IDPhoto"
-                      className="id-pic"
+                      className="id-pics"
                     ></img>
                   </label>
                   <form
