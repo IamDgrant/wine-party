@@ -9,7 +9,7 @@ import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import "../components/styling/header.css";
 import "../components/styling/modalStyle.css";
-// import "../components/styling/buttonStyle.css";
+// import "../components/styling/buttonStyling.css";
 
 const Header = () => {
   const [click, setClick] = useState(false);

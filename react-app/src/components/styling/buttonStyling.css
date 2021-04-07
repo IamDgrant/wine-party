@@ -1,9 +1,9 @@
-.host-btn {
-  font-family: "Bebas Neue", cursive;
-  color: #ffffff;
+.userNavBar-btn {
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
 }
 
-.host-btn:after {
+.userNavBar-btn:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -11,23 +11,23 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #ffffff;
+  background: #000000;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
 
-.host-btn:hover:after {
+.userNavBar-btn:hover:after {
   width: 100%;
   left: 0;
-  color: #ffffff; 
+  color: #000000; 
 }
 
-.event-btn {
+.userNavBar-btn {
   font-family: "Bebas Neue", cursive;
-  color: #ffffff;
+  color: #000000;
 }
 
-.event-btn:after {
+.userNavBar-btn:after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
@@ -35,12 +35,12 @@
   height: 1px;
   left: 50%;
   position: absolute;
-  background: #ffffff;
+  background: #000000;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
 
-.event-btn:hover:after {
+.userNavBar-btn:hover:after {
   width: 100%;
   left: 0;
 }

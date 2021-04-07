@@ -5,7 +5,7 @@ import { Modal, Button } from "antd";
 // import { message } from "antd";
 // import { createEvent } from "../store/event";
 // import EventForm from "./auth/forms/CreateEventForm";
-import "../components/styling/buttonStyle.css";
+import "../components/styling/buttonStyling.css";
 import { PlusOutlined } from "@ant-design/icons";
 
 const AddEvent = ({ user_id }) => {

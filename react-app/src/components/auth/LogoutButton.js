@@ -3,7 +3,7 @@ import { logout } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button } from "antd";
-// import "../styling/logoutButtonStyle.com";
+// import "../styling/logoutButtonStyling.com";
 
 const LogoutButton = () => {
   const dispatch = useDispatch();

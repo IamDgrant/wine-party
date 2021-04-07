@@ -49,8 +49,7 @@ def user(id):
 def update_user():
     user = current_user
     update = request.get_json()
-    print("HERE!!!!!!!!!", update)
-    # user.first_name = update["first_name"]
+    user.first_name = update["first_name"]
     # user.last_name = update["last_name"]
     # user.email = update["signInEmail"]
     # user.phone_number = update["phone_number"]

@@ -67,14 +67,14 @@
   width: 5vh;
 } */
 
-.navbar-item {
+/* .navbar-item {
   padding-left: 10px;
 }
 
 .main-background-image {
   position: relative;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-nav {
@@ -86,10 +86,10 @@
 .logo {
   width: 45px;
   height: 45px;
-}
+} */
 
-.menu {
-  /* align-items: ; */
+/* .menu { */
+  /* align-items: ;
   font-family: "Bebas Neue", cursive;
   color: #f9fbf2;
 }
@@ -130,19 +130,19 @@
 }
 .sign-in :hover {
   background-color: rgb(44, 44, 44);
-}
-.signup-btn {
+} */
+/* .signup-btn {
   padding: 10px 10px;
   height: 2.4rem;
   border-radius: 3px;
-  /* background: rgb(222, 9, 241); */
+  background: rgb(222, 9, 241);
   color: white;
   cursor: pointer;
   align-items: center;
 }
 .mobile-menu {
   display: none;
-}
+} */
 
 @media (max-width: 750px) {
   /*Mobile View */

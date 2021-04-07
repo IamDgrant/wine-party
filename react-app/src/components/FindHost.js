@@ -4,7 +4,7 @@ import seeHost from "../store/host"
 import { Modal, Button } from "antd";
 import { message } from "antd";
 import SearchForm from "../components/auth/forms/SearchHostForm"
-import "../components/styling/buttonStyle.css";
+import "../components/styling/buttonStyling.css";
 
 const FindHost = () => {
   const dispatch = useDispatch();

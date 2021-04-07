@@ -22,7 +22,7 @@ import "../components/styling/userHeader.css";
 // import { Menu, Dropdown, Modal, Button } from "antd";
 // import { NavLink } from "react-router-dom";
 // import { profileImage } from "../store/session";
-import "../components/styling/buttonStyle.css";
+import "../components/styling/buttonStyling.css";
 
 const UserHeader = () => {
   const history = useHistory();
