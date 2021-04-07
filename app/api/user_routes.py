@@ -50,9 +50,12 @@ def update_user():
     user = current_user
     update = request.get_json()
     print("HERE!!!!!!!!!", update)
-    user.first_name = update["first_name"]
-    user.last_name = update["last_name"]
-    user.about = update["about"]
+    # user.first_name = update["first_name"]
+    # user.last_name = update["last_name"]
+    # user.email = update["signInEmail"]
+    # user.phone_number = update["phone_number"]
+    # user.birthday = update["birthday"]
+    # user.about = update["about"]
 
     db.session.commit()
     return {"user": user.to_dict()}

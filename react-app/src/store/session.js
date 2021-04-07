@@ -62,6 +62,8 @@ export const update_User = (updateData) => async (dispatch) => {
   const {
     first_name,
     last_name,
+    signInEmail,
+    phone_number,
     about,
     city,
     state,
@@ -77,6 +79,8 @@ export const update_User = (updateData) => async (dispatch) => {
     body: JSON.stringify({
       first_name,
       last_name,
+      signInEmail,
+      phone_number,
       about,
       city,
       state,

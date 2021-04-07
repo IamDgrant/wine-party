@@ -66,3 +66,15 @@
   margin-top: 10px;
   border-bottom: 1px solid rgba(224, 224, 224, 0.185);
 }
+
+.outer-full-name-container {
+  display: flex;
+  align-items: center;
+}
+
+.name-id {
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
