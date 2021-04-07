@@ -472,12 +472,6 @@ const SearchResult = () => {
   //   sorted()
   // };
 
-  const updateSommelier = () => setIsSommelier(!isSommelier);
-  const updateMixologist = () => setIsMixologist(!isMixologist);
-  const updateRedWine = () => setIsRedWine(!isRedWine);
-  const updateWhiteWine = () => setIsWhiteWine(!isWhiteWine);
-  const updateRoseWine = () => setIsRoseWine(!isRoseWine);
-
   // console.log(isSommelier);
   // console.log(isMixologist);
   // console.log(isRedWine);

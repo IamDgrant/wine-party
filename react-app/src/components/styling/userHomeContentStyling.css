@@ -1,0 +1,15 @@
+.userHome-content-container {
+    width: 80%;
+    max-width: 100%;
+    margin: 7rem 15% 0 15%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .search-form {
+
+      margin-right: 12vw;
+  }
+
+
