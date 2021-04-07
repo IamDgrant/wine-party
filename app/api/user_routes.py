@@ -23,26 +23,6 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
-# @task_routes.route('/update/<id>', methods=['POST'])
-# @login_required
-# def update_user(id):
-#     user = User.query.filter_by(id=id).first()
-#     update = request.data.decode("utf-8")
-#     updated = ast.literal_eval(update)
-#     if "status" in updated.keys():
-#         status = updated["status"]
-#         task.status = status
-#     if "priority" in updated.keys():
-#         priority = updated["priority"]
-#         task.priority = priority
-#     if "desc" in updated.keys():
-#         desc = updated["desc"]
-#         task.description = desc
-
-#     db.session.commit()
-
-#     return task.to_dict()
-
 
 # def update_user():
 #     form = UpdateFirstNameForm()
@@ -68,9 +48,12 @@ def user(id):
 @login_required
 def update_user():
     user = current_user
-    new_name = request.get_json()
-    print("NAME!!!!!!!!!!!!!!!!!!!!!!!", new_name)
-    user.first_name = new_name["first_name"]
+    update = request.get_json()
+    print("HERE!!!!!!!!!", update)
+    user.first_name = update["first_name"]
+    user.last_name = update["last_name"]
+    user.about = update["about"]
+
     db.session.commit()
     return {"user": user.to_dict()}
 
@@ -99,7 +82,6 @@ def update_profile():
     if file and allowed_file(file.filename):
         file.filename = secure_filename(file.filename)
         output = upload_file_to_s3(file)
-        # print("HERE!!!!!!!!!!!!", current_user.to_dict())
         current_user.profile_image = str(output)
         db.session.add(current_user)
         db.session.commit()

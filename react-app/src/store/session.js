@@ -62,6 +62,7 @@ export const update_User = (updateData) => async (dispatch) => {
   const {
     first_name,
     last_name,
+    about,
     city,
     state,
     postal_code,
@@ -76,6 +77,7 @@ export const update_User = (updateData) => async (dispatch) => {
     body: JSON.stringify({
       first_name,
       last_name,
+      about,
       city,
       state,
       postal_code,
@@ -86,18 +88,6 @@ export const update_User = (updateData) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(updateUser(data));
-  }
-  return res;
-};
-
-export const logout = () => async (dispatch) => {
-  const res = await fetch("/api/auth/logout", {
-    method: "DELETE",
-  });
-
-  const data = await res.json();
-  if (data.message === "User logged out") {
-    dispatch(removeUser());
   }
   return res;
 };
@@ -118,6 +108,18 @@ export const photoUpload = (file) => async (dispatch) => {
   }
 };
 
+export const logout = () => async (dispatch) => {
+  const res = await fetch("/api/auth/logout", {
+    method: "DELETE",
+  });
+
+  const data = await res.json();
+  if (data.message === "User logged out") {
+    dispatch(removeUser());
+  }
+  return res;
+};
+
 const initialState = { user: null };
 
 const reducer = (state = initialState, action) => {
@@ -125,14 +127,16 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USER:
       return { ...state, user: action.payload };
-    case REMOVE_USER:
-      newState = Object.assign({}, state, { user: null });
-      return newState;
+    case UPDATE_USER:
+      return { ...state, user: action.payload };
     case SET_PHOTO:
       return {
         ...state,
         user: { ...state.user, profile_image: action.payload.url },
       };
+    case REMOVE_USER:
+      newState = Object.assign({}, state, { user: null });
+      return newState;
     default:
       return state;
   }

@@ -9,23 +9,12 @@ import "../components/styling/profileContentStyling.css";
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [isEditingName, setIsEditingName] = useState(false);
-  const [isEditingEmail, setIsEditingEmail] = useState(false);
-  const [isEditingPhone, setIsEditingPhone] = useState(false);
   const [isEditingAbout, setIsEditingAbout] = useState(false);
-  const [isEditingAddress, setIsEditingAddress] = useState(false);
-  const [isEditingIdentification, setIsEditingIdentification] = useState(false);
-  const [isEditingBirthday, setIsEditingBirthday] = useState(false);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [about, setAbout] = useState("");
-  const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [postal_code, setPostalCode] = useState("");
-  const [signInEmail, setSignInEmail] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [identification, setIdentification] = useState("");
-  const [birthday, setBirthday] = useState("");
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
 
@@ -94,7 +83,12 @@ const ProfileContent = () => {
   };
 
   const saveEditingImage = () => {
-    submit();
+    if (photoFile === undefined) {
+      console.log("EMPTY");
+    } else {
+      submit();
+    }
+
     setIsEditingImage(!isEditingImage);
   };
 
@@ -107,13 +101,12 @@ const ProfileContent = () => {
   };
   const saveEditingName = () => {
     if (first_name === "") {
-      console.log('EMPTY');
+      console.log("EMPTY");
     } else {
-      console.log(first_name);
       onSaveFirstName();
     }
     if (last_name === "") {
-      console.log('EMPTY');
+      console.log("EMPTY");
     } else {
       onSaveLastName();
     }
@@ -125,7 +118,7 @@ const ProfileContent = () => {
   };
   const saveEditingAbout = () => {
     if (about === "") {
-      console.log('EMPTY');
+      console.log("EMPTY");
     } else {
       onSaveAbout();
     }
@@ -219,11 +212,11 @@ const ProfileContent = () => {
                 <img
                   src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
                   alt="Avatar"
-                  className="profile-pic "
+                  className="profile-pic"
                 ></img>
               )}
               <div className="join-date">
-                Toasting with us since {sessionUser.created_at.slice(12, 17)}
+                Toasting with us since {sessionUser && sessionUser.created_at.slice(12, 17)}
               </div>
             </div>
             <div className="edit-image">
@@ -242,7 +235,7 @@ const ProfileContent = () => {
             <div className="full-name-edit">
               {isEditingName}
               <div className="profile-name">
-                <div className="full-name">Full Name</div>
+                {/* <div className="full-name">Full Name</div> */}
               </div>
 
               {isEditingName ? (
@@ -302,7 +295,7 @@ const ProfileContent = () => {
           <div className="details-name">
             <div className="full-name-edit">
               {isEditingAbout}
-              <div className="full-name">Full Name</div>
+              <div className="full-name">About</div>
               {isEditingAbout ? (
                 <div className="edit-name">
                   <Button onClick={saveEditingAbout}>Save</Button>
