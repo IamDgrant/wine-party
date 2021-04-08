@@ -20,25 +20,17 @@ const UserHomeContent = () => {
 
   const onSearch = async (e) => {
     e.preventDefault();
-    dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-      (res) => {
-        if (res.Host === "Not found") {
-          message.error(`User ${search} not found`);
-        } else {
-          history.push("/search");
-          // message.success(`User ${search} added to Event!`);
-        }
-        // if (res.hosts) history.push("/search");
-      }
+    history.push(
+      `/search?search=${search}&sommelier=${sommelier}&mixologist=${mixologist}`
     );
   };
 
   const updateSearch = (e) => setSearch(e.target.value);
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);
-//   const updateRedWine = () => setIsRedWine(!isRedWine);
-//   const updateWhiteWine = () => setIsWhiteWine(!isWhiteWine);
-//   const updateRoseWine = () => setIsRoseWine(!isRoseWine);
+  //   const updateRedWine = () => setIsRedWine(!isRedWine);
+  //   const updateWhiteWine = () => setIsWhiteWine(!isWhiteWine);
+  //   const updateRoseWine = () => setIsRoseWine(!isRoseWine);
 
   return (
     <div className="userHome-content-container">

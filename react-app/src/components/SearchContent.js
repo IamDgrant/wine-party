@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import { seeHost } from "../store/host";
 import "../components/styling/searchContentStyling.css";
@@ -11,6 +11,10 @@ import "../components/styling/searchResults.css";
 
 const SearchContent = () => {
   const sessionHosts = useSelector((state) => state.host.host);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+  console.log(location);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
@@ -20,12 +24,25 @@ const SearchContent = () => {
   const [isWhiteWine, setIsWhiteWine] = useState(false);
   const [isRoseWine, setIsRoseWine] = useState(false);
 
-  const dispatch = useDispatch();
-  const history = useHistory();
-
   useEffect(() => {
-    dispatch(seeHost());
+    const locationSplit = location.search.split("&");
+    const query = locationSplit.map(chunk => chunk.split("=")[1])
+    dispatch(seeHost(...query));
   }, []);
+
+  // const onSearch = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
+  //     (res) => {
+  //       if (res.Host === "Not found") {
+  //         message.error(`User ${search} not found`);
+  //       } else {
+  //         // message.success(`User ${search} added to Event!`);
+  //       }
+  //       // if (res.hosts) history.push("/search");
+  //     }
+  //   );
+  // };
 
   // if (!isLoaded) {
   //   return null;
@@ -557,33 +574,29 @@ const SearchContent = () => {
           <div className="host-result-btns">
             {/* <Divider orientation="left">Horizontal</Divider> */}
             <Row gutter={16}>
-            {filteredSort.map((host) => (
-              <Col key={host.id} className="gutter-row" span={6}>
-                <div className="hosts">
-                      <div className="add-host">
-                        <button>{addBtn}</button>
+              {filteredSort.map((host) => (
+                <Col key={host.id} className="gutter-row" span={6}>
+                  <div className="hosts">
+                    <div className="add-host">
+                      <button>{addBtn}</button>
+                    </div>
+                    <div className="host-name-type">
+                      <div className="host-name">
+                        {host.first_name} {host.last_name}
                       </div>
-                      <div className="host-name-type">
-                        <div className="host-name">
-                          {host.first_name} {host.last_name}
-                        </div>
-                        <div className="somm">
-                          {host.sommelier === true ? sommelier : null}
-                        </div>
-                        <div className="mix">
-                          {host.mixologist === true ? mixologist : null}
-                        </div>
+                      <div className="somm">
+                        {host.sommelier === true ? sommelier : null}
                       </div>
-                      <div className="host-city-state">
-                        {host.city}, {host.state}
+                      <div className="mix">
+                        {host.mixologist === true ? mixologist : null}
                       </div>
                     </div>
-              </Col>
-
-
-
-
-            ))}
+                    <div className="host-city-state">
+                      {host.city}, {host.state}
+                    </div>
+                  </div>
+                </Col>
+              ))}
             </Row>
 
             {/* <CSSGrid

@@ -86,7 +86,7 @@ export const seeHostEvent = (id) => async (dispatch) => {
   return data;
 };
 
-const initialState = { host: null };
+const initialState = { host: [] };
 
 function reducer(state = initialState, action) {
   let newState;

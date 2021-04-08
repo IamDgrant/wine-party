@@ -67,7 +67,7 @@ const EventsContent = (user_id, { id }) => {
     }
   };
 
-  // const nameInputFocus = useRef();
+  const nameInputFocus = useRef();
 
   useEffect(() => {
     if (!id) dispatch(seeEvent());
@@ -95,10 +95,11 @@ const EventsContent = (user_id, { id }) => {
   //   console.log(isDrawerVisible);
   //   nameInputFocus.current.focus()
   // };
-  // console.log(isDrawerVisible);
-  // if (isDrawerVisible === true) {
-  //   console.log("HERE");
-  //   nameInputFocus.current.focus()}
+
+  if (isDrawerVisible === true) {
+    console.log("HERE");
+    console.log(nameInputFocus);
+    nameInputFocus.current.focus()}
 
   const closeDrawer = () => {
     setIsDrawerVisible(false);
@@ -255,7 +256,7 @@ const EventsContent = (user_id, { id }) => {
         // afterVisibleChange={}
         title=""
         placement="bottom"
-        autoFocus={false}
+        // autoFocus={false}
         closable={false}
         mask={false}
         visible={isDrawerVisible}
@@ -440,7 +441,6 @@ const EventsContent = (user_id, { id }) => {
               <Collapse defaultActiveKey={["1"]} onChange={callback}>
                 <Panel
                   header="Add your event"
-                  // key={event.id}
                   style={{ fontWeight: "900" }}
                 >
                   <div className="add-event-form">
@@ -453,7 +453,7 @@ const EventsContent = (user_id, { id }) => {
                       <div>
                         <input
                           // className="form-input"
-                          // ref={nameInputFocus}
+                          ref={nameInputFocus}
                           autoFocus={true}
                           type="text"
                           name="event_name"
