@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 from ..aws_s3 import *
 from app.models import User, db
-from app.forms import UpdateFirstNameForm
 from flask_login import current_user, login_user, logout_user, login_required
 from wtforms.validators import DataRequired, Email, ValidationError
 
@@ -22,26 +21,6 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
-
-
-# def update_user():
-#     form = UpdateFirstNameForm()
-#     # form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         user = User(
-#             first_name=form.data['first_name'],
-#             # last_name=form.data['last_name'],
-#             # city=form.data['city'],
-#             # state=form.data['state'],
-#             # postal_code=form.data['postal_code'],
-#             # email=form.data['signUpEmail'],
-#             # password=form.data['signUpPassword']
-#         )
-#         db.session.add(user)
-#         db.session.commit()
-#         return user.to_dict()
-#     return {'errors': validation_errors_to_error_messages(form.errors)}
-#     return('Invalid Info')
 
 
 @user_routes.route('/update', methods=['PUT'])

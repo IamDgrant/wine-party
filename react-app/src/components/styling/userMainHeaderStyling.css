@@ -14,6 +14,7 @@
 }
 
 .user-main-logo-container {
+  min-width: 20vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,7 +52,7 @@
   position: absolute;
   top: 17px;
   left: 38px;
-  font-size: 15px;
+  font-size: 13px;
   background: none;
   color: #5a6674;
   width: 250px;
@@ -63,6 +64,7 @@
 
 .search-check {
   font-family: "Montserrat", sans-serif;
+  font-size: 13px;
   color: #9ba5b1;
 }
 
@@ -141,7 +143,7 @@ span {
   display: none;
 }
 
-@media (max-width: 648px) {
+@media (max-width: 925px) {
   /*Mobile View */
   .header {
     padding: 0px 10px;

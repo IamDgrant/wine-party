@@ -5,6 +5,7 @@ import { photoUpload, update_User } from "../store/session";
 import { Breadcrumb, Button, Upload, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "../components/styling/profileContentStyling.css";
+import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -196,7 +197,7 @@ const ProfileContent = () => {
                 ) : (
                   <label for="file-input">
                     <img
-                      src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                      src={img_placeholder}
                       alt="Avatar"
                       className="profile-pic2"
                     ></img>
@@ -210,7 +211,7 @@ const ProfileContent = () => {
                 ></img>
               ) : (
                 <img
-                  src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                  src={img_placeholder}
                   alt="Avatar"
                   className="profile-pic"
                 ></img>

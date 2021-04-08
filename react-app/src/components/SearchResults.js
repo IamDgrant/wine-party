@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { browseAllHost } from "../store/host";
+import { seeHost } from "../store/host";
 import SearchForm from "../components/auth/forms/SearchHostForm";
 import "../components/styling/searchResults.css";
 import { Modal, Button, Select } from "antd";
@@ -10,7 +10,7 @@ import { Modal, Button, Select } from "antd";
 // import { message } from "antd";
 
 const SearchResult = () => {
-   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
   const [isSommelier, setIsSommelier] = useState(false);
   const [isMixologist, setIsMixologist] = useState(false);
@@ -22,17 +22,15 @@ const SearchResult = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(browseAllHost());
+    dispatch(seeHost());
   }, [dispatch]);
-
-  
 
   const sessionHosts = useSelector((state) => state.host.host);
   const hosts = sessionHosts && sessionHosts.map((host) => host);
 
-  if (!isLoaded) {
-    return null;
-  }
+  // if (!isLoaded) {
+  //   return null;
+  // }
 
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
@@ -169,7 +167,6 @@ const SearchResult = () => {
   // };
 
   // const results = allPossibilities();
-
 
   const filteredSort = activateSort.filter((host) => {
     // console.log(sorted);
@@ -528,18 +525,8 @@ const SearchResult = () => {
   return (
     <>
       <div className="results">
-        <div
-          className="host-near"
-          // style={{
-          //   color: "#0e1c36",
-          //   fontFamily: "Bebas Neue",
-          //   fontSize: "3.5vh",
-          // }}
-        >
-          {/* <div className="back-arrow">
-            <button onClick={backClick}>{backButton}</button>
-          </div> */}
-          {/* <div className="title">Hosts near you</div> */}
+        <div className="host-for-you">
+          <div className="title">Hosts for you</div>
         </div>
         <div className="sort-filter">
           <div className="sort">
@@ -618,7 +605,7 @@ const SearchResult = () => {
             columns={4}
             columnWidth={250}
             itemHeight={400}
-            itemWidth={250}
+            itemwidth={250}
             duration={250}
             easing="ease-out"
           >

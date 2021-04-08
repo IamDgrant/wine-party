@@ -120,7 +120,7 @@ const BrowseResults = () => {
             columns={5}
             columnWidth={250}
             itemHeight={400}
-            itemWidth={250}
+            itemwidth={250}
             duration={500}
             easing="ease-out"
           >

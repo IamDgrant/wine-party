@@ -9,9 +9,9 @@ import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 import "../components/styling/mainHeaderStyling.css";
 
 const MainHeader = () => {
+  const sessionUser = useSelector((state) => state.session.user);
   const [click, setClick] = useState(false);
 
-  const sessionUser = useSelector((state) => state.session.user);
 
   //   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
   //   const [isSignUpModalVisible, setIsisSignUpModalVisible] = useState(false);
@@ -121,7 +121,7 @@ const MainHeader = () => {
                       ></img>
                     ) : (
                       <img
-                        src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                        src={img_placeholder}
                         alt="Avatar"
                         className="small-profile-pic"
                       ></img>

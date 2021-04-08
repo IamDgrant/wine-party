@@ -7,10 +7,10 @@ const FavoritesContent = () => {
   return (
     <div className="favorite-content-container">
       <div className="favorite-title">Favorites</div>
-      <div ClassName="favorite-info-name">
+      <div className="favorite-info-name">
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
-      <div ClassName="profile-info-email">{sessionUser.email}</div>
+      <div className="profile-info-email">{sessionUser.email}</div>
       <div className="account-info"></div>
     </div>
   );

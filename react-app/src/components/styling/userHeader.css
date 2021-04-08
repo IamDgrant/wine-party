@@ -37,7 +37,7 @@
   transition: all 0.3s ease;
 }
 
-.search-input {
+/* .search-input {
   font-family: "Bebas Neue", cursive;
   position: absolute;
   top: 17px;
@@ -50,7 +50,7 @@
   border: none;
   appearance: none;
   outline: none;
-}
+} */
 
 .search-check {
   font-family: "Bebas Neue", cursive;

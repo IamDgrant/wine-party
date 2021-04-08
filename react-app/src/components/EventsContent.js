@@ -67,7 +67,7 @@ const EventsContent = (user_id, { id }) => {
     }
   };
 
-  const nameInputFocus = useRef();
+  // const nameInputFocus = useRef();
 
   useEffect(() => {
     if (!id) dispatch(seeEvent());
@@ -85,7 +85,7 @@ const EventsContent = (user_id, { id }) => {
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
-    nameInputFocus.current.focus();
+    // nameInputFocus.current.focus();
     // nameFocus();
     // if (isDrawerVisible === true) nameInputFocus.current.focus();
   };
@@ -453,7 +453,7 @@ const EventsContent = (user_id, { id }) => {
                       <div>
                         <input
                           // className="form-input"
-                          ref={nameInputFocus}
+                          // ref={nameInputFocus}
                           autoFocus={true}
                           type="text"
                           name="event_name"

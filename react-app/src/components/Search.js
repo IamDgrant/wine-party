@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import SearchContent from "../components/SearchContent";
+import RandomHost from "../components/RandomHostCard";
 import "../components/styling/searchStyling.css";
 
 const Messages = () => {
@@ -12,6 +13,7 @@ const Messages = () => {
         </div>
         <div className="search-contents">
           <SearchContent />
+          {/* <RandomHost /> */}
         </div>
       </div>
     </>

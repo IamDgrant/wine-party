@@ -10,7 +10,7 @@ import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 import "../components/styling/userMainHeaderStyling.css";
 import "../components/styling/buttonStyling.css"
 
-const MainHeader = () => {
+const UserMainHeader = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const sessionHostId = useSelector((state) =>
     state.host.host ? state.host.host : null
@@ -49,7 +49,21 @@ const MainHeader = () => {
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);
 
-  const clickEvents = () => {
+  const clickAbout = () => {
+    const anchor = document.querySelector("#Events");
+    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const clickTasting = () => {
+    const anchor = document.querySelector("#Events");
+    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const clickStories = () => {
+    const anchor = document.querySelector("#Events");
+    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+  const clickNews = () => {
     const anchor = document.querySelector("#Events");
     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
   };
@@ -119,7 +133,7 @@ const MainHeader = () => {
             <li className="option" onClick={closeMobileMenu}>
               <Button
                 type="text"
-                onClick={clickEvents}
+                onClick={clickAbout}
                 className="menu userNavBar-btn"
               >
                 About
@@ -131,7 +145,7 @@ const MainHeader = () => {
             >
               <Button
                 type="text"
-                onClick={clickEvents}
+                onClick={clickTasting}
                 className="menu userNavBar-btn"
               >
                 Virtual Tasting
@@ -143,7 +157,7 @@ const MainHeader = () => {
             >
               <Button
                 type="text"
-                onClick={clickEvents}
+                onClick={clickStories}
                 className="menu userNavBar-btn"
               >
                 Wine Stories
@@ -155,7 +169,7 @@ const MainHeader = () => {
             >
               <Button
                 type="text"
-                onClick={clickEvents}
+                onClick={clickNews}
                 className="menu userNavBar-btn"
               >
                 News
@@ -187,7 +201,7 @@ const MainHeader = () => {
                       ></img>
                     ) : (
                       <img
-                        src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                        src={img_placeholder}
                         alt="Avatar"
                         className="small-profile-pic"
                       ></img>
@@ -211,4 +225,4 @@ const MainHeader = () => {
   );
 };
 
-export default MainHeader;
+export default UserMainHeader;

@@ -5,7 +5,7 @@ const getPartyHosts = (inputs) => ({
   payload: inputs,
 });
 
-export const getMembers = (search, id) => async (dispatch) => {
+export const getHosts = (search, id) => async (dispatch) => {
   const res = await fetch(`/api/users/${search}/${id}`, { method: "GET" });
   const data = await res.json();
   dispatch(getPartyHosts(data));

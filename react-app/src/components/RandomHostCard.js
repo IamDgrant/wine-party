@@ -12,10 +12,10 @@ const RandomHost = () => {
     dispatch(seeRandomHost());
   }, [dispatch]);
 
-  const Grid = makeResponsive(measureItems(CSSGrid), {
-    maxWidth: 1920,
-    minPadding: 100,
-  });
+  // const Grid = makeResponsive(measureItems(CSSGrid), {
+  //   maxWidth: 1920,
+  //   minPadding: 100,
+  // });
 
   const sommelier = (
     <svg
@@ -84,7 +84,7 @@ const RandomHost = () => {
         <div className="title">Featured Host</div>
         {/* <div className="host-bio">{sessionHost.about}</div> */}
       </div>
-      <Grid
+      <CSSGrid
         component="ul"
         columns={1}
         columnWidth={250}
@@ -121,7 +121,6 @@ const RandomHost = () => {
                     </div>
                   </div>
                 </div>
-                
               </div>
             </div>
 
@@ -131,7 +130,7 @@ const RandomHost = () => {
               </div> */}
           </div>
         )}
-      </Grid>
+      </CSSGrid>
     </div>
   );
 };

@@ -94,7 +94,7 @@ const FutureEvent = ({ id }) => {
           columns={3}
           columnWidth={250}
           itemHeight={250}
-          itemWidth={50}
+          itemwidth={50}
           duration={0}
         >
           {sessionEvent &&

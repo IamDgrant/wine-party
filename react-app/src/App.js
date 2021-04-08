@@ -2,23 +2,18 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import SplashPage from "./components/SplashPage";
+import LandingPage from "./components/LandingPage";
 import UserHome from "./components/UserHome";
 import BrowseResults from "./components/BrowseResults";
-import FindHost from "./components/FindHost"
-import Account from "./components/Account"
-import Profile from "./components/Profile"
-import Favorites from "./components/Favorites"
-import Details from "./components/Details"
-import Help from "./components/Help"
-import Messages from "./components/Messages"
-
+import Account from "./components/Account";
+import Profile from "./components/Profile";
+import Favorites from "./components/Favorites";
+import Details from "./components/Details";
+import Help from "./components/Help";
+import Messages from "./components/Messages";
 import Search from "./components/Search";
 import Events from "./components/Events";
-import FAQ from "./components/FAQ"
-// import LoginForm from "./components/forms/LoginForm";
-// import Event from "./components/Event";
-// import FindHost from "./components/FindHost"
+import FAQ from "./components/FAQ";
 
 import { restoreUser } from "./store/session";
 
@@ -40,7 +35,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact={true}>
-          <SplashPage />
+          <LandingPage />
         </Route>
         <Route path="/hosts" exact={true}>
           <BrowseResults />
@@ -50,6 +45,9 @@ const App = () => {
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />
+        </ProtectedRoute>
+        <ProtectedRoute path="/search" exact={true}>
+          <Search />
         </ProtectedRoute>
         <ProtectedRoute path="/account" exact={true}>
           <Account />
@@ -71,9 +69,6 @@ const App = () => {
         </ProtectedRoute>
         <ProtectedRoute path="/details" exact={true}>
           <Details />
-        </ProtectedRoute>
-        <ProtectedRoute path="/search" exact={true}>
-          <Search />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
