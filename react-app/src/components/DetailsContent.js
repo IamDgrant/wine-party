@@ -14,16 +14,16 @@ const DetailsContent = () => {
   const [isEditingAddress, setIsEditingAddress] = useState(false);
   const [isEditingIdentification, setIsEditingIdentification] = useState(false);
   const [isEditingBirthday, setIsEditingBirthday] = useState(false);
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [phone_number, setPhoneNumber] = useState("");
-  const [identification, setIdentification] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [postal_code, setPostalCode] = useState("");
-  const [signInEmail, setSignInEmail] = useState("");
+  const [first_name, setFirstName] = useState(sessionUser.first_name);
+  const [last_name, setLastName] = useState(sessionUser.last_name);
+  const [phone_number, setPhoneNumber] = useState(sessionUser.phone_number);
+  const [identification, setIdentification] = useState(sessionUser.identification);
+  const [birthday, setBirthday] = useState(sessionUser.birthday);
+  const [street, setStreet] = useState(sessionUser.street);
+  const [city, setCity] = useState(sessionUser.city);
+  const [state, setState] = useState(sessionUser.state);
+  const [postal_code, setPostalCode] = useState(sessionUser.postal_code);
+  const [signInEmail, setSignInEmail] = useState(sessionUser.email);
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
 
@@ -51,94 +51,19 @@ const DetailsContent = () => {
     setIsEditingImage(!isEditingImage);
   };
 
-  const onSaveFirstName = async (e) => {
+  const onSaveAll = async (e) => {
     // e.preventDefault();
     let newErrors = [];
     dispatch(
       update_User({
         first_name,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSaveLastName = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         last_name,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSaveEmail = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         signInEmail,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSavePhone = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         phone_number,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSaveAddress = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         street,
         city,
         state,
         postal_code,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSaveBirthday = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         birthday,
       })
     ).catch(async (res) => {
@@ -150,33 +75,116 @@ const DetailsContent = () => {
     });
   };
 
+  // const onSaveLastName = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       last_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSaveEmail = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       signInEmail,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSavePhone = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       phone_number,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSaveAddress = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       street,
+  //       city,
+  //       state,
+  //       postal_code,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSaveBirthday = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       birthday,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
   const updateEditingName = () => {
     setIsEditingName(!isEditingName);
   };
   const saveEditingName = () => {
-    if (first_name === "") {
-      <Alert
-        message="Warning"
-        description="Please add your first name."
-        type="warning"
-        showIcon
-        closable
-      />;
-    } else {
-      onSaveFirstName();
-    }
-    if (last_name === "" || last_name.length < 2) {
-      console.log("YEOP!!!!!");
-      <Alert
-        message="Please add your last name."
-        banner
-        // type="warning"
-        // showIcon
-        // closable
-      />;
-    } else {
-      onSaveLastName();
-    }
+    // if (first_name === "") {
+    //   <Alert
+    //     message="Warning"
+    //     description="Please add your first name."
+    //     type="warning"
+    //     showIcon
+    //     closable
+    //   />;
+    // } else {
+      onSaveAll();
+    // }
+    // if (last_name === "" || last_name.length < 2) {
+    //   console.log("YEOP!!!!!");
+    //   <Alert
+    //     message="Please add your last name."
+    //     banner
+    //     // type="warning"
+    //     // showIcon
+    //     // closable
+    //   />;
+    // } else {
+      // onSaveLastName();
+    // }
     setIsEditingName(!isEditingName);
   };
 
@@ -184,17 +192,17 @@ const DetailsContent = () => {
     setIsEditingEmail(!isEditingEmail);
   };
   const saveEditingEmail = () => {
-    if (signInEmail === "") {
-      <Alert
-        message="Warning"
-        description="Please add a valid email."
-        type="warning"
-        showIcon
-        closable
-      />;
-    } else {
-      onSaveEmail();
-    }
+    // if (signInEmail === "") {
+    //   <Alert
+    //     message="Warning"
+    //     description="Please add a valid email."
+    //     type="warning"
+    //     showIcon
+    //     closable
+    //   />;
+    // } else {
+      onSaveAll();
+    // }
     setIsEditingEmail(!isEditingEmail);
   };
 
@@ -202,17 +210,17 @@ const DetailsContent = () => {
     setIsEditingPhone(!isEditingPhone);
   };
   const saveEditingPhone = () => {
-    if (phone_number === "" || phone_number.length < 10) {
-      <Alert
-        message="Warning"
-        description="Please add a valid phone number at least 10 characters."
-        type="warning"
-        showIcon
-        closable
-      />;
-    } else {
-      onSavePhone();
-    }
+    // if (phone_number === "" || phone_number.length < 10) {
+    //   <Alert
+    //     message="Warning"
+    //     description="Please add a valid phone number at least 10 characters."
+    //     type="warning"
+    //     showIcon
+    //     closable
+    //   />;
+    // } else {
+      onSaveAll();
+    // }
     setIsEditingPhone(!isEditingPhone);
   };
 
@@ -220,18 +228,18 @@ const DetailsContent = () => {
     setIsEditingAddress(!isEditingAddress);
   };
   const saveEditingAddress = () => {
-    if (street === "" || city === "" || state === "" || postal_code === "") {
-      console.log("FILL IT OUT");
-      <Alert
-        message="Warning"
-        description="Please add a valid phone number at least 10 characters."
-        type="warning"
-        showIcon
-        closable
-      />;
-    } else {
-      onSaveAddress();
-    }
+    // if (street === "" || city === "" || state === "" || postal_code === "") {
+    //   console.log("FILL IT OUT");
+    //   <Alert
+    //     message="Warning"
+    //     description="Please add a valid phone number at least 10 characters."
+    //     type="warning"
+    //     showIcon
+    //     closable
+    //   />;
+    // } else {
+      onSaveAll();
+    // }
     setIsEditingAddress(!isEditingAddress);
   };
 
@@ -239,17 +247,17 @@ const DetailsContent = () => {
     setIsEditingBirthday(!isEditingBirthday);
   };
   const saveEditingBirthday = () => {
-    if (birthday === "") {
-      <Alert
-        message="Warning"
-        description="Please add your birthday."
-        type="warning"
-        showIcon
-        closable
-      />;
-    } else {
-      onSaveBirthday();
-    }
+    // if (birthday === "") {
+    //   <Alert
+    //     message="Warning"
+    //     description="Please add your birthday."
+    //     type="warning"
+    //     showIcon
+    //     closable
+    //   />;
+    // } else {
+      onSaveAll();
+    // }
     setIsEditingBirthday(!isEditingBirthday);
   };
 

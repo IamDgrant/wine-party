@@ -91,7 +91,7 @@ export const update_User = (updateData) => async (dispatch) => {
   console.log(res);
   if (res.ok) {
     const data = await res.json();
-    dispatch(updateUser(data));
+    dispatch(updateUser(data.user));
   }
   return res;
 };

@@ -60,9 +60,6 @@ const SearchResult = () => {
   //   // setIsRoseWine(!isRoseWine);
   // }, [dispatch, isSommelier, isMixologist, isRedWine, isWhiteWine, isRoseWine]);
 
-  // const backClick = () => {
-  //   history.push("/home");
-  // };
 
   // const Grid = makeResponsive(measureItems(CSSGrid), {
   //   maxWidth: 1920,
@@ -123,13 +120,13 @@ const SearchResult = () => {
     </svg>
   );
 
-  const updateSorted = (e) => {
-    if (e.target.value === "alpha-asc") {
-      setIsSortedType("asc");
-    } else if (e.target.value === "alpha-desc") {
-      setIsSortedType("desc");
-    }
-  };
+  // const updateSorted = (e) => {
+  //   if (e.target.value === "alpha-asc") {
+  //     setIsSortedType("asc");
+  //   } else if (e.target.value === "alpha-desc") {
+  //     setIsSortedType("desc");
+  //   }
+  // };
 
   const sorted = () =>
     hosts.sort((name1, name2) => {
@@ -141,6 +138,8 @@ const SearchResult = () => {
     });
 
   const activateSort = sorted();
+
+  .filter((type) => type === "Sommelier" || type === "Mixologist" || type === "red-wine" || type === "white-wine" || type === "rose-wine")
 
   // const updateFiltered = (e) => {
   //   if (e.target.value === "alpha-asc") {
@@ -488,39 +487,48 @@ const SearchResult = () => {
     );
   }
 
+  const selectedOptions = [];
+
   const handleChange = (value) => {
     if (value.toString() === "Sommelier") {
-      // console.log("SOMM");
-      setIsSommelier(true);
+      console.log("SOMM");
+      selectedOption.push("Sommelier")
+      // setIsSommelier(true);
     } else if (value.toString() === "") {
       console.log("OFF");
-      setIsSommelier(false);
+      // setIsSommelier(false);
     }
     if (value.toString() === "Mixologist") {
       console.log("MIX");
-      setIsMixologist(true);
+      selectedOption.push("Mixologist")
+      // setIsMixologist(true);
     } else if (value.toString() === "") {
-      setIsMixologist(false);
+      // setIsMixologist(false);
     }
     if (value.toString() === "red-wine") {
       console.log("RED");
-      setIsRedWine(true);
+      selectedOption.push("red-wine")
+      // setIsRedWine(true);
     } else if (value.toString() === "") {
-      setIsRedWine(false);
+      // setIsRedWine(false);
     }
     if (value.toString() === "white-wine") {
       console.log("WHITE");
-      setIsWhiteWine(true);
+      selectedOption.push("white-wine")
+      // setIsWhiteWine(true);
     } else if (value.toString() === "") {
-      setIsWhiteWine(false);
+      // setIsWhiteWine(false);
     }
     if (value.toString() === "rose-wine") {
       console.log("ROSE");
-      setIsRoseWine(true);
+      selectedOption.push("rose-wine")
+      // setIsRoseWine(true);
     } else if (value.toString() === "") {
-      setIsRoseWine(false);
+      // setIsRoseWine(false);
     }
   };
+
+  console.log(selectedOptions);
 
   return (
     <>
@@ -539,6 +547,8 @@ const SearchResult = () => {
               <option value="sort by">Sort by</option>
               <option value="alpha-asc">Alphabet - A-Z</option>
               <option value="alpha-desc">Alphabet - Z-A</option>
+              <option value="price-asc">Distance - Closest</option>
+                <option value="price-asc">Distance - Furthest</option>
               <option value="price-asc">Price - Lowest to Highest</option>
               <option value="price-desc">Price - Highest to Lowest</option>
               <option value="rating-asc">Rating - Lowest to Highest</option>

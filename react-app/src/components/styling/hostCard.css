@@ -1,0 +1,12 @@
+.host-card-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.host-image-container {
+}
+
+.host-about-container {
+    display: flex;
+    flex-direction: column;
+}

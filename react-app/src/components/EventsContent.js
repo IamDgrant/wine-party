@@ -33,18 +33,26 @@ const EventsContent = (user_id) => {
   const history = useHistory();
 
   const [isEditResultsVisible, setIsResultsVisible] = useState(false);
+  const [currentEventId, setCurrentEventId] = useState();
+  const currentEvent = sessionEvent.find(
+    (event) => currentEventId === event.id
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [isAddDrawerVisible, setIsAddDrawerVisible] = useState(false);
   const [isEditDrawerVisible, setIsEditDrawerVisible] = useState(false);
-  const [event_name, setEventName] = useState("");
+  const [event_name, setEventName] = useState(currentEvent?.event_name);
   const [event_host, setEventHost] = useState("");
   const [event_date, setEventDate] = useState("");
-  const [event_city, setEventCity] = useState("");
-  const [event_state, setEventState] = useState("");
-  const [event_postal_code, setEventPostalCode] = useState("");
+  const [event_city, setEventCity] = useState(currentEvent?.event_city);
+  const [event_state, setEventState] = useState(currentEvent?.event_state);
+  const [event_postal_code, setEventPostalCode] = useState(
+    currentEvent?.event_postal_code
+  );
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
+
+  console.log(currentEvent);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -74,13 +82,20 @@ const EventsContent = (user_id) => {
 
   useEffect(() => {
     dispatch(seeEvent());
-    if (event_state.length > 0) {
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (event_state && event_state.length > 0) {
       cityFetch();
     }
+  }, [event_state]);
+
+
+  useEffect(() => {
     if (cscCity !== undefined) {
       setIsDisabled(false);
     }
-  }, [event_state, cscCity]);
+  }, [cscCity]);
 
   const showAddDrawer = () => {
     setIsAddDrawerVisible(true);
@@ -171,6 +186,7 @@ const EventsContent = (user_id) => {
   };
 
   const updateEventState = (onChangeState) => {
+    console.log(onChangeState);
     showEditDrawer();
     if (onChangeState.length < 1) {
       setIsEditDrawerVisible(false);
@@ -193,8 +209,8 @@ const EventsContent = (user_id) => {
     // setIsDrawerVisible(false);
   };
 
-  const saveEditEvent = () => {
-    onEditSubmission();
+  const saveEditEvent = (id) => {
+    onEditSubmission(id);
 
     // setIsDrawerVisible(false);
   };
@@ -227,29 +243,30 @@ const EventsContent = (user_id) => {
     });
   };
 
-  const onEditSubmission = async (e) => {
+  const onEditSubmission = async (id) => {
     console.log("SAVE EDIT HITTING");
     //   // e.preventDefault();
     // if (!event_name) {
     //   error();
     //   return;
     // }
-    // dispatch(
-    //   update_Event({
-    //     // host_id,
-    //     event_name,
-    //     event_date,
-    //     event_city,
-    //     event_state,
-    //     event_postal_code,
-    //   })
-    // ).then(() => {
-    //   setEventName("");
-    //   setEventDate("");
-    //   setEventCity("");
-    //   setEventState("");
-    //   setEventPostalCode("");
-    // });
+    await dispatch(
+      update_Event({
+        id,
+        // host_id,
+        event_name,
+        event_date,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).then(() => {
+      setEventName("");
+      setEventDate("");
+      setEventCity("");
+      setEventState("");
+      setEventPostalCode("");
+    });
   };
 
   const error = () => {
@@ -260,6 +277,7 @@ const EventsContent = (user_id) => {
 
   const callback = (key) => {
     console.log(key);
+    setCurrentEventId(Number(key));
   };
 
   const todaysDate = new Date();
@@ -309,6 +327,8 @@ const EventsContent = (user_id) => {
 
   const updateEditing = () => {
     setIsEditing(!isEditing);
+    setEventState(currentEvent.event_state);
+    setEventPostalCode(currentEvent.event_postal_code);
   };
 
   // const onSaveEvent = async (e) => {
@@ -407,7 +427,7 @@ const EventsContent = (user_id) => {
           </div>
           <div className="save-btn">
             <Popconfirm
-              title="Ready to add a host？"
+              title="Ready to add event？"
               okText="Yes"
               cancelText="No"
               icon={<QuestionCircleOutlined style={{ color: "red" }} />}
@@ -490,8 +510,8 @@ const EventsContent = (user_id) => {
         <div className="all-events-container">
           <div className="upcoming-events">
             <div className="events-title">Upcoming Events</div>
-            <div ClassName="events-list" style={{ paddingTop: "1vh" }}>
-              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+            <div className="events-list" style={{ paddingTop: "1vh" }}>
+              <Collapse accordion defaultActiveKey={["1"]} onChange={callback}>
                 {upcomingEvents &&
                   upcomingEvents.map((event) => (
                     <Panel
@@ -607,13 +627,13 @@ const EventsContent = (user_id) => {
                             value={event_date}
                           />
                           <input
-                                className="details-name-input"
-                                name="last name"
-                                type="text"
-                                placeholder="Postal Code"
-                                onChange={updatePostalCode}
-                                value={event_postal_code}
-                              />
+                            className="details-name-input"
+                            name="last name"
+                            type="text"
+                            placeholder="Postal Code"
+                            onChange={updatePostalCode}
+                            value={event_postal_code}
+                          />
                         </form>
                       ) : (
                         <div className="event-host-container">
@@ -625,7 +645,9 @@ const EventsContent = (user_id) => {
                           <Button
                             type="link"
                             className="edit-button"
-                            onClick={updateEditing}
+                            onClick={() => {
+                              updateEditing();
+                            }}
                           >
                             {editButton}
                           </Button>
@@ -659,7 +681,7 @@ const EventsContent = (user_id) => {
             >
               Previous Events
             </div>
-            <div ClassName="events-list">
+            <div className="events-list">
               <Collapse defaultActiveKey={["1"]} onChange={callback}>
                 {previousEvents &&
                   previousEvents.map((event) => (

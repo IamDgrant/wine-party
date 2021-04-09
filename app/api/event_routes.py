@@ -53,21 +53,20 @@ def create_event():
         return event.to_dict()
     return('Invalid Info')
 
-@event_routes.route('/update', methods=['PUT'])
+@event_routes.route('/update/<id>', methods=['PUT'])
 @login_required
-def update_event():
-    print(current_user)
-    event = current_user
+def update_event(id):
+    print("I'M IN BACKEND!!!!!!!!!!!!!!!")
+    event = Event.query.filter_by(id=id).first()
     update = request.get_json()
-    user.event_name = update["event_name"]
-    # user.last_name = update["last_name"]
-    # user.email = update["signInEmail"]
-    # user.phone_number = update["phone_number"]
-    # user.birthday = update["birthday"]
-    # user.about = update["about"]
+    event.event_name = update["event_name"]
+    # event.event_name = update["last_name"]
+    # event.event_name = update["signInEmail"]
+    # event.event_name = update["phone_number"]
+    # event.postal_code = update["birthday"]
 
     db.session.commit()
-    return {"user": event.to_dict()}
+    return {"event": event.to_dict()}
 
 
 @event_routes.route('/<id>', methods=['DELETE'])

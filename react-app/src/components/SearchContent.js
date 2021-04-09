@@ -489,7 +489,7 @@ const SearchContent = () => {
 
   const handleChange = (value) => {
     if (value.toString() === "Sommelier") {
-      // console.log("SOMM");
+      console.log("SOMM");
       setIsSommelier(true);
     } else if (value.toString() === "") {
       console.log("OFF");
@@ -540,6 +540,8 @@ console.log(filteredSort);
                 <option value="sort by">Sort by</option>
                 <option value="alpha-asc">Alphabet - A-Z</option>
                 <option value="alpha-desc">Alphabet - Z-A</option>
+                <option value="price-asc">Distance - Closest</option>
+                <option value="price-asc">Distance - Furthest</option>
                 <option value="price-asc">Price - Lowest to Highest</option>
                 <option value="price-desc">Price - Highest to Lowest</option>
                 <option value="rating-asc">Rating - Lowest to Highest</option>

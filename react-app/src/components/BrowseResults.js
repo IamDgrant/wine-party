@@ -3,14 +3,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { browseAllHost } from "../store/host";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { Select } from "antd";
+import { Select, Button, Modal } from "antd";
+import HostCard from "../components/HostCard";
 import "../components/styling/browseHostStyling.css";
+import "../components/styling/hostCard.css";
 
 const BrowseResults = () => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
   // const history = useHistory();
 
+  const [isAboutShowing, setIsAboutShowing] = useState(undefined);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
   const [isSommelier, setIsSommelier] = useState(false);
@@ -27,6 +30,13 @@ const BrowseResults = () => {
   //   maxWidth: 1920,
   //   minPadding: 100,
   // });
+
+  const showAbout = () => {
+    setIsAboutShowing(true);
+  };
+  const hideAbout = () => {
+    setIsAboutShowing(false);
+  };
 
   const sommelier = (
     <svg
@@ -118,7 +128,6 @@ const BrowseResults = () => {
     </svg>
   );
 
-
   const updateSorted = (e) => {
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
@@ -128,6 +137,8 @@ const BrowseResults = () => {
   };
 
   const hosts = sessionHosts.map((host) => host);
+
+  console.log(hosts);
 
   const sorted = () =>
     hosts.sort((name1, name2) => {
@@ -139,6 +150,18 @@ const BrowseResults = () => {
     });
 
   const activateSort = sorted();
+
+  //   for( let i = 0; i < activateSort.length; i++){
+
+  //     if ( activateSort[i].sommelier === true) {
+  //       activateSort.splice(i, 1);
+  //         i--;
+  //     }
+  // }
+
+  // const hostTypeFilter = activatedSort.filter((type) => {
+
+  // })
 
   const filteredSort = activateSort.filter((host) => {
     if (
@@ -441,93 +464,122 @@ const BrowseResults = () => {
   }
 
   const handleChange = (value) => {
-    if (value.toString() === "Sommelier") {
-      // console.log("SOMM");
-      setIsSommelier(true);
-    } else if (value.toString() === "") {
-      console.log("OFF");
-      setIsSommelier(false);
-    }
-    if (value.toString() === "Mixologist") {
-      console.log("MIX");
-      setIsMixologist(true);
-    } else if (value.toString() === "") {
-      setIsMixologist(false);
-    }
-    if (value.toString() === "red-wine") {
-      console.log("RED");
-      setIsRedWine(true);
-    } else if (value.toString() === "") {
-      setIsRedWine(false);
-    }
-    if (value.toString() === "white-wine") {
-      console.log("WHITE");
-      setIsWhiteWine(true);
-    } else if (value.toString() === "") {
-      setIsWhiteWine(false);
-    }
-    if (value.toString() === "rose-wine") {
-      console.log("ROSE");
-      setIsRoseWine(true);
-    } else if (value.toString() === "") {
-      setIsRoseWine(false);
-    }
+    console.log(value);
+    // if (value.toString() === "Sommelier") {
+    // } else if (value.toString() === "") {
+    //   for (let i = 0; i < selectedOptions.length; i++) {
+    //     if (selectedOptions[i] === "Sommelier") {
+    //       selectedOptions.splice(i, 1);
+    //       i--;
+    //     }
+    //   }
+    // }
+    // if (value.toString() === "Mixologist") {
+    //   selectedOptions.push("Mixologist");
+    // } else if (value.toString() === "") {
+    //   for (let i = 0; i < selectedOptions.length; i++) {
+    //     if (selectedOptions[i] === "Mixologist") {
+    //       selectedOptions.splice(i, 1);
+    //       i--;
+    //     }
+    //   }
+    // }
+    // if (value.toString() === "red-wine") {
+    //   selectedOptions.push("red-wine");
+    // } else if (value.toString() === "") {
+    //   for (let i = 0; i < selectedOptions.length; i++) {
+    //     if (selectedOptions[i] === "red-wine") {
+    //       selectedOptions.splice(i, 1);
+    //       i--;
+    //     }
+    //   }
+    // }
+    // if (value.toString() === "white-wine") {
+    //   selectedOptions.push("white-wine");
+    // } else if (value.toString() === "") {
+    //   for (let i = 0; i < selectedOptions.length; i++) {
+    //     if (selectedOptions[i] === "white-wine") {
+    //       selectedOptions.splice(i, 1);
+    //       i--;
+    //     }
+    //   }
+    // }
+    // if (value.toString() === "rose-wine") {
+    //   selectedOptions.push("rose-wine");
+    // } else if (value.toString() === "") {
+    //   for (let i = 0; i < selectedOptions.length; i++) {
+    //     if (selectedOptions[i] === "rose-wine") {
+    //       selectedOptions.splice(i, 1);
+    //       i--;
+    //     }
+    //   }
+    // }
   };
+
+  const currentHost = filteredSort.find((host) => isAboutShowing === host.id)
 
   return (
     <>
       <div className="browse-content-container">
-      <div className="search-info">
-        <div className="results">
-          <div className="host-for-you"></div>
-          <div className="sort-filter">
-            <div className="sort">
-              <select
-                className="select-dropdown"
-                name="select"
-                placeholder="Sort by"
-                onChange={updateSorted}
-              >
-                <option value="sort by">Sort by</option>
-                <option value="alpha-asc">Alphabet - A-Z</option>
-                <option value="alpha-desc">Alphabet - Z-A</option>
-                <option value="price-asc">Price - Lowest to Highest</option>
-                <option value="price-desc">Price - Highest to Lowest</option>
-                <option value="rating-asc">Rating - Lowest to Highest</option>
-                <option value="rating-desc">Rating - Highest to Lowest</option>
-              </select>
+        <div className="search-info">
+          <div className="results">
+            <div className="host-for-you"></div>
+            <div className="sort-filter">
+              <div className="sort">
+                <select
+                  className="select-dropdown"
+                  name="select"
+                  placeholder="Sort by"
+                  onChange={updateSorted}
+                >
+                  <option value="sort by">Sort by</option>
+                  <option value="alpha-asc">Alphabet - A-Z</option>
+                  <option value="alpha-desc">Alphabet - Z-A</option>
+                  <option value="price-asc">Distance - Closest</option>
+                  <option value="price-asc">Distance - Furthest</option>
+                  <option value="price-asc">Price - Lowest to Highest</option>
+                  <option value="price-desc">Price - Highest to Lowest</option>
+                  <option value="rating-asc">Rating - Lowest to Highest</option>
+                  <option value="rating-desc">
+                    Rating - Highest to Lowest
+                  </option>
+                </select>
+              </div>
+              <div className="filter">
+                <Select
+                  className="filter-dropdown"
+                  mode="multiple"
+                  placeholder="Filter by"
+                  onChange={handleChange}
+                  // optionLabelProp="label"
+                >
+                  <Option value="Sommelier" label="Sommelier">
+                    <div className="demo-option-label-item">Sommelier 🍷</div>
+                  </Option>
+                  <Option value="Mixologist" label="Mixologist">
+                    <div className="demo-option-label-item">Mixologist 🍸</div>
+                  </Option>
+                  <Option value="red-wine" label="red-wine">
+                    <div className="demo-option-label-item">
+                      Red Wine Expert
+                    </div>
+                  </Option>
+                  <Option value="white-wine" label="white-wine">
+                    <div className="demo-option-label-item">
+                      White Wine Expert
+                    </div>
+                  </Option>
+                  <Option value="rose-wine" label="rose-wine">
+                    <div className="demo-option-label-item">
+                      Rosé Wine Expert
+                    </div>
+                  </Option>
+                </Select>
+              </div>
             </div>
-            <div className="filter">
-              <Select
-                className="filter-dropdown"
-                mode="multiple"
-                placeholder="Filter by"
-                onChange={handleChange}
-                // optionLabelProp="label"
-              >
-                <Option value="Sommelier" label="Sommelier">
-                  <div className="demo-option-label-item">Sommelier 🍷</div>
-                </Option>
-                <Option value="Mixologist" label="Mixologist">
-                  <div className="demo-option-label-item">Mixologist 🍸</div>
-                </Option>
-                <Option value="red-wine" label="red-wine">
-                  <div className="demo-option-label-item">Red Wine Expert</div>
-                </Option>
-                <Option value="white-wine" label="white-wine">
-                  <div className="demo-option-label-item">
-                    White Wine Expert
-                  </div>
-                </Option>
-                <Option value="rose-wine" label="rose-wine">
-                  <div className="demo-option-label-item">Rosé Wine Expert</div>
-                </Option>
-              </Select>
-            </div>
-          </div>
-          <div className="host-result-btns">
-            {/* <Divider orientation="left">Horizontal</Divider> */}
-            {/* <Row gutter={16}>
+            <div className="host-result-btns">
+              {/* <Divider orientation="left">Horizontal</Divider> */}
+              {/* <Row gutter={16}>
               {filteredSort.map((host) => (
                 <Col key={host.id} className="gutter-row" span={6}>
                   <div className="hosts">
@@ -553,53 +605,72 @@ const BrowseResults = () => {
               ))}
             </Row> */}
 
-            <CSSGrid
-              component="ul"
-              columns={4}
-              columnWidth={250}
-              itemHeight={400}
-              itemwidth={250}
-              duration={250}
-              easing="ease-out"
-            >
-              {filteredSort.map((host) => (
-                <div className="card" key={host.id}>
-                  <div
-                    className="host-card"
-                    style={{
-                      backgroundImage: `url(${host.profile_image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    <div className="hosts">
-                      <div className="add-host">
-                        <button>{addBtn}</button>
-                      </div>
-                      <div className="host-name-type">
-                        <div className="host-name">
-                          {host.first_name} {host.last_name}
+              <CSSGrid
+                component="ul"
+                columns={4}
+                columnWidth={250}
+                itemHeight={400}
+                itemwidth={250}
+                duration={250}
+                easing="ease-out"
+              >
+                {!isAboutShowing ? filteredSort.map((host) => (
+                  <div key={host.id}>
+                      <Button style={{ padding: "0" }} onClick={() => setIsAboutShowing(host.id)}>
+                        <div className="card">
+                          <div
+                            className="host-card"
+                            style={{
+                              backgroundImage: `url(${host.profile_image})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          >
+                            <div className="hosts">
+                              {/* <div className="add-host">
+                                <button>{addBtn}</button>
+                              </div> */}
+                              <div className="host-name-type">
+                                <div className="host-name">
+                                  {host.first_name} {host.last_name}
+                                </div>
+                                <div className="somm">
+                                  {host.sommelier === true ? sommelier : null}
+                                </div>
+                                <div className="mix">
+                                  {host.mixologist === true ? mixologist : null}
+                                </div>
+                              </div>
+                              <div className="host-city-state">
+                                {host.city}, {host.state}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="somm">
-                          {host.sommelier === true ? sommelier : null}
-                        </div>
-                        <div className="mix">
-                          {host.mixologist === true ? mixologist : null}
-                        </div>
-                      </div>
-                      <div className="host-city-state">
-                        {host.city}, {host.state}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </CSSGrid>
+                      </Button>
+                   
+                  </div>)) : 
+                   <div className="host-card-container">
+                   <div className="host-image-container">
+                     <img
+                       src={currentHost.profile_image}
+                       alt="host profile"
+                     />
+                   </div>
+                   <div className="host-about-container">
+                     <div className="host-name-card"></div>
+                     <div className="host-type-card"></div>
+                     <div className="host-about-card"></div>
+                     <div className="host-specialty-card"></div>
+                   </div>
+                 </div>
+                }
+              </CSSGrid>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
