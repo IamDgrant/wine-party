@@ -1,16 +1,21 @@
-.random-host {
+.random-host-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  /* align-items: center; */
 }
 
 .random-host-card {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  border-radius: 5%;
   height: 250px;
   width: 240px;
-  box-shadow: 2px 2px 7px grey;
+  box-shadow: 1px 1px 1px grey;
+}
+
+.hosts {
+  border-radius: 5%;
 }
 
 .title {
@@ -31,18 +36,17 @@
 }
 
 .host-city-state-name-type {
-  font-family: "Bebas Neue", cursive;
+  border-radius: 0% 0% 20% 20%;
   /* grid-area: user4; */
   white-space: nowrap;
   font-size: 0.75rem;
   color: white;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.348);
 }
 
 .host-name-type-container {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(0, 0, 0);
 }
 
 .city-state {
@@ -74,16 +78,17 @@
   /* background-color: rgba(255, 255, 255, 0.199); */
 }
 
-.add-host {
+/* .add-host {
   grid-area: add;
   white-space: nowrap;
   font-size: 0.75rem;
   color: white;
   width: 100%;
-  background-color: rgb(0, 0, 0);
-}
+  background-color: rgba(0, 0, 0, 0.5);
+} */
 
 .host-type {
+  border-radius: 5%;
   grid-area: host-type;
   white-space: nowrap;
   font-size: 0.75rem;
@@ -96,5 +101,30 @@
   white-space: nowrap;
   font-size: 0.75rem;
   color: white;
-  background-color: rgba(255, 255, 255, 0.199);
+  background-color: rgba(0, 0, 0, 0.5);
 }
+
+.about-QandA-container {
+  margin-left: 3vw;
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content:center; */
+  /* align-items:baseline; */
+}
+
+.host-QandA {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.question1, .question2 {
+  font-size: 1.5vh;
+  margin-top: 1vh;
+}
+
+.answer {
+  margin-top: 1vh;
+  font-size: 1.5vh;
+}
+
+

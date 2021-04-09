@@ -12,20 +12,7 @@ import { usStates } from "../../States";
 // import SearchResult from "../../SearchResults";
 import "../../styling/formStyling.css";
 
-const EventForm = (
-  user_id
-  // user_id,
-  // event_name,
-  // setEventName,
-  // event_date,
-  // setEventDate,
-  // event_city,
-  // setEventCity,
-  // event_state,
-  // setEventState,
-  // event_postal_code,
-  // setEventPostalCode,
-) => {
+const EventForm = (user_id) => {
   const [event_name, setEventName] = useState("");
   const [event_date, setEventDate] = useState("");
   const [event_city, setEventCity] = useState("");

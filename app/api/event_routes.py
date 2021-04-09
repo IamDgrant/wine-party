@@ -53,6 +53,22 @@ def create_event():
         return event.to_dict()
     return('Invalid Info')
 
+@event_routes.route('/update', methods=['PUT'])
+@login_required
+def update_event():
+    print(current_user)
+    event = current_user
+    update = request.get_json()
+    user.event_name = update["event_name"]
+    # user.last_name = update["last_name"]
+    # user.email = update["signInEmail"]
+    # user.phone_number = update["phone_number"]
+    # user.birthday = update["birthday"]
+    # user.about = update["about"]
+
+    db.session.commit()
+    return {"user": event.to_dict()}
+
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def delete_event(id):
@@ -62,24 +78,3 @@ def delete_event(id):
     db.session.delete(event)
     db.session.commit()
     return event.to_dict()
-
-
-# @event_routes.route('/update/<id>', methods=['POST'])
-# @login_required
-# def update_event(id):
-#     event = Event.query.filter_by(id=id).first()
-#     update = request.data.decode("utf-8")
-#     updated = ast.literal_eval(update)
-#     if "status" in updated.keys():
-#         status = updated["status"]
-#         event.status = status
-#     if "priority" in updated.keys():
-#         priority = updated["priority"]
-#         event.priority = priority
-#     if "desc" in updated.keys():
-#         desc = updated["desc"]
-#         event.description = desc
-
-#     db.session.commit()
-
-#     return event.to_dict()

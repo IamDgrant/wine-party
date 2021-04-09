@@ -12,11 +12,18 @@ const LandingPage = () => {
 //     return <Redirect to="/home" />;
 //   }
 
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     console.log(position);
-  //   });
-  // }, [dispatch]);
+// console.log(navigator);
+
+  useEffect(() => {
+    navigator.geolocation.watchPosition(
+      function(position) {
+        console.log(position);
+      },
+      function(error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+      }
+    );
+  }, []);
 
   return (
       <div className="main-landing-container">
@@ -25,9 +32,6 @@ const LandingPage = () => {
         </div>
         <div className="landing-contents">
           <LandingPageContent />
-        </div>
-        <div className="landing-random-host-container">
-          {/* <RandomHost /> */}
         </div>
       </div>
   );

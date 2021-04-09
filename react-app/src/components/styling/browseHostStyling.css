@@ -48,6 +48,7 @@
 }
 
 .host-result-btns {
+  margin-top: 1vh;
   display: flex;
   justify-content: center;
   overflow: scroll;
@@ -63,4 +64,8 @@
 .add-host {
   display: flex;
   justify-content: center;
+}
+
+.ant-select-selector {
+  height: 50px;
 }

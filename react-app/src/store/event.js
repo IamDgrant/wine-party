@@ -1,6 +1,7 @@
 const SET_EVENT = "event/SetEvent";
-const REMOVE_EVENT = "event/removeEvent";
 const GET_EVENT = "event/getEvent";
+const UPDATE_EVENT = "session/updateEvent";
+const REMOVE_EVENT = "event/removeEvent";
 
 const setEvent = (event) => ({
   type: SET_EVENT,
@@ -10,6 +11,11 @@ const setEvent = (event) => ({
 const getEvent = (event) => ({
   type: GET_EVENT,
   payload: event,
+});
+
+const updateEvent = (data) => ({
+  type: UPDATE_EVENT,
+  payload: data,
 });
 
 const removeEvent = (eventId) => ({
@@ -41,13 +47,35 @@ export const createEvent = ({
   dispatch(setEvent(data));
 };
 
-// export const updateEvent = (id, description) => async (dispatch) => {
-//   const res = await fetch(`/api/tasks/${id}`, {
-//     method: "PUT",
-//     body: JSON.stringify({ description }),
-//   });
-//   return await res.json();
-// };
+export const update_Event = (updateData) => async (dispatch) => {
+  const {
+    event_name,
+    event_date,
+    event_city,
+    event_state,
+    event_postal_code,
+  } = updateData;
+  console.log("MADE IT HERE", event_name);
+  const res = await fetch("/api/events/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      event_name,
+      event_date,
+      event_city,
+      event_state,
+      event_postal_code,
+    }),
+  });
+  console.log(res);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(updateEvent(data));
+  }
+  return res;
+};
 
 export const deleteEvent = (eventId) => async (dispatch) => {
   const res = await fetch(`/api/events/${eventId}`, {
@@ -92,6 +120,8 @@ function reducer(state = initialState, action) {
     }
     case GET_EVENT:
       return { ...state, event: action.payload };
+    case UPDATE_EVENT:
+      return { ...state, user: action.payload };
     default:
       return state;
   }

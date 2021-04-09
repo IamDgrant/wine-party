@@ -24,6 +24,7 @@ const SearchContent = () => {
   const [isWhiteWine, setIsWhiteWine] = useState(false);
   const [isRoseWine, setIsRoseWine] = useState(false);
 
+
   useEffect(() => {
     const locationSplit = location.search.split("&");
     const query = locationSplit.map(chunk => chunk.split("=")[1])
@@ -520,6 +521,8 @@ const SearchContent = () => {
     }
   };
 
+console.log(filteredSort);
+
   return (
     <div className="search-content-container">
       <div className="search-title">Hosts</div>
@@ -573,7 +576,7 @@ const SearchContent = () => {
           </div>
           <div className="host-result-btns">
             {/* <Divider orientation="left">Horizontal</Divider> */}
-            <Row gutter={16}>
+            {/* <Row gutter={16}>
               {filteredSort.map((host) => (
                 <Col key={host.id} className="gutter-row" span={6}>
                   <div className="hosts">
@@ -597,9 +600,9 @@ const SearchContent = () => {
                   </div>
                 </Col>
               ))}
-            </Row>
+            </Row> */}
 
-            {/* <CSSGrid
+            <CSSGrid
               component="ul"
               columns={4}
               columnWidth={250}
@@ -641,7 +644,7 @@ const SearchContent = () => {
                   </div>
                 </div>
               ))}
-            </CSSGrid> */}
+            </CSSGrid>
           </div>
         </div>
       </div>

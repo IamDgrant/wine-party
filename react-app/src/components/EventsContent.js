@@ -3,8 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Select from "react-select";
 import Map from "../components/map/Map";
-import { createEvent, seeEvent, deleteEvent } from "../store/event";
-// import EventForm from "../components/auth/forms/CreateEventForm";
+import {
+  createEvent,
+  seeEvent,
+  deleteEvent,
+  update_Event,
+} from "../store/event";
 import {
   Collapse,
   Button,
@@ -14,28 +18,53 @@ import {
   message,
   autoFocus,
 } from "antd";
+import BrowseResults from "../components/BrowseResults";
 import { usStates } from ".././components/States";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import { QuestionCircleOutlined, SearchOutlined } from "@ant-design/icons";
 import "../components/styling/eventsContentStyling.css";
 import "../components/styling/formStyling.css";
 import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
 
-const EventsContent = (user_id, { id }) => {
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [isDeleteModalVisible, setIsDeleteEditModalVisible] = useState(false);
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const [event_name, setEventName] = useState("");
-  const [event_date, setEventDate] = useState("");
-  const [event_city, setEventCity] = useState("");
-  const [event_state, setEventState] = useState("");
-  const [event_postal_code, setEventPostalCode] = useState("");
-  // const [focus, setFocus] = useState("");
-
+const EventsContent = (user_id) => {
   const sessionUser = useSelector((state) => state.session.user);
   const sessionHost = useSelector((state) => state.session.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [search, setSearch] = useState("");
+  const [sommelier, setSommelier] = useState(false);
+  const [mixologist, setMixologist] = useState(false);
+
+  const [isEditResultsVisible, setIsResultsVisible] = useState(false);
+  // const [isDeleteModalVisible, setIsDeleteEditModalVisible] = useState(false);
+  // const [isEditingEvent_Date, setIsEditingEventDate] = useState(false);
+  // const [isEditingEvent_City, setIsEditingCity] = useState(false);
+  // const [isEditingEvent_State, setIsEditingState] = useState(false);
+  // const [isEditingEvent_Postal_Code, setIsEditingEventPostalCode] = useState(
+  //   false
+  // );
+
+  // const onSearch = async (e) => {
+  //   e.preventDefault();
+  //   history.push(
+  //     `/search?search=${search}&sommelier=${sommelier}&mixologist=${mixologist}`
+  //   );
+  // };
+
+  const updateSearch = (e) => setSearch(e.target.value);
+  const updateSommelier = () => setSommelier(!sommelier);
+  const updateMixologist = () => setMixologist(!mixologist);
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [event_name, setEventName] = useState("");
+  const [event_host, setEventHost] = useState("");
+  const [event_date, setEventDate] = useState("");
+  const [event_city, setEventCity] = useState("");
+  const [event_state, setEventState] = useState("");
+  const [event_postal_code, setEventPostalCode] = useState("");
+  // const [focus, setFocus] = useState("");
 
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
@@ -70,7 +99,7 @@ const EventsContent = (user_id, { id }) => {
   const nameInputFocus = useRef();
 
   useEffect(() => {
-    if (!id) dispatch(seeEvent());
+    dispatch(seeEvent());
     if (event_state.length > 0) {
       cityFetch();
     }
@@ -81,7 +110,7 @@ const EventsContent = (user_id, { id }) => {
     //   dispatch();
     //   setData(id);
     // }
-  }, [id, event_state, cscCity]);
+  }, [event_state, cscCity]);
 
   const showDrawer = () => {
     setIsDrawerVisible(true);
@@ -99,18 +128,64 @@ const EventsContent = (user_id, { id }) => {
   if (isDrawerVisible === true) {
     console.log("HERE");
     console.log(nameInputFocus);
-    nameInputFocus.current.focus()}
+    nameInputFocus.current.focus();
+  }
 
   const closeDrawer = () => {
     setIsDrawerVisible(false);
   };
 
-  const updateEventName = (e) => {
+  const addEventName = (e) => {
     showDrawer();
     if (e.target.value.length < 1) {
       setIsDrawerVisible(false);
     }
     setEventName(e.target.value);
+  };
+
+  const addEventHost = (e) => {
+    setEventHost(e.target.value);
+  };
+
+  const addEventDate = (e) => {
+    setEventDate(e.target.value);
+  };
+
+  const addEventCity = (city) => {
+    setEventCity(city);
+  };
+
+  const addEventState = (onChangeState) => {
+    setEventState(onChangeState);
+  };
+
+  const addPostalCode = (e) => {
+    setEventPostalCode(e.target.value);
+  };
+
+  const showAllHosts = () => {
+    setIsResultsVisible(true);
+  };
+
+  const allHostsCancel = () => {
+    setIsResultsVisible(false);
+  };
+
+  // const editHandleOk = () => {
+  //   setIsEditModalVisible(false);
+  // };
+
+  // const updateEventName = (e) => {
+  //   showDrawer();
+  //   if (e.target.value.length < 1) {
+  //     setIsDrawerVisible(false);
+  //   }
+  //   setEventName(e.target.value);
+  // };
+
+  const updateEventHost = (e) => {
+    showDrawer();
+    setEventHost(e.target.value);
   };
 
   const updateEventDate = (e) => {
@@ -129,18 +204,6 @@ const EventsContent = (user_id, { id }) => {
     setEventPostalCode(e.target.value);
   };
 
-  const showEditModal = () => {
-    setIsEditModalVisible(true);
-  };
-
-  const editHandleOk = () => {
-    setIsEditModalVisible(false);
-  };
-
-  const editHandleCancel = () => {
-    setIsEditModalVisible(false);
-  };
-
   const deleteOneEvent = async (id) => {
     console.log(id);
     await dispatch(deleteEvent(id));
@@ -157,9 +220,9 @@ const EventsContent = (user_id, { id }) => {
   //   deleteOneEvent();
   // };
 
-  const deleteHandleCancel = () => {
-    setIsDeleteEditModalVisible(false);
-  };
+  // const deleteHandleCancel = () => {
+  //   setIsDeleteEditModalVisible(false);
+  // };
 
   const save = () => {
     onSubmission();
@@ -250,6 +313,74 @@ const EventsContent = (user_id, { id }) => {
     </svg>
   );
 
+  const updateEditing = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const onSaveEvent = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      update_Event({
+        event_name,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+  const onSaveEventLocation = async (e) => {
+    // e.preventDefault();
+    let newErrors = [];
+    dispatch(
+      update_Event({
+        // host_id,
+        event_city,
+        event_state,
+        event_postal_code,
+      })
+    ).catch(async (res) => {
+      console.log(res);
+      const data = await res.json();
+      if (data && data.errors) {
+        newErrors = data.errors;
+      }
+    });
+  };
+  // const onSaveEventHost = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_Event({
+  //       event_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+  // const onSaveEventDate = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_Event({
+  //       event_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
   return (
     <div className="events-content-container">
       <Drawer
@@ -324,35 +455,130 @@ const EventsContent = (user_id, { id }) => {
                         <div>
                           <img src={party} alt="neon lights"></img>
                         </div>
-                        <div>
-                          <p>
-                            {event.event_city}, {event.event_state}
-                          </p>
-                        </div>
+                        {isEditing ? (
+                          <div className="search-btn-modal">
+                            <Button
+                              className="edit-find-host-btn"
+                              htmlType="submit"
+                              icon={<SearchOutlined />}
+                              // style={{
+                              //   height: "25px",
+                              //   width: "200px",
+                              //   fontFamily: "Montserrat",
+                              //   fontSize: "13px",
+                              // }}
+                              onClick={showAllHosts}
+                            >
+                              Find a Host
+                            </Button>
+                            <Modal
+                              width={1250}
+                              okText="Add Host"
+                              title="Find your Host"
+                              // onOk={signInHandleOk}
+                              onCancel={allHostsCancel}
+                              visible={isEditResultsVisible}
+                            >
+                              <BrowseResults />
+                            </Modal>
+                          </div>
+                        ) : (
+                          // <form className="edit-host-form">
+                          //   <input
+                          //     // style={{
+                          //     //   height: "25px",
+                          //     //   width: "200px",
+                          //     //   fontFamily: "Montserrat",
+                          //     //   fontSize: "13px",
+                          //     // }}
+                          //     className="edit-host-input"
+                          //     name="host"
+                          //     type="text"
+                          //     placeholder="Search for host..."
+                          //     onChange={updateEventHost}
+                          //     value={event_host}
+                          //   />
+                          // </form>
+                          <div className="event-host-container">
+                            {" "}
+                            <p>HERE{event.host_id}</p>
+                          </div>
+                        )}
+                        {isEditing ? (
+                          <form className="edit-host-form">
+                            <div className="event-state">
+                              <Fragment>
+                                <Select
+                                  // className="state-search-dropdown"
+                                  classNamePrefix="select"
+                                  placeholder="State"
+                                  name="states"
+                                  options={usStates.map((state) => ({
+                                    label: state.label,
+                                    value: state.value,
+                                  }))}
+                                  onChange={(state) =>
+                                    updateEventState(state.value)
+                                  }
+                                />
+                              </Fragment>
+                            </div>
+                            <div>
+                              <Fragment>
+                                <Select
+                                  // className="city-search-dropdown"
+                                  classNamePrefix="select"
+                                  placeholder="City"
+                                  name="cities"
+                                  isDisabled={isDisabled}
+                                  options={
+                                    cscCity !== undefined
+                                      ? cscCity.map((city) => ({
+                                          label: city.name,
+                                          value: city.name,
+                                        }))
+                                      : null
+                                  }
+                                  onChange={(city) =>
+                                    updateEventCity(city.value)
+                                  }
+                                />
+                              </Fragment>
+                            </div>
+                          </form>
+                        ) : (
+                          <div>
+                            <p>
+                              {event.event_city}, {event.event_state}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                      <p>{event.event_date.slice(0, 16)}</p>
+                      {isEditing ? (
+                        <form className="edit-host-form">
+                          <input
+                            className="edit-host-input"
+                            name="host"
+                            type="date"
+                            placeholder={sessionUser.event_date}
+                            onChange={updateEventDate}
+                            value={event_date}
+                          />
+                        </form>
+                      ) : (
+                        <div className="event-host-container">
+                          <p>{event.event_date.slice(0, 16)}</p>
+                        </div>
+                      )}
                       <div className="edit-delete">
                         <div className="edit-btn">
                           <Button
                             type="link"
                             className="edit-button"
-                            onClick={showEditModal}
+                            onClick={updateEditing}
                           >
                             {editButton}
                           </Button>
-                          <Modal
-                            title="Edit Event"
-                            visible={isEditModalVisible}
-                            okText="Submit"
-                            onOk={editHandleOk}
-                            onCancel={editHandleCancel}
-                            style={{
-                              backgroundColor: "#f9fbf2",
-                              color: "#0e1c36",
-                            }}
-                          >
-                            {/* <Event /> */}
-                          </Modal>
                         </div>
                         <div className="trash-btn">
                           <Popconfirm
@@ -369,20 +595,6 @@ const EventsContent = (user_id, { id }) => {
                               {trashButton}
                             </Button>
                           </Popconfirm>
-
-                          {/* <Modal
-                          title="Delete Event"
-                          visible={isDeleteModalVisible}
-                          okText="Submit"
-                          onOk={deleteHandleOk}
-                          onCancel={deleteHandleCancel}
-                          style={{
-                            backgroundColor: "#f9fbf2",
-                            color: "#0e1c36",
-                          }}
-                        >
-                          <Event />
-                        </Modal> */}
                         </div>
                       </div>
                     </Panel>
@@ -415,6 +627,7 @@ const EventsContent = (user_id, { id }) => {
                           ></img>
                         </div>
                         <div>
+                          <p>HERE{event.host_id}</p>
                           <p>
                             {event.event_city}, {event.event_state}
                           </p>
@@ -439,10 +652,7 @@ const EventsContent = (user_id, { id }) => {
                 Add Event
               </div>
               <Collapse defaultActiveKey={["1"]} onChange={callback}>
-                <Panel
-                  header="Add your event"
-                  style={{ fontWeight: "900" }}
-                >
+                <Panel header="Add your event" style={{ fontWeight: "900" }}>
                   <div className="add-event-form">
                     <form>
                       <div>
@@ -458,7 +668,7 @@ const EventsContent = (user_id, { id }) => {
                           type="text"
                           name="event_name"
                           placeholder="Event Name"
-                          onChange={updateEventName}
+                          onChange={addEventName}
                           value={event_name}
                         ></input>
                       </div>
@@ -468,7 +678,7 @@ const EventsContent = (user_id, { id }) => {
                           type="date"
                           name="event_date"
                           placeholder="Event Date"
-                          onChange={updateEventDate}
+                          onChange={addEventDate}
                           value={event_date}
                         ></input>
                       </div>
@@ -483,7 +693,7 @@ const EventsContent = (user_id, { id }) => {
                               label: state.label,
                               value: state.value,
                             }))}
-                            onChange={(state) => updateEventState(state.value)}
+                            onChange={(state) => addEventState(state.value)}
                           />
                         </Fragment>
                       </div>
@@ -503,7 +713,7 @@ const EventsContent = (user_id, { id }) => {
                                   }))
                                 : null
                             }
-                            onChange={(city) => updateEventCity(city.value)}
+                            onChange={(city) => addEventCity(city.value)}
                           />
                         </Fragment>
                       </div>
@@ -513,7 +723,7 @@ const EventsContent = (user_id, { id }) => {
                           type="text"
                           name="event_postal_code"
                           placeholder="Postal Code"
-                          onChange={updatePostalCode}
+                          onChange={addPostalCode}
                           value={event_postal_code}
                         ></input>
                       </div>

@@ -1,17 +1,93 @@
 .landing-content-container {
-    width: 100%;
-    max-width: 100%;
-    /* margin: 0rem 15% 0 15%; */
-    box-sizing: border-box;
-    /* min-height: 100vh; */
-    font-family: "Montserrat", sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
 
-  .landing-title {
-      height: 80vh;
-      background-color: #000;
-      width: 100%;
-    color: #000;
-    font-size: 3vh;
-    font-weight: 400;
-  }
+.landing-image-container {
+  height: 89vh;
+  background-color: #000;
+  width: 100%;
+}
+
+.landing-image-inner {
+  /* filter: grayscale(85%) contrast(125%); */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* margin-left: 25vh; */
+  height: 50%;
+  width: 100%;
+  background-image: url("../../assets/images/pexels-rachel-claire-4846351.jpeg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  /* transform: rotate(90deg); */
+}
+
+.landing-image {
+  height: 75%;
+  width: 100%;
+  object-fit: contain;
+  transform: rotate(90deg);
+}
+
+.landing-featuredhost-nearby {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 100%;
+  /* min-height: 100vh; */
+  margin: 5rem 15% 0 10%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.landing-title {
+  width: 100%;
+  color: #000;
+  font-size: 3vh;
+  font-weight: 400;
+}
+
+.host-nearby {
+  display: flex;
+  margin-top: 3vh;
+}
+
+.discover-wines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 100%;
+  margin: 5rem 15% 0 10%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.wine-discoveries {
+  margin-top: 1.5vh;
+  height: 25%;
+  width: 100%;
+}
+
+.discover-spirits {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 100%;
+  margin: 5rem 15% 0 10%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.spirits-discoveries {
+  margin-top: 1.5vh;
+  height: 25%;
+  width: 100%;
+}
