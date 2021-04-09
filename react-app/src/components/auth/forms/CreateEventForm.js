@@ -275,7 +275,7 @@ const EventForm = (user_id) => {
                       <span className="checkmark"></span>
                     </label>
                     <label className="container">
-                      Rose Wine
+                      Rosé Wine
                       <input
                         className="checkbox"
                         type="checkbox"

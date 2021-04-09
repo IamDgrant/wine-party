@@ -94,7 +94,7 @@ const SearchForm = () => {
           <span className="checkmark"></span>
         </label>
         <label className="container">
-          Rose Wine
+          Rosé Wine
           <input
             className="checkbox"
             type="checkbox"

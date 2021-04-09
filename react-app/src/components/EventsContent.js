@@ -27,52 +27,26 @@ import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
 
 const EventsContent = (user_id) => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionHost = useSelector((state) => state.session.host);
+  // const sessionHost = useSelector((state) => state.session.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [search, setSearch] = useState("");
-  const [sommelier, setSommelier] = useState(false);
-  const [mixologist, setMixologist] = useState(false);
-
   const [isEditResultsVisible, setIsResultsVisible] = useState(false);
-  // const [isDeleteModalVisible, setIsDeleteEditModalVisible] = useState(false);
-  // const [isEditingEvent_Date, setIsEditingEventDate] = useState(false);
-  // const [isEditingEvent_City, setIsEditingCity] = useState(false);
-  // const [isEditingEvent_State, setIsEditingState] = useState(false);
-  // const [isEditingEvent_Postal_Code, setIsEditingEventPostalCode] = useState(
-  //   false
-  // );
-
-  // const onSearch = async (e) => {
-  //   e.preventDefault();
-  //   history.push(
-  //     `/search?search=${search}&sommelier=${sommelier}&mixologist=${mixologist}`
-  //   );
-  // };
-
-  const updateSearch = (e) => setSearch(e.target.value);
-  const updateSommelier = () => setSommelier(!sommelier);
-  const updateMixologist = () => setMixologist(!mixologist);
-
   const [isEditing, setIsEditing] = useState(false);
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [isAddDrawerVisible, setIsAddDrawerVisible] = useState(false);
+  const [isEditDrawerVisible, setIsEditDrawerVisible] = useState(false);
   const [event_name, setEventName] = useState("");
   const [event_host, setEventHost] = useState("");
   const [event_date, setEventDate] = useState("");
   const [event_city, setEventCity] = useState("");
   const [event_state, setEventState] = useState("");
   const [event_postal_code, setEventPostalCode] = useState("");
-  // const [focus, setFocus] = useState("");
-
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
-
-  console.log();
 
   const headers = new Headers();
   headers.append("X-CSCAPI-KEY", cscAPIKey);
@@ -96,7 +70,7 @@ const EventsContent = (user_id) => {
     }
   };
 
-  const nameInputFocus = useRef();
+  // const nameInputFocus = useRef();
 
   useEffect(() => {
     dispatch(seeEvent());
@@ -106,39 +80,39 @@ const EventsContent = (user_id) => {
     if (cscCity !== undefined) {
       setIsDisabled(false);
     }
-    // else {
-    //   dispatch();
-    //   setData(id);
-    // }
   }, [event_state, cscCity]);
 
-  const showDrawer = () => {
-    setIsDrawerVisible(true);
-    // nameInputFocus.current.focus();
-    // nameFocus();
-    // if (isDrawerVisible === true) nameInputFocus.current.focus();
+  const showAddDrawer = () => {
+    setIsAddDrawerVisible(true);
   };
 
+  const closeAddDrawer = () => {
+    setIsAddDrawerVisible(false);
+  };
+
+  const showEditDrawer = () => {
+    setIsEditDrawerVisible(true);
+  };
+
+  const closeEditDrawer = () => {
+    setIsEditDrawerVisible(false);
+  };
   // const nameFocus = () => {
   //   console.log("yes");
   //   console.log(isDrawerVisible);
   //   nameInputFocus.current.focus()
   // };
 
-  if (isDrawerVisible === true) {
-    console.log("HERE");
-    console.log(nameInputFocus);
-    nameInputFocus.current.focus();
-  }
-
-  const closeDrawer = () => {
-    setIsDrawerVisible(false);
-  };
+  // if (isDrawerVisible === true) {
+  //   console.log("HERE");
+  //   console.log(nameInputFocus);
+  //   nameInputFocus.current.focus();
+  // }
 
   const addEventName = (e) => {
-    showDrawer();
+    showAddDrawer();
     if (e.target.value.length < 1) {
-      setIsDrawerVisible(false);
+      setIsAddDrawerVisible(false);
     }
     setEventName(e.target.value);
   };
@@ -184,7 +158,7 @@ const EventsContent = (user_id) => {
   // };
 
   const updateEventHost = (e) => {
-    showDrawer();
+    console.log("WORKING!!!!!!!!!!!");
     setEventHost(e.target.value);
   };
 
@@ -197,6 +171,10 @@ const EventsContent = (user_id) => {
   };
 
   const updateEventState = (onChangeState) => {
+    showEditDrawer();
+    if (onChangeState.length < 1) {
+      setIsEditDrawerVisible(false);
+    }
     setEventState(onChangeState);
   };
 
@@ -207,34 +185,25 @@ const EventsContent = (user_id) => {
   const deleteOneEvent = async (id) => {
     console.log(id);
     await dispatch(deleteEvent(id));
-    // if (projectID) {
-    //   dispatch(seeProjectTask(projectID));
-    // } else {
-    //   dispatch(seeTask());
-    // }
   };
 
-  // const deleteHandleOk = () => {
-  //   console.log("THIS WORKS");
-  //   setIsDeleteEditModalVisible(false);
-  //   deleteOneEvent();
-  // };
-
-  // const deleteHandleCancel = () => {
-  //   setIsDeleteEditModalVisible(false);
-  // };
-
-  const save = () => {
-    onSubmission();
+  const saveAddEvent = () => {
+    onAddSubmission();
 
     // setIsDrawerVisible(false);
   };
 
-  const onConfirm = () => {
-    history.push("/search");
+  const saveEditEvent = () => {
+    onEditSubmission();
+
+    // setIsDrawerVisible(false);
   };
 
-  const onSubmission = async (e) => {
+  // const onConfirm = () => {
+  //   history.push("/search");
+  // };
+
+  const onAddSubmission = async (e) => {
     //   // e.preventDefault();
     if (!event_name) {
       error();
@@ -256,6 +225,31 @@ const EventsContent = (user_id) => {
       setEventState("");
       setEventPostalCode("");
     });
+  };
+
+  const onEditSubmission = async (e) => {
+    console.log("SAVE EDIT HITTING");
+    //   // e.preventDefault();
+    // if (!event_name) {
+    //   error();
+    //   return;
+    // }
+    // dispatch(
+    //   update_Event({
+    //     // host_id,
+    //     event_name,
+    //     event_date,
+    //     event_city,
+    //     event_state,
+    //     event_postal_code,
+    //   })
+    // ).then(() => {
+    //   setEventName("");
+    //   setEventDate("");
+    //   setEventCity("");
+    //   setEventState("");
+    //   setEventPostalCode("");
+    // });
   };
 
   const error = () => {
@@ -317,39 +311,39 @@ const EventsContent = (user_id) => {
     setIsEditing(!isEditing);
   };
 
-  const onSaveEvent = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_Event({
-        event_name,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-  const onSaveEventLocation = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_Event({
-        // host_id,
-        event_city,
-        event_state,
-        event_postal_code,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
+  // const onSaveEvent = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_Event({
+  //       event_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+  // const onSaveEventLocation = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_Event({
+  //       // host_id,
+  //       event_city,
+  //       event_state,
+  //       event_postal_code,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
   // const onSaveEventHost = async (e) => {
   //   // e.preventDefault();
   //   let newErrors = [];
@@ -390,7 +384,7 @@ const EventsContent = (user_id) => {
         // autoFocus={false}
         closable={false}
         mask={false}
-        visible={isDrawerVisible}
+        visible={isAddDrawerVisible}
         width={"100%"}
         height={"9vh"}
       >
@@ -406,7 +400,7 @@ const EventsContent = (user_id) => {
                 fontFamily: "Montserrat",
                 color: "red",
               }}
-              onClick={closeDrawer}
+              onClick={closeAddDrawer}
             >
               Cancel
             </Button>
@@ -417,7 +411,7 @@ const EventsContent = (user_id) => {
               okText="Yes"
               cancelText="No"
               icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-              onConfirm={onConfirm}
+              onConfirm={closeAddDrawer}
             >
               <Button
                 htmlType="submit"
@@ -429,7 +423,61 @@ const EventsContent = (user_id) => {
                   color: "#058532",
                   width: "5.25vw",
                 }}
-                onClick={save}
+                onClick={saveAddEvent}
+              >
+                Save
+              </Button>
+            </Popconfirm>
+          </div>
+        </div>
+      </Drawer>
+      <Drawer
+        // afterVisibleChange={}
+        title=""
+        placement="bottom"
+        // autoFocus={false}
+        closable={false}
+        mask={false}
+        visible={isEditDrawerVisible}
+        width={"100%"}
+        height={"9vh"}
+      >
+        <div className="drawer-buttons">
+          <div className="cancel-btn">
+            <Button
+              danger
+              htmlType="submit"
+              type="text"
+              size="middle"
+              style={{
+                border: "1px solid red",
+                fontFamily: "Montserrat",
+                color: "red",
+              }}
+              onClick={closeEditDrawer}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div className="save-btn">
+            <Popconfirm
+              title="Confirm Changes?？"
+              okText="Yes"
+              cancelText="No"
+              icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+              onConfirm={closeEditDrawer}
+            >
+              <Button
+                htmlType="submit"
+                type="text"
+                size="middle"
+                style={{
+                  border: "1px solid #058532",
+                  fontFamily: "Montserrat",
+                  color: "#058532",
+                  width: "5.25vw",
+                }}
+                onClick={saveEditEvent}
               >
                 Save
               </Button>
@@ -461,12 +509,6 @@ const EventsContent = (user_id) => {
                               className="edit-find-host-btn"
                               htmlType="submit"
                               icon={<SearchOutlined />}
-                              // style={{
-                              //   height: "25px",
-                              //   width: "200px",
-                              //   fontFamily: "Montserrat",
-                              //   fontSize: "13px",
-                              // }}
                               onClick={showAllHosts}
                             >
                               Find a Host
@@ -564,6 +606,14 @@ const EventsContent = (user_id) => {
                             onChange={updateEventDate}
                             value={event_date}
                           />
+                          <input
+                                className="details-name-input"
+                                name="last name"
+                                type="text"
+                                placeholder="Postal Code"
+                                onChange={updatePostalCode}
+                                value={event_postal_code}
+                              />
                         </form>
                       ) : (
                         <div className="event-host-container">
@@ -663,7 +713,7 @@ const EventsContent = (user_id) => {
                       <div>
                         <input
                           // className="form-input"
-                          ref={nameInputFocus}
+                          // ref={nameInputFocus}
                           autoFocus={true}
                           type="text"
                           name="event_name"
@@ -816,7 +866,7 @@ const EventsContent = (user_id) => {
                       <span className="checkmark"></span>
                     </label>
                     <label className="container">
-                      Rose Wine
+                      Rosé Wine
                       <input
                         className="checkbox"
                         type="checkbox"

@@ -520,7 +520,7 @@ const BrowseResults = () => {
                   </div>
                 </Option>
                 <Option value="rose-wine" label="rose-wine">
-                  <div className="demo-option-label-item">Rose Wine Expert</div>
+                  <div className="demo-option-label-item">Rosé Wine Expert</div>
                 </Option>
               </Select>
             </div>
