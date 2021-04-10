@@ -17,13 +17,14 @@ import {
   Drawer,
   message,
   Select,
+  Rate,
 } from "antd";
 import BrowseResults from "../components/BrowseResults";
 import { usStates } from ".././components/States";
 import { QuestionCircleOutlined, SearchOutlined } from "@ant-design/icons";
 import "../components/styling/eventsContentStyling.css";
 import "../components/styling/formStyling.css";
-import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
+import party from "../assets/images/pexels-maksim-goncharenok-5550311.jpeg";
 
 const EventsContent = (user_id, { currentHostId }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -206,13 +207,13 @@ const EventsContent = (user_id, { currentHostId }) => {
   const saveAddEvent = () => {
     onAddSubmission();
 
-    // setIsDrawerVisible(false);
+    // setIsAddDrawerVisible(false);
   };
 
   const saveEditEvent = (id) => {
     onEditSubmission(id);
 
-    // setIsDrawerVisible(false);
+    // setIsEditDrawerVisible(false);
   };
 
   // const onConfirm = () => {
@@ -242,7 +243,7 @@ const EventsContent = (user_id, { currentHostId }) => {
       setEventPostalCode("");
     });
   };
-  console.log(currentHostId);
+
   const onEditSubmission = async (id) => {
     //   // e.preventDefault();
     // if (!event_name) {
@@ -401,6 +402,34 @@ const EventsContent = (user_id, { currentHostId }) => {
   //   }));
   // };
 
+  const wineGlass = (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="fas"
+      data-icon="wine-glass"
+      class="svg-inline--fa fa-wine-glass fa-w-9"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 288 512"
+    >
+      <path
+        fill="currentColor"
+        d="M216 464h-40V346.81c68.47-15.89 118.05-79.91 111.4-154.16l-15.95-178.1C270.71 6.31 263.9 0 255.74 0H32.26c-8.15 0-14.97 6.31-15.7 14.55L.6 192.66C-6.05 266.91 43.53 330.93 112 346.82V464H72c-22.09 0-40 17.91-40 40 0 4.42 3.58 8 8 8h208c4.42 0 8-3.58 8-8 0-22.09-17.91-40-40-40z"
+      ></path>
+    </svg>
+  );
+
+  const customIcons = {
+    1: wineGlass,
+    2: wineGlass,
+    3: wineGlass,
+    4: wineGlass,
+    5: wineGlass,
+  };
+
+  
+
   const { Option } = Select;
 
   return (
@@ -534,7 +563,7 @@ const EventsContent = (user_id, { currentHostId }) => {
                     >
                       <div>
                         <div>
-                          <img src={party} alt="neon lights"></img>
+                          <img src={party} alt="neon lights" style={{height: "300px"}}></img>
                         </div>
                         {isEditing ? (
                           <div className="search-btn-modal">
@@ -725,6 +754,15 @@ const EventsContent = (user_id, { currentHostId }) => {
                             />
                           </p>
                           <p>
+                            Host: {event.host.first_name} {event.host.last_name}
+                          </p>
+                          <Rate
+                          allowHalf={true}
+                          style={{color: "#9B0E27"}}
+                            value={event.review.rating}
+                            character={({ index }) => customIcons[index + 1]}
+                          />
+                          <p>
                             {event.event_city}, {event.event_state}
                           </p>
                         </div>
@@ -779,39 +817,51 @@ const EventsContent = (user_id, { currentHostId }) => {
                         ></input>
                       </div>
                       <div className="event-state">
-                        <Fragment>
-                          <Select
-                            // className="state-search-dropdown"
-                            classNamePrefix="select"
-                            placeholder="State"
-                            name="states"
-                            options={usStates.map((state) => ({
-                              label: state.label,
-                              value: state.value,
-                            }))}
-                            onChange={(state) => addEventState(state.value)}
-                          />
-                        </Fragment>
+                        <Select
+                          showSearch
+                          style={{ width: 300 }}
+                          placeholder="State"
+                          optionFilterProp="children"
+                          onChange={updateEventState}
+                          // onFocus={onFocus}
+                          // onBlur={onBlur}
+                          // onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          {usStates.map((state) => (
+                            <Option value={state.value}>{state.label}</Option>
+                          ))}
+                        </Select>
                       </div>
-                      <div>
-                        <Fragment>
-                          <Select
-                            // className="city-search-dropdown"
-                            classNamePrefix="select"
-                            placeholder="City"
-                            name="cities"
-                            isDisabled={isDisabled}
-                            options={
-                              cscCity !== undefined
-                                ? cscCity.map((city) => ({
-                                    label: city.name,
-                                    value: city.name,
-                                  }))
-                                : null
-                            }
-                            onChange={(city) => addEventCity(city.value)}
-                          />
-                        </Fragment>
+                      <div className="event-city">
+                        <Select
+                          showSearch
+                          style={{ width: 300 }}
+                          placeholder="City"
+                          optionFilterProp="children"
+                          onChange={updateEventCity}
+                          // loading={true}
+                          // onFocus={onFocus}
+                          // onBlur={onBlur}
+                          // onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          {cscCity !== undefined
+                            ? cscCity.map((city) => (
+                                <Option key={city.id} value={city.name}>
+                                  {city.name}
+                                </Option>
+                              ))
+                            : null}
+                        </Select>
                       </div>
                       <div>
                         <input
@@ -823,42 +873,26 @@ const EventsContent = (user_id, { currentHostId }) => {
                           value={event_postal_code}
                         ></input>
                       </div>
-                      {/* <div>
-                <h3 className="form_text">Next, add your Host</h3>
-                <SearchForm
-                  search={search}
-                  setSearch={setSearch}
-                  sommelier={sommelier}
-                  setSommelier={setSommelier}
-                  mixologist={mixologist}
-                  setMixologist={setMixologist}
-                  redWine={redWine}
-                  setRedWine={setRedWine}
-                  whiteWine={whiteWine}
-                  setWhiteWine={setWhiteWine}
-                  roseWine={roseWine}
-                  setRoseWine={setRoseWine}
-                  bourbon={bourbon}
-                  setBourbon={setBourbon}
-                  brandy={brandy}
-                  setBrandy={setBrandy}
-                  cognac={cognac}
-                  setCognac={setCognac}
-                  gin={gin}
-                  setGin={setGin}
-                  liqueurs={liqueurs}
-                  setLiqueurs={setLiqueurs}
-                  rum={rum}
-                  setRum={setRum}
-                  scotch={scotch}
-                  setScotch={setScotch}
-                  tequila={tequila}
-                  setTequila={setTequila}
-                  vodka={vodka}
-                  setVodka={setVodka}
-                  whiskey={whiskey}
-                  setWhiskey={setWhiskey}
-                /> */}
+                      <div className="search-btn-modal">
+                        <Button
+                          className="edit-find-host-btn"
+                          htmlType="submit"
+                          icon={<SearchOutlined />}
+                          onClick={showAllHosts}
+                        >
+                          Find a Host
+                        </Button>
+                        <Modal
+                          width={1100}
+                          okText="Add Host"
+                          title="Find your Host"
+                          // onOk={signInHandleOk}
+                          onCancel={allHostsCancel}
+                          visible={isEditResultsVisible}
+                        >
+                          <BrowseResults />
+                        </Modal>
+                      </div>
                       {/* <div className="search_bar">
                     <input
                       className="searchInput"

@@ -133,3 +133,7 @@
 .edit-host-form-date {
   margin-top: 5px;
 }
+
+.ant-select, .ant-select-single, .ant-select-show-arrow, .ant-select-open {
+  width: 300px;
+}
