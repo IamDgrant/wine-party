@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { browseAllHost } from "../store/host";
 import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
-import { Select, Button, Modal } from "antd";
+import { Select, Button } from "antd";
 import HostCard from "../components/HostCard";
 import "../components/styling/browseHostStyling.css";
 import "../components/styling/hostCard.css";
@@ -11,9 +11,10 @@ import "../components/styling/hostCard.css";
 const BrowseResults = () => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
-  // const history = useHistory();
+
 
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
+  const [isHostDetailsShowing, setIsHostDetailsShowing] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
   const [isSommelier, setIsSommelier] = useState(false);
@@ -516,7 +517,9 @@ const BrowseResults = () => {
     // }
   };
 
-  const currentHost = filteredSort.find((host) => isAboutShowing === host.id)
+  const currentHost = filteredSort.find((host) => isAboutShowing === host.id);
+  // const currentHostId = currentHost.id
+  // console.log(currentHost.id);
 
   return (
     <>
@@ -614,9 +617,13 @@ const BrowseResults = () => {
                 duration={250}
                 easing="ease-out"
               >
-                {!isAboutShowing ? filteredSort.map((host) => (
-                  <div key={host.id}>
-                      <Button style={{ padding: "0" }} onClick={() => setIsAboutShowing(host.id)}>
+                {!isAboutShowing ? (
+                  filteredSort.map((host) => (
+                    <div key={host.id}>
+                      <Button
+                        style={{ padding: "0" }}
+                        onClick={() => setIsAboutShowing(host.id)}
+                      >
                         <div className="card">
                           <div
                             className="host-card"
@@ -649,23 +656,39 @@ const BrowseResults = () => {
                           </div>
                         </div>
                       </Button>
-                   
-                  </div>)) : 
-                   <div className="host-card-container">
-                   <div className="host-image-container">
-                     <img
-                       src={currentHost.profile_image}
-                       alt="host profile"
-                     />
-                   </div>
-                   <div className="host-about-container">
-                     <div className="host-name-card"></div>
-                     <div className="host-type-card"></div>
-                     <div className="host-about-card"></div>
-                     <div className="host-specialty-card"></div>
-                   </div>
-                 </div>
-                }
+                    </div>
+                  ))
+                ) : (
+                  <div className="host-card-container">
+                    <div className="host-image-container">
+                      <img src={currentHost.profile_image} alt="host profile" />
+                    </div>
+                    <div className="host-about-container">
+                      <div className="host-name-card">
+                        Name: {currentHost.first_name} {currentHost.last_name}
+                      </div>
+
+                      {currentHost.sommelier === true &&
+                      currentHost.mixologist === true ? (
+                        <div className="host-type-card">
+                          Host Type: Sommelier and Mixologist
+                        </div>
+                      ) : currentHost.sommelier === true ? (
+                        <div className="host-type-card">
+                          Host Type: Sommelier
+                        </div>
+                      ) : (
+                        <div className="host-type-card">
+                          Host Type: Mixologist
+                        </div>
+                      )}
+                      <div className="host-about-card">
+                        About: {currentHost.about}
+                      </div>
+                      <div className="host-specialty-card"></div>
+                    </div>
+                  </div>
+                )}
               </CSSGrid>
             </div>
           </div>

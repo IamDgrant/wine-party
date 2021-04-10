@@ -1,12 +1,26 @@
 .host-card-container {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.host-image-container {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .host-about-container {
-    display: flex;
-    flex-direction: column;
+  margin-left: 25px;
+}
+
+.host-image-container {
+  height: 350px;
+  width: 350px;
+}
+
+.host-about-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75vh;
+}
+
+.host-name-card, .host-about-card {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.75vh;
 }

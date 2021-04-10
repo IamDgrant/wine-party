@@ -56,7 +56,7 @@
 } */
 
 .add-event-form {
-  padding-top: .5vh;
+  padding-top: 0.5vh;
 }
 
 .drawer-buttons {
@@ -87,9 +87,8 @@
   justify-content: flex-start;
 }
 
-
 .cancel-btn {
-  margin-right: .5vw;
+  margin-right: 0.5vw;
 }
 
 .maps-container {
@@ -98,7 +97,7 @@
 }
 
 .search-btn-modal {
-  margin-top: .75vh;
+  margin-top: 0.75vh;
 }
 
 .edit-find-host-btn {
@@ -107,15 +106,30 @@
 }
 
 .edit-find-host-btn > span {
- margin-bottom: 1px;
-
+  margin-bottom: 1px;
+  color: #b7c0ca;
 }
 
 .anticon-search {
   margin-top: 5px;
-  margin-left:  -15px;
+  margin-left: -15px;
 }
 
-.anticon, .anticon-search > svg {
- margin-bottom: 5px;
+.anticon,
+.anticon-search > svg {
+  margin-bottom: 5px;
+}
+
+.event-state {
+  margin-top: 8px;
+  height: 50px;
+}
+
+.event-city {
+  margin-top: 8px;
+  height: 50px;
+}
+
+.edit-host-form-date {
+  margin-top: 5px;
 }

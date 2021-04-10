@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Select from "react-select";
+// import Select from "react-select";
 import Map from "../components/map/Map";
 import {
   createEvent,
@@ -16,7 +16,7 @@ import {
   Popconfirm,
   Drawer,
   message,
-  autoFocus,
+  Select,
 } from "antd";
 import BrowseResults from "../components/BrowseResults";
 import { usStates } from ".././components/States";
@@ -25,12 +25,14 @@ import "../components/styling/eventsContentStyling.css";
 import "../components/styling/formStyling.css";
 import party from "../assets/images/jason-leung-Xaanw0s0pMk-unsplash.jpeg";
 
-const EventsContent = (user_id) => {
+const EventsContent = (user_id, { currentHostId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   // const sessionHost = useSelector((state) => state.session.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  console.log(sessionEvent.host);
 
   const [isEditResultsVisible, setIsResultsVisible] = useState(false);
   const [currentEventId, setCurrentEventId] = useState();
@@ -42,7 +44,7 @@ const EventsContent = (user_id) => {
   const [isEditDrawerVisible, setIsEditDrawerVisible] = useState(false);
   const [event_name, setEventName] = useState(currentEvent?.event_name);
   const [event_host, setEventHost] = useState("");
-  const [event_date, setEventDate] = useState("");
+  const [event_date, setEventDate] = useState(currentEvent?.event_date);
   const [event_city, setEventCity] = useState(currentEvent?.event_city);
   const [event_state, setEventState] = useState(currentEvent?.event_state);
   const [event_postal_code, setEventPostalCode] = useState(
@@ -78,6 +80,7 @@ const EventsContent = (user_id) => {
     }
   };
 
+  console.log(cscCity);
   // const nameInputFocus = useRef();
 
   useEffect(() => {
@@ -89,7 +92,6 @@ const EventsContent = (user_id) => {
       cityFetch();
     }
   }, [event_state]);
-
 
   useEffect(() => {
     if (cscCity !== undefined) {
@@ -173,7 +175,6 @@ const EventsContent = (user_id) => {
   // };
 
   const updateEventHost = (e) => {
-    console.log("WORKING!!!!!!!!!!!");
     setEventHost(e.target.value);
   };
 
@@ -185,13 +186,12 @@ const EventsContent = (user_id) => {
     setEventCity(city);
   };
 
-  const updateEventState = (onChangeState) => {
-    console.log(onChangeState);
+  const updateEventState = (state) => {
     showEditDrawer();
-    if (onChangeState.length < 1) {
+    if (state.length < 1) {
       setIsEditDrawerVisible(false);
     }
-    setEventState(onChangeState);
+    setEventState(state);
   };
 
   const updatePostalCode = (e) => {
@@ -242,9 +242,8 @@ const EventsContent = (user_id) => {
       setEventPostalCode("");
     });
   };
-
+  console.log(currentHostId);
   const onEditSubmission = async (id) => {
-    console.log("SAVE EDIT HITTING");
     //   // e.preventDefault();
     // if (!event_name) {
     //   error();
@@ -253,7 +252,7 @@ const EventsContent = (user_id) => {
     await dispatch(
       update_Event({
         id,
-        // host_id,
+        // currentHostId,
         event_name,
         event_date,
         event_city,
@@ -395,6 +394,15 @@ const EventsContent = (user_id) => {
   //   });
   // };
 
+  // const onSearch = () => {
+  //   usStates.map((state) => ({
+  //     label: state.label,
+  //     value: state.value,
+  //   }));
+  // };
+
+  const { Option } = Select;
+
   return (
     <div className="events-content-container">
       <Drawer
@@ -511,7 +519,12 @@ const EventsContent = (user_id) => {
           <div className="upcoming-events">
             <div className="events-title">Upcoming Events</div>
             <div className="events-list" style={{ paddingTop: "1vh" }}>
-              <Collapse accordion defaultActiveKey={["1"]} onChange={callback}>
+              <Collapse
+                accordion
+                defaultActiveKey={["1"]}
+                onChange={callback}
+                // style={{ zIndex: "-1" }}
+              >
                 {upcomingEvents &&
                   upcomingEvents.map((event) => (
                     <Panel
@@ -534,7 +547,7 @@ const EventsContent = (user_id) => {
                               Find a Host
                             </Button>
                             <Modal
-                              width={1250}
+                              width={1100}
                               okText="Add Host"
                               title="Find your Host"
                               // onOk={signInHandleOk}
@@ -545,67 +558,69 @@ const EventsContent = (user_id) => {
                             </Modal>
                           </div>
                         ) : (
-                          // <form className="edit-host-form">
-                          //   <input
-                          //     // style={{
-                          //     //   height: "25px",
-                          //     //   width: "200px",
-                          //     //   fontFamily: "Montserrat",
-                          //     //   fontSize: "13px",
-                          //     // }}
-                          //     className="edit-host-input"
-                          //     name="host"
-                          //     type="text"
-                          //     placeholder="Search for host..."
-                          //     onChange={updateEventHost}
-                          //     value={event_host}
-                          //   />
-                          // </form>
                           <div className="event-host-container">
-                            {" "}
-                            <p>HERE{event.host_id}</p>
+                            <p>
+                              {/* <img
+                                src={event.host.profile_image}
+                                style={{
+                                  borderRadius: "50%",
+                                  height: "100px",
+                                  width: "100px",
+                                }}
+                              /> */}
+                            </p>
                           </div>
                         )}
                         {isEditing ? (
                           <form className="edit-host-form">
                             <div className="event-state">
-                              <Fragment>
-                                <Select
-                                  // className="state-search-dropdown"
-                                  classNamePrefix="select"
-                                  placeholder="State"
-                                  name="states"
-                                  options={usStates.map((state) => ({
-                                    label: state.label,
-                                    value: state.value,
-                                  }))}
-                                  onChange={(state) =>
-                                    updateEventState(state.value)
-                                  }
-                                />
-                              </Fragment>
+                              <Select
+                                showSearch
+                                style={{ width: 300 }}
+                                placeholder="State"
+                                optionFilterProp="children"
+                                onChange={updateEventState}
+                                // onFocus={onFocus}
+                                // onBlur={onBlur}
+                                // onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                {usStates.map((state) => (
+                                  <Option value={state.value}>
+                                    {state.label}
+                                  </Option>
+                                ))}
+                              </Select>
                             </div>
-                            <div>
-                              <Fragment>
-                                <Select
-                                  // className="city-search-dropdown"
-                                  classNamePrefix="select"
-                                  placeholder="City"
-                                  name="cities"
-                                  isDisabled={isDisabled}
-                                  options={
-                                    cscCity !== undefined
-                                      ? cscCity.map((city) => ({
-                                          label: city.name,
-                                          value: city.name,
-                                        }))
-                                      : null
-                                  }
-                                  onChange={(city) =>
-                                    updateEventCity(city.value)
-                                  }
-                                />
-                              </Fragment>
+                            <div className="event-city">
+                              <Select
+                                showSearch
+                                style={{ width: 300 }}
+                                placeholder="City"
+                                optionFilterProp="children"
+                                onChange={updateEventCity}
+                                // loading={true}
+                                // onFocus={onFocus}
+                                // onBlur={onBlur}
+                                // onSearch={onSearch}
+                                filterOption={(input, option) =>
+                                  option.children
+                                    .toLowerCase()
+                                    .indexOf(input.toLowerCase()) >= 0
+                                }
+                              >
+                                {cscCity !== undefined
+                                  ? cscCity.map((city) => (
+                                      <Option key={city.id} value={city.name}>
+                                        {city.name}
+                                      </Option>
+                                    ))
+                                  : null}
+                              </Select>
                             </div>
                           </form>
                         ) : (
@@ -617,7 +632,7 @@ const EventsContent = (user_id) => {
                         )}
                       </div>
                       {isEditing ? (
-                        <form className="edit-host-form">
+                        <form className="edit-host-form-date">
                           <input
                             className="edit-host-input"
                             name="host"
@@ -699,7 +714,16 @@ const EventsContent = (user_id) => {
                           ></img>
                         </div>
                         <div>
-                          <p>HERE{event.host_id}</p>
+                          <p>
+                            <img
+                              src={event.host.profile_image}
+                              style={{
+                                borderRadius: "50%",
+                                height: "100px",
+                                width: "100px",
+                              }}
+                            />
+                          </p>
                           <p>
                             {event.event_city}, {event.event_state}
                           </p>
