@@ -26,20 +26,22 @@ import "../components/styling/eventsContentStyling.css";
 import "../components/styling/formStyling.css";
 import party from "../assets/images/pexels-maksim-goncharenok-5550311.jpeg";
 
-const EventsContent = (user_id, { currentHostId }) => {
+const EventsContent = (user_id, { currentHost }) => {
   const sessionUser = useSelector((state) => state.session.user);
   // const sessionHost = useSelector((state) => state.session.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(sessionEvent.host);
+  console.log("curretnhost", currentHost);
 
-  const [isEditResultsVisible, setIsResultsVisible] = useState(false);
+  const [isEditResultsVisible, setIsEditResultsVisible] = useState(false);
+  const [isAddResultsVisible, setIsAddResultsVisible] = useState(false);
   const [currentEventId, setCurrentEventId] = useState();
   const currentEvent = sessionEvent.find(
     (event) => currentEventId === event.id
   );
+  // const [selectedHost, setSelectedHost] = useState()
   const [isEditing, setIsEditing] = useState(false);
   const [isAddDrawerVisible, setIsAddDrawerVisible] = useState(false);
   const [isEditDrawerVisible, setIsEditDrawerVisible] = useState(false);
@@ -154,12 +156,20 @@ const EventsContent = (user_id, { currentHostId }) => {
     setEventPostalCode(e.target.value);
   };
 
-  const showAllHosts = () => {
-    setIsResultsVisible(true);
+  const showAllHostsEdit = () => {
+    setIsEditResultsVisible(true);
   };
 
-  const allHostsCancel = () => {
-    setIsResultsVisible(false);
+  const allHostsEditCancel = () => {
+    setIsEditResultsVisible(false);
+  };
+
+  const showAllHostsAdd = () => {
+    setIsAddResultsVisible(true);
+  };
+
+  const allHostsAddCancel = () => {
+    setIsAddResultsVisible(false);
   };
 
   // const editHandleOk = () => {
@@ -357,12 +367,16 @@ const EventsContent = (user_id, { currentHostId }) => {
 
   const { Option } = Select;
 
+  // const selectedHost = (selectedHost) => {
+  //   setSelected(selectedHost);
+  // };
+
   return (
     <div className="events-content-container">
       <Drawer
         // afterVisibleChange={}
         title=""
-        placement="bottom"
+        placement="top"
         // autoFocus={false}
         closable={false}
         mask={false}
@@ -482,7 +496,9 @@ const EventsContent = (user_id, { currentHostId }) => {
                 {upcomingEvents &&
                   upcomingEvents.map((event) => (
                     <Panel
-                      header={event.event_name}
+                      header={
+                        event.host_id !== null ? (event.event_name) : (`${event.event_name}  🔴`)
+                        }
                       key={event.id}
                       style={{ fontWeight: "900" }}
                     >
@@ -496,7 +512,7 @@ const EventsContent = (user_id, { currentHostId }) => {
                               className="edit-find-host-btn"
                               htmlType="submit"
                               icon={<SearchOutlined />}
-                              onClick={showAllHosts}
+                              onClick={showAllHostsEdit}
                             >
                               Find a Host
                             </Button>
@@ -505,7 +521,7 @@ const EventsContent = (user_id, { currentHostId }) => {
                               okText="Add Host"
                               title="Find your Host"
                               // onOk={signInHandleOk}
-                              onCancel={allHostsCancel}
+                              onCancel={allHostsEditCancel}
                               visible={isEditResultsVisible}
                             >
                               <BrowseResults />
@@ -526,7 +542,27 @@ const EventsContent = (user_id, { currentHostId }) => {
                                 />
                               </p>
                             ) : (
-                              ""
+                              <div className="search-btn-modal">
+                              <Button
+                                className="edit-find-host-btn"
+                                htmlType="submit"
+                                icon={<SearchOutlined />}
+                                onClick={showAllHostsEdit}
+                                style={{width: "150px", height: "35px"}}
+                              >
+                                Find a Host
+                              </Button>
+                              <Modal
+                                width={1100}
+                                okText="Add Host"
+                                title="Find your Host"
+                                // onOk={signInHandleOk}
+                                onCancel={allHostsEditCancel}
+                                visible={isEditResultsVisible}
+                              >
+                                <BrowseResults />
+                              </Modal>
+                            </div>
                             )}
                             {event.host !== null ? (
                               <p>
@@ -784,7 +820,9 @@ const EventsContent = (user_id, { currentHostId }) => {
                           }
                         >
                           {usStates.map((state) => (
-                            <Option value={state.value}>{state.label}</Option>
+                            <Option key={state.value} value={state.value}>
+                              {state.label}
+                            </Option>
                           ))}
                         </Select>
                       </div>
@@ -829,7 +867,7 @@ const EventsContent = (user_id, { currentHostId }) => {
                           className="edit-find-host-btn"
                           htmlType="submit"
                           icon={<SearchOutlined />}
-                          onClick={showAllHosts}
+                          onClick={showAllHostsAdd}
                         >
                           Find a Host
                         </Button>
@@ -837,9 +875,9 @@ const EventsContent = (user_id, { currentHostId }) => {
                           width={1100}
                           okText="Add Host"
                           title="Find your Host"
-                          // onOk={signInHandleOk}
-                          onCancel={allHostsCancel}
-                          visible={isEditResultsVisible}
+                          // onOk={() => setSelectedHost(}
+                          onCancel={allHostsAddCancel}
+                          visible={isAddResultsVisible}
                         >
                           <BrowseResults />
                         </Modal>
