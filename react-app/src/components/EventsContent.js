@@ -513,16 +513,41 @@ const EventsContent = (user_id, { currentHostId }) => {
                           </div>
                         ) : (
                           <div className="event-host-container">
-                            <p>
-                              {/* <img
-                                src={event.host.profile_image}
-                                style={{
-                                  borderRadius: "50%",
-                                  height: "100px",
-                                  width: "100px",
-                                }}
-                              /> */}
-                            </p>
+                            {event.host_id !== null ? (
+                              <p>
+                                <img
+                                  src={event.host.profile_image}
+                                  alt=""
+                                  style={{
+                                    borderRadius: "50%",
+                                    height: "100px",
+                                    width: "100px",
+                                  }}
+                                />
+                              </p>
+                            ) : (
+                              ""
+                            )}
+                            {event.host !== null ? (
+                              <p>
+                                Host: {event.host.first_name}{" "}
+                                {event.host.last_name}
+                              </p>
+                            ) : (
+                              ""
+                            )}
+                            {event.review !== null ? (
+                              <Rate
+                                allowHalf={true}
+                                style={{ color: "#9B0E27" }}
+                                value={event.review.rating}
+                                character={({ index }) =>
+                                  customIcons[index + 1]
+                                }
+                              />
+                            ) : (
+                              ""
+                            )}
                           </div>
                         )}
                         {isEditing ? (
@@ -667,10 +692,11 @@ const EventsContent = (user_id, { currentHostId }) => {
                             alt="neon lights"
                           ></img>
                         </div>
-                        <div>
+                        <div className="event-host-container">
                           <p>
                             <img
                               src={event.host.profile_image}
+                              alt=""
                               style={{
                                 borderRadius: "50%",
                                 height: "100px",

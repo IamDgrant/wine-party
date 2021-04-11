@@ -137,3 +137,7 @@
 .ant-select, .ant-select-single, .ant-select-show-arrow, .ant-select-open {
   width: 300px;
 }
+
+.event-host-container {
+  margin-top: 5px;
+}
