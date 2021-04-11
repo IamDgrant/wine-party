@@ -551,7 +551,7 @@ const EventsContent = (user_id) => {
                                         key="link"
                                         type="primary"
                                         // loading={loading}
-                                        onClick={allHostsAddCancel}
+                                        onClick={allHostsEditCancel}
                                       >
                                         Cancel
                                       </Button>,
@@ -635,7 +635,7 @@ const EventsContent = (user_id) => {
                                             key="link"
                                             type="primary"
                                             // loading={loading}
-                                            onClick={allHostsAddCancel}
+                                            onClick={allHostsEditCancel}
                                           >
                                             Cancel
                                           </Button>,
@@ -653,7 +653,7 @@ const EventsContent = (user_id) => {
                                             key="link"
                                             type="primary"
                                             // loading={loading}
-                                            onClick={allHostsAddCancel}
+                                            onClick={allHostsEditCancel}
                                           >
                                             Cancel
                                           </Button>,
