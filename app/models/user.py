@@ -80,7 +80,7 @@ class User(db.Model, UserMixin):
             "city": self.city,
             "state": self.state,
             "postal_code": self.postal_code,
-            "about": self.about,
+            "about": self.about if self.about else None,
             "profile_image": self.profile_image,
             "email": self.email,
             "phone_number": self.phone_number,

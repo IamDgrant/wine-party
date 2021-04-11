@@ -2,49 +2,37 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { photoUpload, update_User } from "../store/session";
-import { Breadcrumb, Button, Upload, message } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { Breadcrumb, Button, message } from "antd";
 import "../components/styling/profileContentStyling.css";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingAbout, setIsEditingAbout] = useState(false);
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [about, setAbout] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [first_name, setFirstName] = useState(sessionUser.first_name);
+  const [last_name, setLastName] = useState(sessionUser.last_name);
+  const [about, setAbout] = useState(sessionUser.about);
+  const [city, setCity] = useState(sessionUser.city);
+  const [state, setState] = useState(sessionUser.state);
   const [isEditingImage, setIsEditingImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
 
-  const dispatch = useDispatch();
+  // useEffect(() => {}, [sessionUser]);
 
-  useEffect(() => {}, [sessionUser]);
-
-  const onSaveFirstName = async (e) => {
-    // e.preventDefault();
+  const onEditSubmission = async () => {
     let newErrors = [];
-    dispatch(
+    await dispatch(
       update_User({
+        // id,
         first_name,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
-
-  const onSaveLastName = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
         last_name,
+        city,
+        state,
+        about,
+        // favorites,
       })
     ).catch(async (res) => {
       console.log(res);
@@ -55,28 +43,56 @@ const ProfileContent = () => {
     });
   };
 
-  const onSaveAbout = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    dispatch(
-      update_User({
-        about,
-      })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
-  };
+  // const onSaveFirstName = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       first_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSaveLastName = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       last_name,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
+
+  // const onSaveAbout = async (e) => {
+  //   // e.preventDefault();
+  //   let newErrors = [];
+  //   dispatch(
+  //     update_User({
+  //       about,
+  //     })
+  //   ).catch(async (res) => {
+  //     console.log(res);
+  //     const data = await res.json();
+  //     if (data && data.errors) {
+  //       newErrors = data.errors;
+  //     }
+  //   });
+  // };
 
   const submit = () => {
     dispatch(photoUpload(photoFile));
-  };
-
-  const updateEditing = () => {
-    // setIsEditing(true);
   };
 
   const handleUpload = (e) => {
@@ -85,13 +101,15 @@ const ProfileContent = () => {
 
   const saveEditingImage = () => {
     if (photoFile === undefined) {
-      console.log("EMPTY");
     } else {
       submit();
     }
-
     setIsEditingImage(!isEditingImage);
   };
+
+  // const updateEditing = () => {
+  //   // setIsEditing(true);
+  // };
 
   const updateEditingImage = () => {
     setIsEditingImage(!isEditingImage);
@@ -101,16 +119,7 @@ const ProfileContent = () => {
     setIsEditingName(!isEditingName);
   };
   const saveEditingName = () => {
-    if (first_name === "") {
-      console.log("EMPTY");
-    } else {
-      onSaveFirstName();
-    }
-    if (last_name === "") {
-      console.log("EMPTY");
-    } else {
-      onSaveLastName();
-    }
+    onEditSubmission();
     setIsEditingName(!isEditingName);
   };
 
@@ -118,11 +127,7 @@ const ProfileContent = () => {
     setIsEditingAbout(!isEditingAbout);
   };
   const saveEditingAbout = () => {
-    if (about === "") {
-      console.log("EMPTY");
-    } else {
-      onSaveAbout();
-    }
+    onEditSubmission();
     setIsEditingAbout(!isEditingAbout);
   };
 
@@ -217,7 +222,8 @@ const ProfileContent = () => {
                 ></img>
               )}
               <div className="join-date">
-                Toasting with us since {sessionUser && sessionUser.created_at.slice(12, 17)}
+                Toasting with us since{" "}
+                {sessionUser && sessionUser.created_at.slice(12, 17)}
               </div>
             </div>
             <div className="edit-image">

@@ -81,7 +81,6 @@ const EventsContent = (user_id, { currentHostId }) => {
     }
   };
 
-  console.log(cscCity);
   // const nameInputFocus = useRef();
 
   useEffect(() => {
@@ -199,11 +198,6 @@ const EventsContent = (user_id, { currentHostId }) => {
     setEventPostalCode(e.target.value);
   };
 
-  const deleteOneEvent = async (id) => {
-    console.log(id);
-    await dispatch(deleteEvent(id));
-  };
-
   const saveAddEvent = () => {
     onAddSubmission();
 
@@ -214,6 +208,10 @@ const EventsContent = (user_id, { currentHostId }) => {
     onEditSubmission(id);
 
     // setIsEditDrawerVisible(false);
+  };
+
+  const deleteOneEvent = async (id) => {
+    await dispatch(deleteEvent(id));
   };
 
   // const onConfirm = () => {
@@ -331,77 +329,6 @@ const EventsContent = (user_id, { currentHostId }) => {
     setEventPostalCode(currentEvent.event_postal_code);
   };
 
-  // const onSaveEvent = async (e) => {
-  //   // e.preventDefault();
-  //   let newErrors = [];
-  //   dispatch(
-  //     update_Event({
-  //       event_name,
-  //     })
-  //   ).catch(async (res) => {
-  //     console.log(res);
-  //     const data = await res.json();
-  //     if (data && data.errors) {
-  //       newErrors = data.errors;
-  //     }
-  //   });
-  // };
-  // const onSaveEventLocation = async (e) => {
-  //   // e.preventDefault();
-  //   let newErrors = [];
-  //   dispatch(
-  //     update_Event({
-  //       // host_id,
-  //       event_city,
-  //       event_state,
-  //       event_postal_code,
-  //     })
-  //   ).catch(async (res) => {
-  //     console.log(res);
-  //     const data = await res.json();
-  //     if (data && data.errors) {
-  //       newErrors = data.errors;
-  //     }
-  //   });
-  // };
-  // const onSaveEventHost = async (e) => {
-  //   // e.preventDefault();
-  //   let newErrors = [];
-  //   dispatch(
-  //     update_Event({
-  //       event_name,
-  //     })
-  //   ).catch(async (res) => {
-  //     console.log(res);
-  //     const data = await res.json();
-  //     if (data && data.errors) {
-  //       newErrors = data.errors;
-  //     }
-  //   });
-  // };
-  // const onSaveEventDate = async (e) => {
-  //   // e.preventDefault();
-  //   let newErrors = [];
-  //   dispatch(
-  //     update_Event({
-  //       event_name,
-  //     })
-  //   ).catch(async (res) => {
-  //     console.log(res);
-  //     const data = await res.json();
-  //     if (data && data.errors) {
-  //       newErrors = data.errors;
-  //     }
-  //   });
-  // };
-
-  // const onSearch = () => {
-  //   usStates.map((state) => ({
-  //     label: state.label,
-  //     value: state.value,
-  //   }));
-  // };
-
   const wineGlass = (
     <svg
       aria-hidden="true"
@@ -427,8 +354,6 @@ const EventsContent = (user_id, { currentHostId }) => {
     4: wineGlass,
     5: wineGlass,
   };
-
-  
 
   const { Option } = Select;
 
@@ -563,7 +488,7 @@ const EventsContent = (user_id, { currentHostId }) => {
                     >
                       <div>
                         <div>
-                          <img src={party} alt="neon lights" style={{height: "300px"}}></img>
+                          <img src={party} alt="neon lights"></img>
                         </div>
                         {isEditing ? (
                           <div className="search-btn-modal">
@@ -757,8 +682,8 @@ const EventsContent = (user_id, { currentHostId }) => {
                             Host: {event.host.first_name} {event.host.last_name}
                           </p>
                           <Rate
-                          allowHalf={true}
-                          style={{color: "#9B0E27"}}
+                            allowHalf={true}
+                            style={{ color: "#9B0E27" }}
                             value={event.review.rating}
                             character={({ index }) => customIcons[index + 1]}
                           />

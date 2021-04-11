@@ -5,6 +5,7 @@ from ..aws_s3 import *
 from app.models import User, db
 from flask_login import current_user, login_user, logout_user, login_required
 from wtforms.validators import DataRequired, Email, ValidationError
+# import json
 
 user_routes = Blueprint('users', __name__)
 
@@ -28,13 +29,53 @@ def user(id):
 def update_user():
     user = current_user
     update = request.get_json()
-    
+    user_db = User.query.get(current_user.id)
+    # print("HERE!!!!!!!!!!!!!!!!!!!!!!", current_user.to_dict())
     user.first_name = update["first_name"]
     user.last_name = update["last_name"]
-    user.email = update["signInEmail"]
-    user.phone_number = update["phone_number"]
-    # user.birthday = update["birthday"]
-    # user.about = update["about"]
+
+    print("CURRENT USER DB INFO!!!!!!!!!!!", update)
+
+    if "signInEmail" in update:
+        if update["signInEmail"] != user.email:
+            user.email = update["signInEmail"]
+        else:
+            pass
+    if "phone_number" in update:
+        if update["phone_number"] != user.phone_number:
+            user.phone_number = update["phone_number"]
+        else:
+            pass
+    if "about" in update:
+        if update["about"] != user.about:
+            user.about = update["about"]
+        else:
+            pass
+    if "birthday" in update:
+        if update["birthday"] != user.birthday:
+            user.birthday = update["birthday"]
+        else:
+            pass
+    # if "street" in update:
+    #     if update["street"] != user.street:
+    #         user.street = update["street"]
+    #     else:
+    #         pass
+    if "city" in update:
+        if update["city"] != user.city:
+            user.city = update["city"]
+        else:
+            pass
+    if "state" in update:
+        if update["state"] != user.state:
+            user.state = update["state"]
+        else:
+            pass
+    if "postal_code" in update:
+        if update["postal_code"] != user.postal_code:
+            user.postal_code = update["postal_code"]
+        else:
+            pass
 
     db.session.commit()
     return {"user": user.to_dict()}

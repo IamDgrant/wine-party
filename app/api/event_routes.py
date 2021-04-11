@@ -10,28 +10,9 @@ event_routes = Blueprint('events', __name__)
 @event_routes.route('/')
 @login_required
 def events():
-    events = Event.query.filter_by(user_id=current_user.id).order_by(Event.event_date)
+    events = Event.query.filter_by(
+        user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
-
-# @event_routes.route('/')
-# @login_required
-# def host_events():
-#     events = Event.query.filter_by(user_id=current_user.id)
-#     [{**event.to_dict(), {'host_id':event.host.to_dict()}} for event in events]
-#     return {"events": [event.to_dict() for event in events]}
-
-
-# @event_routes.route('/project/<id>')
-# @login_required
-# def project_events(id):
-#     events = Event.query.filter_by(projectId=id).all()
-#     return {"events": [event.to_dict() for event in events]}
-
-
-# @event_routes.route('/<id>')
-# def event(id):
-#     events = Event.query.filter_by(dueDate=id).all()
-#     return {"events": [event.to_dict() for event in events]}
 
 
 @event_routes.route('/', methods=['POST'])
@@ -39,7 +20,6 @@ def events():
 def create_event():
     form = EventForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("HERE I AM", current_user.to_dict())
     if form.validate_on_submit():
         event = Event(
             user_id=current_user.id,
@@ -53,17 +33,17 @@ def create_event():
         return event.to_dict()
     return('Invalid Info')
 
+
 @event_routes.route('/update/<id>', methods=['PUT'])
 @login_required
 def update_event(id):
-    print("I'M IN BACKEND!!!!!!!!!!!!!!!")
     event = Event.query.filter_by(id=id).first()
     update = request.get_json()
     event.event_name = update["event_name"]
-    # event.event_name = update["last_name"]
-    # event.event_name = update["signInEmail"]
-    # event.event_name = update["phone_number"]
-    # event.postal_code = update["birthday"]
+    event.event_date = update["event_date"]
+    event.event_city = update["event_city"]
+    event.event_state = update["event_state"]
+    event.event_postal_code = update["event_postal_code"]
 
     db.session.commit()
     return {"event": event.to_dict()}
@@ -71,7 +51,6 @@ def update_event(id):
 
 @event_routes.route('/<id>', methods=['DELETE'])
 def delete_event(id):
-    print('IT HITTING')
     event = Event.query.filter_by(id=id).first()
     # return {"events": [event.to_dict() for event in events]}
     db.session.delete(event)
