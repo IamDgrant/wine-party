@@ -8,11 +8,11 @@ import HostCard from "../components/HostCard";
 import "../components/styling/browseHostStyling.css";
 import "../components/styling/hostCard.css";
 
-const BrowseResults = () => {
+const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
 
-  const [isAboutShowing, setIsAboutShowing] = useState(undefined);
+  // const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
   // const [isHostDetailsShowing, setIsHostDetailsShowing] = useState(false);
   // const [isLoaded, setIsLoaded] = useState(false);
@@ -138,8 +138,6 @@ const BrowseResults = () => {
   };
 
   const hosts = sessionHosts.map((host) => host);
-
-  console.log(hosts);
 
   const sorted = () =>
     hosts.sort((name1, name2) => {
@@ -518,9 +516,7 @@ const BrowseResults = () => {
   };
 
   const currentHost = filteredSort.find((host) => isAboutShowing === host.id);
-  // const [selectedHost, setSelectedHost] = useState(currentHost);
-  // const currentHostId = currentHost.id
-
+  // console.log(currentHost.id);
   return (
     <>
       <div className="browse-content-container">

@@ -50,12 +50,13 @@ export const createEvent = ({
 export const update_Event = (updateData) => async (dispatch) => {
   const {
     id,
+    isAboutShowing,
     event_date,
     event_city,
     event_state,
     event_postal_code,
   } = updateData;
-  console.log("MADE IT HERE", id);
+  console.log("MADE IT HERE", isAboutShowing);
   const res = await fetch(`/api/events/update/${id}`, {
     method: "PUT",
     headers: {
@@ -63,6 +64,7 @@ export const update_Event = (updateData) => async (dispatch) => {
     },
     body: JSON.stringify({
       id,
+      isAboutShowing,
       event_date,
       event_city,
       event_state,
