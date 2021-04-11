@@ -497,7 +497,7 @@ const EventsContent = (user_id, { currentHost }) => {
                   upcomingEvents.map((event) => (
                     <Panel
                       header={
-                        event.host_id !== null ? (event.event_name) : (`${event.event_name}  🔴`)
+                        event.host_id !== null ? (event.event_name) : (`${event.event_name}  🔴`) 
                         }
                       key={event.id}
                       style={{ fontWeight: "900" }}
@@ -773,7 +773,7 @@ const EventsContent = (user_id, { currentHost }) => {
                 Add Event
               </div>
               <Collapse defaultActiveKey={["1"]} onChange={callback}>
-                <Panel header="Add your event" style={{ fontWeight: "900" }}>
+                <Panel header="Add an event" style={{ fontWeight: "900" }}>
                   <div className="add-event-form">
                     <form>
                       <div>

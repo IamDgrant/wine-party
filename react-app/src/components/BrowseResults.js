@@ -12,9 +12,8 @@ const BrowseResults = () => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
 
-
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
-  
+
   // const [isHostDetailsShowing, setIsHostDetailsShowing] = useState(false);
   // const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
@@ -527,60 +526,71 @@ const BrowseResults = () => {
       <div className="browse-content-container">
         <div className="search-info">
           <div className="results">
-            <div className="host-for-you"></div>
-            <div className="sort-filter">
-              <div className="sort">
-                <select
-                  className="select-dropdown"
-                  name="select"
-                  placeholder="Sort by"
-                  onChange={updateSorted}
-                >
-                  <option value="sort by">Sort by</option>
-                  <option value="alpha-asc">Alphabet - A-Z</option>
-                  <option value="alpha-desc">Alphabet - Z-A</option>
-                  <option value="price-asc">Distance - Closest</option>
-                  <option value="price-asc">Distance - Furthest</option>
-                  <option value="price-asc">Price - Lowest to Highest</option>
-                  <option value="price-desc">Price - Highest to Lowest</option>
-                  <option value="rating-asc">Rating - Lowest to Highest</option>
-                  <option value="rating-desc">
-                    Rating - Highest to Lowest
-                  </option>
-                </select>
+            {!isAboutShowing ? (
+              <div className="sort-filter">
+                <div className="sort">
+                  <select
+                    className="select-dropdown"
+                    name="select"
+                    placeholder="Sort by"
+                    onChange={updateSorted}
+                  >
+                    <option value="sort by">Sort by</option>
+                    <option value="alpha-asc">Alphabet - A-Z</option>
+                    <option value="alpha-desc">Alphabet - Z-A</option>
+                    <option value="price-asc">Distance - Closest</option>
+                    <option value="price-asc">Distance - Furthest</option>
+                    <option value="price-asc">Price - Lowest to Highest</option>
+                    <option value="price-desc">
+                      Price - Highest to Lowest
+                    </option>
+                    <option value="rating-asc">
+                      Rating - Lowest to Highest
+                    </option>
+                    <option value="rating-desc">
+                      Rating - Highest to Lowest
+                    </option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <Select
+                    className="filter-dropdown"
+                    mode="multiple"
+                    placeholder="Filter by"
+                    onChange={handleChange}
+                    // optionLabelProp="label"
+                  >
+                    <Option value="Sommelier" label="Sommelier">
+                      <div className="demo-option-label-item">Sommelier 🍷</div>
+                    </Option>
+                    <Option value="Mixologist" label="Mixologist">
+                      <div className="demo-option-label-item">
+                        Mixologist 🍸
+                      </div>
+                    </Option>
+                    <Option value="red-wine" label="red-wine">
+                      <div className="demo-option-label-item">
+                        Red Wine Expert
+                      </div>
+                    </Option>
+                    <Option value="white-wine" label="white-wine">
+                      <div className="demo-option-label-item">
+                        White Wine Expert
+                      </div>
+                    </Option>
+                    <Option value="rose-wine" label="rose-wine">
+                      <div className="demo-option-label-item">
+                        Rosé Wine Expert
+                      </div>
+                    </Option>
+                  </Select>
+                </div>
               </div>
-              <div className="filter">
-                <Select
-                  className="filter-dropdown"
-                  mode="multiple"
-                  placeholder="Filter by"
-                  onChange={handleChange}
-                  // optionLabelProp="label"
-                >
-                  <Option value="Sommelier" label="Sommelier">
-                    <div className="demo-option-label-item">Sommelier 🍷</div>
-                  </Option>
-                  <Option value="Mixologist" label="Mixologist">
-                    <div className="demo-option-label-item">Mixologist 🍸</div>
-                  </Option>
-                  <Option value="red-wine" label="red-wine">
-                    <div className="demo-option-label-item">
-                      Red Wine Expert
-                    </div>
-                  </Option>
-                  <Option value="white-wine" label="white-wine">
-                    <div className="demo-option-label-item">
-                      White Wine Expert
-                    </div>
-                  </Option>
-                  <Option value="rose-wine" label="rose-wine">
-                    <div className="demo-option-label-item">
-                      Rosé Wine Expert
-                    </div>
-                  </Option>
-                </Select>
-              </div>
-            </div>
+            ) : (
+              ""
+            )}
+            {/* <div className="host-for-you"></div> */}
+
             <div className="host-result-btns">
               {/* <Divider orientation="left">Horizontal</Divider> */}
               {/* <Row gutter={16}>
