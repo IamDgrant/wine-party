@@ -18,6 +18,7 @@ import {
   message,
   Select,
   Rate,
+  Tooltip,
 } from "antd";
 import BrowseResults from "../components/BrowseResults";
 import { usStates } from ".././components/States";
@@ -412,13 +413,6 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
           <div className="save-btn">
-            {/* <Popconfirm
-              title="Ready to add event？"
-              okText="Yes"
-              cancelText="No"
-              icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-              onConfirm={closeAddDrawer}
-            > */}
             <Button
               htmlType="submit"
               type="text"
@@ -433,7 +427,6 @@ const EventsContent = (user_id) => {
             >
               Save
             </Button>
-            {/* </Popconfirm> */}
           </div>
         </div>
       </Drawer>
@@ -466,13 +459,6 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
           <div className="save-btn">
-            {/* <Popconfirm
-              title="Confirm Changes?？"
-              okText="Yes"
-              cancelText="No"
-              icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-              onConfirm={closeEditDrawer}
-            > */}
             <Button
               htmlType="submit"
               type="text"
@@ -487,7 +473,6 @@ const EventsContent = (user_id) => {
             >
               Save
             </Button>
-            {/* </Popconfirm> */}
           </div>
         </div>
       </Drawer>
@@ -507,9 +492,13 @@ const EventsContent = (user_id) => {
                   upcomingEvents.map((event) => (
                     <Panel
                       header={
-                        event.host_id !== null
-                          ? event.event_name
-                          : `${event.event_name}  🔴`
+                        event.host_id !== null ? (
+                          event.event_name
+                        ) : (
+                          <Tooltip title="Please add a host">
+                            <span>{event.event_name} 🔴</span>
+                          </Tooltip>
+                        )
                       }
                       key={event.id}
                       style={{ fontWeight: "900" }}
