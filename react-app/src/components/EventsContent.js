@@ -29,7 +29,7 @@ import party from "../assets/images/pexels-maksim-goncharenok-5550311.jpeg";
 
 const EventsContent = (user_id) => {
   const sessionUser = useSelector((state) => state.session.user);
-  // const sessionHost = useSelector((state) => state.session.host);
+  const sessionHost = useSelector((state) => state.host.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,6 +37,8 @@ const EventsContent = (user_id) => {
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
   console.log("current host", isAboutShowing);
+  // const assignedHost = sessionHost.find(host => isAboutShowing === sessionHost.map(host => host.id))
+  // console.log(assignedHost);
 
   const [isEditResultsVisible, setIsEditResultsVisible] = useState(false);
   const [isAddResultsVisible, setIsAddResultsVisible] = useState(false);
@@ -105,11 +107,11 @@ const EventsContent = (user_id) => {
   }, [cscCity]);
 
   const showAddDrawer = () => {
-    setIsAddDrawerVisible(true);
+    // setIsAddDrawerVisible(true);
   };
 
   const closeAddDrawer = () => {
-    setIsAddDrawerVisible(false);
+    // setIsAddDrawerVisible(false);
   };
 
   const showEditDrawer = () => {
@@ -132,10 +134,10 @@ const EventsContent = (user_id) => {
   // }
 
   const addEventName = (e) => {
-    showAddDrawer();
-    if (e.target.value.length < 1) {
-      setIsAddDrawerVisible(false);
-    }
+    // showAddDrawer();
+    // if (e.target.value.length < 1) {
+    //   setIsAddDrawerVisible(false);
+    // }
     setEventName(e.target.value);
   };
 
@@ -165,6 +167,7 @@ const EventsContent = (user_id) => {
 
   const allHostsEditCancel = () => {
     setIsEditResultsVisible(false);
+    setIsEditDrawerVisible(true);
   };
 
   const showAllHostsAdd = (e) => {
@@ -174,7 +177,12 @@ const EventsContent = (user_id) => {
 
   const allHostsAddCancel = () => {
     setIsAddResultsVisible(false);
+    setIsAddDrawerVisible(true);
   };
+
+  // const addHostClicked = () => {
+
+  // }
 
   const backToResults = () => {
     setIsAboutShowing(false);
@@ -207,7 +215,7 @@ const EventsContent = (user_id) => {
   const updateEventState = (state) => {
     showEditDrawer();
     if (state.length < 1) {
-      setIsEditDrawerVisible(false);
+      // setIsEditDrawerVisible(false);
     }
     setEventState(state);
   };
@@ -234,6 +242,11 @@ const EventsContent = (user_id) => {
   //   history.push("/search");
   // };
 
+  const selectedHostId = isAboutShowing && isAboutShowing.id
+
+  console.log(selectedHostId);
+
+
   const onAddSubmission = async (e) => {
     //   // e.preventDefault();
     if (!event_name) {
@@ -243,7 +256,7 @@ const EventsContent = (user_id) => {
     dispatch(
       createEvent({
         user_id,
-        // isAboutShowing,
+        selectedHostId,
         event_name,
         event_date,
         event_city,
@@ -268,7 +281,7 @@ const EventsContent = (user_id) => {
     await dispatch(
       update_Event({
         id,
-        // isAboutShowing,
+        selectedHostId,
         event_name,
         event_date,
         event_city,
@@ -384,7 +397,7 @@ const EventsContent = (user_id) => {
 
   return (
     <div className="events-content-container">
-      <Drawer
+      {/* <Drawer
         // afterVisibleChange={}
         title=""
         placement="top"
@@ -429,7 +442,7 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
         </div>
-      </Drawer>
+      </Drawer> */}
       <Drawer
         // afterVisibleChange={}
         title=""
@@ -546,7 +559,7 @@ const EventsContent = (user_id) => {
                                         key="submit"
                                         type="primary"
                                         // loading={loading}
-                                        // onClick={this.handleOk}
+                                        onClick={allHostsAddCancel}
                                       >
                                         Add Host
                                       </Button>,
@@ -560,14 +573,14 @@ const EventsContent = (user_id) => {
                                       >
                                         Cancel
                                       </Button>,
-                                      <Button
-                                        key="submit"
-                                        type="primary"
-                                        // loading={loading}
-                                        // onClick={this.handleOk}
-                                      >
-                                        Add Host
-                                      </Button>,
+                                      // <Button
+                                      //   key="submit"
+                                      //   type="primary"
+                                      //   // loading={loading}
+                                      //   onClick={saveEditEvent}
+                                      // >
+                                      //   Add Host
+                                      // </Button>,
                                     ]
                               }
                             >
@@ -580,9 +593,24 @@ const EventsContent = (user_id) => {
                         ) : (
                           <div className="event-host-container">
                             {event.host_id !== null ? (
-                              <p>
+                              <div>
+                                {" "}
+                                <p>
+                                  <img
+                                    src={event.host.profile_image}
+                                    alt=""
+                                    style={{
+                                      borderRadius: "50%",
+                                      height: "100px",
+                                      width: "100px",
+                                    }}
+                                  />
+                                </p>
+                              </div>
+                            ) : isAboutShowing !== undefined ? (
+                              <div className="search-btn-modal">
                                 <img
-                                  src={event.host.profile_image}
+                                  src={isAboutShowing.profile_image}
                                   alt=""
                                   style={{
                                     borderRadius: "50%",
@@ -590,7 +618,69 @@ const EventsContent = (user_id) => {
                                     width: "100px",
                                   }}
                                 />
-                              </p>
+                                <p style={{fontStyle: "italic", color: "green"}}>
+                                  Host: {isAboutShowing.first_name}{" "}
+                                  {isAboutShowing.last_name} - Please save to confirm!
+                                </p>
+                                <Modal
+                                  width={1100}
+                                  okText="Add Host"
+                                  title="Find your Host"
+                                  onOk={handleOk}
+                                  onCancel={allHostsEditCancel}
+                                  visible={isEditResultsVisible}
+                                  footer={
+                                    isAboutShowing
+                                      ? [
+                                          <Button
+                                            key="back"
+                                            onClick={backToResults}
+                                          >
+                                            Back
+                                          </Button>,
+                                          <Button
+                                            key="link"
+                                            type="primary"
+                                            // loading={loading}
+                                            onClick={allHostsEditCancel}
+                                          >
+                                            Cancel
+                                          </Button>,
+                                          <Button
+                                            key="submit"
+                                            type="primary"
+                                            // loading={loading}
+                                            onClick={allHostsEditCancel}
+                                          >
+                                            Add Host
+                                          </Button>,
+                                        ]
+                                      : [
+                                          <Button
+                                            key="link"
+                                            type="primary"
+                                            // loading={loading}
+                                            onClick={allHostsEditCancel}
+                                          >
+                                            Cancel
+                                          </Button>,
+                                          // <Button
+                                          //   key="submit"
+                                          //   type="primary"
+                                          //   // loading={loading}
+                                          //   onClick={this.handleOk}
+                                          // >
+                                          //   Add Host
+                                          // </Button>,
+                                        ]
+                                  }
+                                >
+                                  <BrowseResults
+                                    isAboutShowing={isAboutShowing}
+                                    setIsAboutShowing={setIsAboutShowing}
+                                  />
+                                </Modal>
+                              </div>
                             ) : (
                               <div className="search-btn-modal">
                                 <Button
@@ -630,7 +720,7 @@ const EventsContent = (user_id) => {
                                             key="submit"
                                             type="primary"
                                             // loading={loading}
-                                            // onClick={this.handleOk}
+                                            onClick={allHostsEditCancel}
                                           >
                                             Add Host
                                           </Button>,
@@ -644,14 +734,14 @@ const EventsContent = (user_id) => {
                                           >
                                             Cancel
                                           </Button>,
-                                          <Button
-                                            key="submit"
-                                            type="primary"
-                                            // loading={loading}
-                                            // onClick={this.handleOk}
-                                          >
-                                            Add Host
-                                          </Button>,
+                                          // <Button
+                                          //   key="submit"
+                                          //   type="primary"
+                                          //   // loading={loading}
+                                          //   onClick={this.handleOk}
+                                          // >
+                                          //   Add Host
+                                          // </Button>,
                                         ]
                                   }
                                 >
@@ -960,6 +1050,7 @@ const EventsContent = (user_id) => {
                           value={event_postal_code}
                         ></input>
                       </div>
+                      {}
                       <div className="search-btn-modal">
                         <Button
                           className="edit-find-host-btn"
@@ -994,7 +1085,7 @@ const EventsContent = (user_id) => {
                                     key="submit"
                                     type="primary"
                                     // loading={loading}
-                                    // onClick={this.handleOk}
+                                    onClick={allHostsAddCancel}
                                   >
                                     Add Host
                                   </Button>,
@@ -1008,14 +1099,14 @@ const EventsContent = (user_id) => {
                                   >
                                     Cancel
                                   </Button>,
-                                  <Button
-                                    key="submit"
-                                    type="primary"
-                                    // loading={loading}
-                                    // onClick={this.handleOk}
-                                  >
-                                    Add Host
-                                  </Button>,
+                                  // <Button
+                                  //   key="submit"
+                                  //   type="primary"
+                                  //   // loading={loading}
+                                  //   // onClick={this.handleOk}
+                                  // >
+                                  //   Add Host
+                                  // </Button>,
                                 ]
                           }
                         >

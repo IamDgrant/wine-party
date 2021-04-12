@@ -24,6 +24,7 @@ const removeEvent = (eventId) => ({
 });
 
 export const createEvent = ({
+  selectedHostId,
   event_name,
   event_date,
   event_city,
@@ -36,6 +37,7 @@ export const createEvent = ({
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      selectedHostId,
       event_name,
       event_date,
       event_city,
@@ -46,17 +48,17 @@ export const createEvent = ({
   const data = await res.json();
   dispatch(setEvent(data));
 };
-
+// isAboutShowing is the id of the selected host to add to event
 export const update_Event = (updateData) => async (dispatch) => {
   const {
     id,
-    isAboutShowing,
+    selectedHostId,
     event_date,
     event_city,
     event_state,
     event_postal_code,
   } = updateData;
-  console.log("MADE IT HERE", isAboutShowing);
+  console.log("MADE IT HERE", selectedHostId);
   const res = await fetch(`/api/events/update/${id}`, {
     method: "PUT",
     headers: {
@@ -64,7 +66,7 @@ export const update_Event = (updateData) => async (dispatch) => {
     },
     body: JSON.stringify({
       id,
-      isAboutShowing,
+      selectedHostId,
       event_date,
       event_city,
       event_state,

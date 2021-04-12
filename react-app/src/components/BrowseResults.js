@@ -515,7 +515,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     // }
   };
 
-  const currentHost = filteredSort.find((host) => isAboutShowing === host.id);
+  const currentHost = filteredSort.find(host => isAboutShowing === host.id);
   // console.log(currentHost.id);
   return (
     <>
@@ -629,7 +629,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                     <div key={host.id}>
                       <Button
                         style={{ padding: "0" }}
-                        onClick={() => setIsAboutShowing(host.id)}
+                        onClick={() => setIsAboutShowing(host)}
                       >
                         <div className="card">
                           <div
@@ -668,19 +668,19 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                 ) : (
                   <div className="host-card-container">
                     <div className="host-image-container">
-                      <img src={currentHost.profile_image} alt="host profile" />
+                      <img src={isAboutShowing.profile_image} alt="host profile" />
                     </div>
                     <div className="host-about-container">
                       <div className="host-name-card">
-                        Name: {currentHost.first_name} {currentHost.last_name}
+                        Name: {isAboutShowing.first_name} {isAboutShowing.last_name}
                       </div>
 
-                      {currentHost.sommelier === true &&
-                      currentHost.mixologist === true ? (
+                      {isAboutShowing.sommelier === true &&
+                      isAboutShowing.mixologist === true ? (
                         <div className="host-type-card">
                           Host Type: Sommelier and Mixologist
                         </div>
-                      ) : currentHost.sommelier === true ? (
+                      ) : isAboutShowing.sommelier === true ? (
                         <div className="host-type-card">
                           Host Type: Sommelier
                         </div>
@@ -690,7 +690,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                         </div>
                       )}
                       <div className="host-about-card">
-                        About: {currentHost.about}
+                        About: {isAboutShowing.about}
                       </div>
                       <div className="host-specialty-card"></div>
                     </div>
