@@ -217,14 +217,12 @@ const EventsContent = (user_id) => {
 
   const saveAddEvent = () => {
     onAddSubmission();
-
-    // setIsAddDrawerVisible(false);
+    setIsAddDrawerVisible(false);
   };
 
   const saveEditEvent = (id) => {
     onEditSubmission(id);
-
-    // setIsEditDrawerVisible(false);
+    setIsEditDrawerVisible(false);
   };
 
   const deleteOneEvent = async (id) => {
@@ -400,7 +398,7 @@ const EventsContent = (user_id) => {
           <div className="cancel-btn">
             <Button
               danger
-              htmlType="submit"
+              // htmlType="submit"
               type="text"
               size="middle"
               style={{
@@ -414,35 +412,35 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
           <div className="save-btn">
-            <Popconfirm
+            {/* <Popconfirm
               title="Ready to add event？"
               okText="Yes"
               cancelText="No"
               icon={<QuestionCircleOutlined style={{ color: "red" }} />}
               onConfirm={closeAddDrawer}
+            > */}
+            <Button
+              htmlType="submit"
+              type="text"
+              size="middle"
+              style={{
+                border: "1px solid #058532",
+                fontFamily: "Montserrat",
+                color: "#058532",
+                width: "5.25vw",
+              }}
+              onClick={saveAddEvent}
             >
-              <Button
-                htmlType="submit"
-                type="text"
-                size="middle"
-                style={{
-                  border: "1px solid #058532",
-                  fontFamily: "Montserrat",
-                  color: "#058532",
-                  width: "5.25vw",
-                }}
-                onClick={saveAddEvent}
-              >
-                Save
-              </Button>
-            </Popconfirm>
+              Save
+            </Button>
+            {/* </Popconfirm> */}
           </div>
         </div>
       </Drawer>
       <Drawer
         // afterVisibleChange={}
         title=""
-        placement="bottom"
+        placement="top"
         // autoFocus={false}
         closable={false}
         mask={false}
@@ -454,7 +452,7 @@ const EventsContent = (user_id) => {
           <div className="cancel-btn">
             <Button
               danger
-              htmlType="submit"
+              // htmlType="submit"
               type="text"
               size="middle"
               style={{
@@ -468,28 +466,28 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
           <div className="save-btn">
-            <Popconfirm
+            {/* <Popconfirm
               title="Confirm Changes?？"
               okText="Yes"
               cancelText="No"
               icon={<QuestionCircleOutlined style={{ color: "red" }} />}
               onConfirm={closeEditDrawer}
+            > */}
+            <Button
+              htmlType="submit"
+              type="text"
+              size="middle"
+              style={{
+                border: "1px solid #058532",
+                fontFamily: "Montserrat",
+                color: "#058532",
+                width: "5.25vw",
+              }}
+              onClick={saveEditEvent}
             >
-              <Button
-                htmlType="submit"
-                type="text"
-                size="middle"
-                style={{
-                  border: "1px solid #058532",
-                  fontFamily: "Montserrat",
-                  color: "#058532",
-                  width: "5.25vw",
-                }}
-                onClick={saveEditEvent}
-              >
-                Save
-              </Button>
-            </Popconfirm>
+              Save
+            </Button>
+            {/* </Popconfirm> */}
           </div>
         </div>
       </Drawer>
