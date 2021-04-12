@@ -223,45 +223,37 @@ const LandingHeader = () => {
 
   return (
     <div className="user-main-header-container">
-      <div className="user-main-logo-container">Wine Party</div>
+      <div className="main-logo-container">
+        <NavLink className="logo-nav" to="/home">
+          Wine Party
+        </NavLink>
+      </div>
       <div className="navBar">
         <ul className={click ? "nav-options active" : "nav-options"}>
           <li className="option" onClick={closeMobileMenu}>
             <NavLink exact to="/about">
-              <Button
-                type="text"
-                className="menu userNavBar-btn"
-              >
+              <Button type="text" className="menu userNavBar-btn">
                 About
               </Button>
             </NavLink>
           </li>
           <li className="option" onClick={closeMobileMenu}>
-            <NavLink exact to="tasting">
-              <Button
-                type="text"
-                className="menu userNavBar-btn"
-              >
+            <NavLink exact to="/tasting">
+              <Button type="text" className="menu userNavBar-btn">
                 Virtual Tasting
               </Button>
             </NavLink>
           </li>
           <li className="option" onClick={closeMobileMenu}>
             <NavLink exact to="/stories">
-              <Button
-                type="text"
-                className="menu userNavBar-btn"
-              >
+              <Button type="text" className="menu userNavBar-btn">
                 Wine Stories
               </Button>
             </NavLink>
           </li>
           <li className="option" onClick={closeMobileMenu}>
             <NavLink exact to="/news">
-              <Button
-                type="text"
-                className="menu userNavBar-btn"
-              >
+              <Button type="text" className="menu userNavBar-btn">
                 News
               </Button>
             </NavLink>

@@ -4,16 +4,21 @@ import { useDispatch } from "react-redux";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import LandingPage from "./components/LandingPage";
 import UserHome from "./components/UserHome";
-import BrowseResults from "./components/BrowseResults";
 import Account from "./components/Account";
 import Profile from "./components/Profile";
 import Favorites from "./components/Favorites";
 import Details from "./components/Details";
 import Help from "./components/Help";
+import UserHelp from "./components/UserHelp";
 import Messages from "./components/Messages";
 import Search from "./components/Search";
 import Events from "./components/Events";
 import FAQ from "./components/FAQ";
+import About from "./components/About"
+import Tasting from "./components/Tasting"
+import Stories from "./components/Stories"
+import News from "./components/News"
+
 
 import { restoreUser } from "./store/session";
 
@@ -37,14 +42,23 @@ const App = () => {
         <Route path="/" exact={true}>
           <LandingPage />
         </Route>
-        {/* <Route path="/hosts" exact={true}>
-          <BrowseResults
-            isAboutShowing={isAboutShowing}
-            setIsAboutShowing={setIsAboutShowing}
-          />
-        </Route> */}
+        <Route path="/about" exact={true}>
+          <About />
+        </Route>
         <Route path="/faq" exact={true}>
           <FAQ />
+        </Route>
+        <Route path="/tasting" exact={true}>
+          <Tasting />
+        </Route>
+        <Route path="/stories" exact={true}>
+          <Stories />
+        </Route>
+        <Route path="/news" exact={true}>
+          <News />
+        </Route>
+        <Route path="/help" exact={true}>
+          <Help />
         </Route>
         <ProtectedRoute path="/home" exact={true}>
           <UserHome />
@@ -61,8 +75,8 @@ const App = () => {
         <ProtectedRoute path="/favorites" exact={true}>
           <Favorites />
         </ProtectedRoute>
-        <ProtectedRoute path="/help" exact={true}>
-          <Help />
+        <ProtectedRoute path="/userhelp" exact={true}>
+          <UserHelp />
         </ProtectedRoute>
         <ProtectedRoute path="/messages" exact={true}>
           <Messages />

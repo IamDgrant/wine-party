@@ -6,16 +6,17 @@ import { seeHost } from "../store/host";
 import "../components/styling/searchContentStyling.css";
 // import BrowseResults from "../components/BrowseResults"
 // import SearchResult from "../components/SearchResults";
-import { Row, Col, Divider, Select } from "antd";
+import { Row, Col, Divider, Select, Button } from "antd";
 import "../components/styling/searchResults.css";
 
-const SearchContent = () => {
+const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
   console.log(location);
 
+  
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
   const [isSommelier, setIsSommelier] = useState(false);
@@ -24,10 +25,9 @@ const SearchContent = () => {
   const [isWhiteWine, setIsWhiteWine] = useState(false);
   const [isRoseWine, setIsRoseWine] = useState(false);
 
-
   useEffect(() => {
     const locationSplit = location.search.split("&");
-    const query = locationSplit.map(chunk => chunk.split("=")[1])
+    const query = locationSplit.map((chunk) => chunk.split("=")[1]);
     dispatch(seeHost(...query));
   }, []);
 
@@ -144,7 +144,7 @@ const SearchContent = () => {
     }
   };
 
-  const hosts = sessionHosts.map((host) => host);
+  const hosts = sessionHosts && sessionHosts.map((host) => host);
 
   const sorted = () =>
     hosts.sort((name1, name2) => {
@@ -521,7 +521,7 @@ const SearchContent = () => {
     }
   };
 
-console.log(filteredSort);
+  const currentHost = filteredSort.find(host => isAboutShowing === host.id);
 
   return (
     <div className="search-content-container">
@@ -603,7 +603,6 @@ console.log(filteredSort);
                 </Col>
               ))}
             </Row> */}
-
             <CSSGrid
               component="ul"
               columns={4}
@@ -613,39 +612,80 @@ console.log(filteredSort);
               duration={250}
               easing="ease-out"
             >
-              {filteredSort.map((host) => (
-                <div className="card" key={host.id}>
-                  <div
-                    className="host-card"
-                    style={{
-                      backgroundImage: `url(${host.profile_image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    <div className="hosts">
-                      <div className="add-host">
-                        <button>{addBtn}</button>
-                      </div>
-                      <div className="host-name-type">
-                        <div className="host-name">
-                          {host.first_name} {host.last_name}
+              {!isAboutShowing ? (
+                filteredSort.map((host) => (
+                  <div key={host.id}>
+                    <Button
+                      style={{ padding: "0" }}
+                      onClick={() => setIsAboutShowing(host)}
+                    >
+                      <div className="card">
+                        <div
+                          className="host-card"
+                          style={{
+                            backgroundImage: `url(${host.profile_image})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                        >
+                          <div className="hosts">
+                            {/* <div className="add-host">
+                                <button>{addBtn}</button>
+                              </div> */}
+                            <div className="host-name-type">
+                              <div className="host-name">
+                                {host.first_name} {host.last_name}
+                              </div>
+                              <div className="somm">
+                                {host.sommelier === true ? sommelier : null}
+                              </div>
+                              <div className="mix">
+                                {host.mixologist === true ? mixologist : null}
+                              </div>
+                            </div>
+                            <div className="host-city-state">
+                              {host.city}, {host.state}
+                            </div>
+                          </div>
                         </div>
-                        <div className="somm">
-                          {host.sommelier === true ? sommelier : null}
-                        </div>
-                        <div className="mix">
-                          {host.mixologist === true ? mixologist : null}
-                        </div>
                       </div>
-                      <div className="host-city-state">
-                        {host.city}, {host.state}
-                      </div>
+                    </Button>
+                  </div>
+                ))
+              ) : (
+                <div className="host-card-container">
+                  <div className="host-image-container">
+                    <img
+                      src={isAboutShowing.profile_image}
+                      alt="host profile"
+                    />
+                  </div>
+                  <div className="host-about-container">
+                    <div className="host-name-card">
+                      Name: {isAboutShowing.first_name}{" "}
+                      {isAboutShowing.last_name}
                     </div>
+
+                    {isAboutShowing.sommelier === true &&
+                    isAboutShowing.mixologist === true ? (
+                      <div className="host-type-card">
+                        Host Type: Sommelier and Mixologist
+                      </div>
+                    ) : isAboutShowing.sommelier === true ? (
+                      <div className="host-type-card">Host Type: Sommelier</div>
+                    ) : (
+                      <div className="host-type-card">
+                        Host Type: Mixologist
+                      </div>
+                    )}
+                    <div className="host-about-card">
+                      About: {isAboutShowing.about}
+                    </div>
+                    <div className="host-specialty-card"></div>
                   </div>
                 </div>
-              ))}
+              )}
             </CSSGrid>
           </div>
         </div>

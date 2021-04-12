@@ -1,0 +1,7 @@
+.main-about-container {
+  width: 80%;
+  margin: 7rem 15% 0 15%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 100vh;
+}

@@ -11,20 +11,6 @@ import "../components/styling/mainHeaderStyling.css";
 const MainHeader = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [click, setClick] = useState(false);
-
-
-  //   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
-  //   const [isSignUpModalVisible, setIsisSignUpModalVisible] = useState(false);
-  //   const [first_name, setFirstName] = useState("");
-  //   const [last_name, setLastName] = useState("");
-  //   const [city, setCity] = useState("");
-  //   const [state, setState] = useState("");
-  //   const [postal_code, setPostalCode] = useState("");
-  //   const [signInEmail, setSignInEmail] = useState("");
-  //   const [signUpEmail, setSignUpEmail] = useState("");
-  //   const [signInPassword, setSignInPassword] = useState("");
-  //   const [signUpPassword, setSignUpPassword] = useState("");
-  //   const [repeatPassword, setRepeatPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
@@ -34,10 +20,6 @@ const MainHeader = () => {
     const user = await dispatch(logout());
     if (!user.ok) history.push("/");
   };
-
-  // useEffect(() => {
-  //   dispatch(browseAllHost());
-  // }, [dispatch]);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -67,7 +49,7 @@ const MainHeader = () => {
         </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <NavLink exact to="/help">
+        <NavLink exact to="/userhelp">
           <Button className="antd-btn" type="link">
             Help
           </Button>

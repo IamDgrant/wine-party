@@ -1,9 +1,9 @@
 import React from "react";
 import LandingHeader from "../components/LandingPageHeader";
-import HelpContent from "../components/HelpContent";
-import "../components/styling/helpStyling.css";
+import StoriesContent from "../components/StoriesContent";
+import "../components/styling/storiesContentStyling.css";
 
-const Help = () => {
+const Stories = () => {
   return (
     <>
       <div className="main-stories-container">
@@ -11,11 +11,11 @@ const Help = () => {
           <LandingHeader />
         </div>
         <div className="stories-contents">
-          <HelpContent />
+          <StoriesContent />
         </div>
       </div>
     </>
   );
 };
 
-export default Help;
+export default Stories;

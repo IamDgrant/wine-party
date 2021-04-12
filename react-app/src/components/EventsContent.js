@@ -248,7 +248,7 @@ const EventsContent = (user_id) => {
 
 
   const onAddSubmission = async (e) => {
-    //   // e.preventDefault();
+      e.preventDefault();
     if (!event_name) {
       error();
       return;
@@ -273,7 +273,7 @@ const EventsContent = (user_id) => {
   };
 
   const onEditSubmission = async (id) => {
-    //   // e.preventDefault();
+      // e.preventDefault();
     // if (!event_name) {
     //   error();
     //   return;
@@ -482,7 +482,7 @@ const EventsContent = (user_id) => {
                 color: "#058532",
                 width: "5.25vw",
               }}
-              onClick={saveEditEvent}
+              onClick={(e) => {e.preventDefault(); saveEditEvent()}}
             >
               Save
             </Button>

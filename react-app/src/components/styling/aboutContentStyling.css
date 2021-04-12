@@ -1,0 +1,16 @@
+.about-content-container {
+    width: 80%;
+    max-width: 100%;
+    margin: 7rem 15% 0 15%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .about-title {
+    width: 100%;
+    color: #000;
+    font-size: 3vh;
+    font-weight: 400;
+    }
+  

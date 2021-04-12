@@ -100,7 +100,7 @@ const UserMainHeader = () => {
         </NavLink>
       </Menu.Item>
       <Menu.Item>
-        <NavLink exact to="/help">
+        <NavLink exact to="/userhelp">
           <Button className="antd-btn" type="link">
             Help
           </Button>
