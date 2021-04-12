@@ -37,9 +37,12 @@ const App = () => {
         <Route path="/" exact={true}>
           <LandingPage />
         </Route>
-        <Route path="/hosts" exact={true}>
-          <BrowseResults />
-        </Route>
+        {/* <Route path="/hosts" exact={true}>
+          <BrowseResults
+            isAboutShowing={isAboutShowing}
+            setIsAboutShowing={setIsAboutShowing}
+          />
+        </Route> */}
         <Route path="/faq" exact={true}>
           <FAQ />
         </Route>

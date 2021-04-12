@@ -35,7 +35,7 @@ const EventsContent = (user_id) => {
 
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
-  // console.log("current host", isAboutShowing);
+  console.log("current host", isAboutShowing);
 
   const [isEditResultsVisible, setIsEditResultsVisible] = useState(false);
   const [isAddResultsVisible, setIsAddResultsVisible] = useState(false);
@@ -545,7 +545,7 @@ const EventsContent = (user_id) => {
                                         key="back"
                                         onClick={backToResults}
                                       >
-                                        BACK
+                                        Back
                                       </Button>,
                                       <Button
                                         key="link"
@@ -561,7 +561,7 @@ const EventsContent = (user_id) => {
                                         // loading={loading}
                                         // onClick={this.handleOk}
                                       >
-                                        Submit
+                                        Add Host
                                       </Button>,
                                     ]
                                   : [
@@ -579,7 +579,7 @@ const EventsContent = (user_id) => {
                                         // loading={loading}
                                         // onClick={this.handleOk}
                                       >
-                                        Submit
+                                        Add Host
                                       </Button>,
                                     ]
                               }
@@ -629,7 +629,7 @@ const EventsContent = (user_id) => {
                                             key="back"
                                             onClick={backToResults}
                                           >
-                                            BACK
+                                            Back
                                           </Button>,
                                           <Button
                                             key="link"
@@ -645,7 +645,7 @@ const EventsContent = (user_id) => {
                                             // loading={loading}
                                             // onClick={this.handleOk}
                                           >
-                                            Submit
+                                            Add Host
                                           </Button>,
                                         ]
                                       : [
@@ -663,7 +663,7 @@ const EventsContent = (user_id) => {
                                             // loading={loading}
                                             // onClick={this.handleOk}
                                           >
-                                            Submit
+                                            Add Host
                                           </Button>,
                                         ]
                                   }
@@ -672,20 +672,6 @@ const EventsContent = (user_id) => {
                                     isAboutShowing={isAboutShowing}
                                     setIsAboutShowing={setIsAboutShowing}
                                   />
-                                  {/* {isAboutShowing ? (
-                                    <p className="back-button">
-                                      <Button
-                                        className="edit-find-host-btn"
-                                        htmlType="submit"
-                                        // icon={<SearchOutlined />}
-                                        onClick={backToResults}
-                                      >
-                                        BACK
-                                      </Button>
-                                    </p>
-                                  ) : (
-                                    ""
-                                  )} */}
                                 </Modal>
                               </div>
                             )}
@@ -1007,7 +993,7 @@ const EventsContent = (user_id) => {
                             isAboutShowing
                               ? [
                                   <Button key="back" onClick={backToResults}>
-                                    BACK
+                                    Back
                                   </Button>,
                                   <Button
                                     key="link"
@@ -1023,7 +1009,7 @@ const EventsContent = (user_id) => {
                                     // loading={loading}
                                     // onClick={this.handleOk}
                                   >
-                                    Submit
+                                    Add Host
                                   </Button>,
                                 ]
                               : [
@@ -1041,7 +1027,7 @@ const EventsContent = (user_id) => {
                                     // loading={loading}
                                     // onClick={this.handleOk}
                                   >
-                                    Submit
+                                    Add Host
                                   </Button>,
                                 ]
                           }
@@ -1050,20 +1036,6 @@ const EventsContent = (user_id) => {
                             isAboutShowing={isAboutShowing}
                             setIsAboutShowing={setIsAboutShowing}
                           />
-                          {/* {isAboutShowing ? (
-                            <p className="back-button">
-                              <Button
-                                className="edit-find-host-btn"
-                                htmlType="submit"
-                                // icon={<SearchOutlined />}
-                                onClick={backToResults}
-                              >
-                                BACK
-                              </Button>
-                            </p>
-                          ) : (
-                            ""
-                          )} */}
                         </Modal>
                       </div>
                       {/* <div className="search_bar">
