@@ -1,15 +1,27 @@
 .userHome-content-container {
-    width: 80%;
-    max-width: 100%;
-    margin: 7rem 15% 0 15%;
-    box-sizing: border-box;
-    min-height: 100vh;
-    font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.search-form {
+  margin-top: 11vh;
+}
+
+.user-home-image-container {
+  height: 89vh;
+  background-color: #000;
+  width: 100%;
+}
+
+.user-home-image-inner {
+    /* filter: grayscale(85%) contrast(125%); */
+    margin-top: 5.5vh;
+    height: 75%;
+    width: 100%;
+    background-image: url("../../assets/images/pexels-askar-abayev-5638747.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
-  .search-form {
-
-      margin-right: 12vw;
-  }
-
-

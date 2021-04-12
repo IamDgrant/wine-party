@@ -18,21 +18,22 @@
   justify-content: center;
   align-items: center; */
   /* margin-left: 25vh; */
-  height: 50%;
+  margin-top: 16.5vh;
+  height: 75%;
   width: 100%;
-  background-image: url("../../assets/images/pexels-rachel-claire-4846351.jpeg");
-  background-size: contain;
+  background-image: url("../../assets/images/pexels-anna-guerrero-1957019.jpeg");
+  background-size: cover;
   background-repeat: no-repeat;
 
   /* transform: rotate(90deg); */
 }
 
-.landing-image {
+/* .landing-image {
   height: 75%;
   width: 100%;
   object-fit: contain;
   transform: rotate(90deg);
-}
+} */
 
 .landing-featuredhost-nearby {
   display: flex;

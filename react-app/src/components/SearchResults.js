@@ -5,28 +5,32 @@ import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
 import { seeHost } from "../store/host";
 import SearchForm from "../components/auth/forms/SearchHostForm";
 import "../components/styling/searchResults.css";
-import { Modal, Button, Select } from "antd";
+import { Modal, Button, Select, message } from "antd";
 
-// import { message } from "antd";
 
 const SearchResult = () => {
+  const sessionHosts = useSelector((state) => state.host.host);
+  const hosts = sessionHosts && sessionHosts.map((host) => host);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
+  const [isAboutShowing, setIsAboutShowing] = useState("");
   const [isSommelier, setIsSommelier] = useState(false);
   const [isMixologist, setIsMixologist] = useState(false);
   const [isRedWine, setIsRedWine] = useState(false);
   const [isWhiteWine, setIsWhiteWine] = useState(false);
   const [isRoseWine, setIsRoseWine] = useState(false);
 
-  const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     dispatch(seeHost());
   }, [dispatch]);
 
-  const sessionHosts = useSelector((state) => state.host.host);
-  const hosts = sessionHosts && sessionHosts.map((host) => host);
+  const backToResults = () => {
+    setIsAboutShowing(false);
+  };
 
   // if (!isLoaded) {
   //   return null;
@@ -139,7 +143,7 @@ const SearchResult = () => {
 
   const activateSort = sorted();
 
-  .filter((type) => type === "Sommelier" || type === "Mixologist" || type === "red-wine" || type === "white-wine" || type === "rose-wine")
+  // .filter((type) => type === "Sommelier" || type === "Mixologist" || type === "red-wine" || type === "white-wine" || type === "rose-wine")
 
   // const updateFiltered = (e) => {
   //   if (e.target.value === "alpha-asc") {
@@ -468,12 +472,6 @@ const SearchResult = () => {
   //   sorted()
   // };
 
-  // console.log(isSommelier);
-  // console.log(isMixologist);
-  // console.log(isRedWine);
-  // console.log(isWhiteWine);
-  // console.log(isRoseWine);
-
   // const filterHandleCancel = () => {
   //   setIsFilterModalVisible(false);
   // };
@@ -532,134 +530,186 @@ const SearchResult = () => {
 
   return (
     <>
-      <div className="results">
-        <div className="host-for-you">
-          <div className="title">Hosts for you</div>
-        </div>
-        <div className="sort-filter">
-          <div className="sort">
-            <select
-              className="select-dropdown"
-              name="select"
-              placeholder="Sort by"
-              onChange={updateSorted}
-            >
-              <option value="sort by">Sort by</option>
-              <option value="alpha-asc">Alphabet - A-Z</option>
-              <option value="alpha-desc">Alphabet - Z-A</option>
-              <option value="price-asc">Distance - Closest</option>
-                <option value="price-asc">Distance - Furthest</option>
-              <option value="price-asc">Price - Lowest to Highest</option>
-              <option value="price-desc">Price - Highest to Lowest</option>
-              <option value="rating-asc">Rating - Lowest to Highest</option>
-              <option value="rating-desc">Rating - Highest to Lowest</option>
-            </select>
-          </div>
-          <div className="filter">
-            <Select
-              className="filter-dropdown"
-              mode="multiple"
-              placeholder="Filter by"
-              // style={{ width: "300px" }}
-              // defaultValue={["china"]}
-              onChange={handleChange}
-              optionLabelProp="label"
-            >
-              <Option value="Sommelier" label="Sommelier">
-                <div className="demo-option-label-item">Sommelier 🍷</div>
-              </Option>
-              <Option value="Mixologist" label="Mixologist">
-                <div className="demo-option-label-item">Mixologist 🍸</div>
-              </Option>
-              <Option value="red-wine" label="red-wine">
-                <div className="demo-option-label-item">Red Wine Expert</div>
-              </Option>
-              <Option value="white-wine" label="white-wine">
-                <div className="demo-option-label-item">White Wine Expert</div>
-              </Option>
-              <Option value="rose-wine" label="rose-wine">
-                <div className="demo-option-label-item">Rosé Wine Expert</div>
-              </Option>
-            </Select>
-            {/* <Button
-              className="filter-btn"
-              htmlType="submit"
-              type="dashed"
-              size="small"
-              ghost="true"
-              onClick={showFilterModal}
-            >
-              Filter by
-            </Button>
-            <Modal
-              style={{ left: 300,  display: "flex", width: "100%" }}
-              okText="Save"
-              visible={isFilterModalVisible}
-              onOk={filterHandleOk}
-              onCancel={filterHandleCancel}
-            >
-              <SearchForm />
-            </Modal> */}
-            {/* <input
-            className="filter-field"
-              // onChange={filterInput}
-              // style={{ width: "100%", height: "27px" }}
-              placeholder="Filter by"
-              type="text"
-            /> */}
-          </div>
-        </div>
-        <div className="host-result-btns">
-          <CSSGrid
-            component="ul"
-            columns={4}
-            columnWidth={250}
-            itemHeight={400}
-            itemwidth={250}
-            duration={250}
-            easing="ease-out"
-          >
-            {sessionHosts &&
-              sessionHosts.length &&
-              filteredSort.map((host) => (
-                <div className="card" key={host.id}>
-                  <div
-                    className="host-card"
-                    style={{
-                      backgroundImage: `url(${host.profile_image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
+      <div className="browse-content-container">
+        <div className="search-info">
+          <div className="results">
+            {!isAboutShowing ? (
+              <div className="sort-filter">
+                <div className="sort">
+                  <select
+                    className="select-dropdown"
+                    name="select"
+                    placeholder="Sort by"
+                    onChange={updateSorted}
                   >
-                    <div className="hosts">
-                      <div className="add-host">
-                        <button>{addBtn}</button>
+                    <option value="sort by">Sort by</option>
+                    <option value="alpha-asc">Alphabet - A-Z</option>
+                    <option value="alpha-desc">Alphabet - Z-A</option>
+                    <option value="price-asc">Distance - Closest</option>
+                    <option value="price-asc">Distance - Furthest</option>
+                    <option value="price-asc">Price - Lowest to Highest</option>
+                    <option value="price-desc">
+                      Price - Highest to Lowest
+                    </option>
+                    <option value="rating-asc">
+                      Rating - Lowest to Highest
+                    </option>
+                    <option value="rating-desc">
+                      Rating - Highest to Lowest
+                    </option>
+                  </select>
+                </div>
+                <div className="filter">
+                  <Select
+                    className="filter-dropdown"
+                    mode="multiple"
+                    placeholder="Filter by"
+                    onChange={handleChange}
+                    // optionLabelProp="label"
+                  >
+                    <Option value="Sommelier" label="Sommelier">
+                      <div className="demo-option-label-item">Sommelier 🍷</div>
+                    </Option>
+                    <Option value="Mixologist" label="Mixologist">
+                      <div className="demo-option-label-item">
+                        Mixologist 🍸
                       </div>
-                      <div className="host-name-type">
-                        <div className="host-name">
-                          {host.first_name} {host.last_name}
-                        </div>
-                        <div className="somm">
-                          {host.sommelier === true ? sommelier : null}{" "}
-                        </div>
-                        <div className="mix">
-                          {host.mixologist === true ? mixologist : null}{" "}
-                        </div>
+                    </Option>
+                    <Option value="red-wine" label="red-wine">
+                      <div className="demo-option-label-item">
+                        Red Wine Expert
                       </div>
+                    </Option>
+                    <Option value="white-wine" label="white-wine">
+                      <div className="demo-option-label-item">
+                        White Wine Expert
+                      </div>
+                    </Option>
+                    <Option value="rose-wine" label="rose-wine">
+                      <div className="demo-option-label-item">
+                        Rosé Wine Expert
+                      </div>
+                    </Option>
+                  </Select>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+            {/* <div className="host-for-you"></div> */}
 
-                      <div className="host-city-state">
-                        {host.city}, {host.state}
+            <div className="host-result-btns">
+              {/* <Divider orientation="left">Horizontal</Divider> */}
+              {/* <Row gutter={16}>
+              {filteredSort.map((host) => (
+                <Col key={host.id} className="gutter-row" span={6}>
+                  <div className="hosts">
+                    <div className="add-host">
+                      <button>{addBtn}</button>
+                    </div>
+                    <div className="host-name-type">
+                      <div className="host-name">
+                        {host.first_name} {host.last_name}
                       </div>
-                      {/* <div className="host-type"></div> */}
-                      {/* <div className="host-rating">
-                          <Rate disabled defaultValue={4} />
-                        </div> */}
+                      <div className="somm">
+                        {host.sommelier === true ? sommelier : null}
+                      </div>
+                      <div className="mix">
+                        {host.mixologist === true ? mixologist : null}
+                      </div>
+                    </div>
+                    <div className="host-city-state">
+                      {host.city}, {host.state}
                     </div>
                   </div>
-                </div>
+                </Col>
               ))}
-          </CSSGrid>
+            </Row> */}
+
+              <CSSGrid
+                component="ul"
+                columns={4}
+                columnWidth={250}
+                itemHeight={400}
+                itemwidth={250}
+                duration={250}
+                easing="ease-out"
+              >
+                {!isAboutShowing ? (
+                  filteredSort.map((host) => (
+                    <div key={host.id}>
+                      <Button
+                        style={{ padding: "0" }}
+                        onClick={() => setIsAboutShowing(host)}
+                      >
+                        <div className="card">
+                          <div
+                            className="host-card"
+                            style={{
+                              backgroundImage: `url(${host.profile_image})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          >
+                            <div className="hosts">
+                              {/* <div className="add-host">
+                                <button>{addBtn}</button>
+                              </div> */}
+                              <div className="host-name-type">
+                                <div className="host-name">
+                                  {host.first_name} {host.last_name}
+                                </div>
+                                <div className="somm">
+                                  {host.sommelier === true ? sommelier : null}
+                                </div>
+                                <div className="mix">
+                                  {host.mixologist === true ? mixologist : null}
+                                </div>
+                              </div>
+                              <div className="host-city-state">
+                                {host.city}, {host.state}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Button>
+                    </div>
+                  ))
+                ) : (
+                  <div className="host-card-container">
+                    <div className="host-image-container">
+                      <img src={isAboutShowing.profile_image} alt="host profile" />
+                    </div>
+                    <div className="host-about-container">
+                      <div className="host-name-card">
+                        Name: {isAboutShowing.first_name} {isAboutShowing.last_name}
+                      </div>
+
+                      {isAboutShowing.sommelier === true &&
+                      isAboutShowing.mixologist === true ? (
+                        <div className="host-type-card">
+                          Host Type: Sommelier and Mixologist
+                        </div>
+                      ) : isAboutShowing.sommelier === true ? (
+                        <div className="host-type-card">
+                          Host Type: Sommelier
+                        </div>
+                      ) : (
+                        <div className="host-type-card">
+                          Host Type: Mixologist
+                        </div>
+                      )}
+                      <div className="host-about-card">
+                        About: {isAboutShowing.about}
+                      </div>
+                      <div className="host-specialty-card"></div>
+                    </div>
+                  </div>
+                )}
+              </CSSGrid>
+            </div>
+          </div>
         </div>
       </div>
     </>

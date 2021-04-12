@@ -8,7 +8,7 @@ import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 import "../components/styling/userMainHeaderStyling.css";
-import "../components/styling/buttonStyling.css"
+import "../components/styling/buttonStyling.css";
 
 const UserMainHeader = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -125,55 +125,40 @@ const UserMainHeader = () => {
   return (
     sessionUser && (
       <div className="user-main-header-container">
-        <div className="user-main-logo-container">Wine Party</div>
+        <div className="main-logo-container">
+          <NavLink className="logo-nav" to="/home">
+            Wine Party
+          </NavLink>
+        </div>
         <div className="navBar">
-          <ul
-            className={click ? "nav-options active" : "nav-options"}
-          >
+          <ul className={click ? "nav-options active" : "nav-options"}>
             <li className="option" onClick={closeMobileMenu}>
-              <Button
-                type="text"
-                onClick={clickAbout}
-                className="menu userNavBar-btn"
-              >
-                About
-              </Button>
+              <NavLink exact to="/about">
+                <Button type="text" className="menu userNavBar-btn">
+                  About
+                </Button>
+              </NavLink>
             </li>
-            <li
-              className="option"
-              onClick={closeMobileMenu}
-            >
-              <Button
-                type="text"
-                onClick={clickTasting}
-                className="menu userNavBar-btn"
-              >
-                Virtual Tasting
-              </Button>
+            <li className="option" onClick={closeMobileMenu}>
+              <NavLink exact to="/tasting">
+                <Button type="text" className="menu userNavBar-btn">
+                  Virtual Tasting
+                </Button>
+              </NavLink>
             </li>
-            <li
-              className="option"
-              onClick={closeMobileMenu}
-            >
-              <Button
-                type="text"
-                onClick={clickStories}
-                className="menu userNavBar-btn"
-              >
-                Wine Stories
-              </Button>
+            <li className="option" onClick={closeMobileMenu}>
+              <NavLink exact to="/stories">
+                <Button type="text" className="menu userNavBar-btn">
+                  Wine Stories
+                </Button>
+              </NavLink>
             </li>
-            <li
-              className="option"
-              onClick={closeMobileMenu}
-            >
-              <Button
-                type="text"
-                onClick={clickNews}
-                className="menu userNavBar-btn"
-              >
-                News
-              </Button>
+            <li className="option" onClick={closeMobileMenu}>
+              <NavLink exact to="/news">
+                <Button type="text" className="menu userNavBar-btn">
+                  News
+                </Button>
+              </NavLink>
             </li>
           </ul>
         </div>

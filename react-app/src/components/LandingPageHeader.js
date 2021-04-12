@@ -29,10 +29,6 @@ const LandingHeader = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [click, setClick] = useState(false);
-  //   const [search, setSearch] = useState("");
-  //   const [sommelier, setSommelier] = useState(false);
-  //   const [mixologist, setMixologist] = useState(false);
-  //   const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -98,47 +94,6 @@ const LandingHeader = () => {
     setIsisSignUpModalVisible(false);
   };
 
-  //   const onSearch = async (e) => {
-  //     e.preventDefault();
-  //     dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-  //       (res) => {
-  //         if (res.Host === "Not found") {
-  //           message.error(`User ${search} not found`);
-  //         } else {
-  //           history.push("/search");
-  //           // message.success(`User ${search} added to Event!`);
-  //         }
-  //         // if (res.hosts) history.push("/search");
-  //       }
-  //     );
-  //   };
-
-  //   const updateSearch = (e) => setSearch(e.target.value);
-  //   const updateSommelier = () => setSommelier(!sommelier);
-  //   const updateMixologist = () => setMixologist(!mixologist);
-
-  //   const clickAbout = () => {
-  //     const anchor = document.querySelector("#Events");
-  //     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  //   };
-
-  //   const clickTasting = () => {
-  //     const anchor = document.querySelector("#Events");
-  //     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  //   };
-
-  //   const clickStories = () => {
-  //     const anchor = document.querySelector("#Events");
-  //     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  //   };
-  //   const clickNews = () => {
-  //     const anchor = document.querySelector("#Events");
-  //     anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  //   };
-
-  // useEffect(() => {
-  //   dispatch(browseAllHost());
-  // }, [dispatch]);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);

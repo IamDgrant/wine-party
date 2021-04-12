@@ -230,6 +230,7 @@ const EventsContent = (user_id) => {
   };
 
   const saveEditEvent = (id) => {
+    console.log(id);
     onEditSubmission(id);
     setIsEditDrawerVisible(false);
   };
@@ -242,13 +243,12 @@ const EventsContent = (user_id) => {
   //   history.push("/search");
   // };
 
-  const selectedHostId = isAboutShowing && isAboutShowing.id
+  const selectedHostId = isAboutShowing && isAboutShowing.id;
 
   console.log(selectedHostId);
 
-
   const onAddSubmission = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
     if (!event_name) {
       error();
       return;
@@ -273,7 +273,7 @@ const EventsContent = (user_id) => {
   };
 
   const onEditSubmission = async (id) => {
-      // e.preventDefault();
+    // e.preventDefault();
     // if (!event_name) {
     //   error();
     //   return;
@@ -482,7 +482,10 @@ const EventsContent = (user_id) => {
                 color: "#058532",
                 width: "5.25vw",
               }}
-              onClick={(e) => {e.preventDefault(); saveEditEvent()}}
+              onClick={(e) => {
+                e.preventDefault();
+                saveEditEvent();
+              }}
             >
               Save
             </Button>
@@ -499,7 +502,7 @@ const EventsContent = (user_id) => {
                 accordion
                 defaultActiveKey={["1"]}
                 onChange={callback}
-                // style={{ zIndex: "-1" }}
+                style={{ width: "95%" }}
               >
                 {upcomingEvents &&
                   upcomingEvents.map((event) => (
@@ -618,9 +621,15 @@ const EventsContent = (user_id) => {
                                     width: "100px",
                                   }}
                                 />
-                                <p style={{fontStyle: "italic", color: "green"}}>
+                                <p
+                                  style={{
+                                    fontStyle: "italic",
+                                    color: "green",
+                                  }}
+                                >
                                   Host: {isAboutShowing.first_name}{" "}
-                                  {isAboutShowing.last_name} - Please save to confirm!
+                                  {isAboutShowing.last_name} - Please save to
+                                  confirm!
                                 </p>
                                 <Modal
                                   width={1100}
@@ -900,7 +909,11 @@ const EventsContent = (user_id) => {
               Previous Events
             </div>
             <div className="events-list">
-              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+              <Collapse
+                defaultActiveKey={["1"]}
+                onChange={callback}
+                style={{ width: "95%" }}
+              >
                 {previousEvents &&
                   previousEvents.map((event) => (
                     <Panel
@@ -960,7 +973,11 @@ const EventsContent = (user_id) => {
               >
                 Add Event
               </div>
-              <Collapse defaultActiveKey={["1"]} onChange={callback}>
+              <Collapse
+                defaultActiveKey={["1"]}
+                onChange={callback}
+                style={{ width: "95%" }}
+              >
                 <Panel header="Add an event" style={{ fontWeight: "900" }}>
                   <div className="add-event-form">
                     <form>

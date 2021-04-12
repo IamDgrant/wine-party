@@ -34,8 +34,9 @@ const UserHomeContent = () => {
 
   return (
     <div className="userHome-content-container">
+      <div className="user-home-image-container">
       <div className="search-form">
-        <form className="form" onSubmit={onSearch}>
+        <form className="form" onSubmit={onSearch} style={{border: "1px black solid"}}>
           <input
             value={search}
             onChange={updateSearch}
@@ -88,6 +89,14 @@ const UserHomeContent = () => {
             </div>
           </div>
         </form>
+      </div>
+        <div className="user-home-image-inner">
+          {/* <img
+            className="landing-image"
+            src={landingImage}
+            alt="toasting wine"
+          /> */}
+        </div>
       </div>
     </div>
   );
