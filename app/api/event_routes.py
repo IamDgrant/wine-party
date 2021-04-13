@@ -23,6 +23,7 @@ def create_event():
     if form.validate_on_submit():
         event = Event(
             user_id=current_user.id,
+            host_id=form.data['selectedHostId'],
             event_name=form.data['event_name'],
             event_date=form.data['event_date'],
             event_city=form.data['event_city'],
@@ -39,6 +40,7 @@ def create_event():
 def update_event(id):
     event = Event.query.filter_by(id=id).first()
     update = request.get_json()
+    event.selectedHostId = update["host_id"]
     event.event_name = update["event_name"]
     event.event_date = update["event_date"]
     event.event_city = update["event_city"]
@@ -52,7 +54,7 @@ def update_event(id):
 @event_routes.route('/<id>', methods=['DELETE'])
 def delete_event(id):
     event = Event.query.filter_by(id=id).first()
-    # return {"events": [event.to_dict() for event in events]}
     db.session.delete(event)
     db.session.commit()
-    return event.to_dict()
+    return {"events": [event.to_dict() for event in events]}
+    # return event.to_dict()

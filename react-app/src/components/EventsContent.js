@@ -36,7 +36,7 @@ const EventsContent = (user_id) => {
 
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
-  console.log("current host", isAboutShowing);
+  // console.log("current host", isAboutShowing);
   // const assignedHost = sessionHost.find(host => isAboutShowing === sessionHost.map(host => host.id))
   // console.log(assignedHost);
 
@@ -62,7 +62,7 @@ const EventsContent = (user_id) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
 
-  // console.log(currentEvent);
+  console.log(currentEventId);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -230,9 +230,8 @@ const EventsContent = (user_id) => {
     setIsAddDrawerVisible(false);
   };
 
-  const saveEditEvent = (id) => {
-    console.log(id);
-    onEditSubmission(id);
+  const saveEditEvent = () => {
+    onEditSubmission();
     setIsEditDrawerVisible(false);
   };
 
@@ -246,10 +245,8 @@ const EventsContent = (user_id) => {
 
   const selectedHostId = isAboutShowing && isAboutShowing.id;
 
-  console.log(selectedHostId);
-
   const onAddSubmission = async () => {
-    console.log("HITTING");
+    console.log("HITTING", selectedHostId);
     // e.preventDefault();
     if (!event_name) {
       error();
@@ -274,7 +271,8 @@ const EventsContent = (user_id) => {
     });
   };
 
-  const onEditSubmission = async (id) => {
+  const onEditSubmission = async () => {
+    console.log(currentEventId);
     // e.preventDefault();
     // if (!event_name) {
     //   error();
@@ -282,7 +280,7 @@ const EventsContent = (user_id) => {
     // }
     await dispatch(
       update_Event({
-        id,
+        currentEventId,
         selectedHostId,
         event_name,
         event_date,
@@ -484,8 +482,8 @@ const EventsContent = (user_id) => {
                 color: "#058532",
                 width: "5.25vw",
               }}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
+                // e.preventDefault();
                 saveEditEvent();
               }}
             >

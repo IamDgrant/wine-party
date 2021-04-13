@@ -31,6 +31,7 @@ export const createEvent = ({
   event_state,
   event_postal_code,
 }) => async (dispatch) => {
+  console.log('HOST', selectedHostId);
   const res = await fetch("/api/events", {
     method: "POST",
     headers: {
@@ -51,21 +52,22 @@ export const createEvent = ({
 // isAboutShowing is the id of the selected host to add to event
 export const update_Event = (updateData) => async (dispatch) => {
   const {
-    id,
+    currentEventId,
     selectedHostId,
     event_date,
     event_city,
     event_state,
     event_postal_code,
   } = updateData;
-  console.log("MADE IT HERE", selectedHostId);
-  const res = await fetch(`/api/events/update/${id}`, {
+  console.log("MADE IT HERE ID", currentEventId);
+  console.log("MADE IT HERE selectedHostId", selectedHostId);
+  const res = await fetch(`/api/events/update/${currentEventId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      id,
+      currentEventId,
       selectedHostId,
       event_date,
       event_city,
@@ -86,6 +88,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
     method: "DELETE",
   });
   const deleted = await res.json();
+  // dispatch(removeEvent(eventId))
   console.log(deleted);
 };
 
@@ -126,6 +129,8 @@ function reducer(state = initialState, action) {
       return { ...state, event: action.payload };
     case UPDATE_EVENT:
       return { ...state, user: action.payload };
+    // case REMOVE_EVENT:
+    //   return { ...state, user: action.payload };
     default:
       return state;
   }
