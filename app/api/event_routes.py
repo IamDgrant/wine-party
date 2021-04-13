@@ -40,12 +40,32 @@ def create_event():
 def update_event(id):
     event = Event.query.filter_by(id=id).first()
     update = request.get_json()
-    event.selectedHostId = update["host_id"]
-    event.event_name = update["event_name"]
-    event.event_date = update["event_date"]
-    event.event_city = update["event_city"]
-    event.event_state = update["event_state"]
-    event.event_postal_code = update["event_postal_code"]
+    
+    if "selectedHostId" in update:
+        if update["selectedHostId"] != event.host_id:
+            event.host_id = update["selectedHostId"]
+        else:
+            pass
+    if "event_date" in update:
+        if update["event_date"] != event.event_date:
+            event.event_date = update["event_date"]
+        else:
+            pass
+    if "event_city" in update:
+        if update["event_city"] != event.event_city:
+            event.event_city = update["event_city"]
+        else:
+            pass
+    if "event_state" in update:
+        if update["event_state"] != event.event_state:
+            event.event_state = update["event_state"]
+        else:
+            pass
+    if "event_postal_code" in update:
+        if update["event_postal_code"] != event.event_postal_code:
+            event.event_postal_code = update["event_postal_code"]
+        else:
+            pass
 
     db.session.commit()
     return {"event": event.to_dict()}

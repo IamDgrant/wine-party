@@ -34,8 +34,6 @@ def update_user():
     user.first_name = update["first_name"]
     user.last_name = update["last_name"]
 
-    print("CURRENT USER DB INFO!!!!!!!!!!!", update)
-
     if "signInEmail" in update:
         if update["signInEmail"] != user.email:
             user.email = update["signInEmail"]
