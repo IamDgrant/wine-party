@@ -31,7 +31,7 @@
 }
 
 .upcoming-events {
-  margin-top: 5vh;
+  margin-top: 1vh;
   width: 100%;
 }
 
@@ -47,13 +47,9 @@
   font-weight: 400;
 }
 
-/* .add-event {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.add-event {
   margin-top: 5vh;
-  padding-left: 2vw;
-} */
+}
 
 .add-event-form {
   padding-top: 0.5vh;

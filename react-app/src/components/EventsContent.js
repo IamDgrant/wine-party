@@ -495,6 +495,360 @@ const EventsContent = (user_id) => {
       <div className="main-event-title">Events</div>
       <div className="inner-events-content-container">
         <div className="all-events-container">
+          <div className="add-event-main-container">
+            <div className="add-event">
+              <div
+                className="add-events-title"
+                style={{
+                  marginTop: "1vh",
+                  paddingBottom: "1vh",
+                  fontWeight: "400",
+                }}
+              >
+                Add Event
+              </div>
+              <Collapse
+                defaultActiveKey={["1"]}
+                onChange={callback}
+                style={{ width: "95%" }}
+              >
+                <Panel header="Add an event" style={{ fontWeight: "900" }}>
+                  <div className="add-event-form">
+                    <form>
+                      <div>
+                        {errors.map((error, i) => (
+                          <div key={i}>{error}</div>
+                        ))}
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          // ref={nameInputFocus}
+                          autoFocus={true}
+                          type="text"
+                          name="event_name"
+                          placeholder="Event Name"
+                          onChange={addEventName}
+                          value={event_name}
+                        ></input>
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          type="date"
+                          name="event_date"
+                          placeholder="Event Date"
+                          onChange={addEventDate}
+                          value={event_date}
+                        ></input>
+                      </div>
+                      <div className="event-state">
+                        <Select
+                          showSearch
+                          style={{ width: 300 }}
+                          placeholder="State"
+                          optionFilterProp="children"
+                          onChange={updateEventState}
+                          // onFocus={onFocus}
+                          // onBlur={onBlur}
+                          // onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          {usStates.map((state) => (
+                            <Option key={state.value} value={state.value}>
+                              {state.label}
+                            </Option>
+                          ))}
+                        </Select>
+                      </div>
+                      <div className="event-city">
+                        <Select
+                          showSearch
+                          style={{ width: 300 }}
+                          placeholder="City"
+                          optionFilterProp="children"
+                          onChange={updateEventCity}
+                          // loading={true}
+                          // onFocus={onFocus}
+                          // onBlur={onBlur}
+                          // onSearch={onSearch}
+                          filterOption={(input, option) =>
+                            option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                          }
+                        >
+                          {cscCity !== undefined
+                            ? cscCity.map((city) => (
+                                <Option key={city.id} value={city.name}>
+                                  {city.name}
+                                </Option>
+                              ))
+                            : null}
+                        </Select>
+                      </div>
+                      <div>
+                        <input
+                          // className="form-input"
+                          type="text"
+                          name="event_postal_code"
+                          placeholder="Postal Code"
+                          onChange={addPostalCode}
+                          value={event_postal_code}
+                        ></input>
+                      </div>
+                      {}
+                      <div className="search-btn-modal">
+                        <Button
+                          className="edit-find-host-btn"
+                          htmlType="submit"
+                          icon={<SearchOutlined />}
+                          onClick={showAllHostsAdd}
+                        >
+                          Find a Host
+                        </Button>
+                        <Modal
+                          width={1100}
+                          okText="Add Host"
+                          title="Find your Host"
+                          onOk={handleOk}
+                          onCancel={allHostsAddCancel}
+                          visible={isAddResultsVisible}
+                          footer={
+                            isAboutShowing
+                              ? [
+                                  <Button key="back" onClick={backToResults}>
+                                    Back
+                                  </Button>,
+                                  <Button
+                                    key="link"
+                                    type="primary"
+                                    // loading={loading}
+                                    onClick={allHostsAddCancel}
+                                  >
+                                    Cancel
+                                  </Button>,
+                                  <Button
+                                    key="submit"
+                                    type="primary"
+                                    // loading={loading}
+                                    onClick={allHostsAddCancel}
+                                  >
+                                    Add Host
+                                  </Button>,
+                                ]
+                              : [
+                                  <Button
+                                    key="link"
+                                    type="primary"
+                                    // loading={loading}
+                                    onClick={allHostsAddCancel}
+                                  >
+                                    Cancel
+                                  </Button>,
+                                  // <Button
+                                  //   key="submit"
+                                  //   type="primary"
+                                  //   // loading={loading}
+                                  //   // onClick={this.handleOk}
+                                  // >
+                                  //   Add Host
+                                  // </Button>,
+                                ]
+                          }
+                        >
+                          <BrowseResults
+                            isAboutShowing={isAboutShowing}
+                            setIsAboutShowing={setIsAboutShowing}
+                          />
+                        </Modal>
+                      </div>
+                      {/* <div className="search_bar">
+                    <input
+                      className="searchInput"
+                      placeholder="Search name, city, state, postal code..."
+                      value={search}
+                      type="text"
+                      onChange={updateSearch}
+                    ></input>
+                    <label className="container">
+                      Sommelier
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="sommelier"
+                        checked={sommelier}
+                        onChange={updateSommelier}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Mixologist
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="mixologist"
+                        checked={mixologist}
+                        onChange={updateMixologist}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Red Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="redWine"
+                        checked={redWine}
+                        onChange={updateRedWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      White Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="whiteWine"
+                        checked={whiteWine}
+                        onChange={updateWhiteWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Rosé Wine
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="roseWine"
+                        checked={roseWine}
+                        onChange={updateRoseWine}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Bourbon
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="bourbon"
+                        checked={bourbon}
+                        onChange={updateBourbon}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Brandy
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="brandy"
+                        checked={brandy}
+                        onChange={updateBrandy}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Cognac
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="cognac"
+                        checked={cognac}
+                        onChange={updateCognac}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Gin
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="gin"
+                        checked={gin}
+                        onChange={updateGin}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Liqueurs
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="liqueurs"
+                        checked={liqueurs}
+                        onChange={updateLiqueurs}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Rum
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="rum"
+                        checked={rum}
+                        onChange={updateRum}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Scotch
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="scotch"
+                        checked={scotch}
+                        onChange={updateScotch}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Tequila
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="tequila"
+                        checked={tequila}
+                        onChange={updateTequila}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Vodka
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="vodka"
+                        checked={vodka}
+                        onChange={updateVodka}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    <label className="container">
+                      Whiskey
+                      <input
+                        className="checkbox"
+                        type="checkbox"
+                        name="whiskey"
+                        checked={whiskey}
+                        onChange={updateWhiskey}
+                      />
+                      <span className="checkmark"></span>
+                    </label>
+                    
+                </div> */}
+                    </form>
+                  </div>
+                </Panel>
+              </Collapse>
+            </div>
+          </div>
+
           <div className="upcoming-events">
             <div className="events-title">Upcoming Events</div>
             <div className="events-list" style={{ paddingTop: "1vh" }}>
@@ -961,7 +1315,7 @@ const EventsContent = (user_id) => {
               </Collapse>
             </div>
           </div>
-          <div className="add-event-main-container">
+          {/* <div className="add-event-main-container">
             <div className="add-event">
               <div
                 className="add-events-title"
@@ -1133,7 +1487,7 @@ const EventsContent = (user_id) => {
                           />
                         </Modal>
                       </div>
-                      {/* <div className="search_bar">
+                      <div className="search_bar">
                     <input
                       className="searchInput"
                       placeholder="Search name, city, state, postal code..."
@@ -1307,13 +1661,13 @@ const EventsContent = (user_id) => {
                       <span className="checkmark"></span>
                     </label>
                     
-                </div> */}
+                </div>
                     </form>
                   </div>
                 </Panel>
               </Collapse>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="maps-container">
           <Map />

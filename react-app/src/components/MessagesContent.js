@@ -7,7 +7,7 @@ const MessagesContent = () => {
   return (
     <div className="messages-content-container">
       <div className="messages-title">Messages</div>  
-      <div ClassName="messages-info-name" style={{ fontWeight: "900" }}>
+      <div className="messages-info-name" style={{ fontWeight: "900" }}>
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
       <div className="messages-info-email">{sessionUser.email}</div>

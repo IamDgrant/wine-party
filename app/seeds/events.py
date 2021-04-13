@@ -26,17 +26,17 @@ def seed_events():
             # event_postal_code=
         )
         
-        # future_events = Event(
-        #     user_id=random.randint(1, 6),
-        #     host_id=random.randint(1, 102),
-        #     event_name=fake.sentence(ext_word_list=my_word_list),
-        #     event_date=fake.date_between_dates(date_start=datetime(2021,4,1), date_end=datetime(2022,12,31)),
-        #     # event_time=
-        #     # event_address=
-        #     event_city=fake.city(),
-        #     event_state=fake.state(),
-        #     # event_postal_code=
-        # )
+        future_events = Event(
+            user_id=random.randint(1, 6),
+            host_id=random.randint(1, 102),
+            event_name=fake.sentence(ext_word_list=my_word_list),
+            event_date=fake.date_between_dates(date_start=datetime(2021,4,1), date_end=datetime(2022,12,31)),
+            # event_time=
+            # event_address=
+            event_city=fake.city(),
+            event_state=fake.state(),
+            # event_postal_code=
+        )
 
         db.session.add(prev_events)
         db.session.commit()

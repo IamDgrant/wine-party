@@ -23,6 +23,9 @@ const EventMap = ({ location, zoomLevel }) => {
   const [isLatitude, setIsLatitude] = useState("");
   const [isLongitude, setIsLongitude] = useState("");
 
+  console.log("lat:", isLatitude);
+  console.log("lng:", isLongitude);
+
   const mapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
   Geocode.setApiKey(mapsKey);
