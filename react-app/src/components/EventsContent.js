@@ -107,11 +107,11 @@ const EventsContent = (user_id) => {
   }, [cscCity]);
 
   const showAddDrawer = () => {
-    // setIsAddDrawerVisible(true);
+    
   };
 
   const closeAddDrawer = () => {
-    // setIsAddDrawerVisible(false);
+    setIsAddDrawerVisible(false);
   };
 
   const showEditDrawer = () => {
@@ -158,6 +158,7 @@ const EventsContent = (user_id) => {
   };
 
   const addPostalCode = (e) => {
+    setIsAddDrawerVisible(true);
     setEventPostalCode(e.target.value);
   };
 
@@ -215,7 +216,7 @@ const EventsContent = (user_id) => {
   const updateEventState = (state) => {
     showEditDrawer();
     if (state.length < 1) {
-      // setIsEditDrawerVisible(false);
+      setIsEditDrawerVisible(false);
     }
     setEventState(state);
   };
@@ -247,8 +248,9 @@ const EventsContent = (user_id) => {
 
   console.log(selectedHostId);
 
-  const onAddSubmission = async (e) => {
-    e.preventDefault();
+  const onAddSubmission = async () => {
+    console.log("HITTING");
+    // e.preventDefault();
     if (!event_name) {
       error();
       return;
@@ -397,7 +399,7 @@ const EventsContent = (user_id) => {
 
   return (
     <div className="events-content-container">
-      {/* <Drawer
+      <Drawer
         // afterVisibleChange={}
         title=""
         placement="top"
@@ -442,7 +444,7 @@ const EventsContent = (user_id) => {
             </Button>
           </div>
         </div>
-      </Drawer> */}
+      </Drawer>
       <Drawer
         // afterVisibleChange={}
         title=""
@@ -548,7 +550,7 @@ const EventsContent = (user_id) => {
                           style={{ width: 300 }}
                           placeholder="State"
                           optionFilterProp="children"
-                          onChange={updateEventState}
+                          onChange={addEventState}
                           // onFocus={onFocus}
                           // onBlur={onBlur}
                           // onSearch={onSearch}
@@ -571,7 +573,7 @@ const EventsContent = (user_id) => {
                           style={{ width: 300 }}
                           placeholder="City"
                           optionFilterProp="children"
-                          onChange={updateEventCity}
+                          onChange={addEventCity}
                           // loading={true}
                           // onFocus={onFocus}
                           // onBlur={onBlur}
