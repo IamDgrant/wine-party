@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import LandingHeader from "../components/LandingPageHeader";
 import UserMainHeader from "../components/UserMainHeader";
 import StoriesContent from "../components/StoriesContent";
-import "../components/styling/storiesContentStyling.css";
+import "../components/styling/storiesStyling.css";
 
 const Stories = () => {
   const sessionUser = useSelector((state) => state.session.user);
