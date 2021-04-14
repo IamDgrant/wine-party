@@ -131,7 +131,7 @@ const emailLengthError = () => {
           okText="Sign in"
           title="Sign in"
           visible={isSignInModalVisible}
-          onOk={signInHandleOk}
+          // onOk={signInHandleOk}
           onCancel={signInHandleCancel}
           footer={[
             <Button
@@ -143,7 +143,6 @@ const emailLengthError = () => {
             <Button
               key="link"
               type="primary"
-              // loading={loading}
               onClick={signUpHandleCancel}
             >
               Cancel
@@ -151,8 +150,7 @@ const emailLengthError = () => {
             <Button
               key="submit"
               type="primary"
-              // loading={loading}
-              onClick={signUpHandleOk}
+              onClick={signInHandleOk}
             >
              Log in
             </Button>,
@@ -182,7 +180,7 @@ const emailLengthError = () => {
           title="Sign up"
           okText="Sign up"
           visible={isSignUpModalVisible}
-          onOk={signUpHandleOk}
+          // onOk={signUpHandleOk}
           onCancel={signUpHandleCancel}
           footer={[
                   <Button

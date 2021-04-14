@@ -42,7 +42,7 @@ const UserProfile = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    await dispatch(photoUpload(photoFile))
+    await dispatch(photoUpload(photoFile));
     setSeeEventModalVisible(false);
   };
 
@@ -79,7 +79,12 @@ const UserProfile = () => {
             alt="UserPhoto"
             className="user-pic"
           ></img>
-        ) : ( <img src={placeholderPic} alt="Avatar" className="user-pic"></img>
+        ) : (
+          <img
+            src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+            alt="Avatar"
+            className="user-pic"
+          ></img>
         )}
       </button>
       <Modal

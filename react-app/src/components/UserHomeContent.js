@@ -58,7 +58,7 @@ const UserHomeContent = () => {
       </Button>
     );
     notification.open({
-      message: "WELCOME TO WINE PARTY!",
+      message: `WELCOME TO WINE PARTY ${sessionUser.first_name.toUpperCase()}!`,
       description: "Let's get started by adding a new event.",
       btn,
       key,

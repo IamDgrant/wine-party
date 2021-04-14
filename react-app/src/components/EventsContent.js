@@ -968,7 +968,8 @@ const EventsContent = (user_id) => {
                             )}
                             {event.review !== null ? (
                               <Rate
-                                allowHalf={true}
+                                disabled
+                                // allowHalf={true}
                                 style={{ color: "#9B0E27" }}
                                 value={event.review.rating}
                                 character={({ index }) =>
@@ -1142,7 +1143,8 @@ const EventsContent = (user_id) => {
                             Host: {event.host.first_name} {event.host.last_name}
                           </p>
                           <Rate
-                            allowHalf={true}
+                            disabled
+                            // allowHalf={true}
                             style={{ color: "#9B0E27" }}
                             value={event.review && event.review.rating}
                             character={({ index }) => customIcons[index + 1]}

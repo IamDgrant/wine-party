@@ -1,10 +1,11 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { photoUpload, update_User } from "../store/session";
 import { Breadcrumb, Button } from "antd";
 import "../components/styling/profileContentStyling.css";
-import img_placeholder from "../assets/images/empty-profile-picture-png.png";
+import { UserOutlined } from "@ant-design/icons";
+// import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -21,6 +22,8 @@ const ProfileContent = () => {
   const [photoFile, setPhotoFile] = useState();
 
   // useEffect(() => {}, [sessionUser]);
+
+  const placeholder = <UserOutlined />;
 
   const onEditSubmission = async () => {
     let newErrors = [];
@@ -202,7 +205,7 @@ const ProfileContent = () => {
                 ) : (
                   <label for="file-input">
                     <img
-                      src={img_placeholder}
+                      src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
                       alt="Avatar"
                       className="profile-pic2"
                     ></img>
@@ -216,7 +219,7 @@ const ProfileContent = () => {
                 ></img>
               ) : (
                 <img
-                  src={img_placeholder}
+                  src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
                   alt="Avatar"
                   className="profile-pic"
                 ></img>

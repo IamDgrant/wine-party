@@ -70,7 +70,6 @@ export const update_User = (updateData) => async (dispatch) => {
     postal_code,
     signUpEmail,
   } = updateData;
-  console.log("MADE IT HERE", first_name, last_name);
   const res = await fetch("/api/users/update", {
     method: "PUT",
     headers: {
