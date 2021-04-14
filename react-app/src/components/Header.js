@@ -122,18 +122,6 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="option menu" onClick={closeMobileMenu}>
-              <NavLink
-                className="navbar-item"
-                activeClassName="is-active"
-                to="/faq"
-                exact
-              >
-                <Button type="text" className="menu host-btn">
-                  FAQ
-                </Button>
-              </NavLink>
-            </li>
-            <li className="option menu" onClick={closeMobileMenu}>
               <Button
                 type="text"
                 onClick={clickAbout}

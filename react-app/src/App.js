@@ -13,7 +13,6 @@ import UserHelp from "./components/UserHelp";
 import Messages from "./components/Messages";
 import Search from "./components/Search";
 import Events from "./components/Events";
-import FAQ from "./components/FAQ";
 import About from "./components/About"
 import Tasting from "./components/Tasting"
 import Stories from "./components/Stories"
@@ -44,9 +43,6 @@ const App = () => {
         </Route>
         <Route path="/about" exact={true}>
           <About />
-        </Route>
-        <Route path="/faq" exact={true}>
-          <FAQ />
         </Route>
         <Route path="/tasting" exact={true}>
           <Tasting />
