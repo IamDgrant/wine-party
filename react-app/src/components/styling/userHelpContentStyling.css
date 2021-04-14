@@ -1,7 +1,7 @@
 .user-help-content-container {
   width: 80%;
   max-width: 100%;
-  margin: 7rem 15% 0 15%;
+  /* margin: 7rem 15% 0 15%; */
   box-sizing: border-box;
   min-height: 100vh;
   font-family: "Montserrat", sans-serif;
@@ -12,4 +12,8 @@
   color: #000;
   font-size: 3vh;
   font-weight: 400;
+}
+
+.help-info-name {
+  font-weight: 900;
 }

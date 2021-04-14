@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { logout } from "../store/session";
-import { seeHost } from "../store/host";
-import { Menu, Dropdown, Button, message } from "antd";
+// import { seeHost } from "../store/host";
+import { Menu, Dropdown, Button } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";
@@ -12,15 +12,15 @@ import "../components/styling/buttonStyling.css";
 
 const UserMainHeader = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionHostId = useSelector((state) =>
-    state.host.host ? state.host.host : null
-  );
+  // const sessionHostId = useSelector((state) =>
+  //   state.host.host ? state.host.host : null
+  // );
 
-  const [search, setSearch] = useState("");
-  const [sommelier, setSommelier] = useState(false);
-  const [mixologist, setMixologist] = useState(false);
+  // const [search, setSearch] = useState("");
+  // const [sommelier, setSommelier] = useState(false);
+  // const [mixologist, setMixologist] = useState(false);
   const [click, setClick] = useState(false);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -30,43 +30,43 @@ const UserMainHeader = () => {
     if (!user.ok) history.push("/");
   };
 
-  const onSearch = async (e) => {
-    e.preventDefault();
-    dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-      (res) => {
-        if (res.Host === "Not found") {
-          message.error(`User ${search} not found`);
-        } else {
-          history.push("/search");
-          // message.success(`User ${search} added to Event!`);
-        }
-        // if (res.hosts) history.push("/search");
-      }
-    );
-  };
+  // const onSearch = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
+  //     (res) => {
+  //       if (res.Host === "Not found") {
+  //         message.error(`User ${search} not found`);
+  //       } else {
+  //         history.push("/search");
+  //         // message.success(`User ${search} added to Event!`);
+  //       }
+  //       // if (res.hosts) history.push("/search");
+  //     }
+  //   );
+  // };
 
-  const updateSearch = (e) => setSearch(e.target.value);
-  const updateSommelier = () => setSommelier(!sommelier);
-  const updateMixologist = () => setMixologist(!mixologist);
+  // const updateSearch = (e) => setSearch(e.target.value);
+  // const updateSommelier = () => setSommelier(!sommelier);
+  // const updateMixologist = () => setMixologist(!mixologist);
 
-  const clickAbout = () => {
-    const anchor = document.querySelector("#Events");
-    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
+  // const clickAbout = () => {
+  //   const anchor = document.querySelector("#Events");
+  //   anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  // };
 
-  const clickTasting = () => {
-    const anchor = document.querySelector("#Events");
-    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
+  // const clickTasting = () => {
+  //   const anchor = document.querySelector("#Events");
+  //   anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  // };
 
-  const clickStories = () => {
-    const anchor = document.querySelector("#Events");
-    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
-  const clickNews = () => {
-    const anchor = document.querySelector("#Events");
-    anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-  };
+  // const clickStories = () => {
+  //   const anchor = document.querySelector("#Events");
+  //   anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  // };
+  // const clickNews = () => {
+  //   const anchor = document.querySelector("#Events");
+  //   anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+  // };
 
   // useEffect(() => {
   //   dispatch(browseAllHost());

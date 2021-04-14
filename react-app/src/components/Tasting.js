@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import LandingHeader from "../components/LandingPageHeader";
-import MainHeader from "../components/MainHeader";
+import UserMainHeader from "../components/UserMainHeader";
 import TastingContent from "../components/TastingContent";
 import "../components/styling/tastingStyling.css";
 
@@ -12,7 +12,7 @@ const Tasting = () => {
       <div className="main-tasting-container">
       {sessionUser ? (
           <div className="about-header">
-            <MainHeader />
+            <UserMainHeader />
           </div>
         ) : (
           <div className="about-header">

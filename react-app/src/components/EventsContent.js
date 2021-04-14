@@ -1514,9 +1514,9 @@ const EventsContent = (user_id) => {
             </div>
           </div> */}
         </div>
-        <div className="maps-container">
+        {/* <div className="maps-container">
           <Map />
-        </div>
+        </div> */}
       </div>
     </div>
   );
