@@ -1,6 +1,6 @@
-import React, { useEffect, useState, Fragment, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 // import Select from "react-select";
 import Map from "../components/map/Map";
 import {
@@ -15,7 +15,7 @@ import {
   Modal,
   Popconfirm,
   Drawer,
-  message,
+  // message,
   Select,
   Rate,
   Tooltip,
@@ -29,10 +29,10 @@ import party from "../assets/images/pexels-maksim-goncharenok-5550311.jpeg";
 
 const EventsContent = (user_id) => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionHost = useSelector((state) => state.host.host);
+  // const sessionHost = useSelector((state) => state.host.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
@@ -61,8 +61,6 @@ const EventsContent = (user_id) => {
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState([]);
-
-  console.log(currentEventId);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -100,15 +98,15 @@ const EventsContent = (user_id) => {
     }
   }, [event_state]);
 
-  useEffect(() => {
-    if (cscCity !== undefined) {
-      setIsDisabled(false);
-    }
-  }, [cscCity]);
+  // useEffect(() => {
+  //   if (cscCity !== undefined) {
+  //     setIsDisabled(false);
+  //   }
+  // }, [cscCity]);
 
-  const showAddDrawer = () => {
-    
-  };
+  // const showAddDrawer = () => {
+
+  // };
 
   const closeAddDrawer = () => {
     setIsAddDrawerVisible(false);
@@ -141,9 +139,9 @@ const EventsContent = (user_id) => {
     setEventName(e.target.value);
   };
 
-  const addEventHost = (e) => {
-    setEventHost(e.target.value);
-  };
+  // const addEventHost = (e) => {
+  //   setEventHost(e.target.value);
+  // };
 
   const addEventDate = (e) => {
     setEventDate(e.target.value);
@@ -201,9 +199,9 @@ const EventsContent = (user_id) => {
   //   setEventName(e.target.value);
   // };
 
-  const updateEventHost = (e) => {
-    setEventHost(e.target.value);
-  };
+  // const updateEventHost = (e) => {
+  //   setEventHost(e.target.value);
+  // };
 
   const updateEventDate = (e) => {
     setEventDate(e.target.value);
@@ -246,12 +244,11 @@ const EventsContent = (user_id) => {
   const selectedHostId = isAboutShowing && isAboutShowing.id;
 
   const onAddSubmission = async () => {
-    console.log("HITTING", selectedHostId);
     // e.preventDefault();
-    if (!event_name) {
-      error();
-      return;
-    }
+    // if (!event_name) {
+    //   error();
+    //   return;
+    // }
     dispatch(
       createEvent({
         user_id,
@@ -272,7 +269,6 @@ const EventsContent = (user_id) => {
   };
 
   const onEditSubmission = async () => {
-    console.log(currentEventId);
     // e.preventDefault();
     // if (!event_name) {
     //   error();
@@ -297,9 +293,9 @@ const EventsContent = (user_id) => {
     });
   };
 
-  const error = () => {
-    message.error("Please enter a event name!");
-  };
+  // const error = () => {
+  //   message.error("Please enter a event name!");
+  // };
 
   const handleOk = () => {
     onEditSubmission();
@@ -308,7 +304,7 @@ const EventsContent = (user_id) => {
   const { Panel } = Collapse;
 
   const callback = (key) => {
-    console.log(key);
+    // console.log(key);
     setCurrentEventId(Number(key));
   };
 
@@ -327,7 +323,7 @@ const EventsContent = (user_id) => {
       focusable="false"
       data-prefix="far"
       data-icon="trash-alt"
-      class="svg-inline--fa fa-trash-alt fa-w-14"
+      className="svg-inline--fa fa-trash-alt fa-w-14"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
@@ -345,7 +341,7 @@ const EventsContent = (user_id) => {
       focusable="false"
       data-prefix="far"
       data-icon="edit"
-      class="svg-inline--fa fa-edit fa-w-18"
+      className="svg-inline--fa fa-edit fa-w-18"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 576 512"
@@ -369,7 +365,7 @@ const EventsContent = (user_id) => {
       focusable="false"
       data-prefix="fas"
       data-icon="wine-glass"
-      class="svg-inline--fa fa-wine-glass fa-w-9"
+      className="svg-inline--fa fa-wine-glass fa-w-9"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 288 512"
@@ -524,7 +520,7 @@ const EventsContent = (user_id) => {
                         <input
                           // className="form-input"
                           // ref={nameInputFocus}
-                          autoFocus={true}
+                          // autoFocus={true}
                           type="text"
                           name="event_name"
                           placeholder="Event Name"
@@ -601,72 +597,95 @@ const EventsContent = (user_id) => {
                           value={event_postal_code}
                         ></input>
                       </div>
-                      {}
-                      <div className="search-btn-modal">
-                        <Button
-                          className="edit-find-host-btn"
-                          htmlType="submit"
-                          icon={<SearchOutlined />}
-                          onClick={showAllHostsAdd}
-                        >
-                          Find a Host
-                        </Button>
-                        <Modal
-                          width={1100}
-                          okText="Add Host"
-                          title="Find your Host"
-                          onOk={handleOk}
-                          onCancel={allHostsAddCancel}
-                          visible={isAddResultsVisible}
-                          footer={
-                            isAboutShowing
-                              ? [
-                                  <Button key="back" onClick={backToResults}>
-                                    Back
-                                  </Button>,
-                                  <Button
-                                    key="link"
-                                    type="primary"
-                                    // loading={loading}
-                                    onClick={allHostsAddCancel}
-                                  >
-                                    Cancel
-                                  </Button>,
-                                  <Button
-                                    key="submit"
-                                    type="primary"
-                                    // loading={loading}
-                                    onClick={allHostsAddCancel}
-                                  >
-                                    Add Host
-                                  </Button>,
-                                ]
-                              : [
-                                  <Button
-                                    key="link"
-                                    type="primary"
-                                    // loading={loading}
-                                    onClick={allHostsAddCancel}
-                                  >
-                                    Cancel
-                                  </Button>,
-                                  // <Button
-                                  //   key="submit"
-                                  //   type="primary"
-                                  //   // loading={loading}
-                                  //   // onClick={this.handleOk}
-                                  // >
-                                  //   Add Host
-                                  // </Button>,
-                                ]
-                          }
-                        >
-                          <BrowseResults
-                            isAboutShowing={isAboutShowing}
-                            setIsAboutShowing={setIsAboutShowing}
+                      {isAboutShowing !== undefined ? (
+                        <div>
+                          <img
+                            src={isAboutShowing.profile_image}
+                            alt=""
+                            style={{
+                              borderRadius: "50%",
+                              height: "100px",
+                              width: "100px",
+                            }}
                           />
-                        </Modal>
-                      </div>
+                          <p
+                            style={{
+                              fontStyle: "italic",
+                              color: "green",
+                            }}
+                          >
+                            Host: {isAboutShowing.first_name}{" "}
+                            {isAboutShowing.last_name} - Please save to confirm!
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="search-btn-modal">
+                          <Button
+                            className="edit-find-host-btn"
+                            htmlType="submit"
+                            icon={<SearchOutlined />}
+                            onClick={showAllHostsAdd}
+                          >
+                            Find a Host
+                          </Button>
+                          <Modal
+                            width={1100}
+                            okText="Add Host"
+                            title="Find your Host"
+                            onOk={handleOk}
+                            onCancel={allHostsAddCancel}
+                            visible={isAddResultsVisible}
+                            footer={
+                              isAboutShowing
+                                ? [
+                                    <Button key="back" onClick={backToResults}>
+                                      Back
+                                    </Button>,
+                                    <Button
+                                      key="link"
+                                      type="primary"
+                                      // loading={loading}
+                                      onClick={allHostsAddCancel}
+                                    >
+                                      Cancel
+                                    </Button>,
+                                    <Button
+                                      key="submit"
+                                      type="primary"
+                                      // loading={loading}
+                                      onClick={allHostsAddCancel}
+                                    >
+                                      Add Host
+                                    </Button>,
+                                  ]
+                                : [
+                                    <Button
+                                      key="link"
+                                      type="primary"
+                                      // loading={loading}
+                                      onClick={allHostsAddCancel}
+                                    >
+                                      Cancel
+                                    </Button>,
+                                    // <Button
+                                    //   key="submit"
+                                    //   type="primary"
+                                    //   // loading={loading}
+                                    //   // onClick={this.handleOk}
+                                    // >
+                                    //   Add Host
+                                    // </Button>,
+                                  ]
+                            }
+                          >
+                            <BrowseResults
+                              isAboutShowing={isAboutShowing}
+                              setIsAboutShowing={setIsAboutShowing}
+                            />
+                          </Modal>
+                        </div>
+                      )}
+
                       {/* <div className="search_bar">
                     <input
                       className="searchInput"
@@ -1301,7 +1320,7 @@ const EventsContent = (user_id) => {
                           <Rate
                             allowHalf={true}
                             style={{ color: "#9B0E27" }}
-                            value={event.review.rating}
+                            value={event.review && event.review.rating}
                             character={({ index }) => customIcons[index + 1]}
                           />
                           <p>

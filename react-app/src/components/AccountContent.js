@@ -32,7 +32,7 @@ const AccountContent = () => {
       focusable="false"
       data-prefix="far"
       data-icon="envelope"
-      class="svg-inline--fa fa-envelope fa-w-16"
+      className="svg-inline--fa fa-envelope fa-w-16"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -52,11 +52,11 @@ const AccountContent = () => {
   return (
     <div className="account-content-container">
       <div className="account-title">Account</div>
-      <div ClassName="account-info-name" style={{ fontWeight: "900" }}>
+      <div className="account-info-name" style={{ fontWeight: "900" }}>
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
-      <div ClassName="account-info-email">{sessionUser.email}</div>
-      <div ClassName="account-info-profile">
+      <div className="account-info-email">{sessionUser.email}</div>
+      <div className="account-info-profile">
         <NavLink
           to="/profile"
           style={{ fontWeight: "400", color: "rgb(5, 133, 50)" }}

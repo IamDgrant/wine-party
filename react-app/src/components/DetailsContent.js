@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { Breadcrumb, Button, Alert } from "antd";
+import { Breadcrumb, Button } from "antd";
 import { update_User, photoUpload } from "../store/session";
 import idCard from "../assets/icons/id-card-regular.svg";
 import "../components/styling/detailsContentStyling.css";
@@ -19,16 +19,16 @@ const DetailsContent = () => {
   const [first_name, setFirstName] = useState(sessionUser.first_name);
   const [last_name, setLastName] = useState(sessionUser.last_name);
   const [phone_number, setPhoneNumber] = useState(sessionUser.phone_number);
-  const [identification, setIdentification] = useState(
-    sessionUser.identification
-  );
+  // const [identification, setIdentification] = useState(
+  //   sessionUser.identification
+  // );
   const [birthday, setBirthday] = useState(sessionUser.birthday);
   const [street, setStreet] = useState(sessionUser.street);
   const [city, setCity] = useState(sessionUser.city);
   const [state, setState] = useState(sessionUser.state);
   const [postal_code, setPostalCode] = useState(sessionUser.postal_code);
   const [signInEmail, setSignInEmail] = useState(sessionUser.email);
-  const [isEditingIdImage, setIsEditingIdImage] = useState(false);
+  // const [isEditingIdImage, setIsEditingIdImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
   
 
@@ -40,18 +40,18 @@ const DetailsContent = () => {
     setPhotoFile(e.target.files[0]);
   };
 
-  const saveEditingIdImage = () => {
-    if (photoFile === undefined) {
-      console.log("EMPTY");
-    } else {
-      submit();
-    }
-    setIsEditingIdImage(!isEditingIdImage);
-  };
+  // const saveEditingIdImage = () => {
+  //   if (photoFile === undefined) {
+  //     console.log("EMPTY");
+  //   } else {
+  //     submit();
+  //   }
+  //   setIsEditingIdImage(!isEditingIdImage);
+  // };
 
-  const updateEditingIdImage = () => {
-    setIsEditingIdImage(!isEditingIdImage);
-  };
+  // const updateEditingIdImage = () => {
+  //   setIsEditingIdImage(!isEditingIdImage);
+  // };
 
   const onEditSubmission = async () => {
     let newErrors = [];
@@ -221,9 +221,9 @@ const DetailsContent = () => {
   const updateBirthday = (e) => {
     setBirthday(e.target.value);
   };
-  const updateIdentification = (e) => {
-    setIdentification(e.target.value);
-  };
+  // const updateIdentification = (e) => {
+  //   setIdentification(e.target.value);
+  // };
   const updateStreet = (e) => {
     setStreet(e.target.value);
   };
@@ -237,23 +237,23 @@ const DetailsContent = () => {
     setPostalCode(e.target.value);
   };
 
-  const stateId = (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="far"
-      data-icon="id-card"
-      class="svg-inline--fa fa-id-card fa-w-18"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 576 512"
-    >
-      <path
-        fill="currentColor"
-        d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H303.2c.9-4.5.8 3.6.8-22.4 0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6 0 26-.2 17.9.8 22.4H48V144h480v288zm-168-80h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm-168 96c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64z"
-      ></path>
-    </svg>
-  );
+  // const stateId = (
+  //   <svg
+  //     aria-hidden="true"
+  //     focusable="false"
+  //     data-prefix="far"
+  //     data-icon="id-card"
+  //     class="svg-inline--fa fa-id-card fa-w-18"
+  //     role="img"
+  //     xmlns="http://www.w3.org/2000/svg"
+  //     viewBox="0 0 576 512"
+  //   >
+  //     <path
+  //       fill="currentColor"
+  //       d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H303.2c.9-4.5.8 3.6.8-22.4 0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6 0 26-.2 17.9.8 22.4H48V144h480v288zm-168-80h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm-168 96c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64z"
+  //     ></path>
+  //   </svg>
+  // );
 
   return (
     <div className="details-content-container">

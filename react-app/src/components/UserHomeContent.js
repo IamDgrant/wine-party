@@ -21,7 +21,7 @@ const UserHomeContent = () => {
   useEffect(() => {
     setTimeout(() => {
       openNotification("topLeft");
-    }, 1500);
+    }, 1000);
   }, [dispatch]);
 
   const onSearch = async (e) => {
@@ -47,23 +47,22 @@ const UserHomeContent = () => {
   const openNotification = (placement) => {
     const key = `open${Date.now()}`;
     const btn = (
-        <Button
-          type="primary"
-          size="small"
-          onClick={() =>  {
-            history.push("/events",
-            notification.close(key)
-            )}}
-        >
-          Add Event
-        </Button>
+      <Button
+        type="primary"
+        size="small"
+        onClick={() => {
+          history.push("/events", notification.close(key));
+        }}
+      >
+        Add Event
+      </Button>
     );
     notification.open({
       message: "WELCOME TO WINE PARTY!",
       description: "Let's get started by adding a new event.",
       btn,
       key,
-      duration: 15,
+      duration: 5,
       placement: "topLeft",
       top: "125px",
       onClose: close,
@@ -132,13 +131,7 @@ const UserHomeContent = () => {
             </div>
           </form>
         </div>
-        <div className="user-home-image-inner">
-          {/* <img
-            className="landing-image"
-            src={landingImage}
-            alt="toasting wine"
-          /> */}
-        </div>
+        <div className="user-home-image-inner"></div>
       </div>
     </div>
   );

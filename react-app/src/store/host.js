@@ -1,6 +1,7 @@
 const SET_HOST = "host/SetHost";
 const REMOVE_HOST = "host/removeHost";
 const GET_HOST = "host/getHost";
+const RESET_HOST = "host/resetHost";
 
 const setHost = (host) => ({
   type: SET_HOST,
@@ -10,6 +11,10 @@ const setHost = (host) => ({
 const getHost = (host) => ({
   type: GET_HOST,
   payload: host,
+});
+
+export const resetHost = () => ({
+  type: RESET_HOST,
 });
 
 const removeHost = (hostId) => ({
@@ -53,7 +58,6 @@ export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
   });
   const data = await res.json();
   dispatch(getHost(data.hosts));
-  console.log(data.hosts);
   return data;
 };
 
@@ -100,6 +104,8 @@ function reducer(state = initialState, action) {
     }
     case GET_HOST:
       return { ...state, host: action.payload };
+    case RESET_HOST:
+      return initialState;
     default:
       return state;
   }

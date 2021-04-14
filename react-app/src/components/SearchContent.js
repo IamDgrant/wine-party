@@ -1,53 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
-import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import { useLocation, useHistory } from "react-router-dom";
+import { CSSGrid } from "react-stonecutter";
 import { seeHost } from "../store/host";
 import "../components/styling/searchContentStyling.css";
 // import BrowseResults from "../components/BrowseResults"
 // import SearchResult from "../components/SearchResults";
-import { Row, Col, Divider, Select, Button } from "antd";
+import { Select, Button, Modal } from "antd";
 import "../components/styling/searchResults.css";
 
-const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
+const SearchContent = () => {
   const sessionHosts = useSelector((state) => state.host.host);
   const dispatch = useDispatch();
-  const history = useHistory();
   const location = useLocation();
-  console.log(location);
+  const history = useHistory();
 
-  
-  const [isLoaded, setIsLoaded] = useState(false);
+  // const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
-  const [isSommelier, setIsSommelier] = useState(false);
-  const [isMixologist, setIsMixologist] = useState(false);
-  const [isRedWine, setIsRedWine] = useState(false);
-  const [isWhiteWine, setIsWhiteWine] = useState(false);
-  const [isRoseWine, setIsRoseWine] = useState(false);
+  const [isAboutShowing, setIsAboutShowing] = useState(undefined);
+  const [isSelectedVisible, setIsSelectedVisible] = useState(false);
+
+  // const [isAddEventShowing, setIsAddEventShowing] = useState(undefined);
+  // const [isSommelier, setIsSommelier] = useState(false);
+  // const [isMixologist, setIsMixologist] = useState(false);
+  // const [isRedWine, setIsRedWine] = useState(false);
+  // const [isWhiteWine, setIsWhiteWine] = useState(false);
+  // const [isRoseWine, setIsRoseWine] = useState(false);
+
+  console.log(isSelectedVisible);
 
   useEffect(() => {
     const locationSplit = location.search.split("&");
     const query = locationSplit.map((chunk) => chunk.split("=")[1]);
     dispatch(seeHost(...query));
-  }, []);
+  }, [dispatch, location.search]);
 
-  // const onSearch = async (e) => {
-  //   e.preventDefault();
-  //   dispatch(seeHost(search, sommelier, mixologist, sessionHostId)).then(
-  //     (res) => {
-  //       if (res.Host === "Not found") {
-  //         message.error(`User ${search} not found`);
-  //       } else {
-  //         // message.success(`User ${search} added to Event!`);
-  //       }
-  //       // if (res.hosts) history.push("/search");
-  //     }
-  //   );
-  // };
-
-  // if (!isLoaded) {
-  //   return null;
-  // }
+  const selectedHostId = isAboutShowing && isAboutShowing.id;
 
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
@@ -118,24 +106,6 @@ const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
     </svg>
   );
 
-  const addBtn = (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="far"
-      data-icon="plus-square"
-      className="svg-inline--fa fa-plus-square fa-w-14"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 448 512"
-    >
-      <path
-        fill="#ffffff"
-        d="M352 240v32c0 6.6-5.4 12-12 12h-88v88c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-88h-88c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h88v-88c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v88h88c6.6 0 12 5.4 12 12zm96-160v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
-      ></path>
-    </svg>
-  );
-
   const updateSorted = (e) => {
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
@@ -144,7 +114,7 @@ const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
     }
   };
 
-  const hosts = sessionHosts && sessionHosts.map((host) => host);
+  const hosts = sessionHosts.map((host) => host);
 
   const sorted = () =>
     hosts.sort((name1, name2) => {
@@ -487,41 +457,60 @@ const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
     );
   }
 
-  const handleChange = (value) => {
-    if (value.toString() === "Sommelier") {
-      console.log("SOMM");
-      setIsSommelier(true);
-    } else if (value.toString() === "") {
-      console.log("OFF");
-      setIsSommelier(false);
-    }
-    if (value.toString() === "Mixologist") {
-      console.log("MIX");
-      setIsMixologist(true);
-    } else if (value.toString() === "") {
-      setIsMixologist(false);
-    }
-    if (value.toString() === "red-wine") {
-      console.log("RED");
-      setIsRedWine(true);
-    } else if (value.toString() === "") {
-      setIsRedWine(false);
-    }
-    if (value.toString() === "white-wine") {
-      console.log("WHITE");
-      setIsWhiteWine(true);
-    } else if (value.toString() === "") {
-      setIsWhiteWine(false);
-    }
-    if (value.toString() === "rose-wine") {
-      console.log("ROSE");
-      setIsRoseWine(true);
-    } else if (value.toString() === "") {
-      setIsRoseWine(false);
-    }
+  // const showSelectedHostsAdd = () => {
+  //   // e.preventDefault();
+  //   setIsAddResultsVisible(true);
+  // };
+
+  // const handleChange = (value) => {
+  //   if (value.toString() === "Sommelier") {
+  //     console.log("SOMM");
+  //     setIsSommelier(true);
+  //   } else if (value.toString() === "") {
+  //     console.log("OFF");
+  //     setIsSommelier(false);
+  //   }
+  //   if (value.toString() === "Mixologist") {
+  //     console.log("MIX");
+  //     setIsMixologist(true);
+  //   } else if (value.toString() === "") {
+  //     setIsMixologist(false);
+  //   }
+  //   // if (value.toString() === "red-wine") {
+  //   //   console.log("RED");
+  //   //   setIsRedWine(true);
+  //   // } else if (value.toString() === "") {
+  //   //   setIsRedWine(false);
+  //   // }
+  //   // if (value.toString() === "white-wine") {
+  //   //   console.log("WHITE");
+  //   //   setIsWhiteWine(true);
+  //   // } else if (value.toString() === "") {
+  //   //   setIsWhiteWine(false);
+  //   // }
+  //   // if (value.toString() === "rose-wine") {
+  //   //   console.log("ROSE");
+  //   //   setIsRoseWine(true);
+  //   // } else if (value.toString() === "") {
+  //   //   setIsRoseWine(false);
+  //   // }
+  // };
+
+  // const currentHost = filteredSort.find(host => isAboutShowing === host.id);
+
+  // const handleOk = () => {
+  //   history.push(
+  //     `/search?search=${search}&sommelier=${sommelier}&mixologist=${mixologist}`
+  //   );
+  // };
+
+  const onHandleCancel = () => {
+    setIsSelectedVisible(false);
   };
 
-  const currentHost = filteredSort.find(host => isAboutShowing === host.id);
+  const onHandleOk = () => {
+    history.push("/events")
+  };
 
   return (
     <div className="search-content-container">
@@ -548,61 +537,8 @@ const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
                 <option value="rating-desc">Rating - Highest to Lowest</option>
               </select>
             </div>
-            <div className="filter">
-              <Select
-                className="filter-dropdown"
-                mode="multiple"
-                placeholder="Filter by"
-                onChange={handleChange}
-                // optionLabelProp="label"
-              >
-                <Option value="Sommelier" label="Sommelier">
-                  <div className="demo-option-label-item">Sommelier 🍷</div>
-                </Option>
-                <Option value="Mixologist" label="Mixologist">
-                  <div className="demo-option-label-item">Mixologist 🍸</div>
-                </Option>
-                <Option value="red-wine" label="red-wine">
-                  <div className="demo-option-label-item">Red Wine Expert</div>
-                </Option>
-                <Option value="white-wine" label="white-wine">
-                  <div className="demo-option-label-item">
-                    White Wine Expert
-                  </div>
-                </Option>
-                <Option value="rose-wine" label="rose-wine">
-                  <div className="demo-option-label-item">Rosé Wine Expert</div>
-                </Option>
-              </Select>
-            </div>
           </div>
           <div className="host-result-btns">
-            {/* <Divider orientation="left">Horizontal</Divider> */}
-            {/* <Row gutter={16}>
-              {filteredSort.map((host) => (
-                <Col key={host.id} className="gutter-row" span={6}>
-                  <div className="hosts">
-                    <div className="add-host">
-                      <button>{addBtn}</button>
-                    </div>
-                    <div className="host-name-type">
-                      <div className="host-name">
-                        {host.first_name} {host.last_name}
-                      </div>
-                      <div className="somm">
-                        {host.sommelier === true ? sommelier : null}
-                      </div>
-                      <div className="mix">
-                        {host.mixologist === true ? mixologist : null}
-                      </div>
-                    </div>
-                    <div className="host-city-state">
-                      {host.city}, {host.state}
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row> */}
             <CSSGrid
               component="ul"
               columns={4}
@@ -612,80 +548,101 @@ const SearchContent = ({ isAboutShowing, setIsAboutShowing }) => {
               duration={250}
               easing="ease-out"
             >
-              {!isAboutShowing ? (
-                filteredSort.map((host) => (
-                  <div key={host.id}>
-                    <Button
-                      style={{ padding: "0" }}
-                      onClick={() => setIsAboutShowing(host)}
-                    >
-                      <div className="card">
-                        <div
-                          className="host-card"
-                          style={{
-                            backgroundImage: `url(${host.profile_image})`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                          }}
-                        >
-                          <div className="hosts">
-                            {/* <div className="add-host">
-                                <button>{addBtn}</button>
-                              </div> */}
-                            <div className="host-name-type">
-                              <div className="host-name">
-                                {host.first_name} {host.last_name}
-                              </div>
-                              <div className="somm">
-                                {host.sommelier === true ? sommelier : null}
-                              </div>
-                              <div className="mix">
-                                {host.mixologist === true ? mixologist : null}
-                              </div>
+              {filteredSort.map((host) => (
+                <div key={host.id}>
+                  <Button
+                    style={{ padding: "0" }}
+                    onClick={() => {
+                      setIsAboutShowing(host);
+                      setIsSelectedVisible(true);
+                    }}
+                  >
+                    <div className="card">
+                      <div
+                        className="host-card"
+                        style={{
+                          backgroundImage: `url(${host.profile_image})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      >
+                        <div className="hosts">
+                          <div className="host-name-type">
+                            <div className="host-name">
+                              {host.first_name} {host.last_name}
                             </div>
-                            <div className="host-city-state">
-                              {host.city}, {host.state}
+                            <div className="somm">
+                              {host.sommelier === true ? sommelier : null}
                             </div>
+                            <div className="mix">
+                              {host.mixologist === true ? mixologist : null}
+                            </div>
+                          </div>
+                          <div className="host-city-state">
+                            {host.city}, {host.state}
                           </div>
                         </div>
                       </div>
-                    </Button>
-                  </div>
-                ))
-              ) : (
-                <div className="host-card-container">
-                  <div className="host-image-container">
-                    <img
-                      src={isAboutShowing.profile_image}
-                      alt="host profile"
-                    />
-                  </div>
-                  <div className="host-about-container">
-                    <div className="host-name-card">
-                      Name: {isAboutShowing.first_name}{" "}
-                      {isAboutShowing.last_name}
                     </div>
+                  </Button>
+                  <Modal
+                    width={900}
+                    title="Add Host"
+                    // onOk={handleOk}
+                    // onCancel={onHandleCancel}
+                    visible={isSelectedVisible}
+                    footer={[
+                      <Button
+                        key="link"
+                        type="primary"
+                        onClick={onHandleCancel}
+                      >
+                        Cancel
+                      </Button>,
+                      <Button key="submit" type="primary" onClick={onHandleOk}>
+                        Create Event and add Host
+                      </Button>,
+                    ]}
+                  >
+                    {isAboutShowing !== undefined && (
+                      <div className="host-card-container">
+                        <div className="host-image-container">
+                          <img
+                            src={isAboutShowing.profile_image}
+                            alt="host profile"
+                          />
+                        </div>
+                        <div className="host-about-container">
+                          <div className="host-name-card">
+                            Name: {isAboutShowing.first_name}{" "}
+                            {isAboutShowing.last_name}
+                          </div>
 
-                    {isAboutShowing.sommelier === true &&
-                    isAboutShowing.mixologist === true ? (
-                      <div className="host-type-card">
-                        Host Type: Sommelier and Mixologist
-                      </div>
-                    ) : isAboutShowing.sommelier === true ? (
-                      <div className="host-type-card">Host Type: Sommelier</div>
-                    ) : (
-                      <div className="host-type-card">
-                        Host Type: Mixologist
+                          {isAboutShowing.sommelier === true &&
+                          isAboutShowing.mixologist === true ? (
+                            <div className="host-type-card">
+                              Host Type: Sommelier and Mixologist
+                            </div>
+                          ) : isAboutShowing.sommelier === true ? (
+                            <div className="host-type-card">
+                              Host Type: Sommelier
+                            </div>
+                          ) : (
+                            <div className="host-type-card">
+                              Host Type: Mixologist
+                            </div>
+                          )}
+                          <div className="host-about-card">
+                            About: {isAboutShowing.about}
+                          </div>
+                          <div className="host-specialty-card"></div>
+                        </div>
                       </div>
                     )}
-                    <div className="host-about-card">
-                      About: {isAboutShowing.about}
-                    </div>
-                    <div className="host-specialty-card"></div>
-                  </div>
+                  </Modal>
                 </div>
-              )}
+              ))}
             </CSSGrid>
           </div>
         </div>

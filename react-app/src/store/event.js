@@ -47,9 +47,10 @@ export const createEvent = ({
     }),
   });
   const data = await res.json();
+  console.log(data);
   dispatch(setEvent(data));
 };
-// isAboutShowing is the id of the selected host to add to event
+
 export const update_Event = (updateData) => async (dispatch) => {
   const {
     currentEventId,
@@ -88,7 +89,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
     method: "DELETE",
   });
   const deleted = await res.json();
-  // dispatch(removeEvent(eventId))
+  // dispatch(removeEvent())
   console.log(deleted);
 };
 

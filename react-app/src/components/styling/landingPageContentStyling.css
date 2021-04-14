@@ -14,26 +14,14 @@
 
 .landing-image-inner {
   /* filter: grayscale(85%) contrast(125%); */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* margin-left: 25vh; */
   margin-top: 16.5vh;
   height: 75%;
   width: 100%;
   background-image: url("../../assets/images/pexels-anna-guerrero-1957019.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-
-  /* transform: rotate(90deg); */
 }
 
-/* .landing-image {
-  height: 75%;
-  width: 100%;
-  object-fit: contain;
-  transform: rotate(90deg);
-} */
 
 .landing-featuredhost-nearby {
   display: flex;

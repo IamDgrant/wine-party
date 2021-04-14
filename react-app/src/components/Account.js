@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import MainHeader from "../components/MainHeader"
 import AccountContent from "../components/AccountContent"
 import "../components/styling/accountStyling.css"

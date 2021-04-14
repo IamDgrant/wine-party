@@ -31,8 +31,6 @@ const LoginForm = ({
     setSignInEmail(e.target.value);
   };
 
-  console.log(signInEmail);
-
   const updatePassword = (e) => {
     setSignInPassword(e.target.value);
   };

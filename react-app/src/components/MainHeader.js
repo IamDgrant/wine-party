@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
-import { photoUpload, logout } from "../store/session";
+import { logout } from "../store/session";
 import { Menu, Dropdown, Button } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
@@ -11,7 +11,7 @@ import "../components/styling/mainHeaderStyling.css";
 const MainHeader = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [click, setClick] = useState(false);
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,7 +22,7 @@ const MainHeader = () => {
   };
 
   const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  // const closeMobileMenu = () => setClick(false);
 
   const userMenu = (
     <Menu>

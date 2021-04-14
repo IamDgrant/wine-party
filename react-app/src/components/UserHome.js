@@ -1,14 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import home_bg from "../assets/images/pexels-cottonbro-3171837.jpg";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { resetHost } from "../store/host";
 import UserMainHeader from "../components/UserMainHeader";
 import UserHomeContent from "../components/UserHomeContent";
 
 import "./styling/userHome.css";
 
 const Home = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resetHost());
+  }, [dispatch]);
 
   return (
     <>

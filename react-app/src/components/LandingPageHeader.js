@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { login, createUser } from "../store/session";
-import { seeHost } from "../store/host";
+// import { seeHost } from "../store/host";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
-import { Menu, Dropdown, Button, Modal } from "antd";
+import { Menu, Dropdown, Button, Modal, message } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";
@@ -13,10 +13,10 @@ import "../components/styling/userMainHeaderStyling.css";
 import "../components/styling/buttonStyling.css";
 
 const LandingHeader = () => {
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
 
   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
-  const [isSignUpModalVisible, setIsisSignUpModalVisible] = useState(false);
+  const [isSignUpModalVisible, setIsSignUpModalVisible] = useState(false);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [city, setCity] = useState("");
@@ -27,15 +27,18 @@ const LandingHeader = () => {
   const [signInPassword, setSignInPassword] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors] = useState([]);
   const [click, setClick] = useState(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const onSignUp = async (e) => {
     // e.preventDefault();
     let newErrors = [];
+    // if (!event_name) {
+    //   error();
+    //   return;
+    // }
     if (signUpPassword === repeatPassword) {
       dispatch(
         createUser({
@@ -48,24 +51,30 @@ const LandingHeader = () => {
           signUpPassword,
           repeatPassword,
         })
-      ).catch(async (res) => {
-        console.log(res);
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-        }
-      });
-    }
+        ).catch(async (res) => {
+          console.log(res);
+          const data = await res.json();
+          if (data && data.errors) {
+            newErrors = data.errors;
+          }
+        });
+      }
   };
 
   const onSignIn = async (e) => {
-    // e.preventDefault();
-    const user = await dispatch(login(signInEmail, signInPassword));
+    
     if (signInEmail.length === 0) {
-      alert("You must provide valid email address");
+      emailLengthError();
+      return
     }
-    console.log(user);
+    // e.preventDefault();
+    await dispatch(login(signInEmail, signInPassword));
+    // console.log(user);
     // if (user.ok) history.push("/home");
+  };
+
+const emailLengthError = () => {
+    message.error("You must provide valid email address!");
   };
 
   const showSignInModal = () => {
@@ -82,16 +91,16 @@ const LandingHeader = () => {
   };
 
   const showSignUpModal = () => {
-    setIsisSignUpModalVisible(true);
+    setIsSignUpModalVisible(true);
   };
 
   const signUpHandleOk = () => {
     onSignUp();
-    setIsisSignUpModalVisible(false);
+    setIsSignUpModalVisible(false);
   };
 
   const signUpHandleCancel = () => {
-    setIsisSignUpModalVisible(false);
+    setIsSignUpModalVisible(false);
   };
 
 
@@ -100,13 +109,15 @@ const LandingHeader = () => {
 
   const userMenu = (
     <Menu>
-      <Menu.Item>
+      <Menu.Item 
+      onClick={showSignInModal}
+      >
         <Button
           className="antd-btn"
           htmlType="submit"
           type="link"
           size="small"
-          ghost="true"
+          // ghost="true"
           onClick={showSignInModal}
         >
           Log in
@@ -133,7 +144,7 @@ const LandingHeader = () => {
           type="link"
           htmlType="submit"
           size="small"
-          ghost="true"
+          // ghost="true"
           onClick={showSignUpModal}
         >
           Sign up

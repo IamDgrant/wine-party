@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { browseAllHost } from "../store/host";
-import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import { CSSGrid } from "react-stonecutter";
 import { Select, Button } from "antd";
-import HostCard from "../components/HostCard";
 import "../components/styling/browseHostStyling.css";
 import "../components/styling/hostCard.css";
 
@@ -515,7 +513,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     // }
   };
 
-  const currentHost = filteredSort.find(host => isAboutShowing === host.id);
+  // const currentHost = filteredSort.find(host => isAboutShowing === host.id);
   // console.log(currentHost.id);
   return (
     <>
@@ -548,7 +546,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                     </option>
                   </select>
                 </div>
-                <div className="filter">
+                {/* <div className="filter">
                   <Select
                     className="filter-dropdown"
                     mode="multiple"
@@ -580,7 +578,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                       </div>
                     </Option>
                   </Select>
-                </div>
+                </div> */}
               </div>
             ) : (
               ""
@@ -668,11 +666,15 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                 ) : (
                   <div className="host-card-container">
                     <div className="host-image-container">
-                      <img src={isAboutShowing.profile_image} alt="host profile" />
+                      <img
+                        src={isAboutShowing.profile_image}
+                        alt="host profile"
+                      />
                     </div>
                     <div className="host-about-container">
                       <div className="host-name-card">
-                        Name: {isAboutShowing.first_name} {isAboutShowing.last_name}
+                        Name: {isAboutShowing.first_name}{" "}
+                        {isAboutShowing.last_name}
                       </div>
 
                       {isAboutShowing.sommelier === true &&

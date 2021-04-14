@@ -97,7 +97,7 @@ export const update_User = (updateData) => async (dispatch) => {
 };
 
 export const photoUpload = (file) => async (dispatch) => {
-  console.log("hitting photo upload");
+  // console.log("hitting photo upload");
   let photoUrl;
   const formData = new FormData();
   formData.append("user_file", file);
@@ -107,7 +107,7 @@ export const photoUpload = (file) => async (dispatch) => {
   });
   if (res.ok) {
     photoUrl = await res.json();
-    console.log(photoUrl);
+    // console.log(photoUrl);
     dispatch(setPhoto(photoUrl));
   }
 };

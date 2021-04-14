@@ -1,11 +1,9 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Select from "react-select";
 import { usStates } from "../../States";
-// import { Pagination } from 'antd';
-// import { Button } from "antd";
-import "../../styling/formStyling.css"
+import { Select } from "antd";
+import "../../styling/formStyling.css";
 
 const SignUpForm = ({
   first_name,
@@ -25,25 +23,13 @@ const SignUpForm = ({
   repeatPassword,
   setRepeatPassword,
 }) => {
+  const dispatch = useDispatch();
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
   const [isDisabled, setIsDisabled] = useState(true);
 
-  useEffect(() => {
-    if (state.length > 0) {
-      cityFetch();
-    }
-    if (cscCity !== undefined) {
-      setIsDisabled(false);
-    }
-  }, [state, cscCity]);
-
   const sessionUser = useSelector((state) => state.session.user);
-
-  if (sessionUser) {
-    return <Redirect to="/home" />;
-  }
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -68,6 +54,22 @@ const SignUpForm = ({
     }
   };
 
+  useEffect(() => {
+    if (state && state.length > 0) {
+      cityFetch();
+    }
+  }, [state]);
+
+  // useEffect(() => {
+  //   if (cscCity !== undefined) {
+  //     setIsDisabled(false);
+  //   }
+  // }, [cscCity]);
+
+  if (sessionUser) {
+    return <Redirect to="/home" />;
+  }
+
   // const cscStateFetch = async () => {
   //   const res = await fetch(fetchCscStateUrl, requestOptions);
   //   if (res.ok) {
@@ -91,10 +93,12 @@ const SignUpForm = ({
     setLastName(e.target.value);
   };
   const updateCity = (city) => {
+    console.log(city);
+
     setCity(city);
   };
-  const updateState = (onChangeState) => {
-    setState(onChangeState);
+  const updateState = (selectedState) => {
+    setState(selectedState);
   };
   const updatePostalCode = (e) => {
     setPostalCode(e.target.value);
@@ -112,6 +116,8 @@ const SignUpForm = ({
   // if (!isLoaded) {
   //   return null;
   // }
+
+  const { Option } = Select;
 
   return (
     <>
@@ -142,7 +148,26 @@ const SignUpForm = ({
           ></input>
         </div>
         <div>
-          <Fragment>
+          <Select
+            showSearch
+            style={{ width: 300, marginTop: "4px" }}
+            placeholder="State"
+            optionFilterProp="children"
+            onChange={updateState}
+            // onFocus={onFocus}
+            // onBlur={onBlur}
+            // onSearch={onSearch}
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+          >
+            {usStates.map((state) => (
+              <Option key={state.value} value={state.value}>
+                {state.label}
+              </Option>
+            ))}
+          </Select>
+          {/* <Fragment>
             <Select
               // className="state-search-dropdown"
               classNamePrefix="select"
@@ -154,10 +179,32 @@ const SignUpForm = ({
               }))}
               onChange={(state) => updateState(state.value)}
             />
-          </Fragment>
+          </Fragment> */}
         </div>
         <div>
-          <Fragment>
+          <Select
+            showSearch
+            style={{ width: 300, marginTop: "9px", marginBottom: "5px" }}
+            placeholder="City"
+            optionFilterProp="children"
+            onChange={updateCity}
+            // loading={true}
+            // onFocus={onFocus}
+            // onBlur={onBlur}
+            // onSearch={onSearch}
+            filterOption={(input, option) =>
+              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
+          >
+            {cscCity !== undefined
+              ? cscCity.map((city) => (
+                  <Option key={city.id} value={city.name}>
+                    {city.name}
+                  </Option>
+                ))
+              : null}
+          </Select>
+          {/* <Fragment>
             <Select
               // className="city-search-dropdown"
               classNamePrefix="select"
@@ -174,7 +221,7 @@ const SignUpForm = ({
               }
               onChange={(city) => updateCity(city.value)}
             />
-          </Fragment>
+          </Fragment> */}
         </div>
         <div className="postal-code">
           <input

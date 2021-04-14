@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "../components/styling/messagesContentStying.css";
 
 const MessagesContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
   return (
     <div className="messages-content-container">
-      <div className="messages-title">Messages</div>  
+      <div className="messages-title">Messages</div>
       <div className="messages-info-name" style={{ fontWeight: "900" }}>
         {sessionUser.first_name} {sessionUser.last_name}
       </div>

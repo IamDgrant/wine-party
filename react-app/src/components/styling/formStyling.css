@@ -38,8 +38,9 @@ input[type="submit"] {
 }
 
 .select__control,
-.css-yk16xz-control,.select__value-container,
-.css-g1d714-ValueContainer  {
+.css-yk16xz-control,
+.select__value-container,
+.css-g1d714-ValueContainer {
   height: 50px;
 }
 
@@ -55,10 +56,10 @@ input[type="submit"] {
   align-items: baseline;
 }
 
-.ant-select-selection-item, .ant-select-selection-placeholder {
+.ant-select-selection-item,
+.ant-select-selection-placeholder {
   font-weight: 400;
 }
-
 
 /* ::placeholder {
   color: rgb(226, 160, 102, 0.5);
@@ -92,3 +93,14 @@ input[type="submit"] {
   font-family: "Montserrat", sans-serif;
   color: red;
 } */
+
+.ant-select-selector {
+  align-items: center;
+  display: flex;
+  margin-left: -2px;
+}
+
+.ant-select-selection-search-input::after {
+  margin-left: -4px;
+  margin-top: 9px;
+}

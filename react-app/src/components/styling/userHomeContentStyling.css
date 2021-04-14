@@ -11,14 +11,14 @@
 }
 
 .user-home-image-container {
-  height: 89vh;
+  height: 100vh;
   background-color: #000;
   width: 100%;
 }
 
 .user-home-image-inner {
-    /* filter: grayscale(85%) contrast(125%); */
-    margin-top: 5.5vh;
+    filter: grayscale(50%) contrast(175%);
+    margin-top: 7.5vh;
     height: 75%;
     width: 100%;
     background-image: url("../../assets/images/pexels-askar-abayev-5638747.jpeg");

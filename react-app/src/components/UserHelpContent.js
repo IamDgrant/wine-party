@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "../components/styling/helpContentStyling.css";
 
 const HelpContent = () => {
@@ -7,10 +7,10 @@ const HelpContent = () => {
   return (
     <div className="user-help-content-container">
       <div className="user-help-title">Help</div>
-      <div ClassName="help-info-name">
+      <div className="help-info-name">
         {sessionUser.first_name} {sessionUser.last_name}
       </div>
-      <div ClassName="profile-info-email">{sessionUser.email}</div>
+      <div className="profile-info-email">{sessionUser.email}</div>
       <div className="account-info"></div>
     </div>
   );
