@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { login } from "../../../store/session";
 import { usStates } from "../../States";
-import { Select } from "antd";
+import { Select, Button } from "antd";
 import "../../styling/formStyling.css";
 
 const SignUpForm = ({
@@ -70,6 +71,13 @@ const SignUpForm = ({
     return <Redirect to="/home" />;
   }
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    return dispatch(
+      login({ email: "demo@wineparty.com", password: "password" })
+    );
+  };
+
   // const cscStateFetch = async () => {
   //   const res = await fetch(fetchCscStateUrl, requestOptions);
   //   if (res.ok) {
@@ -79,11 +87,6 @@ const SignUpForm = ({
   //     );
   //     return sortedData;
   //   }
-  // };
-
-  // const demoLogin = async (e) => {
-  //   // e.preventDefault();
-  //   return dispatch(login({ email: "jessica@wheeler.org", password: "password" }));
   // };
 
   const updateFirstName = (e) => {
@@ -264,16 +267,6 @@ const SignUpForm = ({
             required={true}
           ></input>
         </div>
-        {/* <Button
-          className="submit_button"
-          onClick={demoLogin}
-          // shape="round"
-          htmlType="submit"
-          size="small"
-          type="primary"
-        >
-          Demo User
-        </Button> */}
       </form>
     </>
   );

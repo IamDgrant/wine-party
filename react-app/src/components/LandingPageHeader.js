@@ -103,6 +103,11 @@ const emailLengthError = () => {
     setIsSignUpModalVisible(false);
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault();
+    return dispatch(login("demo@wineparty.com", "password"));
+  };
+
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -128,6 +133,30 @@ const emailLengthError = () => {
           visible={isSignInModalVisible}
           onOk={signInHandleOk}
           onCancel={signInHandleCancel}
+          footer={[
+            <Button
+              key="back"
+              onClick={demoLogin}
+            >
+              Demo User
+            </Button>,
+            <Button
+              key="link"
+              type="primary"
+              // loading={loading}
+              onClick={signUpHandleCancel}
+            >
+              Cancel
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              // loading={loading}
+              onClick={signUpHandleOk}
+            >
+             Log in
+            </Button>,
+          ]}
         >
           <LoginForm
             signInEmail={signInEmail}
@@ -155,6 +184,30 @@ const emailLengthError = () => {
           visible={isSignUpModalVisible}
           onOk={signUpHandleOk}
           onCancel={signUpHandleCancel}
+          footer={[
+                  <Button
+                    key="back"
+                    onClick={demoLogin}
+                  >
+                    Demo User
+                  </Button>,
+                  <Button
+                    key="link"
+                    type="primary"
+                    // loading={loading}
+                    onClick={signUpHandleCancel}
+                  >
+                    Cancel
+                  </Button>,
+                  <Button
+                    key="submit"
+                    type="primary"
+                    // loading={loading}
+                    onClick={signUpHandleOk}
+                  >
+                    Sign up
+                  </Button>,
+                ]}
         >
           <SignUpForm
             first_name={first_name}
