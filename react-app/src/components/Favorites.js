@@ -1,7 +1,6 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import FavoritesContent from "../components/FavoritesContent";
-import AboutContent from "../components/AboutContent";
 import Footer from "../components/Footer";
 import "../components/styling/favoritesStyling.css";
 

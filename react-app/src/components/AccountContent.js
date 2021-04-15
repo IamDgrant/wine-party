@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Card } from "antd";
-import { CSSGrid, measureItems, makeResponsive } from "react-stonecutter";
+import { CSSGrid } from "react-stonecutter";
 import "../components/styling/accountContentStyling.css";
 
 const AccountContent = () => {
@@ -44,10 +44,10 @@ const AccountContent = () => {
     </svg>
   );
 
-  const Grid = makeResponsive(measureItems(CSSGrid), {
-    maxWidth: 1920,
-    minPadding: 100,
-  });
+  // const Grid = makeResponsive(measureItems(CSSGrid), {
+  //   maxWidth: 1920,
+  //   minPadding: 100,
+  // });
 
   return (
     <div className="account-content-container">
@@ -65,10 +65,10 @@ const AccountContent = () => {
         </NavLink>
       </div>
       <div className="account-info">
-        <Grid
+        <CSSGrid
         // className="account-grid"
           component="ul"
-          columns={5}
+          columns={1}
           columnWidth={250}
           itemHeight={400}
           itemwidth={250}
@@ -111,7 +111,7 @@ const AccountContent = () => {
               </div>
             </div>
           </div>
-        </Grid>
+        </CSSGrid>
       </div>
     </div>
   );

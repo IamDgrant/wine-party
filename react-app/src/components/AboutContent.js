@@ -1,7 +1,6 @@
 import React from "react";
 import "../components/styling/aboutContentStyling.css";
 import aboutImg from "../assets/images/pexels-max-vakhtbovych-6758502.jpeg"
-import Footer from "../components/Footer" 
 
 const AboutContent = () => {
   return (

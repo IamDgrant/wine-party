@@ -1,7 +1,6 @@
 import React from "react";
 import "../components/styling/tastingContentStyling.css";
 import wine1 from "../assets/images/alevision-co-3syTDiVAc7w-unsplash.jpg";
-import Footer from "../components/Footer"
 
 const TastingContent = () => {
   return (
