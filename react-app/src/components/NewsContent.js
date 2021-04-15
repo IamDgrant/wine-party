@@ -1,7 +1,6 @@
 import React from "react";
 import "../components/styling/newsContentStyling.css";
 import winepour from "../assets/images/pexels-brett-sayles-1374552.jpeg";
-import Footer from "../components/Footer"
 
 const NewsContent = () => {
   return (
@@ -167,9 +166,6 @@ const NewsContent = () => {
           </p>
         </div> */}
       </div>
-      <div className="user-footer-content">
-            <Footer />
-          </div>
     </div>
   );
 };

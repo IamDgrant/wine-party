@@ -1,6 +1,7 @@
 import React from "react";
 import LandingHeader from "../components/LandingPageHeader";
 import HelpContent from "../components/HelpContent";
+import Footer from "../components/Footer";
 import "../components/styling/helpStyling.css";
 
 const Help = () => {
@@ -13,6 +14,9 @@ const Help = () => {
         <div className="stories-contents">
           <HelpContent />
         </div>
+      </div>
+      <div className="user-footer-content">
+        <Footer />
       </div>
     </>
   );

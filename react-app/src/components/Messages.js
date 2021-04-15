@@ -1,6 +1,8 @@
 import React from "react";
 import MainHeader from "../components/MainHeader";
 import MessagesContent from "../components/MessagesContent";
+import AboutContent from "../components/AboutContent";
+import Footer from "../components/Footer";
 import "../components/styling/messagesStyling.css";
 
 const Messages = () => {
@@ -13,6 +15,9 @@ const Messages = () => {
         <div className="messages-contents">
           <MessagesContent />
         </div>
+      </div>
+      <div className="user-footer-content">
+        <Footer />
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import LandingHeader from "../components/LandingPageHeader";
 import UserMainHeader from "../components/UserMainHeader";
 import TastingContent from "../components/TastingContent";
+import Footer from "../components/Footer";
 import "../components/styling/tastingStyling.css";
 
 const Tasting = () => {
@@ -10,7 +11,7 @@ const Tasting = () => {
   return (
     <>
       <div className="main-tasting-container">
-      {sessionUser ? (
+        {sessionUser ? (
           <div className="about-header">
             <UserMainHeader />
           </div>
@@ -22,6 +23,9 @@ const Tasting = () => {
         <div className="tasting-contents">
           <TastingContent />
         </div>
+      </div>
+      <div className="user-footer-content">
+        <Footer />
       </div>
     </>
   );

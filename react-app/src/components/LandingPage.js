@@ -1,7 +1,7 @@
 import React from "react";
 import LandingPageHeader from "../components/LandingPageHeader";
 import LandingPageContent from "../components/LandingPageContent";
-// import RandomHost from "../components/RandomHostCard";
+import Footer from "../components/Footer"
 import "../components/styling/landingPageStyling.css";
 
 const LandingPage = () => {
@@ -13,7 +13,11 @@ const LandingPage = () => {
         <div className="landing-contents">
           <LandingPageContent />
         </div>
+        <div className="user-footer-content">
+            <Footer />
+          </div>
       </div>
+      
   );
 };
 

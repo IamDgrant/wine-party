@@ -198,9 +198,6 @@ const TastingContent = () => {
           </p>
         </div>
       </div>
-      <div className="user-footer-content">
-            <Footer />
-          </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import MainHeader from "./MainHeader";
 import UserHelpContent from "../components/UserHelpContent";
+import Footer from "../components/Footer";
 import "../components/styling/userHelpStyling.css";
 
 const Help = () => {
@@ -13,6 +14,9 @@ const Help = () => {
         <div className="user-help-contents">
           <UserHelpContent />
         </div>
+      </div>
+      <div className="user-footer-content">
+        <Footer />
       </div>
     </>
   );

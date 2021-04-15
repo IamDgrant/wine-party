@@ -33,9 +33,6 @@ const AboutContent = () => {
           <br></br>
            Now, let’s find your host!
         </div>
-        <div className="user-footer-content">
-            <Footer />
-          </div>
     </div>
   );
 };

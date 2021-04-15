@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import LandingHeader from "../components/LandingPageHeader";
 import UserMainHeader from "../components/UserMainHeader";
 import NewsContent from "../components/NewsContent";
+import Footer from "../components/Footer";
+
 import "../components/styling/newsStyling.css";
 
 const News = () => {
@@ -22,6 +24,9 @@ const News = () => {
         <div className="news-contents">
           <NewsContent />
         </div>
+      </div>
+      <div className="user-footer-content">
+        <Footer />
       </div>
     </>
   );
