@@ -24,10 +24,10 @@ def seed_reviews():
             'the', 'absolute', 'best', 'host', 'event', 'party', 'very', 'fun', 'knowledgable', 'knows their stuff', 'will book again', 'not great', 'did not seem to know much', 'will not book again', 'find someone else']
 
         r = Review(
-            user_id=random.randint(1, 10),
-            event_id=random.randint(1, 10),
+            user_id=random.randint(1, 5),
+            event_id="1",
             rating=random.randint(2, 5),
-            comment=fake.sentence(ext_word_list=my_word_list),
+            # comment=fake.sentence(ext_word_list=my_word_list),
         )
 
         db.session.add(r)

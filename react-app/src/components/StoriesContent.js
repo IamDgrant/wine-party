@@ -10,7 +10,7 @@ const StoriesContent = () => {
         <img
           src={storiesImg}
           alt="wine glass on tray"
-          style={{ minWidth: "600px"}}
+          style={{ minWidth: "600px", height: "500px"}}
         />
       </div>
       <div className="stories-content">

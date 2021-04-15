@@ -1,18 +1,24 @@
 .main-footer-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 7vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7vh;
 }
 
 .footer-links {
-    display: flex;
-    margin-right: 5vh;
+  display: flex;
+  margin-right: 5vh;
 }
 
 .footer-copyright {
-    margin-left: 5vh;
-    justify-content: center;
-    align-items: center;
+  margin-left: 5vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-github-square,
+.fa-linkedin {
+  width: 30px;
+  height: 30px;
 }

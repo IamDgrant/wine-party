@@ -90,7 +90,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
   });
   const deleted = await res.json();
   // dispatch(removeEvent())
-  // console.log(deleted);
+  console.log(deleted);
 };
 
 export const seeEvent = () => async (dispatch) => {

@@ -33,24 +33,29 @@ def seed_hosts():
     # phone_list = fake.phone_number().replace("(", "").replace(
     #     ")", "").replace("-", "").replace(".", "").replace("+", "")
     # p = phone_list[0:10]
-    for _ in range(10):
+    for _ in range(5):
         s=fake.pybool()
         # to make sure at least one of the is true
+        # m=fake.pybool() if s else True
         m=fake.pybool() if s else True
+        
+        city_list = ["Miami", "Fort Lauderdale","Hollywood","Miami Beach","Bal Harbor"]
+        zipcode_list = ["33130", "33133","33125","33133","33154","33129","33130","33132"]
+        
         
         h = Host(
             first_name=fake.first_name(),
             last_name=fake.last_name(),
             #  address=fake.street_address(),
-            city=fake.city(),
-            state=fake.state(),
-            postal_code=fake.postcode(),
-            about=fake.text(),
+            city="San Francisco",
+            state="CA",
+            postal_code="94105",
+            # about=fake.text(),
             # rating=random.randint(1, 6),
             sommelier=s,
             mixologist=m,
             email=fake.email(),
-            phone_number=random.randint(1234567890, 9999999999),
+            phone_number=f'650{random.randint(1000000, 9999999)}',
             # password=generate_password_hash('password'),
         )
 

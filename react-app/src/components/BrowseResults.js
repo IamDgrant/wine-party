@@ -73,7 +73,6 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     </svg>
   );
 
-
   const updateSorted = (e) => {
     if (e.target.value === "alpha-asc") {
       setIsSortedType("asc");
@@ -84,14 +83,16 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
 
   const hosts = sessionHosts.map((host) => host);
 
-  const sorted = () =>
-    hosts.sort((name1, name2) => {
+  const sorted = () => {
+    const sortedHosts = hosts.sort((name1, name2) => {
       if (isSortedType === "asc") {
         return name1.first_name > name2.first_name ? 1 : -1;
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
     });
+    return sortedHosts;
+  };
 
   const activateSort = sorted();
 
@@ -108,6 +109,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   // })
 
   const filteredSort = activateSort.filter((host) => {
+    
     if (
       host.sommelier === false &&
       host.mixologist === false &&
@@ -409,55 +411,55 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
 
   // const handleChange = (value) => {
   //   console.log(value);
-    // if (value.toString() === "Sommelier") {
-    // } else if (value.toString() === "") {
-    //   for (let i = 0; i < selectedOptions.length; i++) {
-    //     if (selectedOptions[i] === "Sommelier") {
-    //       selectedOptions.splice(i, 1);
-    //       i--;
-    //     }
-    //   }
-    // }
-    // if (value.toString() === "Mixologist") {
-    //   selectedOptions.push("Mixologist");
-    // } else if (value.toString() === "") {
-    //   for (let i = 0; i < selectedOptions.length; i++) {
-    //     if (selectedOptions[i] === "Mixologist") {
-    //       selectedOptions.splice(i, 1);
-    //       i--;
-    //     }
-    //   }
-    // }
-    // if (value.toString() === "red-wine") {
-    //   selectedOptions.push("red-wine");
-    // } else if (value.toString() === "") {
-    //   for (let i = 0; i < selectedOptions.length; i++) {
-    //     if (selectedOptions[i] === "red-wine") {
-    //       selectedOptions.splice(i, 1);
-    //       i--;
-    //     }
-    //   }
-    // }
-    // if (value.toString() === "white-wine") {
-    //   selectedOptions.push("white-wine");
-    // } else if (value.toString() === "") {
-    //   for (let i = 0; i < selectedOptions.length; i++) {
-    //     if (selectedOptions[i] === "white-wine") {
-    //       selectedOptions.splice(i, 1);
-    //       i--;
-    //     }
-    //   }
-    // }
-    // if (value.toString() === "rose-wine") {
-    //   selectedOptions.push("rose-wine");
-    // } else if (value.toString() === "") {
-    //   for (let i = 0; i < selectedOptions.length; i++) {
-    //     if (selectedOptions[i] === "rose-wine") {
-    //       selectedOptions.splice(i, 1);
-    //       i--;
-    //     }
-    //   }
-    // }
+  // if (value.toString() === "Sommelier") {
+  // } else if (value.toString() === "") {
+  //   for (let i = 0; i < selectedOptions.length; i++) {
+  //     if (selectedOptions[i] === "Sommelier") {
+  //       selectedOptions.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
+  // if (value.toString() === "Mixologist") {
+  //   selectedOptions.push("Mixologist");
+  // } else if (value.toString() === "") {
+  //   for (let i = 0; i < selectedOptions.length; i++) {
+  //     if (selectedOptions[i] === "Mixologist") {
+  //       selectedOptions.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
+  // if (value.toString() === "red-wine") {
+  //   selectedOptions.push("red-wine");
+  // } else if (value.toString() === "") {
+  //   for (let i = 0; i < selectedOptions.length; i++) {
+  //     if (selectedOptions[i] === "red-wine") {
+  //       selectedOptions.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
+  // if (value.toString() === "white-wine") {
+  //   selectedOptions.push("white-wine");
+  // } else if (value.toString() === "") {
+  //   for (let i = 0; i < selectedOptions.length; i++) {
+  //     if (selectedOptions[i] === "white-wine") {
+  //       selectedOptions.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
+  // if (value.toString() === "rose-wine") {
+  //   selectedOptions.push("rose-wine");
+  // } else if (value.toString() === "") {
+  //   for (let i = 0; i < selectedOptions.length; i++) {
+  //     if (selectedOptions[i] === "rose-wine") {
+  //       selectedOptions.splice(i, 1);
+  //       i--;
+  //     }
+  //   }
+  // }
   // };
 
   // const currentHost = filteredSort.find(host => isAboutShowing === host.id);
@@ -608,7 +610,6 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                           </div>
                         </div>
                       </Button>
-                      
                     </div>
                   ))
                 ) : (

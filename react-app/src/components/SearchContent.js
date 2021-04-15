@@ -27,7 +27,7 @@ const SearchContent = () => {
   // const [isWhiteWine, setIsWhiteWine] = useState(false);
   // const [isRoseWine, setIsRoseWine] = useState(false);
 
-  console.log(isSelectedVisible);
+  // console.log(isSelectedVisible);
 
   useEffect(() => {
     const locationSplit = location.search.split("&");
