@@ -23,6 +23,7 @@
   font-family: "Bebas Neue", cursive;
   color: #000;
   font-size: 6vh;
+  white-space: nowrap;
 }
 
 .inner-img-container {
