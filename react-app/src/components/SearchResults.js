@@ -488,45 +488,45 @@ const SearchResult = () => {
   const selectedOptions = [];
 
   const handleChange = (value) => {
-    if (value.toString() === "Sommelier") {
-      console.log("SOMM");
-      selectedOption.push("Sommelier")
-      // setIsSommelier(true);
-    } else if (value.toString() === "") {
-      console.log("OFF");
-      // setIsSommelier(false);
-    }
-    if (value.toString() === "Mixologist") {
-      console.log("MIX");
-      selectedOption.push("Mixologist")
-      // setIsMixologist(true);
-    } else if (value.toString() === "") {
-      // setIsMixologist(false);
-    }
-    if (value.toString() === "red-wine") {
-      console.log("RED");
-      selectedOption.push("red-wine")
-      // setIsRedWine(true);
-    } else if (value.toString() === "") {
-      // setIsRedWine(false);
-    }
-    if (value.toString() === "white-wine") {
-      console.log("WHITE");
-      selectedOption.push("white-wine")
-      // setIsWhiteWine(true);
-    } else if (value.toString() === "") {
-      // setIsWhiteWine(false);
-    }
-    if (value.toString() === "rose-wine") {
-      console.log("ROSE");
-      selectedOption.push("rose-wine")
-      // setIsRoseWine(true);
-    } else if (value.toString() === "") {
-      // setIsRoseWine(false);
-    }
+    // if (value.toString() === "Sommelier") {
+    //   // console.log("SOMM");
+    //   selectedOption.push("Sommelier")
+    //   // setIsSommelier(true);
+    // } else if (value.toString() === "") {
+    //   // console.log("OFF");
+    //   // setIsSommelier(false);
+    // }
+    // if (value.toString() === "Mixologist") {
+    //   // console.log("MIX");
+    //   selectedOption.push("Mixologist")
+    //   // setIsMixologist(true);
+    // } else if (value.toString() === "") {
+    //   // setIsMixologist(false);
+    // }
+    // if (value.toString() === "red-wine") {
+    //   // console.log("RED");
+    //   selectedOption.push("red-wine")
+    //   // setIsRedWine(true);
+    // } else if (value.toString() === "") {
+    //   // setIsRedWine(false);
+    // }
+    // if (value.toString() === "white-wine") {
+    //   // console.log("WHITE");
+    //   selectedOption.push("white-wine")
+    //   // setIsWhiteWine(true);
+    // } else if (value.toString() === "") {
+    //   // setIsWhiteWine(false);
+    // }
+    // if (value.toString() === "rose-wine") {
+    //   // console.log("ROSE");
+    //   selectedOption.push("rose-wine")
+    //   // setIsRoseWine(true);
+    // } else if (value.toString() === "") {
+    //   // setIsRoseWine(false);
+    // }
   };
 
-  console.log(selectedOptions);
+  // console.log(selectedOptions);
 
   return (
     <>

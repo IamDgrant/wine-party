@@ -27,7 +27,7 @@ const SearchForm = () => {
   //   state.host.host ? state.host.host : null
   // );
 
-  console.log(sommelier);
+  // console.log(sommelier);
 
   const updateSommelier = () => setSommelier(!sommelier);
   const updateMixologist = () => setMixologist(!mixologist);

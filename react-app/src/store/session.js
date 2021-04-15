@@ -51,12 +51,12 @@ export const login = (email, password) => async (dispatch) => {
     },
     body: JSON.stringify({ email, password }),
   });
-  console.log(res);
+  // console.log(res);
   if (res.ok) {
     const data = await res.json();
     dispatch(setUser(data));
   }
-  console.log(res);
+  // console.log(res);
   return res;
 };
 
@@ -89,7 +89,6 @@ export const update_User = (updateData) => async (dispatch) => {
       signUpEmail,
     }),
   });
-  console.log(res);
   if (res.ok) {
     const data = await res.json();
     dispatch(updateUser(data.user));

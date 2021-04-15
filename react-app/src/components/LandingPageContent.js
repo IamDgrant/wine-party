@@ -1,9 +1,8 @@
 import React from "react";
-import "../components/styling/landingPageContentStyling.css";
 import RandomHost from "../components/RandomHostCard";
-import spiritsBottles from "../assets/images/pexels-chris-f-1283219.jpeg"
-import wineBottles from "../assets/images/pexels-adrien-olichon-2537608.jpeg"
-
+import spiritsBottles from "../assets/images/pexels-chris-f-1283219.jpeg";
+import wineBottles from "../assets/images/pexels-adrien-olichon-2537608.jpeg";
+import "../components/styling/landingPageContentStyling.css";
 
 const LandingPageContent = () => {
   // const sessionUser = useSelector((state) => state.session.user);
@@ -27,16 +26,15 @@ const LandingPageContent = () => {
       <div className="discover-wines">
         <div className="landing-title">Discover new wines</div>
         <div className="wine-discoveries">
-            <img src={wineBottles} alt="wine bottles lined up" />
+          <img src={wineBottles} alt="wine bottles lined up" />
         </div>
       </div>
       <div className="discover-spirits">
         <div className="landing-title">Discover new spirits</div>
         <div className="spirits-discoveries">
-            <img src={spiritsBottles} alt="spirit bottles lined up" />
+          <img src={spiritsBottles} alt="spirit bottles lined up" />
         </div>
       </div>
-      
     </div>
   );
 };

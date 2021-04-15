@@ -58,7 +58,7 @@ def hosts_search():
 # @ login_required
 def host(id):
     host = Host.query.get(id)
-    print(host)
+    # print(host)
     return host.to_dict()
 
 

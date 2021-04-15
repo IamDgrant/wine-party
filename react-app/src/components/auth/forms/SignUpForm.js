@@ -89,7 +89,7 @@ const SignUpForm = ({
     setLastName(e.target.value);
   };
   const updateCity = (city) => {
-    console.log(city);
+    // console.log(city);
 
     setCity(city);
   };

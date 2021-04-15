@@ -31,7 +31,7 @@ export const createEvent = ({
   event_state,
   event_postal_code,
 }) => async (dispatch) => {
-  console.log('HOST', selectedHostId);
+  // console.log('HOST', selectedHostId);
   const res = await fetch("/api/events", {
     method: "POST",
     headers: {
@@ -47,7 +47,7 @@ export const createEvent = ({
     }),
   });
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   dispatch(setEvent(data));
 };
 
@@ -60,8 +60,8 @@ export const update_Event = (updateData) => async (dispatch) => {
     event_state,
     event_postal_code,
   } = updateData;
-  console.log("MADE IT HERE ID", currentEventId);
-  console.log("MADE IT HERE selectedHostId", selectedHostId);
+  // console.log("MADE IT HERE ID", currentEventId);
+  // console.log("MADE IT HERE selectedHostId", selectedHostId);
   const res = await fetch(`/api/events/update/${currentEventId}`, {
     method: "PUT",
     headers: {
@@ -76,7 +76,7 @@ export const update_Event = (updateData) => async (dispatch) => {
       event_postal_code,
     }),
   });
-  console.log(res);
+  // console.log(res);
   if (res.ok) {
     const data = await res.json();
     dispatch(updateEvent(data));
@@ -90,7 +90,7 @@ export const deleteEvent = (eventId) => async (dispatch) => {
   });
   const deleted = await res.json();
   // dispatch(removeEvent())
-  console.log(deleted);
+  // console.log(deleted);
 };
 
 export const seeEvent = () => async (dispatch) => {

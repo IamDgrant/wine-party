@@ -27,7 +27,7 @@ def create_review():
     if form.validate_on_submit():
         data = Review()
         form.populate_obj(data)
-        print(str(form))
+        # print(str(form))
         data.assigneeId = current_user.id
         db.session.add(data)
         db.session.commit()

@@ -60,7 +60,7 @@ const Header = () => {
     if (signInEmail.length === 0) {
       alert("You must provide valid email address")
     }
-    console.log(user);
+    // console.log(user);
     // if (user.ok) history.push("/home");
   };
 

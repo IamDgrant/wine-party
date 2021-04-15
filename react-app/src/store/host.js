@@ -73,7 +73,7 @@ export const deleteHost = (hostId) => async (dispatch) => {
     method: "DELETE",
   });
   const deleted = await res.json();
-  console.log(deleted);
+  // console.log(deleted);
 };
 
 // export const seeHost = () => async (dispatch) => {

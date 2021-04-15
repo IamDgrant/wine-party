@@ -30,7 +30,7 @@ const LandingHeader = () => {
   const [errors] = useState([]);
   const [click, setClick] = useState(false);
 
-  console.log(isSignInModalVisible);
+  // console.log(isSignInModalVisible);
 
   const dispatch = useDispatch();
 
@@ -133,7 +133,7 @@ const LandingHeader = () => {
   };
 
   const signInHandleCancel = () => {
-    console.log("HITTING");
+    // console.log("HITTING");
     setIsSignInModalVisible(false);
   };
 
