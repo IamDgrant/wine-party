@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Geocode from "react-geocode";
 // import LocationPin from "../map/LocationPin";
 import "../styling/mapStyling.css";
 
 const EventMap = () => {
-  const sessionUser = useSelector((state) => state.session.user);
-  const sessionEvents = useSelector((state) => state.event.event);
+  // const sessionUser = useSelector((state) => state.session.user);
+  // const sessionEvents = useSelector((state) => state.event.event);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -53,16 +53,16 @@ const EventMap = () => {
     lng: isLongitude,
   };
 
-  const cityState = `${sessionUser.city}, ${sessionUser.state}`;
+  // const cityState = `${sessionUser.city}, ${sessionUser.state}`;
 
-  const todaysDate = new Date();
+  // const todaysDate = new Date();
 
-  const upcomingEvents = sessionEvents.filter((events) => {
-    return new Date(events.event_date) > todaysDate;
-  });
-  const previousEvents = sessionEvents.filter((events) => {
-    return new Date(events.event_date) < todaysDate;
-  });
+  // const upcomingEvents = sessionEvents.filter((events) => {
+  //   return new Date(events.event_date) > todaysDate;
+  // });
+  // const previousEvents = sessionEvents.filter((events) => {
+  //   return new Date(events.event_date) < todaysDate;
+  // });
 
   return (
     <div className="map">
