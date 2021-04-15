@@ -1,10 +1,18 @@
 import React from "react";
 import "../components/styling/aboutContentStyling.css";
+import aboutImg from "../assets/images/pexels-max-vakhtbovych-6758502.jpeg"
 
 const AboutContent = () => {
   return (
 <div className="about-content-container">
       <div className="about-title">About</div>
+      <div className="wine-about-img">
+        <img
+          src={aboutImg}
+          alt="wine glass on tray"
+          style={{ height: "65vh" }}
+        />
+      </div>
       <div className="about-text">
           Wine Party is the only place where you can search for and reserve a Certified
           Sommelier or Certified Mixologist for your next event. It was

@@ -30,6 +30,8 @@ const LandingHeader = () => {
   const [errors] = useState([]);
   const [click, setClick] = useState(false);
 
+  console.log(isSignInModalVisible);
+
   const dispatch = useDispatch();
 
   const emailErrors = () => {
@@ -65,32 +67,31 @@ const LandingHeader = () => {
     ) {
       emailErrors();
       return;
-    } 
+    }
     if (signUpPassword.length < 4) {
       signUpPasswordErrors();
       return;
-    } 
-     if (first_name.length < 1) {
+    }
+    if (first_name.length < 1) {
       first_nameErrors();
       return;
-    } 
-     if (last_name.length < 1) {
+    }
+    if (last_name.length < 1) {
       last_nameErrors();
       return;
-    } 
-     if (city.length < 1) {
+    }
+    if (city.length < 1) {
       cityErrors();
       return;
-    } 
-     if (state.length < 1) {
+    }
+    if (state.length < 1) {
       stateErrors();
       return;
-    } 
-     if (postal_code.length < 5) {
+    }
+    if (postal_code.length < 5) {
       postal_codeErrors();
       return;
-    }
-    else if (signUpPassword === repeatPassword) {
+    } else if (signUpPassword === repeatPassword) {
       dispatch(
         createUser({
           first_name,
@@ -117,8 +118,8 @@ const LandingHeader = () => {
     }
     if (signInPassword.length < 1) {
       signInPasswordErrors();
-        return;
-      } 
+      return;
+    }
     await dispatch(login(signInEmail, signInPassword));
   };
 
@@ -132,6 +133,7 @@ const LandingHeader = () => {
   };
 
   const signInHandleCancel = () => {
+    console.log("HITTING");
     setIsSignInModalVisible(false);
   };
 
@@ -179,9 +181,14 @@ const LandingHeader = () => {
             <Button key="back" onClick={demoLogin}>
               Demo User
             </Button>,
-            <Button key="link" type="primary" onClick={signUpHandleCancel}>
-              Cancel
-            </Button>,
+            <Button
+            key="link"
+            type="primary"
+            // loading={loading}
+            onClick={signInHandleCancel}
+          >
+            Cancel
+          </Button>,
             <Button key="submit" type="primary" onClick={signInHandleOk}>
               Log in
             </Button>,

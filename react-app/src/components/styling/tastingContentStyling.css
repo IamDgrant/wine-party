@@ -8,8 +8,25 @@
 }
 
 .tasting-title {
+  margin-top: 17vh;
   width: 100%;
   color: #000;
   font-size: 3vh;
   font-weight: 400;
+}
+
+.wine-tasting-img {
+  margin: 7vh 20vh 0vh 0vh;
+}
+
+.tasting-content {
+  margin-top: 10vh;
+  width: 83%;
+}
+
+.tasting-section-title {
+  margin-bottom: 1vh;
+  margin-top: 5vh;
+  font-size: 2vh;
+  font-weight: 900;
 }

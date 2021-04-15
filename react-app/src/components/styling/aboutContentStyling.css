@@ -8,9 +8,19 @@
   }
   
   .about-title {
+    margin-top: 17vh;
     width: 100%;
     color: #000;
     font-size: 3vh;
     font-weight: 400;
+    }
+
+    .wine-about-img {
+        margin: 7vh 20vh 0vh 0vh;
+    }
+
+    .about-text {
+      margin-top: 10vh;
+      width: 83%;
     }
   

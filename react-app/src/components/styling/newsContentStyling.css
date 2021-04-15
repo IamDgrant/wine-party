@@ -8,8 +8,18 @@
   }
 
   .news-title {
+    margin-top: 17vh;
       width: 100%;
     color: #000;
     font-size: 3vh;
     font-weight: 400;
+  }
+
+  .wine-news-img {
+    margin: 7vh 20vh 0vh 0vh;
+  }
+
+  .news-content {
+    margin-top: 3vh;
+    width: 83%;
   }

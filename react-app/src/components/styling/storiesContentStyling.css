@@ -8,8 +8,14 @@
 }
 
 .stories-title {
+  margin-top: 17vh;
   width: 100%;
   color: #000;
   font-size: 3vh;
   font-weight: 400;
+}
+
+.stories-content {
+  margin-top: 10vh;
+  width: 83%;
 }
