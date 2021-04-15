@@ -18,7 +18,7 @@ def seed_reviews():
     
     
 
-    for ev in range(10):
+    for ev in range(1,11):
         # my_word_list = [
         #     'whiskey', 'bourbon', 'scotch',
         #     'wine', 'Sommelier', 'Mixologist',
