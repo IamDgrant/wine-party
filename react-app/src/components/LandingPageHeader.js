@@ -32,14 +32,65 @@ const LandingHeader = () => {
 
   const dispatch = useDispatch();
 
-  const onSignUp = async (e) => {
-    // e.preventDefault();
-    let newErrors = [];
-    // if (!event_name) {
-    //   error();
-    //   return;
-    // }
-    if (signUpPassword === repeatPassword) {
+  const emailErrors = () => {
+    message.error("You must provide valid email address!");
+  };
+  const signUpPasswordErrors = () => {
+    message.error("Password length must be at least 4 characters!");
+  };
+  const signInPasswordErrors = () => {
+    message.error("Password field cannot be empty!");
+  };
+  const first_nameErrors = () => {
+    message.error("First name field cannot be empty!");
+  };
+  const last_nameErrors = () => {
+    message.error("Last name field cannot be empty!");
+  };
+  const cityErrors = () => {
+    message.error("City name field cannot be empty!");
+  };
+  const stateErrors = () => {
+    message.error("State name field cannot be empty!");
+  };
+  const postal_codeErrors = () => {
+    message.error("Postal Code name field cannot be empty!");
+  };
+
+  const onSignUp = async () => {
+    if (
+      signUpEmail.length < 6 ||
+      signUpEmail.indexOf("@") === -1 ||
+      signUpEmail.indexOf(".") === -1
+    ) {
+      emailErrors();
+      return;
+    } 
+    if (signUpPassword.length < 4) {
+      signUpPasswordErrors();
+      return;
+    } 
+     if (first_name.length < 1) {
+      first_nameErrors();
+      return;
+    } 
+     if (last_name.length < 1) {
+      last_nameErrors();
+      return;
+    } 
+     if (city.length < 1) {
+      cityErrors();
+      return;
+    } 
+     if (state.length < 1) {
+      stateErrors();
+      return;
+    } 
+     if (postal_code.length < 5) {
+      postal_codeErrors();
+      return;
+    }
+    else if (signUpPassword === repeatPassword) {
       dispatch(
         createUser({
           first_name,
@@ -51,30 +102,24 @@ const LandingHeader = () => {
           signUpPassword,
           repeatPassword,
         })
-        ).catch(async (res) => {
-          console.log(res);
-          const data = await res.json();
-          if (data && data.errors) {
-            newErrors = data.errors;
-          }
-        });
-      }
-  };
-
-  const onSignIn = async (e) => {
-    
-    if (signInEmail.length === 0) {
-      emailLengthError();
-      return
+      );
     }
-    // e.preventDefault();
-    await dispatch(login(signInEmail, signInPassword));
-    // console.log(user);
-    // if (user.ok) history.push("/home");
   };
 
-const emailLengthError = () => {
-    message.error("You must provide valid email address!");
+  const onSignIn = async () => {
+    if (
+      signInEmail.length < 6 ||
+      signInEmail.indexOf("@") === -1 ||
+      signInEmail.indexOf(".") === -1
+    ) {
+      emailErrors();
+      return;
+    }
+    if (signInPassword.length < 1) {
+      signInPasswordErrors();
+        return;
+      } 
+    await dispatch(login(signInEmail, signInPassword));
   };
 
   const showSignInModal = () => {
@@ -108,15 +153,12 @@ const emailLengthError = () => {
     return dispatch(login("demo@wineparty.com", "password"));
   };
 
-
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const userMenu = (
     <Menu>
-      <Menu.Item 
-      onClick={showSignInModal}
-      >
+      <Menu.Item onClick={showSignInModal}>
         <Button
           className="antd-btn"
           htmlType="submit"
@@ -134,25 +176,14 @@ const emailLengthError = () => {
           // onOk={signInHandleOk}
           onCancel={signInHandleCancel}
           footer={[
-            <Button
-              key="back"
-              onClick={demoLogin}
-            >
+            <Button key="back" onClick={demoLogin}>
               Demo User
             </Button>,
-            <Button
-              key="link"
-              type="primary"
-              onClick={signUpHandleCancel}
-            >
+            <Button key="link" type="primary" onClick={signUpHandleCancel}>
               Cancel
             </Button>,
-            <Button
-              key="submit"
-              type="primary"
-              onClick={signInHandleOk}
-            >
-             Log in
+            <Button key="submit" type="primary" onClick={signInHandleOk}>
+              Log in
             </Button>,
           ]}
         >
@@ -183,29 +214,26 @@ const emailLengthError = () => {
           // onOk={signUpHandleOk}
           onCancel={signUpHandleCancel}
           footer={[
-                  <Button
-                    key="back"
-                    onClick={demoLogin}
-                  >
-                    Demo User
-                  </Button>,
-                  <Button
-                    key="link"
-                    type="primary"
-                    // loading={loading}
-                    onClick={signUpHandleCancel}
-                  >
-                    Cancel
-                  </Button>,
-                  <Button
-                    key="submit"
-                    type="primary"
-                    // loading={loading}
-                    onClick={signUpHandleOk}
-                  >
-                    Sign up
-                  </Button>,
-                ]}
+            <Button key="back" onClick={demoLogin}>
+              Demo User
+            </Button>,
+            <Button
+              key="link"
+              type="primary"
+              // loading={loading}
+              onClick={signUpHandleCancel}
+            >
+              Cancel
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              // loading={loading}
+              onClick={signUpHandleOk}
+            >
+              Sign up
+            </Button>,
+          ]}
         >
           <SignUpForm
             first_name={first_name}

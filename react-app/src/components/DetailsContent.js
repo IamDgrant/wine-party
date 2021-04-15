@@ -30,7 +30,6 @@ const DetailsContent = () => {
   const [signInEmail, setSignInEmail] = useState(sessionUser.email);
   // const [isEditingIdImage, setIsEditingIdImage] = useState(false);
   const [photoFile, setPhotoFile] = useState();
-  
 
   const submit = () => {
     dispatch(photoUpload(photoFile));
@@ -54,7 +53,6 @@ const DetailsContent = () => {
   // };
 
   const onEditSubmission = async () => {
-    let newErrors = [];
     await dispatch(
       update_User({
         first_name,
@@ -67,13 +65,7 @@ const DetailsContent = () => {
         postal_code,
         birthday,
       })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
+    );
   };
 
   // const onSaveLastName = async (e) => {

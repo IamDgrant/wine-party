@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { photoUpload, update_User } from "../store/session";
 import { Breadcrumb, Button } from "antd";
 import "../components/styling/profileContentStyling.css";
-import { UserOutlined } from "@ant-design/icons";
+// import { UserOutlined } from "@ant-design/icons";
 // import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
@@ -23,10 +23,9 @@ const ProfileContent = () => {
 
   // useEffect(() => {}, [sessionUser]);
 
-  const placeholder = <UserOutlined />;
+  // const placeholder = <UserOutlined />;
 
   const onEditSubmission = async () => {
-    let newErrors = [];
     await dispatch(
       update_User({
         // id,
@@ -37,13 +36,7 @@ const ProfileContent = () => {
         about,
         // favorites,
       })
-    ).catch(async (res) => {
-      console.log(res);
-      const data = await res.json();
-      if (data && data.errors) {
-        newErrors = data.errors;
-      }
-    });
+    )
   };
 
   // const onSaveFirstName = async (e) => {

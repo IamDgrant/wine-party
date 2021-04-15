@@ -1,12 +1,12 @@
-const SET_HOST = "host/SetHost";
-const REMOVE_HOST = "host/removeHost";
+// const SET_HOST = "host/SetHost";
+// const REMOVE_HOST = "host/removeHost";
 const GET_HOST = "host/getHost";
 const RESET_HOST = "host/resetHost";
 
-const setHost = (host) => ({
-  type: SET_HOST,
-  payload: host,
-});
+// const setHost = (host) => ({
+//   type: SET_HOST,
+//   payload: host,
+// });
 
 const getHost = (host) => ({
   type: GET_HOST,
@@ -17,10 +17,10 @@ export const resetHost = () => ({
   type: RESET_HOST,
 });
 
-const removeHost = (hostId) => ({
-  type: REMOVE_HOST,
-  payload: hostId,
-});
+// const removeHost = (hostId) => ({
+//   type: REMOVE_HOST,
+//   payload: hostId,
+// });
 
 // export const createHost = ({ eventName, eventDate, city, state }) => async (
 //   dispatch
@@ -93,15 +93,15 @@ export const seeHostEvent = (id) => async (dispatch) => {
 const initialState = { host: [] };
 
 function reducer(state = initialState, action) {
-  let newState;
+  // let newState;
   switch (action.type) {
-    case SET_HOST: {
-      if (state.host) {
-        const newhost = [...state.host, action.payload];
-        return { ...state, host: newhost };
-      }
-      return { ...state, host: action.payload };
-    }
+    // case SET_HOST: {
+    //   if (state.host) {
+    //     const newhost = [...state.host, action.payload];
+    //     return { ...state, host: newhost };
+    //   }
+    //   return { ...state, host: action.payload };
+    // }
     case GET_HOST:
       return { ...state, host: action.payload };
     case RESET_HOST:

@@ -1,7 +1,7 @@
 const SET_EVENT = "event/SetEvent";
 const GET_EVENT = "event/getEvent";
 const UPDATE_EVENT = "session/updateEvent";
-const REMOVE_EVENT = "event/removeEvent";
+// const REMOVE_EVENT = "event/removeEvent";
 
 const setEvent = (event) => ({
   type: SET_EVENT,
@@ -18,10 +18,10 @@ const updateEvent = (data) => ({
   payload: data,
 });
 
-const removeEvent = (eventId) => ({
-  type: REMOVE_EVENT,
-  payload: eventId,
-});
+// const removeEvent = (eventId) => ({
+//   type: REMOVE_EVENT,
+//   payload: eventId,
+// });
 
 export const createEvent = ({
   selectedHostId,
@@ -117,7 +117,7 @@ export const seeHostEvent = (id) => async (dispatch) => {
 const initialState = { event: [] };
 
 function reducer(state = initialState, action) {
-  let newState;
+  // let newState;
   switch (action.type) {
     case SET_EVENT: {
       if (state.event) {

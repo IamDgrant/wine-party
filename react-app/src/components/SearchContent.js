@@ -35,7 +35,7 @@ const SearchContent = () => {
     dispatch(seeHost(...query));
   }, [dispatch, location.search]);
 
-  const selectedHostId = isAboutShowing && isAboutShowing.id;
+  // const selectedHostId = isAboutShowing && isAboutShowing.id;
 
   // const sessionEvent = useSelector((state) => state.event.event);
   // const sessionHostId = useSelector((state) =>
@@ -123,6 +123,7 @@ const SearchContent = () => {
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
+      
     });
 
   const activateSort = sorted();

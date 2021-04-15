@@ -39,7 +39,6 @@ const Header = () => {
 
   const onSignUp = async (e) => {
     // e.preventDefault();
-    let newErrors = [];
     if (signUpPassword === repeatPassword) {
       dispatch(
         createUser({
@@ -52,14 +51,7 @@ const Header = () => {
           signUpPassword,
           repeatPassword,
         })
-      ).catch(async (res) => {
-        console.log(res);
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-        }
-      });
-    }
+      )
   };
 
   const onSignIn = async (e) => {

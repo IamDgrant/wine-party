@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link, useHistory } from "react-router-dom";
-import { seeHost } from "../store/host";
-import { Avatar, Modal, Button, message, notification } from "antd";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+// import { seeHost } from "../store/host";
+import { Button, notification } from "antd";
 import "../components/styling/userHomeContentStyling.css";
 
 const UserHomeContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
-  const sessionHostId = useSelector((state) =>
-    state.host.host ? state.host.host : null
-  );
+  // const sessionHostId = useSelector((state) =>
+  //   state.host.host ? state.host.host : null
+  // );
 
   const [search, setSearch] = useState("");
   const [sommelier, setSommelier] = useState(false);
   const [mixologist, setMixologist] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
     setTimeout(() => {
       openNotification("topLeft");
     }, 1000);
-  }, [dispatch]);
+  });
 
   const onSearch = async (e) => {
     e.preventDefault();

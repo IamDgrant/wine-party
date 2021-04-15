@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
-import { login } from "../../../store/session";
+// import { login } from "../../../store/session";
 import { usStates } from "../../States";
-import { Select, Button } from "antd";
+import { Select} from "antd";
 import "../../styling/formStyling.css";
 
 const SignUpForm = ({
@@ -24,11 +24,11 @@ const SignUpForm = ({
   repeatPassword,
   setRepeatPassword,
 }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
-  const [isDisabled, setIsDisabled] = useState(true);
+  // const [isDisabled, setIsDisabled] = useState(true);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -59,7 +59,7 @@ const SignUpForm = ({
     if (state && state.length > 0) {
       cityFetch();
     }
-  }, [state]);
+  });
 
   // useEffect(() => {
   //   if (cscCity !== undefined) {
@@ -70,13 +70,6 @@ const SignUpForm = ({
   if (sessionUser) {
     return <Redirect to="/home" />;
   }
-
-  const demoLogin = async (e) => {
-    e.preventDefault();
-    return dispatch(
-      login({ email: "demo@wineparty.com", password: "password" })
-    );
-  };
 
   // const cscStateFetch = async () => {
   //   const res = await fetch(fetchCscStateUrl, requestOptions);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useHistory } from "react-router-dom";
 // import Select from "react-select";
-import Map from "../components/map/Map";
+// import Map from "../components/map/Map";
 import {
   createEvent,
   seeEvent,
@@ -51,7 +51,7 @@ const EventsContent = (user_id) => {
   const [isAddDrawerVisible, setIsAddDrawerVisible] = useState(false);
   const [isEditDrawerVisible, setIsEditDrawerVisible] = useState(false);
   const [event_name, setEventName] = useState(currentEvent?.event_name);
-  const [event_host, setEventHost] = useState("");
+  // const [event_host, setEventHost] = useState("");
   const [event_date, setEventDate] = useState(currentEvent?.event_date);
   const [event_city, setEventCity] = useState(currentEvent?.event_city);
   const [event_state, setEventState] = useState(currentEvent?.event_state);
@@ -59,8 +59,8 @@ const EventsContent = (user_id) => {
     currentEvent?.event_postal_code
   );
   const [cscCity, setCscCity] = useState();
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [errors, setErrors] = useState([]);
+  // const [isDisabled, setIsDisabled] = useState(true);
+  // const [errors, setErrors] = useState([]);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -96,7 +96,7 @@ const EventsContent = (user_id) => {
     if (event_state && event_state.length > 0) {
       cityFetch();
     }
-  }, [event_state]);
+  });
 
   // useEffect(() => {
   //   if (cscCity !== undefined) {
@@ -511,11 +511,11 @@ const EventsContent = (user_id) => {
                 <Panel header="Add an event" style={{ fontWeight: "900" }}>
                   <div className="add-event-form">
                     <form>
-                      <div>
+                      {/* <div>
                         {errors.map((error, i) => (
                           <div key={i}>{error}</div>
                         ))}
-                      </div>
+                      </div> */}
                       <div>
                         <input
                           // className="form-input"

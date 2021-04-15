@@ -407,8 +407,8 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     );
   }
 
-  const handleChange = (value) => {
-    console.log(value);
+  // const handleChange = (value) => {
+  //   console.log(value);
     // if (value.toString() === "Sommelier") {
     // } else if (value.toString() === "") {
     //   for (let i = 0; i < selectedOptions.length; i++) {
@@ -458,7 +458,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     //     }
     //   }
     // }
-  };
+  // };
 
   // const currentHost = filteredSort.find(host => isAboutShowing === host.id);
   // console.log(currentHost.id);
