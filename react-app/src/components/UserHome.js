@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { resetHost } from "../store/host";
 import UserMainHeader from "../components/UserMainHeader";
 import UserHomeContent from "../components/UserHomeContent";
+import Footer from "../components/Footer"
 
 import "./styling/userHome.css";
 
@@ -22,6 +23,9 @@ const Home = () => {
           </div>
           <div className="user-content">
             <UserHomeContent />
+          </div>
+          <div className="user-footer-content">
+            <Footer />
           </div>
         </div>
       </div>

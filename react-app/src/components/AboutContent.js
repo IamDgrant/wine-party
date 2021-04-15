@@ -1,6 +1,7 @@
 import React from "react";
 import "../components/styling/aboutContentStyling.css";
 import aboutImg from "../assets/images/pexels-max-vakhtbovych-6758502.jpeg"
+import Footer from "../components/Footer" 
 
 const AboutContent = () => {
   return (
@@ -10,7 +11,7 @@ const AboutContent = () => {
         <img
           src={aboutImg}
           alt="wine glass on tray"
-          style={{ height: "65vh" }}
+          style={{ minWidth: "600px"}}
         />
       </div>
       <div className="about-text">
@@ -32,6 +33,9 @@ const AboutContent = () => {
           <br></br>
            Now, let’s find your host!
         </div>
+        <div className="user-footer-content">
+            <Footer />
+          </div>
     </div>
   );
 };

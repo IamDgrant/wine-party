@@ -1,6 +1,7 @@
 import React from "react";
 import "../components/styling/storiesContentStyling.css";
 import storiesImg from "../assets/images/pexels-cottonbro-3171736.jpg";
+import Footer from "../components/Footer"
 
 const StoriesContent = () => {
   return (
@@ -10,7 +11,7 @@ const StoriesContent = () => {
         <img
           src={storiesImg}
           alt="wine glass on tray"
-          style={{ height: "65vh" }}
+          style={{ minWidth: "600px"}}
         />
       </div>
       <div className="stories-content">
@@ -109,6 +110,9 @@ const StoriesContent = () => {
           </p>
         </div>
       </div>
+      <div className="user-footer-content">
+            <Footer />
+          </div>
     </div>
   );
 };

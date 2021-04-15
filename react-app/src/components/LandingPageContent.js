@@ -1,10 +1,9 @@
 import React from "react";
-// import { useDispatch, useSelector } from "react-redux";
 import "../components/styling/landingPageContentStyling.css";
-// import landingImage from "../assets/images/pexels-cottonbro-4877857.jpeg";
 import RandomHost from "../components/RandomHostCard";
 import spiritsBottles from "../assets/images/pexels-chris-f-1283219.jpeg"
 import wineBottles from "../assets/images/pexels-adrien-olichon-2537608.jpeg"
+import Footer from "../components/Footer"
 
 const LandingPageContent = () => {
   // const sessionUser = useSelector((state) => state.session.user);
@@ -37,8 +36,9 @@ const LandingPageContent = () => {
             <img src={spiritsBottles} alt="spirit bottles lined up" />
         </div>
       </div>
-
-      <div className="landing-footer"></div>
+      <div className="user-footer-content">
+            <Footer />
+          </div>
     </div>
   );
 };

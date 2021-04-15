@@ -1,13 +1,14 @@
 import React from "react";
 import "../components/styling/tastingContentStyling.css";
 import wine1 from "../assets/images/alevision-co-3syTDiVAc7w-unsplash.jpg";
+import Footer from "../components/Footer"
 
 const TastingContent = () => {
   return (
     <div className="tasting-content-container">
       <div className="tasting-title">10 Chic Wine Tasting Party Ideas</div>
       <div className="wine-tasting-img">
-        <img src={wine1} alt="wine glass on tray" />
+        <img src={wine1} alt="wine glass on tray" style={{ minWidth: "600px"}}/>
       </div>
       <div className="tasting-content">
         <div className="tasting-section-text1">
@@ -197,6 +198,9 @@ const TastingContent = () => {
           </p>
         </div>
       </div>
+      <div className="user-footer-content">
+            <Footer />
+          </div>
     </div>
   );
 };
