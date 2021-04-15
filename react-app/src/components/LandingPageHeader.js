@@ -5,7 +5,7 @@ import { login, createUser } from "../store/session";
 // import { seeHost } from "../store/host";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
-import { Menu, Dropdown, Button, Modal, message } from "antd";
+import { Menu, Dropdown, Button, Modal, message, } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";

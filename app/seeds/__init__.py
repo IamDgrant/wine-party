@@ -11,10 +11,10 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    # seed_users()
-    # seed_hosts()
+    seed_users()
+    seed_hosts()
     seed_events()
-    # seed_reviews()
+    seed_reviews()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command

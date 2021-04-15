@@ -27,7 +27,8 @@
 }
 
 .inner-img-container {
-  margin: -5px 0px 0px 0px;
+  padding: 0;
+  /* margin: -5px 0px 0px 0px; */
 }
 
 .logo-nav:hover {

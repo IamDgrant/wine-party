@@ -10,7 +10,7 @@ fake = Faker()
 
 def seed_events():
 
-    for _ in range(5):
+    for _ in range(10):
         my_word_list = [
             "Wine Event", "Birthday Party", "Holiday Party"]
 

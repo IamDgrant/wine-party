@@ -15,7 +15,7 @@ def seed_users():
     # for _ in range(1):
     # zipcode_list = ["33130", "33133", "33125",
     #                 "33133", "33154", "33129", "33130", "33132"]
-    for _ in range(4):
+    for _ in range(5):
         demo = User(first_name=fake.first_name(), last_name=fake.last_name(), city="Miami", state="FL", postal_code="33130", email=fake.email(), phone_number=f'305{random.randint(1000000, 9999999)}',
                     password='password')
     # demo = User(first_name=fake.first_name(), last_name=fake.last_name(), city="Miami", state="FL", postal_code=fake.postcode(ext_word_list=zipcode_list), about=fake.text(), email=fake.email(), phone_number=random.randint(1234567890, 9999999999),
