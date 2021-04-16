@@ -50,6 +50,7 @@ def seed_hosts():
             city="San Francisco",
             state="CA",
             postal_code="94105",
+            # profile_image="",
             # about=fake.text(),
             # rating=random.randint(1, 6),
             sommelier=s,

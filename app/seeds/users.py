@@ -15,10 +15,10 @@ def seed_users():
     # for _ in range(1):
     # zipcode_list = ["33130", "33133", "33125",
     #                 "33133", "33154", "33129", "33130", "33132"]
-    for _ in range(5):
-        demo = User(first_name=fake.first_name(), last_name=fake.last_name(), city="Miami", state="FL", postal_code="33130", email=fake.email(), phone_number=f'305{random.randint(1000000, 9999999)}',
+    # for _ in range(5):
+    demo = User(first_name='Demo', last_name='User', city="San Francisco", state="CA", postal_code="94105", email='demo@wineparty.com', phone_number=f'650{random.randint(1000000, 9999999)}',
                     password='password')
-        db.session.add(demo)
+    db.session.add(demo)
 
     db.session.commit()
 

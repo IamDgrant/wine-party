@@ -10,9 +10,9 @@ fake = Faker()
 
 def seed_events():
 
-    for _ in range(10):
-        my_word_list = [
-            "Wine Event", "Birthday Party", "Holiday Party"]
+    for _ in range(3):
+        # my_word_list = [
+        #     "Wine Event"]
 
         # zipcode_list = ["33130", "33133", "33125",
         #                 "33133", "33154", "33129", "33130", "33132"]
@@ -21,16 +21,17 @@ def seed_events():
         #              "Hollywood", "Miami Beach", "Bal Harbor"]
 
         events = Event(
-            user_id=random.randint(1, 5),
-            host_id=random.randint(1, 5),
-            event_name=fake.sentence(ext_word_list=my_word_list),
+            # user_id=random.randint(1, 5),
+            user_id=1,
+            host_id=random.randint(1,5),
+            event_name="Wine Event",
             event_date=fake.date_between(start_date='-02y', end_date='today'),
             # event_date=fake.date_between_dates(date_start=datetime(
             #     2020, 1, 1), date_end=datetime(2021, 4, 15)),
             # event_city=fake.city(ext_word_list=city_list),
-            event_city="Miami",
-            event_state="FL",
-            event_postal_code="33130"
+            event_city="San Francisco",
+            event_state="CA",
+            event_postal_code="94105"
         )
 
         # future_events = Event(
