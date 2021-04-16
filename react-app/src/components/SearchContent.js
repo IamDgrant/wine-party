@@ -443,6 +443,8 @@ const SearchContent = () => {
     ) {
       return host;
     }
+    //watch this to see if it broke anything!!!!!!!!
+    return hosts
   });
 
   // const filterHandleCancel = () => {
