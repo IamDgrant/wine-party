@@ -8,11 +8,11 @@ const Help = () => {
   return (
     <>
       <div className="main-user-help-container">
-        <div className="user-help-header">
-          <MainHeader />
-        </div>
         <div className="user-help-contents">
           <UserHelpContent />
+        </div>
+        <div className="user-help-header">
+          <MainHeader />
         </div>
       </div>
       <div className="user-footer-content">

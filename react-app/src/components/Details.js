@@ -7,11 +7,11 @@ const Details = () => {
   return (
     <>
       <div className="main-details-container">
-        <div className="details-header">
-          <MainHeader />
-        </div>
         <div className="details-contents">
           <DetailsContent />
+        </div>
+        <div className="details-header">
+          <MainHeader />
         </div>
       </div>
     </>

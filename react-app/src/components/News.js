@@ -12,6 +12,9 @@ const News = () => {
   return (
     <>
       <div className="main-news-container">
+        <div className="news-contents">
+          <NewsContent />
+        </div>
         {sessionUser ? (
           <div className="about-header">
             <UserMainHeader />
@@ -21,9 +24,6 @@ const News = () => {
             <LandingHeader />
           </div>
         )}
-        <div className="news-contents">
-          <NewsContent />
-        </div>
       </div>
       <div className="user-footer-content">
         <Footer />

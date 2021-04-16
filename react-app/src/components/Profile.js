@@ -5,11 +5,11 @@ import ProfileContent from "../components/ProfileContent";
 const Profile = () => {
   return (
     <div className="main-profile-container">
-      <div className="profile">
-        <MainHeader />
-      </div>
       <div className="p-contents">
         <ProfileContent />
+      </div>
+      <div className="profile">
+        <MainHeader />
       </div>
     </div>
   );

@@ -12,6 +12,9 @@ const About = () => {
   return (
     <>
       <div className="main-about-container">
+        <div className="about-contents">
+          <AboutContent />
+        </div>
         {sessionUser ? (
           <div className="about-header">
             <UserMainHeader />
@@ -21,9 +24,6 @@ const About = () => {
             <LandingHeader />
           </div>
         )}
-        <div className="about-contents">
-          <AboutContent />
-        </div>
       </div>
       <div className="user-footer-content">
         <Footer />

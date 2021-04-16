@@ -8,11 +8,11 @@ const Messages = () => {
   return (
     <>
       <div className="main-messages-container">
-        <div className="messages-header">
-          <MainHeader />
-        </div>
         <div className="messages-contents">
           <MessagesContent />
+        </div>
+        <div className="messages-header">
+          <MainHeader />
         </div>
       </div>
       <div className="user-footer-content">

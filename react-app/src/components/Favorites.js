@@ -8,11 +8,11 @@ const Favorites = () => {
   return (
     <>
       <div className="main-favorites-container">
-        <div className="favorites-header">
-          <MainHeader />
-        </div>
         <div className="favorites-contents">
           <FavoritesContent />
+        </div>
+        <div className="favorites-header">
+          <MainHeader />
         </div>
       </div>
       <div className="user-footer-content">

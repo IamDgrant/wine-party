@@ -11,6 +11,9 @@ const Tasting = () => {
   return (
     <>
       <div className="main-tasting-container">
+        <div className="tasting-contents">
+          <TastingContent />
+        </div>
         {sessionUser ? (
           <div className="about-header">
             <UserMainHeader />
@@ -20,9 +23,6 @@ const Tasting = () => {
             <LandingHeader />
           </div>
         )}
-        <div className="tasting-contents">
-          <TastingContent />
-        </div>
       </div>
       <div className="user-footer-content">
         <Footer />

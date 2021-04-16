@@ -11,6 +11,9 @@ const Stories = () => {
   return (
     <>
       <div className="main-stories-container">
+        <div className="stories-contents">
+          <StoriesContent />
+        </div>
         {sessionUser ? (
           <div className="about-header">
             <UserMainHeader />
@@ -20,9 +23,6 @@ const Stories = () => {
             <LandingHeader />
           </div>
         )}
-        <div className="stories-contents">
-          <StoriesContent />
-        </div>
       </div>
       <div className="user-footer-content">
         <Footer />
