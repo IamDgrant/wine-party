@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { photoUpload, update_User } from "../store/session";
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb, Button, Avatar } from "antd";
+import img_placeholder from "../assets/images/user_placeholder.jpeg";
 import "../components/styling/profileContentStyling.css";
-// import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 // import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
@@ -36,7 +37,7 @@ const ProfileContent = () => {
         about,
         // favorites,
       })
-    )
+    );
   };
 
   // const onSaveFirstName = async (e) => {
@@ -196,13 +197,35 @@ const ProfileContent = () => {
                     </form>
                   </div>
                 ) : (
-                  <label for="file-input">
-                    <img
-                      src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
-                      alt="Avatar"
-                      className="profile-pic2"
-                    ></img>
-                  </label>
+                  <div className="image-upload">
+                    <label for="file-input">
+                      <img
+                        src={<Avatar size={64} icon={<UserOutlined />} />}
+                        alt="Avatar"
+                        className="profile-pic2"
+                      ></img>
+                    </label>
+                    <form
+                      className="image-forms"
+                      encType="multipart/form-data"
+                      onSubmit={submit}
+                    >
+                      <input
+                        id="file-input"
+                        type="file"
+                        name="user_file"
+                        onChange={handleUpload}
+                      ></input>
+                    </form>
+                  </div>
+
+                  // <label for="file-input">
+                  //   <img
+                  //     src={img_placeholder}
+                  //     alt="Avatar"
+                  //     className="profile-pic2"
+                  //   ></img>
+                  // </label>
                 )
               ) : sessionUser.profile_image != null ? (
                 <img
@@ -212,7 +235,7 @@ const ProfileContent = () => {
                 ></img>
               ) : (
                 <img
-                  src="https://user-images.githubusercontent.com/70561117/108804980-ae2f4180-7553-11eb-8240-9746d71ad242.png"
+                  src={<Avatar size={64} icon={<UserOutlined />} />}
                   alt="Avatar"
                   className="profile-pic"
                 ></img>

@@ -1,5 +1,25 @@
 /*Desktop View*/
+.user-main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .user-main-header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0px 40px;
+  height: 11vh;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px rgb(201, 201, 201) solid;
+}
+
+.landing-main-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,14 +45,22 @@
   white-space: nowrap;
 }
 
+.inner-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 9px;
+}
+
 .navBar {
   margin-right: 20vw;
 }
 
 .search-form {
   display: absolute;
-  margin-top: 0px;
-  height: 0vh;
+  margin-top: -10px;
+  /* height: 0vh; */
 }
 
 .form {
@@ -120,7 +148,7 @@ span {
 }
 
 .nav-options {
-  padding-left: 25px;
+  margin-left: 15.25vh;
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-gap: 50px;

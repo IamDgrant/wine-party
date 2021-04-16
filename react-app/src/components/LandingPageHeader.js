@@ -5,7 +5,7 @@ import { login, createUser } from "../store/session";
 // import { seeHost } from "../store/host";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
-import { Menu, Dropdown, Button, Modal, message, } from "antd";
+import { Menu, Dropdown, Button, Modal, message } from "antd";
 import { ReactComponent as CloseMenu } from "../assets/icons/x.svg";
 import { ReactComponent as MenuIcon } from "../assets/icons/menu.svg";
 import img_placeholder from "../assets/images/empty-profile-picture-png.png";
@@ -133,7 +133,7 @@ const LandingHeader = () => {
   };
 
   const signInHandleCancel = () => {
-    // console.log("HITTING");
+    console.log("HITTING");
     setIsSignInModalVisible(false);
   };
 
@@ -182,13 +182,13 @@ const LandingHeader = () => {
               Demo User
             </Button>,
             <Button
-            key="link"
-            type="primary"
-            // loading={loading}
-            onClick={signInHandleCancel}
-          >
-            Cancel
-          </Button>,
+              key="link"
+              type="primary"
+              // loading={loading}
+              onClick={signInHandleCancel}
+            >
+              Cancel
+            </Button>,
             <Button key="submit" type="primary" onClick={signInHandleOk}>
               Log in
             </Button>,
@@ -274,7 +274,7 @@ const LandingHeader = () => {
   );
 
   return (
-    <div className="user-main-header-container">
+    <div className="landing-main-header-container">
       <div className="main-logo-container">
         <NavLink className="logo-nav" to="/home">
           Wine Party
@@ -328,11 +328,13 @@ const LandingHeader = () => {
                 onClick={(e) => e.preventDefault()}
               >
                 <div className="inner-img-container">
-                  <img
-                    src={img_placeholder}
-                    alt="Avatar"
-                    className="small-profile-pic"
-                  ></img>
+                  <div className="avatar-img">
+                    <img
+                      src={img_placeholder}
+                      alt="Avatar"
+                      className="small-profile-pic"
+                    />
+                  </div>
                 </div>
               </Button>
             </div>

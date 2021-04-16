@@ -24,6 +24,7 @@ const MainHeader = () => {
   const handleClick = () => setClick(!click);
   // const closeMobileMenu = () => setClick(false);
 
+
   const userMenu = (
     <Menu>
       <Menu.Item>
@@ -106,7 +107,7 @@ const MainHeader = () => {
                         src={img_placeholder}
                         alt="Avatar"
                         className="small-profile-pic"
-                      ></img>
+                      />
                     )}
                   </div>
                 </Button>
