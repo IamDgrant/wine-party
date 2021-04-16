@@ -84,14 +84,14 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   const hosts = sessionHosts.map((host) => host);
 
   const sorted = () => {
-    const sortedHosts = hosts.sort((name1, name2) => {
+    hosts.sort((name1, name2) => {
       if (isSortedType === "asc") {
         return name1.first_name > name2.first_name ? 1 : -1;
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
     });
-    return sortedHosts;
+    return console.log();
   };
 
   const activateSort = sorted();

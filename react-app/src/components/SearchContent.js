@@ -123,7 +123,7 @@ const SearchContent = () => {
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
-      
+      return console.log();
     });
 
   const activateSort = sorted();
@@ -572,7 +572,7 @@ const SearchContent = () => {
                       >
                         <div className="hosts">
                           <div className="host-name-type">
-                            <div className="host-name">
+                            <div className="host-name" style={{color: "black"}}>
                               {host.first_name} {host.last_name}
                             </div>
                             <div className="somm">
