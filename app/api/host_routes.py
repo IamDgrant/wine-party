@@ -21,9 +21,10 @@ def random_host():
 
 
 @host_routes.route('/search', methods=['POST'])
-@login_required
+# @login_required
 def hosts_search():
     hosts = Host.query.all()
+    print(hosts)
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():

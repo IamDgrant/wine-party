@@ -14,6 +14,7 @@ import "../components/styling/buttonStyling.css";
 
 const LandingHeader = () => {
   // const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
 
   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
   const [isSignUpModalVisible, setIsSignUpModalVisible] = useState(false);
@@ -31,8 +32,6 @@ const LandingHeader = () => {
   const [click, setClick] = useState(false);
 
   // console.log(isSignInModalVisible);
-
-  const dispatch = useDispatch();
 
   const emailErrors = () => {
     message.error("You must provide valid email address!");
@@ -133,7 +132,8 @@ const LandingHeader = () => {
   };
 
   const signInHandleCancel = () => {
-    console.log("HITTING");
+    // e.preventDefault();
+    // console.log("HITTING");
     setIsSignInModalVisible(false);
   };
 
@@ -325,7 +325,7 @@ const LandingHeader = () => {
                 className="profile-button"
                 shape="circle"
                 type="primary"
-                onClick={(e) => e.preventDefault()}
+                // onClick={(e) => e.preventDefault()}
               >
                 <div className="inner-img-container">
                   <div className="avatar-img">

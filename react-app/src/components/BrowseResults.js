@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { browseAllHost } from "../store/host";
+import { filterByValue } from "../store/sort";
 import { CSSGrid } from "react-stonecutter";
 import { Select, Button } from "antd";
 import "../components/styling/browseHostStyling.css";
@@ -13,7 +14,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   // const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
   // const [isHostDetailsShowing, setIsHostDetailsShowing] = useState(false);
-  // const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isSortedType, setIsSortedType] = useState("");
   // const [isSommelier, setIsSommelier] = useState(false);
   // const [isMixologist, setIsMixologist] = useState(false);
@@ -82,6 +83,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   };
 
   const hosts = sessionHosts.map((host) => host);
+  console.log(hosts);
 
   const sorted = () => {
     hosts.sort((name1, name2) => {
@@ -90,12 +92,13 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
+      return 0;
     });
-    return console.log();
+    // return console.log();
   };
 
   const activateSort = sorted();
-
+  console.log(activateSort);
   //   for( let i = 0; i < activateSort.length; i++){
 
   //     if ( activateSort[i].sommelier === true) {
@@ -104,300 +107,19 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   //     }
   // }
 
-  // const hostTypeFilter = activatedSort.filter((type) => {
+  useEffect(() => {
+    if (activateSort !== undefined) {
+      setIsLoaded(true);
+    }
+  }, [activateSort]);
 
-  // })
+  if (!isLoaded) {
+    return null;
+  }
 
   const filteredSort = activateSort.filter((host) => {
     
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
+    
   });
 
   const { Option } = Select;
@@ -409,57 +131,77 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
     );
   }
 
-  // const handleChange = (value) => {
-  //   console.log(value);
-  // if (value.toString() === "Sommelier") {
-  // } else if (value.toString() === "") {
-  //   for (let i = 0; i < selectedOptions.length; i++) {
-  //     if (selectedOptions[i] === "Sommelier") {
-  //       selectedOptions.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
+  // const handleChange = (inputValue) => {
+  //   let filteredValues = inputValue.filter((host) => {
+  //     //return any product whose name or designer contains the input box string
+  //     if (
+  //       host.sommelier === true ||
+  //       host.mixologist === true ||
+  //       host.red === true ||
+  //       host.rose === true ||
+  //       host.white === true
+  //     )
+  //       return host;
+  //   });
+  //   return filteredValues;
+  // };
+  // return {
+  //     ...state,
+  //     products: filteredValues,
+
   // }
-  // if (value.toString() === "Mixologist") {
-  //   selectedOptions.push("Mixologist");
-  // } else if (value.toString() === "") {
-  //   for (let i = 0; i < selectedOptions.length; i++) {
-  //     if (selectedOptions[i] === "Mixologist") {
-  //       selectedOptions.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  // }
-  // if (value.toString() === "red-wine") {
-  //   selectedOptions.push("red-wine");
-  // } else if (value.toString() === "") {
-  //   for (let i = 0; i < selectedOptions.length; i++) {
-  //     if (selectedOptions[i] === "red-wine") {
-  //       selectedOptions.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  // }
-  // if (value.toString() === "white-wine") {
-  //   selectedOptions.push("white-wine");
-  // } else if (value.toString() === "") {
-  //   for (let i = 0; i < selectedOptions.length; i++) {
-  //     if (selectedOptions[i] === "white-wine") {
-  //       selectedOptions.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  // }
-  // if (value.toString() === "rose-wine") {
-  //   selectedOptions.push("rose-wine");
-  // } else if (value.toString() === "") {
-  //   for (let i = 0; i < selectedOptions.length; i++) {
-  //     if (selectedOptions[i] === "rose-wine") {
-  //       selectedOptions.splice(i, 1);
-  //       i--;
-  //     }
-  //   }
-  // }
+  //   const value = inputValue.toString();
+  //     dispatch(filterByValue(value))
+
+  // //   console.log(value);
+  // // if (value.toString() === "Sommelier") {
+  // // } else if (value.toString() === "") {
+  // //   for (let i = 0; i < selectedOptions.length; i++) {
+  // //     if (selectedOptions[i] === "Sommelier") {
+  // //       selectedOptions.splice(i, 1);
+  // //       i--;
+  // //     }
+  // //   }
+  // // }
+  // // if (value.toString() === "Mixologist") {
+  // //   selectedOptions.push("Mixologist");
+  // // } else if (value.toString() === "") {
+  // //   for (let i = 0; i < selectedOptions.length; i++) {
+  // //     if (selectedOptions[i] === "Mixologist") {
+  // //       selectedOptions.splice(i, 1);
+  // //       i--;
+  // //     }
+  // //   }
+  // // }
+  // // if (value.toString() === "red-wine") {
+  // //   selectedOptions.push("red-wine");
+  // // } else if (value.toString() === "") {
+  // //   for (let i = 0; i < selectedOptions.length; i++) {
+  // //     if (selectedOptions[i] === "red-wine") {
+  // //       selectedOptions.splice(i, 1);
+  // //       i--;
+  // //     }
+  // //   }
+  // // }
+  // // if (value.toString() === "white-wine") {
+  // //   selectedOptions.push("white-wine");
+  // // } else if (value.toString() === "") {
+  // //   for (let i = 0; i < selectedOptions.length; i++) {
+  // //     if (selectedOptions[i] === "white-wine") {
+  // //       selectedOptions.splice(i, 1);
+  // //       i--;
+  // //     }
+  // //   }
+  // // }
+  // // if (value.toString() === "rose-wine") {
+  // //   selectedOptions.push("rose-wine");
+  // // } else if (value.toString() === "") {
+  // //   for (let i = 0; i < selectedOptions.length; i++) {
+  // //     if (selectedOptions[i] === "rose-wine") {
+  // //       selectedOptions.splice(i, 1);
+  // //       i--;
+  // //     }
+  // //   }
   // };
 
   // const currentHost = filteredSort.find(host => isAboutShowing === host.id);
@@ -481,18 +223,18 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                     <option value="sort by">Sort by</option>
                     <option value="alpha-asc">Alphabet - A-Z</option>
                     <option value="alpha-desc">Alphabet - Z-A</option>
-                    <option value="price-asc">Distance - Closest</option>
+                    {/* <option value="price-asc">Distance - Closest</option>
                     <option value="price-asc">Distance - Furthest</option>
-                    <option value="price-asc">Price - Lowest to Highest</option>
-                    <option value="price-desc">
+                    <option value="price-asc">Price - Lowest to Highest</option> */}
+                    {/* <option value="price-desc">
                       Price - Highest to Lowest
-                    </option>
-                    <option value="rating-asc">
+                    </option> */}
+                    {/* <option value="rating-asc">
                       Rating - Lowest to Highest
                     </option>
                     <option value="rating-desc">
                       Rating - Highest to Lowest
-                    </option>
+                    </option> */}
                   </select>
                 </div>
                 {/* <div className="filter">
@@ -533,35 +275,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
               ""
             )}
             {/* <div className="host-for-you"></div> */}
-
             <div className="host-result-btns">
-              {/* <Divider orientation="left">Horizontal</Divider> */}
-              {/* <Row gutter={16}>
-              {filteredSort.map((host) => (
-                <Col key={host.id} className="gutter-row" span={6}>
-                  <div className="hosts">
-                    <div className="add-host">
-                      <button>{addBtn}</button>
-                    </div>
-                    <div className="host-name-type">
-                      <div className="host-name">
-                        {host.first_name} {host.last_name}
-                      </div>
-                      <div className="somm">
-                        {host.sommelier === true ? sommelier : null}
-                      </div>
-                      <div className="mix">
-                        {host.mixologist === true ? mixologist : null}
-                      </div>
-                    </div>
-                    <div className="host-city-state">
-                      {host.city}, {host.state}
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row> */}
-
               <CSSGrid
                 component="ul"
                 columns={4}
@@ -572,7 +286,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                 easing="ease-out"
               >
                 {!isAboutShowing ? (
-                  filteredSort.map((host) => (
+                  activateSort.map((host) => (
                     <div key={host.id}>
                       <Button
                         style={{ padding: "0" }}
@@ -589,9 +303,6 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                             }}
                           >
                             <div className="hosts">
-                              {/* <div className="add-host">
-                                <button>{addBtn}</button>
-                              </div> */}
                               <div className="host-name-type">
                                 <div className="host-name">
                                   {host.first_name} {host.last_name}

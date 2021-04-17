@@ -54,13 +54,12 @@ const EventForm = (user_id) => {
   };
 
   useEffect(() => {
-    if (event_state.length > 0) {
+    console.log("USE EFFECT FIRING", );
+    if (event_state !== undefined) {
+      console.log("USE EFFECT STATE", event_state);
       cityFetch();
     }
-    if (cscCity !== undefined) {
-      setIsDisabled(false);
-    }
-  }, [event_state, cscCity]);
+  }, [dispatch, event_state]);
 
   const onSubmission = async (e) => {
     //   // e.preventDefault();

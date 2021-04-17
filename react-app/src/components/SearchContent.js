@@ -156,300 +156,38 @@ const SearchContent = () => {
 
   const filteredSort = activateSort.filter((host) => {
     if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === false &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === false &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === false &&
-      host.white === true &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === false &&
-      host.rose === true
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
-      host.rose === false
-    ) {
-      return host;
-    }
-    if (
-      host.sommelier === true &&
-      host.mixologist === true &&
-      host.red === true &&
-      host.white === true &&
+      host.sommelier === true ||
+      host.mixologist === true ||
+      host.red === true ||
+      host.white === true ||
       host.rose === true
     ) {
       return host;
     }
     //watch this to see if it broke anything!!!!!!!!
-    return hosts
+    return host;
   });
 
-  // const filterHandleCancel = () => {
-  //   setIsFilterModalVisible(false);
-  // };
+  // const hosts = activateSort.filter(host => host.sommelier.indexOf('4') !== -1);
+
+  const handleChange = (inputValue) => {
+    activateSort.forEach((host) => {
+      if (host.sommelier === true) {
+        let somm = "Sommelier";
+        console.log(somm);
+      } else if (host.mixologist === true) {
+        let mix = "Mixologist";
+      } else if (host.red === true) {
+        let red = "red-wine";
+      } else if (host.white === true) {
+        let sowhitemm = "white-wine";
+      } else if (host.rose === true) {
+        let rose = "rose-wine";
+      }
+      // console.log(somm);
+    });
+    
+  };
 
   const { Option } = Select;
 
@@ -512,7 +250,7 @@ const SearchContent = () => {
   };
 
   const onHandleOk = () => {
-    history.push("/events")
+    history.push("/events");
   };
 
   return (
@@ -539,6 +277,33 @@ const SearchContent = () => {
                 <option value="rating-asc">Rating - Lowest to Highest</option>
                 <option value="rating-desc">Rating - Highest to Lowest</option>
               </select>
+            </div>
+            <div className="filter">
+              <Select
+                className="filter-dropdown"
+                mode="multiple"
+                placeholder="Filter by"
+                // onChange={handleChange}
+                // optionLabelProp="label"
+              >
+                <Option value="Sommelier" label="Sommelier">
+                  <div className="demo-option-label-item">Sommelier 🍷</div>
+                </Option>
+                <Option value="Mixologist" label="Mixologist">
+                  <div className="demo-option-label-item">Mixologist 🍸</div>
+                </Option>
+                <Option value="red-wine" label="red-wine">
+                  <div className="demo-option-label-item">Red Wine Expert</div>
+                </Option>
+                <Option value="white-wine" label="white-wine">
+                  <div className="demo-option-label-item">
+                    White Wine Expert
+                  </div>
+                </Option>
+                <Option value="rose-wine" label="rose-wine">
+                  <div className="demo-option-label-item">Rosé Wine Expert</div>
+                </Option>
+              </Select>
             </div>
           </div>
           <div className="host-result-btns">
@@ -572,7 +337,7 @@ const SearchContent = () => {
                       >
                         <div className="hosts">
                           <div className="host-name-type">
-                            <div className="host-name" style={{color: "black"}}>
+                            <div className="host-name">
                               {host.first_name} {host.last_name}
                             </div>
                             <div className="somm">

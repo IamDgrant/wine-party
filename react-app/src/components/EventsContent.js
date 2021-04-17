@@ -53,14 +53,30 @@ const EventsContent = (user_id) => {
   const [event_name, setEventName] = useState(currentEvent?.event_name);
   // const [event_host, setEventHost] = useState("");
   const [event_date, setEventDate] = useState(currentEvent?.event_date);
-  const [event_city, setEventCity] = useState(currentEvent?.event_city);
-  const [event_state, setEventState] = useState(currentEvent?.event_state);
+  const [event_city, setEventCity] = useState();
+  const [event_state, setEventState] = useState();
   const [event_postal_code, setEventPostalCode] = useState(
     currentEvent?.event_postal_code
   );
   const [cscCity, setCscCity] = useState();
   // const [isDisabled, setIsDisabled] = useState(true);
   // const [errors, setErrors] = useState([]);
+
+  // console.log(event_state);
+
+  useEffect(() => {
+    dispatch(seeEvent());
+  }, [dispatch]);
+
+  useEffect(() => {
+    // console.log("USE EFFECT FIRING", );
+    if (event_state !== undefined) {
+      // console.log("USE EFFECT STATE", event_state);
+      cityFetch();
+    }
+  }, [dispatch, event_state]);
+
+  
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -76,37 +92,20 @@ const EventsContent = (user_id) => {
   const cityFetch = async () => {
     const fetchCityUrl = `https://api.countrystatecity.in/v1/countries/US/states/${event_state}/cities`;
     const res = await fetch(fetchCityUrl, requestOptions);
+    // console.log(res);
     if (res.ok) {
+      // console.log(res);
+
       const data = await res.json();
       const sortedData = data.sort((city1, city2) =>
         city1.name > city2.name ? 1 : -1
       );
       setCscCity(sortedData);
-      // return sortedData;
+      return sortedData;
     }
   };
 
   // const nameInputFocus = useRef();
-
-  useEffect(() => {
-    dispatch(seeEvent());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (event_state && event_state.length > 0) {
-      cityFetch();
-    }
-  });
-
-  // useEffect(() => {
-  //   if (cscCity !== undefined) {
-  //     setIsDisabled(false);
-  //   }
-  // }, [cscCity]);
-
-  // const showAddDrawer = () => {
-
-  // };
 
   const closeAddDrawer = () => {
     setIsAddDrawerVisible(false);
@@ -152,6 +151,7 @@ const EventsContent = (user_id) => {
   };
 
   const addEventState = (onChangeState) => {
+    // console.log(onChangeState);
     setEventState(onChangeState);
   };
 
@@ -259,13 +259,7 @@ const EventsContent = (user_id) => {
         event_state,
         event_postal_code,
       })
-    ).then(() => {
-      setEventName("");
-      setEventDate("");
-      setEventCity("");
-      setEventState("");
-      setEventPostalCode("");
-    });
+    );
   };
 
   const onEditSubmission = async () => {

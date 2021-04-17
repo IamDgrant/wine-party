@@ -8,19 +8,21 @@ event_routes = Blueprint('events', __name__)
 
 
 @event_routes.route('/')
-@login_required
+# @login_required
 def events():
     events = Event.query.filter_by(
         user_id=current_user.id).order_by(Event.event_date)
     return {"events": [event.to_dict() for event in events]}
 
 
-@event_routes.route('/', methods=['POST'])
-@login_required
+@event_routes.route('', methods=['POST'])
+# @login_required
 def create_event():
     form = EventForm()
+    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        print('FORM VALIDATED!!!!!!', form.data)
         event = Event(
             user_id=current_user.id,
             host_id=form.data['selectedHostId'],
@@ -28,10 +30,12 @@ def create_event():
             event_date=form.data['event_date'],
             event_city=form.data['event_city'],
             event_state=form.data['event_state'],
+            event_postal_code=form.data['event_postal_code'],
         )
         db.session.add(event)
         db.session.commit()
         return event.to_dict()
+    print("ERRORS!!!!!!!!!!!!", form.errors)
     return('Invalid Info')
 
 

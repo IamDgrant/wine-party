@@ -3,6 +3,7 @@
 const GET_HOST = "host/getHost";
 const RESET_HOST = "host/resetHost";
 
+
 // const setHost = (host) => ({
 //   type: SET_HOST,
 //   payload: host,
@@ -49,6 +50,7 @@ export const browseAllHost = () => async (dispatch) => {
 };
 
 export const seeHost = (search, sommelier, mixologist) => async (dispatch) => {
+  // console.log(search, sommelier, mixologist);
   const res = await fetch("/api/hosts/search", {
     method: "POST",
     headers: {
@@ -89,6 +91,8 @@ export const seeHostEvent = (id) => async (dispatch) => {
   dispatch(getHost(data.hosts));
   return data;
 };
+
+
 
 const initialState = { host: [] };
 

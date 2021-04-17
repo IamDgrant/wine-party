@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector} from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { Redirect } from "react-router-dom";
 // import { login } from "../../../store/session";
 import { usStates } from "../../States";
@@ -24,13 +24,14 @@ const SignUpForm = ({
   repeatPassword,
   setRepeatPassword,
 }) => {
+  const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch()
   // const dispatch = useDispatch();
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [cscState, setCscState] = useState();
   const [cscCity, setCscCity] = useState();
   // const [isDisabled, setIsDisabled] = useState(true);
 
-  const sessionUser = useSelector((state) => state.session.user);
 
   const cscAPIKey = process.env.REACT_APP_CSC_API_KEY;
 
@@ -56,10 +57,12 @@ const SignUpForm = ({
   };
 
   useEffect(() => {
-    if (state && state.length > 0) {
+    console.log("USE EFFECT FIRING", );
+    if (state !== undefined) {
+      console.log("USE EFFECT STATE", state);
       cityFetch();
     }
-  });
+  }, [dispatch, state]);
 
   // useEffect(() => {
   //   if (cscCity !== undefined) {

@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { photoUpload, update_User } from "../store/session";
-import { Breadcrumb, Button, Avatar } from "antd";
-import img_placeholder from "../assets/images/user_placeholder.jpeg";
+import { Breadcrumb, Button } from "antd";
+import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 import "../components/styling/profileContentStyling.css";
-import { UserOutlined } from "@ant-design/icons";
-// import img_placeholder from "../assets/images/empty-profile-picture-png.png";
 
 const ProfileContent = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -200,7 +198,7 @@ const ProfileContent = () => {
                   <div className="image-upload">
                     <label for="file-input">
                       <img
-                        src={<Avatar size={64} icon={<UserOutlined />} />}
+                        src={img_placeholder}
                         alt="Avatar"
                         className="profile-pic2"
                       ></img>
@@ -235,7 +233,7 @@ const ProfileContent = () => {
                 ></img>
               ) : (
                 <img
-                  src={<Avatar size={64} icon={<UserOutlined />} />}
+                  src={img_placeholder}
                   alt="Avatar"
                   className="profile-pic"
                 ></img>
