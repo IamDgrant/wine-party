@@ -57,9 +57,9 @@ const SignUpForm = ({
   };
 
   useEffect(() => {
-    console.log("USE EFFECT FIRING", );
+    // console.log("USE EFFECT FIRING", );
     if (state !== undefined) {
-      console.log("USE EFFECT STATE", state);
+      // console.log("USE EFFECT STATE", state);
       cityFetch();
     }
   }, [dispatch, state]);

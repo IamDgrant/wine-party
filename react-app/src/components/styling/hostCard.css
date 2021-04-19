@@ -3,12 +3,12 @@
   justify-content: flex-start;
 }
 
-.host-about-container {
+/* .host-about-container {
   margin-left: 25px;
-}
+} */
 
 .host-image-container {
-  height: 350px;
+  /* height: 350px; */
   width: 350px;
 }
 

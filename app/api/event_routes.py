@@ -19,10 +19,8 @@ def events():
 # @login_required
 def create_event():
     form = EventForm()
-    print(form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('FORM VALIDATED!!!!!!', form.data)
         event = Event(
             user_id=current_user.id,
             host_id=form.data['selectedHostId'],
@@ -35,7 +33,6 @@ def create_event():
         db.session.add(event)
         db.session.commit()
         return event.to_dict()
-    print("ERRORS!!!!!!!!!!!!", form.errors)
     return('Invalid Info')
 
 

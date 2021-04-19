@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { login, createUser } from "../store/session";
-// import { seeHost } from "../store/host";
 import SignUpForm from "./auth/forms/SignUpForm";
 import LoginForm from "./auth/forms/LoginForm";
 import { Menu, Dropdown, Button, Modal, message } from "antd";
@@ -15,6 +14,7 @@ import "../components/styling/buttonStyling.css";
 const LandingHeader = () => {
   // const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  // const history = useHistory();
 
   const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
   const [isSignUpModalVisible, setIsSignUpModalVisible] = useState(false);
@@ -104,6 +104,7 @@ const LandingHeader = () => {
         })
       );
     }
+    <Redirect to="/home" />;
   };
 
   const onSignIn = async () => {
@@ -119,7 +120,8 @@ const LandingHeader = () => {
       signInPasswordErrors();
       return;
     }
-    await dispatch(login(signInEmail, signInPassword));
+    dispatch(login(signInEmail, signInPassword));
+    <Redirect to="/home" />;
   };
 
   const showSignInModal = () => {

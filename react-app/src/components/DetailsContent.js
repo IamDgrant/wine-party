@@ -324,7 +324,7 @@ const DetailsContent = () => {
           <div className="details-name">
             <div className="full-name-edit">
               {isEditingEmail}
-              <div className="full-name">Email</div>
+              {/* <div className="full-name">Email</div>
               {isEditingEmail ? (
                 <div className="edit-name">
                   <Button onClick={saveEditingEmail}>Save</Button>
@@ -333,7 +333,7 @@ const DetailsContent = () => {
                 <div className="edit-name">
                   <Button onClick={updateEditingEmail}>Edit</Button>
                 </div>
-              )}
+              )} */}
             </div>
             {isEditingEmail ? (
               <div className="details-form">

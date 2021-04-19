@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { browseAllHost } from "../store/host";
-import { filterByValue } from "../store/sort";
 import { CSSGrid } from "react-stonecutter";
 import { Select, Button } from "antd";
 import "../components/styling/browseHostStyling.css";
@@ -14,8 +13,8 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   // const [isAboutShowing, setIsAboutShowing] = useState(undefined);
 
   // const [isHostDetailsShowing, setIsHostDetailsShowing] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isSortedType, setIsSortedType] = useState("");
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [isSortedType, setIsSortedType] = useState("");
   // const [isSommelier, setIsSommelier] = useState(false);
   // const [isMixologist, setIsMixologist] = useState(false);
   // const [isRedWine, setIsRedWine] = useState(false);
@@ -44,7 +43,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
       focusable="false"
       data-prefix="fas"
       data-icon="wine-glass"
-      class="svg-inline--fa fa-wine-glass fa-w-9"
+      className="svg-inline--fa fa-wine-glass fa-w-9"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 288 512"
@@ -62,7 +61,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
       focusable="false"
       data-prefix="fas"
       data-icon="glass-martini"
-      class="svg-inline--fa fa-glass-martini fa-w-16"
+      className="svg-inline--fa fa-glass-martini fa-w-16"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
@@ -73,32 +72,38 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
       ></path>
     </svg>
   );
+  
 
-  const updateSorted = (e) => {
+  const updateSortDirection = (e) => {
     if (e.target.value === "alpha-asc") {
-      setIsSortedType("asc");
+      // setIsSortedType("asc");
+      sessionHosts.sort((name1, name2) => {
+        return name1.first_name > name2.first_name ? 1 : -1;
+      }) 
     } else if (e.target.value === "alpha-desc") {
-      setIsSortedType("desc");
+      // setIsSortedType("desc");
+      sessionHosts.sort((name1, name2) => {
+        return name1.first_name < name2.first_name ? 1 : -1;
+      })
     }
   };
 
-  const hosts = sessionHosts.map((host) => host);
-  console.log(hosts);
+  // const hosts = sessionHosts.map((host) => host);
+  // console.log(hosts);
 
-  const sorted = () => {
-    hosts.sort((name1, name2) => {
-      if (isSortedType === "asc") {
-        return name1.first_name > name2.first_name ? 1 : -1;
-      } else if (isSortedType === "desc") {
-        return name1.first_name < name2.first_name ? 1 : -1;
-      }
-      return 0;
-    });
-    // return console.log();
-  };
+  // const sorted = () => {
+  //   sessionHosts.sort((name1, name2) => {
+  //     if (isSortedType === "asc") {
+  //       return name1.first_name > name2.first_name ? 1 : -1;
+  //     } else if (isSortedType === "desc") {
+  //       return name1.first_name < name2.first_name ? 1 : -1;
+  //     }
+  //     return 0;
+  //   });
+  //   // return console.log();
+  // };
 
-  const activateSort = sorted();
-  console.log(activateSort);
+  // const activateSort = sorted();
   //   for( let i = 0; i < activateSort.length; i++){
 
   //     if ( activateSort[i].sommelier === true) {
@@ -107,20 +112,20 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
   //     }
   // }
 
-  useEffect(() => {
-    if (activateSort !== undefined) {
-      setIsLoaded(true);
-    }
-  }, [activateSort]);
+  // useEffect(() => {
+  //   if (activateSort !== undefined) {
+  //     setIsLoaded(true);
+  //   }
+  // }, [activateSort]);
 
-  if (!isLoaded) {
-    return null;
-  }
+  // if (!isLoaded) {
+  //   return null;
+  // }
 
-  const filteredSort = activateSort.filter((host) => {
+  // const filteredSort = activateSort.filter((host) => {
     
     
-  });
+  // });
 
   const { Option } = Select;
 
@@ -218,7 +223,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                     className="select-dropdown"
                     name="select"
                     placeholder="Sort by"
-                    onChange={updateSorted}
+                    onChange={updateSortDirection}
                   >
                     <option value="sort by">Sort by</option>
                     <option value="alpha-asc">Alphabet - A-Z</option>
@@ -286,7 +291,7 @@ const BrowseResults = ({ isAboutShowing, setIsAboutShowing }) => {
                 easing="ease-out"
               >
                 {!isAboutShowing ? (
-                  activateSort.map((host) => (
+                  sessionHosts.map((host) => (
                     <div key={host.id}>
                       <Button
                         style={{ padding: "0" }}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import placeholderPic from "../assets/images/empty-profile-picture-png.png";
+// import placeholderPic from "../assets/images/empty-profile-picture-png.png";
 import { photoUpload } from "../store/session";
 import { Modal } from "antd";
 
@@ -10,9 +10,9 @@ const UserProfile = () => {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [photoUrl, setPhotoUrl] = useState(
-    sessionUser ? sessionUser.photoUrl : ""
-  );
+  // const [photoUrl, setPhotoUrl] = useState(
+  //   sessionUser ? sessionUser.photoUrl : ""
+  // );
 
   const dispatch = useDispatch();
 

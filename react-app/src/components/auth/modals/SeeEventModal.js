@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { seeEvent, deleteEvent } from "../../../store/event";
+import { seeEvent } from "../../../store/event";
 import Event from "../../FutureEvent"
 import { Modal, Button } from "antd";
 // import "../../styling/eventStyle.css";

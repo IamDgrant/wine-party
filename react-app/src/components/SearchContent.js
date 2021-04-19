@@ -123,7 +123,7 @@ const SearchContent = () => {
       } else if (isSortedType === "desc") {
         return name1.first_name < name2.first_name ? 1 : -1;
       }
-      return console.log();
+      return 0;
     });
 
   const activateSort = sorted();
@@ -170,24 +170,24 @@ const SearchContent = () => {
 
   // const hosts = activateSort.filter(host => host.sommelier.indexOf('4') !== -1);
 
-  const handleChange = (inputValue) => {
-    activateSort.forEach((host) => {
-      if (host.sommelier === true) {
-        let somm = "Sommelier";
-        console.log(somm);
-      } else if (host.mixologist === true) {
-        let mix = "Mixologist";
-      } else if (host.red === true) {
-        let red = "red-wine";
-      } else if (host.white === true) {
-        let sowhitemm = "white-wine";
-      } else if (host.rose === true) {
-        let rose = "rose-wine";
-      }
-      // console.log(somm);
-    });
+  // const handleChange = (inputValue) => {
+  //   activateSort.forEach((host) => {
+  //     if (host.sommelier === true) {
+  //       let somm = "Sommelier";
+  //       // console.log(somm);
+  //     } else if (host.mixologist === true) {
+  //       let mix = "Mixologist";
+  //     } else if (host.red === true) {
+  //       let red = "red-wine";
+  //     } else if (host.white === true) {
+  //       let sowhitemm = "white-wine";
+  //     } else if (host.rose === true) {
+  //       let rose = "rose-wine";
+  //     }
+  //     // console.log(somm);
+  //   });
     
-  };
+  // };
 
   const { Option } = Select;
 
@@ -278,7 +278,7 @@ const SearchContent = () => {
                 <option value="rating-desc">Rating - Highest to Lowest</option>
               </select>
             </div>
-            <div className="filter">
+            {/* <div className="filter">
               <Select
                 className="filter-dropdown"
                 mode="multiple"
@@ -304,7 +304,7 @@ const SearchContent = () => {
                   <div className="demo-option-label-item">Rosé Wine Expert</div>
                 </Option>
               </Select>
-            </div>
+            </div> */}
           </div>
           <div className="host-result-btns">
             <CSSGrid

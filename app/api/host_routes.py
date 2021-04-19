@@ -8,12 +8,12 @@ host_routes = Blueprint('hosts', __name__)
 
 
 @host_routes.route('')
-# @login_required
+@login_required
 def hosts():
     hosts = Host.query.all()
     return {"hosts": [host.to_dict() for host in hosts]}
 
-@host_routes.route('/random')
+@host_routes.route('/random', methods=['GET'])
 def random_host():
     random = func.random()
     hosts = Host.query.order_by(random).first()
@@ -21,7 +21,7 @@ def random_host():
 
 
 @host_routes.route('/search', methods=['POST'])
-# @login_required
+@login_required
 def hosts_search():
     hosts = Host.query.all()
     print(hosts)
@@ -56,7 +56,7 @@ def hosts_search():
 
 
 @ host_routes.route('/<id>')
-# @ login_required
+@ login_required
 def host(id):
     host = Host.query.get(id)
     # print(host)

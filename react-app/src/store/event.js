@@ -31,15 +31,15 @@ export const createEvent = ({
   event_state,
   event_postal_code,
 }) => async (dispatch) => {
-  console.log(
-    "EVENT",
-    selectedHostId,
-    event_name,
-    event_date,
-    event_city,
-    event_state,
-    event_postal_code
-  );
+  // console.log(
+  //   "EVENT",
+  //   selectedHostId,
+  //   event_name,
+  //   event_date,
+  //   event_city,
+  //   event_state,
+  //   event_postal_code
+  // );
   const res = await fetch("/api/events", {
     method: "POST",
     headers: {
@@ -68,8 +68,6 @@ export const update_Event = (updateData) => async (dispatch) => {
     event_state,
     event_postal_code,
   } = updateData;
-  // console.log("MADE IT HERE ID", currentEventId);
-  // console.log("MADE IT HERE selectedHostId", selectedHostId);
   const res = await fetch(`/api/events/update/${currentEventId}`, {
     method: "PUT",
     headers: {

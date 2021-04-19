@@ -54,9 +54,9 @@ const EventForm = (user_id) => {
   };
 
   useEffect(() => {
-    console.log("USE EFFECT FIRING", );
+    // console.log("USE EFFECT FIRING", );
     if (event_state !== undefined) {
-      console.log("USE EFFECT STATE", event_state);
+      // console.log("USE EFFECT STATE", event_state);
       cityFetch();
     }
   }, [dispatch, event_state]);

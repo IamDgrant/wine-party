@@ -29,17 +29,10 @@ import party from "../assets/images/pexels-maksim-goncharenok-5550311.jpeg";
 
 const EventsContent = (user_id) => {
   const sessionUser = useSelector((state) => state.session.user);
-  // const sessionHost = useSelector((state) => state.host.host);
   const sessionEvent = useSelector((state) => state.event.event);
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   const [isAboutShowing, setIsAboutShowing] = useState(undefined);
-
-  // console.log("current host", isAboutShowing);
-  // const assignedHost = sessionHost.find(host => isAboutShowing === sessionHost.map(host => host.id))
-  // console.log(assignedHost);
-
   const [isEditResultsVisible, setIsEditResultsVisible] = useState(false);
   const [isAddResultsVisible, setIsAddResultsVisible] = useState(false);
   const [currentEventId, setCurrentEventId] = useState();
@@ -131,10 +124,6 @@ const EventsContent = (user_id) => {
   // }
 
   const addEventName = (e) => {
-    // showAddDrawer();
-    // if (e.target.value.length < 1) {
-    //   setIsAddDrawerVisible(false);
-    // }
     setEventName(e.target.value);
   };
 
@@ -151,7 +140,6 @@ const EventsContent = (user_id) => {
   };
 
   const addEventState = (onChangeState) => {
-    // console.log(onChangeState);
     setEventState(onChangeState);
   };
 
@@ -178,10 +166,6 @@ const EventsContent = (user_id) => {
     setIsAddResultsVisible(false);
     setIsAddDrawerVisible(true);
   };
-
-  // const addHostClicked = () => {
-
-  // }
 
   const backToResults = () => {
     setIsAboutShowing(false);
@@ -236,10 +220,6 @@ const EventsContent = (user_id) => {
   const deleteOneEvent = async (id) => {
     await dispatch(deleteEvent(id));
   };
-
-  // const onConfirm = () => {
-  //   history.push("/search");
-  // };
 
   const selectedHostId = isAboutShowing && isAboutShowing.id;
 
@@ -505,11 +485,6 @@ const EventsContent = (user_id) => {
                 <Panel header="Add an event" style={{ fontWeight: "900" }}>
                   <div className="add-event-form">
                     <form>
-                      {/* <div>
-                        {errors.map((error, i) => (
-                          <div key={i}>{error}</div>
-                        ))}
-                      </div> */}
                       <div>
                         <input
                           // className="form-input"
@@ -624,6 +599,7 @@ const EventsContent = (user_id) => {
                           </Button>
                           <Modal
                             width={1100}
+                            height={750}
                             okText="Add Host"
                             title="Find your Host"
                             onOk={handleOk}
@@ -661,14 +637,6 @@ const EventsContent = (user_id) => {
                                     >
                                       Cancel
                                     </Button>,
-                                    // <Button
-                                    //   key="submit"
-                                    //   type="primary"
-                                    //   // loading={loading}
-                                    //   // onClick={this.handleOk}
-                                    // >
-                                    //   Add Host
-                                    // </Button>,
                                   ]
                             }
                           >
